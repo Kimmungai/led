@@ -15,6 +15,7 @@
                     @endif
 
                     You are logged in!
+                    {{$org->user[0]->purchase}}
                 </div>
             </div>
         </div>
