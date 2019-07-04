@@ -32,6 +32,7 @@ class CreateUsersTable extends Migration
             $table->string('passportImage')->nullable();
             $table->tinyInteger('gender')->nullable();
             $table->string('DOB')->nullable();
+            $table->string('designation')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

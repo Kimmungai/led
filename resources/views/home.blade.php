@@ -1,24 +1,53 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
+ <body class="sticky-header left-side-collapsed">
+    <section>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+    <!-- left side start-->
+    @Component('components.structure.side-menu')
+    @endcomponent
+    <!-- left side end-->
 
-                    You are logged in!
-                    {{$org->user[0]->purchase}}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+		<!-- main content start-->
+		<div class="main-content">
+
+			<!-- header-starts -->
+      @Component('components.structure.header-menu')
+      @endcomponent
+		 <!-- //header-ends -->
+
+			<div id="page-wrapper">
+				<div class="graphs">
+					<div class="col_3">
+
+            @for( $x = 0; $x < 6; $x++ )
+              @Component('components.dashboard.tabs')
+              @endcomponent
+            @endfor
+
+
+						<div class="clearfix"> </div>
+					</div>
+
+			<!-- switches -->
+		<div class="switches">
+
+			<div class="col-4">
+
+      @for( $x = 0; $x < 4; $x++ )
+        @Component('components.dashboard.reports')
+        @endcomponent
+      @endfor
+
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<!-- //switches -->
+
+				</div>
+			<!--body wrapper start-->
+			</div>
+			 <!--body wrapper end-->
+		</div>
 @endsection
