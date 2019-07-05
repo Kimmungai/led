@@ -12,6 +12,7 @@
 <!-- Graph CSS -->
 <link href="{{url('theme-front/css/font-awesome.css')}}" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{{url('css/app.css')}}">
 <!-- jQuery -->
 <!-- lined-icons -->
 <link rel="stylesheet" href="{{url('theme-front/css/icon-font.min.css')}}" type='text/css' />
@@ -48,5 +49,7 @@
 <script src="{{url('theme-front/js/scripts.js')}}"></script>
 <!-- Bootstrap Core JavaScript -->
 <script src="{{url('theme-front/js/bootstrap.min.js')}}"></script>
+<!--app JS-->
+<script src="{{url('js/app.js')}}"></script>
 </body>
 </html>
