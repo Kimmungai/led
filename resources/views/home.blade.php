@@ -21,24 +21,43 @@
 				<div class="graphs">
 					<div class="col_3">
 
-            @for( $x = 0; $x < 6; $x++ )
-              @Component('components.dashboard.tabs')
+            @foreach( $tabs as $tab )
+              @Component('components.dashboard.tabs',['tab' => $tab])
               @endcomponent
-            @endfor
+            @endforeach
 
 
 						<div class="clearfix"> </div>
 					</div>
+
+        <!--Add buttons-->
+        <div class="container">
+          <div class="row">
+
+            @Component('components.dashboard.button',[ 'name' => 'New Sale', 'icon' => 'fa fa-cash-register', 'link' => '#' ])
+            @endcomponent
+
+            @Component('components.dashboard.button',[ 'name' => 'New Purchase', 'icon' => 'fa fa-calculator', 'link' => '#' ])
+            @endcomponent
+
+
+          </div>
+        </div>
+        <!--end add buttons-->
+
+
 
 			<!-- switches -->
 		<div class="switches">
 
 			<div class="col-4">
 
-      @for( $x = 0; $x < 4; $x++ )
+      @for( $x = 0; $x < 3; $x++ )
         @Component('components.dashboard.reports')
         @endcomponent
       @endfor
+
+
 
 				<div class="clearfix"></div>
 			</div>

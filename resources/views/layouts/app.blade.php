@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Easy Admin Panel an Admin Panel Category Flat Bootstrap Responsive Website Template | Home :: w3layouts</title>
+<title>{{Route::currentRouteName()}} | {{env('APP_NAME','Ledamcha')}}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
@@ -11,8 +11,11 @@
 <link href="{{url('theme-front/css/style.css')}}" rel='stylesheet' type='text/css' />
 <!-- Graph CSS -->
 <link href="{{url('theme-front/css/font-awesome.css')}}" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 <link rel="stylesheet" href="{{url('css/app.css')}}">
+@if(Route::is('invoice*'))
+<link rel="stylesheet" href="{{url('css/invoice-template.css')}}">
+@endif
 <!-- jQuery -->
 <!-- lined-icons -->
 <link rel="stylesheet" href="{{url('theme-front/css/icon-font.min.css')}}" type='text/css' />
@@ -38,7 +41,7 @@
 @yield('content')
 <!--footer section start-->
 <footer>
- <p>&copy 2015 Easy Admin Panel. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">w3layouts.</a></p>
+ <p>&copy {{date('Y')}} {{env('APP_NAME','Ledamcha')}}. All Rights Reserved </p>
 </footer>
 <!--footer section end-->
 

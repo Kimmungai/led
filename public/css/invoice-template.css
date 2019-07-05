@@ -1,0 +1,102 @@
+.invoice-panel{
+  width: 80%;
+  margin: 0 auto;
+  padding: 1%;
+  border: 1px solid #ccc;
+}
+.title-1{
+  text-align: center;
+}
+.title-1 span{
+  border: 1px solid #000;
+  padding: 0 10px;
+  font-weight: bold;
+  text-transform: capitalize;
+  border-radius: 5px;
+}
+.title-2{
+  text-align: center;
+  margin: 1% 0;
+}
+.title-2 span{
+  padding: 0 10px;
+  background-color: #000;
+  font-size: 22px;
+  text-transform: uppercase;
+  border-radius: 5px;
+  color: #fff;
+}
+.heading{
+  width: 56%;
+  margin: 0 auto;
+}
+.heading h1{
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  font-size: 28px;
+  margin: 0;
+}
+.heading p{
+  text-align: center;
+  font-size: 14px;
+}
+.contacts{
+  margin-top: 1em;
+}
+.contacts ul{
+  list-style-type: none;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+}
+.contacts li{
+  margin: 0;
+  padding: 0;
+}
+.text-white{
+  color: #fff;
+}
+.addresse{
+  border: 1px solid #000;
+  border-radius: 10px;
+  padding: 10px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+.addresse p{
+  border-bottom: 1px dotted #000;
+}
+.doc-ids span{
+  font-size: 12px;
+}
+.doc-ids p{
+  font-weight: bold;
+  border: 1px solid #000;
+  border-radius: 7px;
+  margin-top: 5px;
+  padding: 5px 10px;
+}
+.invoice-table {
+  margin-top: 10px;
+}
+.invoice-table thead,tfoot{
+  background: #D8D8D8;
+}
+
+.invoice-table th,td,tr{
+  border:1px solid #000;
+  text-align: center;
+}
+.table-highlight{
+  background: #D8D8D8 !important;
+}
+.footnote p{
+  text-align: center;
+  font-style: italic;
+}
+.inspector p{
+  text-align: left;
+  font-style: normal;
+  border-bottom: 1px dotted #000;
+}

@@ -16,3 +16,10 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+
+//Invoices
+Route::get('invoices','InvoicesController@index')->name('invoices.all');
+Route::get('new-invoice','InvoicesController@create')->name('invoices.new');
+
+//Reports
+Route::resource('reports','ReportsController');

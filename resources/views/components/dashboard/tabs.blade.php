@@ -1,11 +1,19 @@
-<div class="col-md-3 widget widget1">
+@if( isset($tab['link']) )
+<a href="{{$tab['link']}}">
+@endif
+
+<div class="col-md-3 widget widget">
   <div class="r3_counter_box">
-    <i class="fa fa-plus-circle"></i>
+    <i class="{{$tab['icon']}}"></i>
     <div class="stats">
       <h5>45 <span>%</span></h5>
-      <div class="grow">
-      <p>New purchase</p>
+      <div class="grow {{$tab['class']}}">
+      <p>{{$tab['name']}}</p>
       </div>
     </div>
   </div>
 </div>
+
+@if( isset($tab['link']) )
+</a>
+@endif

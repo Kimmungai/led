@@ -24,7 +24,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $org= Org::first();
-        return view('home',compact('org'));
+        return view('home');
     }
 }
