@@ -50,7 +50,7 @@
             <div class="contacts">
               <ul>
                 <li>Cell: 0731 610 776</li>
-                <li><span class="text-white">Cell: </span>0731 610 776</li>
+                <li><span class="text-white">Cell: </span>0733 205 300</li>
               </ul>
             </div>
 
@@ -120,7 +120,7 @@
                   </table>
                 </div>
                 <div class="footnote">
-                  <p>Receive the above goods in good order and condition.</p>
+                  <p>Prices are subject to change without prior notice.</p>
                   <div class="row inspector mt-2">
                     <div class="col-xs-6">
                       <p>Checked by: </p>

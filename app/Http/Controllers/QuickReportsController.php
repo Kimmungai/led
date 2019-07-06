@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Report;
 use Illuminate\Http\Request;
 
-class ReportsController extends Controller
+class QuickReportsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class ReportsController extends Controller
      */
     public function index()
     {
-        return "all reports";
+        return "quick reports";
     }
 
     /**
@@ -24,7 +24,7 @@ class ReportsController extends Controller
      */
     public function create()
     {
-        return "create report";
+        //
     }
 
     /**

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Report;
+use App\Purchase;
 use Illuminate\Http\Request;
 
-class ReportsController extends Controller
+class PurchasesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class ReportsController extends Controller
      */
     public function index()
     {
-        return "all reports";
+        return "all purchases";
     }
 
     /**
@@ -24,7 +24,7 @@ class ReportsController extends Controller
      */
     public function create()
     {
-        return "create report";
+        return "create purchase";
     }
 
     /**
@@ -41,10 +41,10 @@ class ReportsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Report  $report
+     * @param  \App\Purchase  $purchase
      * @return \Illuminate\Http\Response
      */
-    public function show(Report $report)
+    public function show(Purchase $purchase)
     {
         //
     }
@@ -52,10 +52,10 @@ class ReportsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Report  $report
+     * @param  \App\Purchase  $purchase
      * @return \Illuminate\Http\Response
      */
-    public function edit(Report $report)
+    public function edit(Purchase $purchase)
     {
         //
     }
@@ -64,10 +64,10 @@ class ReportsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Report  $report
+     * @param  \App\Purchase  $purchase
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Report $report)
+    public function update(Request $request, Purchase $purchase)
     {
         //
     }
@@ -75,10 +75,10 @@ class ReportsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Report  $report
+     * @param  \App\Purchase  $purchase
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Report $report)
+    public function destroy(Purchase $purchase)
     {
         //
     }
