@@ -13,6 +13,10 @@
 <link href="{{url('theme-front/css/font-awesome.css')}}" rel="stylesheet">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 <link rel="stylesheet" href="{{url('css/app.css')}}">
+@if(Route::is('sales.create'))
+<link rel="stylesheet" href="{{url('css/pos-design.css')}}">
+@endif
+
 @if(Route::is('invoice*'))
 <link rel="stylesheet" href="{{url('css/invoice-template.css')}}">
 @endif

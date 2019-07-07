@@ -2,15 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Sale;
+use App\UserTransactions;
 use Illuminate\Http\Request;
 
-class SalesController extends Controller
+class PaymentsController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +14,7 @@ class SalesController extends Controller
      */
     public function index()
     {
-        return "all sales";
+        //
     }
 
     /**
@@ -28,7 +24,7 @@ class SalesController extends Controller
      */
     public function create()
     {
-        return view('purchase.create');
+        return view('payment.create');
     }
 
     /**
@@ -45,10 +41,10 @@ class SalesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Sale  $sale
+     * @param  \App\UserTransactions  $userTransactions
      * @return \Illuminate\Http\Response
      */
-    public function show(Sale $sale)
+    public function show(UserTransactions $userTransactions)
     {
         //
     }
@@ -56,10 +52,10 @@ class SalesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Sale  $sale
+     * @param  \App\UserTransactions  $userTransactions
      * @return \Illuminate\Http\Response
      */
-    public function edit(Sale $sale)
+    public function edit(UserTransactions $userTransactions)
     {
         //
     }
@@ -68,10 +64,10 @@ class SalesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Sale  $sale
+     * @param  \App\UserTransactions  $userTransactions
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Sale $sale)
+    public function update(Request $request, UserTransactions $userTransactions)
     {
         //
     }
@@ -79,10 +75,10 @@ class SalesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Sale  $sale
+     * @param  \App\UserTransactions  $userTransactions
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Sale $sale)
+    public function destroy(UserTransactions $userTransactions)
     {
         //
     }

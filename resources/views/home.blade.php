@@ -18,6 +18,13 @@
 		 <!-- //header-ends -->
 
 			<div id="page-wrapper">
+        
+        <h3 class="text-uppercase text-center">Welcome to Ledamcha MIS</h3>
+
+        @Component('components.structure.breadcrump',['home'=>'noLink'])
+        @endcomponent
+
+
 				<div class="graphs">
 					<div class="col_3">
 
@@ -34,10 +41,10 @@
         <div class="container">
           <div class="row">
 
-            @Component('components.dashboard.button',[ 'name' => 'New Sale', 'icon' => 'fa fa-cash-register', 'link' => '#' ])
+            @Component('components.dashboard.button',[ 'name' => 'New Sale', 'icon' => 'fa fa-cash-register', 'link' => route('sales.create') ])
             @endcomponent
 
-            @Component('components.dashboard.button',[ 'name' => 'New Purchase', 'icon' => 'fa fa-calculator', 'link' => '#' ])
+            @Component('components.dashboard.button',[ 'name' => 'New Purchase', 'icon' => 'fa fa-calculator', 'link' => route('purchases.create') ])
             @endcomponent
 
 

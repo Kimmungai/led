@@ -48,5 +48,8 @@ Route::resource('purchases','PurchasesController');
 //product
 Route::resource('stock','ProductsController');
 
+//payments
+Route::resource('payments','PaymentsController');
+
 //trash
 Route::get('trash','TrashController@index')->name('trash.index');
