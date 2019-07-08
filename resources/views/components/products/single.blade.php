@@ -6,7 +6,7 @@
    <div class="grid_1 simpleCart_shelfItem">
 
    <div class="item_add"><span class="item_price"><h6>ONLY $95.00</h6></span></div>
-   <div class="item_add"><span class="item_price"><a href="#">add to cart</a></span></div>
+   <div class="item_add"><span class="item_price"><a href="#">{{env("PRODUCT_CTA","Add")}}</a></span></div>
    </div>
  </div>
 </div>

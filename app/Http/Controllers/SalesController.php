@@ -28,7 +28,7 @@ class SalesController extends Controller
      */
     public function create()
     {
-        return view('purchase.create');
+        return view('sale.create');
     }
 
     /**
