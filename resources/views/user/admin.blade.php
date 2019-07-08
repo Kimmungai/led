@@ -26,7 +26,20 @@
         @endcomponent
 
         <!--custom page design starts-->
-
+        <div class="container">
+          <div class="row">
+            <!--search form-->
+            @Component('components.forms.search',['action'=>'','method'=>'','placeholder'=>'Search admin...'])@endcomponent
+            <!--end search form-->
+          </div>
+          <div class="row">
+            @for($x=0;$x < 9;$x++)
+            <div class="col-md-3 mt-2">
+              @Component('components.user.card')@endcomponent
+            </div>
+            @endfor
+          </div>
+        </div>
         <!--custom page design ends-->
 
 

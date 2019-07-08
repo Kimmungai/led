@@ -16,19 +16,13 @@
              <div class="row">
 
                <div class=" form-group @error('email') has-error @enderror">
-         				<div class="col-md-10">
+         				<div class="col-md-12">
          					<div class="input-group input-icon right in-grp1">
          						<span class="input-group-addon">
          							<i class="fas fa-envelope"></i>
          						</span>
          						<input id="email" type="email" class="form-control1 @error('email') has-error @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Your email" autofocus>
          					</div>
-         				</div>
-         				<div class="col-sm-2">
-
-                  @error('email')
-                    <p class="help-block">{{ $message }}</p>
-                  @enderror
 
          				</div>
 
@@ -38,16 +32,18 @@
 
              <div class="row mt-2">
 
-               <div class=" form-group @error('password') has-error @enderror">
-         				<div class="col-md-10">
+               <div class=" form-group @error('password') has-error @enderror @error('email') has-error @enderror">
+         				<div class="col-md-12">
          					<div class="input-group input-icon right in-grp1">
          						<span class="input-group-addon">
          							<i class="fa fa-key"></i>
          						</span>
-         						<input id="password" type="password" class="form-control @error('password') has-error @enderror" name="password" required placeholder="Your password" autocomplete="current-password">
+         						<input id="password" type="password" class="form-control1 @error('password') has-error @enderror" name="password" required placeholder="Your password" autocomplete="current-password">
          					</div>
-         				</div>
-         				<div class="col-sm-2">
+
+                  @error('email')
+                    <p class="help-block">{{ $message }}</p>
+                  @enderror
 
                   @error('password')
                     <p class="help-block">{{ $message }}</p>

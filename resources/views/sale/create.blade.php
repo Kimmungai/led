@@ -32,17 +32,7 @@
             <div class="col-md-8">
               <div class="products-selection-section">
                 <!--search form-->
-                <form class="" action="index.html" method="post">
-                  <div class="form-group">
-                    <div class="input-group input-icon right in-grp1">
-                      <span class="input-group-addon">
-                        <i class="fa fa-search"></i>
-                      </span>
-                      <input  class="form-control1" type="text" placeholder="Search product...">
-                    </div>
-                    <div class="clearfix"> </div>
-                  </div>
-                </form>
+                @Component('components.forms.search',['action'=>'','method'=>'','placeholder'=>'Search product...'])@endcomponent
                 <!--end search form-->
                 @Component('components.pos.tabs')@endcomponent
 
