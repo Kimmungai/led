@@ -32,7 +32,7 @@
             <div class="calculator">
               <fieldset id="container">
 		<form class="keys" name="calculator" onsubmit="calculator_calculate()">
-			<input id="display" type="text" name="display" placeholder="0" autofocus>
+			<input id="display" type="text" name="display" placeholder="0.00" autofocus>
 
 			<input class="button digits" type="button" value="7" onclick="calculator.display.value += '7'">
 			<input class="button digits" type="button" value="8" onclick="calculator.display.value += '8'">

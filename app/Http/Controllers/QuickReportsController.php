@@ -14,7 +14,7 @@ class QuickReportsController extends Controller
      */
     public function index()
     {
-        return "quick reports";
+        return view('report.quick');
     }
 
     /**

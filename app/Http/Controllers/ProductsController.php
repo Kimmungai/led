@@ -14,7 +14,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        return "all stock";
+        return view('stock.index');
     }
 
     /**

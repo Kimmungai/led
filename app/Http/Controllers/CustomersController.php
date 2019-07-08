@@ -14,7 +14,7 @@ class CustomersController extends Controller
      */
     public function index()
     {
-        return "all customers";
+        return view('customer.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class CustomersController extends Controller
      */
     public function create()
     {
-        return "create customer";
+        return view('customer.create');
     }
 
     /**

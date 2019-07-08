@@ -8,6 +8,6 @@ class TrashController extends Controller
 {
     public function index()
     {
-      return "all trashed items";
+      return view('trash.index');
     }
 }

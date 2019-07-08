@@ -14,7 +14,7 @@ class StaffController extends Controller
      */
     public function index()
     {
-        return "all staff";
+        return view('user.staff');
     }
 
     /**

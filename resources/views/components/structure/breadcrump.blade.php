@@ -40,4 +40,124 @@
   </li>
   @endif
 
+  @if( isset($purchases) )
+  <li>
+    @if($purchases!='')
+      <a href="{{$purchases}}">Purchases</a>
+    @else
+      Purchases
+    @endif
+  </li>
+  @endif
+
+  @if( isset($newPurchase) )
+  <li>
+    @if($newPurchase!='')
+      <a href="{{$newPurchase}}">New purchase</a>
+    @else
+      New purchase
+    @endif
+  </li>
+  @endif
+
+  @if( isset($stock) )
+  <li>
+    @if($stock!='')
+      <a href="{{$stock}}">Stock</a>
+    @else
+      Stock
+    @endif
+  </li>
+  @endif
+
+  @if( isset($customers) )
+  <li>
+    @if($customers!='')
+      <a href="{{$customers}}">Customers</a>
+    @else
+      Customers
+    @endif
+  </li>
+  @endif
+
+  @if( isset($newCustomer) )
+  <li>
+    @if($newCustomer!='')
+      <a href="{{$newCustomer}}">New Customer</a>
+    @else
+      New Customer
+    @endif
+  </li>
+  @endif
+
+  @if( isset($invoices) )
+  <li>
+    @if($invoices!='')
+      <a href="{{$invoices}}">Invoices</a>
+    @else
+      Invoices
+    @endif
+  </li>
+  @endif
+
+  @if( isset($newInvoice) )
+  <li>
+    @if($newInvoice!='')
+      <a href="{{$newInvoice}}">New invoice</a>
+    @else
+      New invoice
+    @endif
+  </li>
+  @endif
+
+  @if( isset($staff) )
+  <li>
+    @if($staff!='')
+      <a href="{{$staff}}">All staff</a>
+    @else
+      All staff
+    @endif
+  </li>
+  @endif
+
+  @if( isset($admins) )
+  <li>
+    @if($admins!='')
+      <a href="{{$admins}}">All admins</a>
+    @else
+      All admins
+    @endif
+  </li>
+  @endif
+
+  @if( isset($detailedReport) )
+  <li>
+    @if($detailedReport!='')
+      <a href="{{$detailedReport}}">Detailed report</a>
+    @else
+      Detailed report
+    @endif
+  </li>
+  @endif
+
+  @if( isset($quickReport) )
+  <li>
+    @if($quickReport!='')
+      <a href="{{$quickReport}}">Quick report</a>
+    @else
+      Quick report
+    @endif
+  </li>
+  @endif
+
+  @if( isset($trash) )
+  <li>
+    @if($trash!='')
+      <a href="{{$trash}}">Trash</a>
+    @else
+      Trash
+    @endif
+  </li>
+  @endif
+
 </ul>

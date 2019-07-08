@@ -8,11 +8,11 @@ class InvoicesController extends Controller
 {
     public function index()
     {
-      return 'all invoices';
+      return view('invoice.index');
     }
 
     public function create()
     {
-        return view('invoice.new');
+        return view('invoice.create');
     }
 }

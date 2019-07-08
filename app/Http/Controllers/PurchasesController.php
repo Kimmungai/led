@@ -14,7 +14,7 @@ class PurchasesController extends Controller
      */
     public function index()
     {
-        return "all purchases";
+        return view('purchase.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class PurchasesController extends Controller
      */
     public function create()
     {
-        return "create purchase";
+        return view('purchase.create');
     }
 
     /**

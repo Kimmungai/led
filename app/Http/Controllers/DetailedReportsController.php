@@ -14,7 +14,7 @@ class DetailedReportsController extends Controller
      */
     public function index()
     {
-        return "detailed reports";
+        return view('report.detailed');
     }
 
     /**

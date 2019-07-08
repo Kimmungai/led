@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
- <body class="sticky-header left-side-collapsed">
+ <body class="sticky-header left-side-collapsed" >
     <section>
 
     <!-- left side start-->
@@ -18,7 +18,7 @@
 		 <!-- //header-ends -->
 
 			<div id="page-wrapper">
-        
+
         <h3 class="text-uppercase text-center">Welcome to Ledamcha MIS</h3>
 
         @Component('components.structure.breadcrump',['home'=>'noLink'])
