@@ -16,12 +16,27 @@
              <div class="row">
 
                <div class=" form-group @error('email') has-error @enderror">
+         				<div class="col-md-12">
+         					<div class="input-group input-icon right in-grp1">
+         						<span class="input-group-addon">
+         							<i class="fas fa-envelope"></i>
+         						</span>
+         						<input id="email" type="email" class="form-control1 @error('email') has-error @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Your email" autofocus>
+         					</div>
+
+         				</div>
+
+         			</div>
+              <div class="clearfix"> </div>
+             </div>
+
+               <!--<div class=" form-group @error('email') has-error @enderror">
          				<div class="col-md-10">
          					<div class="input-group input-icon right in-grp1">
          						<span class="input-group-addon">
          							<i class="fas fa-envelope"></i>
          						</span>
-         						<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Enter your email" required autocomplete="email" autofocus>
+         						<input id="email" type="email" class="form-control1 @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Enter your email" required autocomplete="email" autofocus>
          					</div>
          				</div>
          				<div class="col-sm-2">
@@ -33,14 +48,18 @@
          				</div>
 
          			</div>
-              <div class="clearfix"> </div>
+              <div class="clearfix"> </div>-->
+
              </div>
 
 
 
              <input class="mt-2" type="submit" value="Send Password Reset Link">
 
-
+             <div class="mt-1">
+               <p><a href="{{ route('login') }}">Click here to login</a> </p>
+               <div class="clearfix"> </div>
+             </div>
            </form>
            </div>
 

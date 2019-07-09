@@ -26,7 +26,6 @@
         @endcomponent
 
         <!--custom page design starts-->
-        <div class="container">
           <div class="row">
             <!--search form-->
             @Component('components.forms.search',['action'=>'','method'=>'','placeholder'=>'Search customer...'])@endcomponent
@@ -39,7 +38,6 @@
             </div>
             @endfor
           </div>
-        </div>
         <!--custom page design ends-->
 
 

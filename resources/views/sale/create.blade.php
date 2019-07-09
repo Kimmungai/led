@@ -26,7 +26,6 @@
         @endcomponent
 
         <!--custom page design starts-->
-        <div class="container">
           <div class="row">
 
             <div class="col-md-8">
@@ -54,7 +53,6 @@
             </div>
 
           </div>
-        </div>
         <!--custom page design ends-->
 
 

@@ -24,6 +24,9 @@
 @if(Route::is('invoice*'))
 <link rel="stylesheet" href="{{url('css/invoice-template.css')}}">
 @endif
+@if(Route::is('purchases.create'))
+<link rel="stylesheet" href="{{url('css/image-carousel.css')}}">
+@endif
 <!-- jQuery -->
 <!-- lined-icons -->
 <link rel="stylesheet" href="{{url('theme-front/css/icon-font.min.css')}}" type='text/css' />
@@ -62,5 +65,10 @@
 <script src="{{url('theme-front/js/bootstrap.min.js')}}"></script>
 <!--app JS-->
 <script src="{{url('js/app.js')}}"></script>
+<script src="{{url('js/qty-field.js')}}"></script>
+
+@if(Route::is('purchases.create'))
+<script src="{{url('js/image-carousel.js')}}"></script>
+@endif
 </body>
 </html>
