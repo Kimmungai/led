@@ -69,3 +69,14 @@ ul.breadcrumb li a:hover {
   width:100%;
   margin:0;
 }
+.avtar-preview{
+  height: 100px;
+  width: 50%;
+  margin: 0 auto 1em auto;
+}
+.avtar-preview img{
+  max-height: 100%;
+  max-width: 100%;
+  margin: auto auto;
+  object-fit: cover;
+}

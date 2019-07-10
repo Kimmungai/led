@@ -51,6 +51,7 @@
           <ul class="sub-menu-list">
             <li class="@if(Route::is('staff.index')) active @endif"><a href="{{route('staff.index')}}">Staff</a> </li>
             <li class="@if(Route::is('admin.index')) active @endif"><a href="{{route('admin.index')}}">Admin</a></li>
+            <li class="@if(Route::is('users.create')) active @endif"><a href="{{route('users.create')}}">Add new</a></li>
           </ul>
         </li>
         <li class="menu-list @if(Route::is('reports*') || Route::is('quick-reports*') || Route::is('detailed-reports*')) act @endif"><a href="{{route('reports.index')}}"><i class="fa fa-chart-area"></i> <span>Reports</span></a>

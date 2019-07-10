@@ -20,19 +20,26 @@
      <!--body wrapper start-->
 			<div id="page-wrapper">
 
-        <h3 class="text-uppercase text-center">Add a new customer</h3>
+        <h3 class="text-uppercase text-center">Create user</h3>
 
-        @Component('components.structure.breadcrump',['home'=>route('home'),'customers'=>route('customers.index'),'newCustomer'=>''])
+        @Component('components.structure.breadcrump',['home'=>route('home'),'users'=>route('users.index'),'newUser'=>''])
         @endcomponent
 
         <!--custom page design starts-->
         <div class="row">
 
           <div class="col-md-8">
+            <?php $userTypes=[
+              'staff' => ['name'=>'Staff','value'=>env('STAFF',1)],
+              'admin' => ['name'=>'Admin','value'=>env('ADMIN',3)],
+            ]; ?>
+
+            @Component('components.form-inputs.select',['title' => 'Type','name'=>'type','icon'=>'fas fa-user-tag','options'=>$userTypes])@endcomponent
             @Component('components.form-inputs.input',['title' => 'Name','name'=>'name','type'=>'text','icon'=>'fas fa-user','placeholder' => 'Enter name'])@endcomponent
             @Component('components.form-inputs.input',['title' => 'Email','name'=>'email','type'=>'email','icon'=>'fas fa-envelope','placeholder' => 'Enter email'])@endcomponent
             @Component('components.form-inputs.input',['title' => 'Phone','name'=>'phoneNumber','type'=>'number','icon'=>'fas fa-phone','placeholder' => 'Enter phone number'])@endcomponent
             @Component('components.form-inputs.textarea',['title' => 'Address','name'=>'address','icon'=>'fas fa-map-marker-alt','placeholder' => 'Enter phone number','rows'=>3,'cols'=>''])@endcomponent
+            @Component('components.form-inputs.input',['title' => 'Password','name'=>'password','type'=>'text','icon'=>'fas fa-key','placeholder' => 'Enter user password'])@endcomponent
             @Component('components.form-inputs.submit',['value' => 'Save','icon'=>'fas fa-save','classes'=>'btn btn-success btn-block btn-lg pay-btn'])@endcomponent
 
           </div>
@@ -42,7 +49,7 @@
               <img src="/placeholders/avatar-male.png" alt="">
             </div>
             @Component('components.form-inputs.button',['value' => 'add image','type'=>'button','icon'=>'fas fa-upload','classes'=>'btn btn-success btn-sm'])@endcomponent
-            @Component('components.form-inputs.side-textarea',['title' => 'Remarks','name'=>'remarks','icon'=>'fas fa-user-edit','placeholder' => 'Enter any remarks about this customer','rows'=>3,'cols'=>''])@endcomponent
+            @Component('components.form-inputs.side-textarea',['title' => 'Remarks','name'=>'remarks','icon'=>'fas fa-user-edit','placeholder' => 'Enter any remarks about this user','rows'=>3,'cols'=>''])@endcomponent
             @Component('components.form-inputs.submit',['value' => 'Save','icon'=>'fas fa-save','classes'=>'btn btn-success btn-sm pay-btn'])@endcomponent
           </div>
 

@@ -130,6 +130,26 @@
   </li>
   @endif
 
+  @if( isset($users) )
+  <li>
+    @if($users!='')
+      <a href="{{$users}}">Users</a>
+    @else
+      Users
+    @endif
+  </li>
+  @endif
+
+  @if( isset($newUser) )
+  <li>
+    @if($newUser!='')
+      <a href="{{$newUser}}">New user</a>
+    @else
+      New user
+    @endif
+  </li>
+  @endif
+
   @if( isset($detailedReport) )
   <li>
     @if($detailedReport!='')
