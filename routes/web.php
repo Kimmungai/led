@@ -32,6 +32,9 @@ Route::resource('users','UsersController');
 //customers
 Route::resource('customers','CustomersController');
 
+//suppliers
+Route::resource('suppliers','SuppliersController');
+
 //staff
 Route::resource('staff','StaffController');
 

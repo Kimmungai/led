@@ -19,9 +19,9 @@
 
      <!--body wrapper start-->
 			<div id="page-wrapper">
-        @Component('components.structure.page-title',['title'=>'Add a new customer'])@endcomponent
+        @Component('components.structure.page-title',['title'=>'Add a new supplier'])@endcomponent
 
-        @Component('components.structure.breadcrump',['home'=>route('home'),'customers'=>route('customers.index'),'newCustomer'=>''])
+        @Component('components.structure.breadcrump',['home'=>route('home'),'suppliers'=>route('suppliers.index'),'newSupplier'=>''])
         @endcomponent
 
         <!--custom page design starts-->

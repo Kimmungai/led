@@ -19,8 +19,7 @@
 
      <!--body wrapper start-->
 			<div id="page-wrapper">
-
-        <h3 class="text-uppercase text-center">All customers</h3>
+        @Component('components.structure.page-title',['title'=>'All customers'])@endcomponent
 
         @Component('components.structure.breadcrump',['home'=>route('home'),'customers'=>''])
         @endcomponent

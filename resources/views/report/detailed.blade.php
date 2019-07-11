@@ -19,14 +19,17 @@
 
      <!--body wrapper start-->
 			<div id="page-wrapper">
-
-        <h3 class="text-uppercase text-center">Detailed report</h3>
+        @Component('components.structure.page-title',['title'=>'Detailed report'])@endcomponent
 
         @Component('components.structure.breadcrump',['home'=>route('home'),'detailedReport'=>''])
         @endcomponent
 
         <!--custom page design starts-->
-
+        <div class="row">
+        @for($x=0;$x < 3;$x++)
+          @Component('components.dashboard.cta-icon',['title'=>'quotations','icon'=>'fa fa-file-invoice','link'=>route('invoices.index'),'color'=>'red'])@endcomponent
+        @endfor
+        </div>
         <!--custom page design ends-->
 
 

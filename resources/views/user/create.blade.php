@@ -19,8 +19,7 @@
 
      <!--body wrapper start-->
 			<div id="page-wrapper">
-
-        <h3 class="text-uppercase text-center">Create user</h3>
+        @Component('components.structure.page-title',['title'=>'Create user'])@endcomponent
 
         @Component('components.structure.breadcrump',['home'=>route('home'),'users'=>route('users.index'),'newUser'=>''])
         @endcomponent

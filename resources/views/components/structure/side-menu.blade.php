@@ -39,6 +39,14 @@
               <li class="@if(Route::is('customers.create')) active @endif"><a href="{{route('customers.create')}}">Add new</a></li>
             </ul>
         </li>
+        <li class="@if(Route::is('suppliers*')) act @endif">
+          <a href="{{route('suppliers.index')}}"><i class="fa fa-user-check"></i>
+            <span>Suppliers</span></a>
+            <ul class="sub-menu-list">
+              <li class="@if(Route::is('suppliers.index')) active @endif"><a href="{{route('suppliers.index')}}">Open all</a> </li>
+              <li class="@if(Route::is('suppliers.create')) active @endif"><a href="{{route('suppliers.create')}}">Add new</a></li>
+            </ul>
+        </li>
         <li class="menu-list @if(Route::is('invoice*')) act @endif">
           <a href="{{route('invoices.index')}}"><i class="fa fa-file-invoice"></i>
             <span>Invoices</span></a>

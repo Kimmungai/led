@@ -24,6 +24,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $tabs = $this->dashicons();
+        return view('home',compact('tabs'));
+    }
+
+    protected function dashicons()
+    {
+      return [
+         collect(['name'=>'Profits', 'icon' => 'fa fa-chart-line','class'=>'grow']),
+         collect(['name'=>'Sales', 'icon' => 'fa fa-tags','class'=>'grow1','link'=>route('sales.index')]),
+         collect(['name'=>'Purchases', 'icon' => 'fa fa-clipboard-check','class'=>'grow3','link'=>route('purchases.index')]),
+         collect(['name'=>'Stock', 'icon' => 'fa fa-clipboard-list','class'=>'grow2','link'=>route('stock.index')]),
+      ];
     }
 }

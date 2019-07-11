@@ -90,6 +90,26 @@
   </li>
   @endif
 
+  @if( isset($suppliers) )
+  <li>
+    @if($suppliers!='')
+      <a href="{{$suppliers}}">Suppliers</a>
+    @else
+      Suppliers
+    @endif
+  </li>
+  @endif
+
+  @if( isset($newSupplier) )
+  <li>
+    @if($newSupplier!='')
+      <a href="{{$newSupplier}}">New Supplier</a>
+    @else
+      New Supplier
+    @endif
+  </li>
+  @endif
+
   @if( isset($invoices) )
   <li>
     @if($invoices!='')

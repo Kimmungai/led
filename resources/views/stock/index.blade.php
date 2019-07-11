@@ -19,14 +19,36 @@
 
      <!--body wrapper start-->
 			<div id="page-wrapper">
-
-        <h3 class="text-uppercase text-center">All stock</h3>
+        @Component('components.structure.page-title',['title'=>'All stock'])@endcomponent
 
         @Component('components.structure.breadcrump',['home'=>route('home'),'stock'=>''])
         @endcomponent
 
         <!--custom page design starts-->
+        <div class="row">
 
+          <div class="col-md-12">
+            <div class="products-selection-section">
+              <!--search form-->
+              @Component('components.forms.search',['action'=>'','method'=>'','placeholder'=>'Search product...'])@endcomponent
+              <!--end search form-->
+              @Component('components.pos.tabs')@endcomponent
+
+              <!--products-->
+                <div class="row">
+                  @for($x = 0; $x < 6; $x++ )
+                    @Component('components.products.single',['paragraph'=>''])@endcomponent
+                  @endfor
+                </div>
+              </div>
+              <!--products end-->
+
+
+
+            </div>
+
+
+        </div>
         <!--custom page design ends-->
 
 

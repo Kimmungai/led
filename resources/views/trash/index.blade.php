@@ -19,14 +19,17 @@
 
      <!--body wrapper start-->
 			<div id="page-wrapper">
-
-        <h3 class="text-uppercase text-center">Trashed items</h3>
+        @Component('components.structure.page-title',['title'=>'Trashed items'])@endcomponent
 
         @Component('components.structure.breadcrump',['home'=>route('home'),'trash'=>''])
         @endcomponent
 
         <!--custom page design starts-->
-
+        <div class="row">
+        @for($x=0;$x < 9;$x++)
+          @Component('components.dashboard.cta-icon',['title'=>'customers','icon'=>'fa fa-users','link'=>route('customers.index'),'color'=>'#333'])@endcomponent
+        @endfor
+        </div>
         <!--custom page design ends-->
 
 

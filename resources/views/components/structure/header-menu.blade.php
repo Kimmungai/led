@@ -37,7 +37,7 @@
             </div>
           </a>
           <ul class="dropdown-menu drp-mnu">
-            <li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li>
+            <!--<li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li>-->
             <li> <a href="#"><i class="fa fa-user"></i>Profile</a> </li>
             <li> <a href="#" onclick="submit_form('logout-form')"><i class="fas fa-sign-out-alt"></i> Logout</a> </li>
           </ul>

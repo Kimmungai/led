@@ -18,8 +18,7 @@
 		 <!-- //header-ends -->
 
 			<div id="page-wrapper">
-
-        <h3 class="text-uppercase text-center">Welcome to Ledamcha MIS</h3>
+        @Component('components.structure.page-title',['title'=>'Welcome to Ledamcha MIS'])@endcomponent
 
         @Component('components.structure.breadcrump',['home'=>'noLink'])
         @endcomponent

@@ -19,15 +19,15 @@
 
      <!--body wrapper start-->
 			<div id="page-wrapper">
-        @Component('components.structure.page-title',['title'=>'All admins'])@endcomponent
+        @Component('components.structure.page-title',['title'=>'All suppliers'])@endcomponent
 
-        @Component('components.structure.breadcrump',['home'=>route('home'),'admins'=>''])
+        @Component('components.structure.breadcrump',['home'=>route('home'),'suppliers'=>''])
         @endcomponent
 
         <!--custom page design starts-->
           <div class="row">
             <!--search form-->
-            @Component('components.forms.search',['action'=>'','method'=>'','placeholder'=>'Search admin...'])@endcomponent
+            @Component('components.forms.search',['action'=>'','method'=>'','placeholder'=>'Search supplier...'])@endcomponent
             <!--end search form-->
           </div>
           <div class="row">

@@ -19,14 +19,58 @@
 
      <!--body wrapper start-->
 			<div id="page-wrapper">
-
-        <h3 class="text-uppercase text-center">All invoices</h3>
+        @Component('components.structure.page-title',['title'=>'All invoices'])@endcomponent
 
         @Component('components.structure.breadcrump',['home'=>route('home'),'invoices'=>''])
         @endcomponent
 
         <!--custom page design starts-->
 
+        <form class="" action="index.html" method="post">
+            <div class="row">
+
+              <div class="col-sm-4">
+                <div class="radio-inline"><label><input type="radio" name="status"> All</label></div>
+                <div class="radio-inline"><label><input type="radio" name="status"> Paid only</label></div>
+                <div class="radio-inline"><label><input type="radio" name="status" checked=""> Unpaid only</label></div>
+              </div>
+
+              <div class="col-sm-4">
+                <div class="form-group">
+          				<div class="col-md-12">
+          					<div class="input-group input-icon right in-grp1">
+          						<span class="input-group-addon">
+          							<i class="fa fa-calendar-alt"></i>
+          						</span>
+          						<input id="email" class="form-control1" type="text" placeholder="Start date">
+          					</div>
+          				</div>
+          				<div class="clearfix"> </div>
+          			</div>
+              </div>
+
+              <div class="col-sm-4">
+                <div class="form-group">
+          				<div class="col-md-12">
+          					<div class="input-group input-icon right in-grp1">
+          						<span class="input-group-addon">
+          							<i class="fa fa-calendar-alt"></i>
+          						</span>
+          						<input id="email" class="form-control1" type="text" placeholder="End date">
+          					</div>
+          				</div>
+          				<div class="clearfix"> </div>
+          			</div>
+              </div>
+
+            </div>
+        </form>
+
+        <div class="row">
+        @for($x=0;$x < 8;$x++)
+          @Component('components.dashboard.cta-icon',['title'=>'paid','icon'=>'fa fa-file-invoice-dollar','link'=>route('customers.index'),'color'=>'#8BC34A'])@endcomponent
+        @endfor
+        </div>
         <!--custom page design ends-->
 
 

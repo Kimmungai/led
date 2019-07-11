@@ -18,22 +18,12 @@
 		 <!-- //header-ends -->
 
 			<div id="page-wrapper">
-        <h3 class="text-uppercase text-center">Create new invoice</h3>
+        @Component('components.structure.page-title',['title'=>'Create new invoice'])@endcomponent
 
         @Component('components.structure.breadcrump',['home'=>route('home'),'invoices'=>route('invoices.index'),'newInvoice'=>''])
         @endcomponent
 
 				<div class="graphs">
-					<!--<div class="col_3">
-
-            @foreach( $tabs as $tab )
-              @Component('components.dashboard.tabs',['tab' => $tab])
-              @endcomponent
-            @endforeach
-
-
-						<div class="clearfix"> </div>
-					</div>-->
 
 			<!-- switches -->
 		<div class="switches">

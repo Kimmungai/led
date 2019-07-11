@@ -19,8 +19,7 @@
 
      <!--body wrapper start-->
 			<div id="page-wrapper">
-
-        <h3 class="text-uppercase text-center">Record a new purchase</h3>
+        @Component('components.structure.page-title',['title'=>'Record a new purchase'])@endcomponent
 
         @Component('components.structure.breadcrump',['home'=>route('home'),'purchases'=>route('purchases.index'),'newPurchase'=>''])
         @endcomponent
