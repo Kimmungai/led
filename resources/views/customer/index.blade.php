@@ -27,7 +27,9 @@
         <!--custom page design starts-->
           <div class="row">
             <!--search form-->
-            @Component('components.forms.search',['action'=>'','method'=>'','placeholder'=>'Search customer...'])@endcomponent
+            <div class="col-md-12">
+              @Component('components.forms.search',['action'=>'','method'=>'','placeholder'=>'Search customer...'])@endcomponent
+            </div>
             <!--end search form-->
           </div>
           <div class="row">

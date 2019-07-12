@@ -6,7 +6,7 @@
     <div id="os-Other-lbl">Safari<span>30%</span></div>
    </div>
 
-  <canvas id="pie" height="315" width="470" style="width: 470px; height: 315px;"></canvas>
+  <canvas id="pie" height="315" width="470" style="width: 470px; height: 315px;margin:0 auto;"></canvas>
   <script>
     var pieData = [
       {

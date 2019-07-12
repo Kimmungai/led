@@ -56,3 +56,6 @@ Route::resource('payments','PaymentsController');
 
 //trash
 Route::get('trash','TrashController@index')->name('trash.index');
+
+//org
+Route::resource('org','OrgController');

@@ -190,6 +190,26 @@
   </li>
   @endif
 
+  @if( isset($organisations) )
+  <li>
+    @if($organisations!='')
+      <a href="{{$organisations}}">Organisations</a>
+    @else
+      Organisations
+    @endif
+  </li>
+  @endif
+
+  @if( isset($newOrganisation) )
+  <li>
+    @if($newOrganisation!='')
+      <a href="{{$newOrganisation}}">New organisation</a>
+    @else
+      New organisation
+    @endif
+  </li>
+  @endif
+
   @if( isset($trash) )
   <li>
     @if($trash!='')

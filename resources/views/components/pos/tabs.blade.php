@@ -1,4 +1,4 @@
-<ul class="row nav nav-tabs nav-justified">
+<ul class="nav nav-tabs nav-justified">
   <li class="active"><a data-toggle="tab" href="#home">Chicken</a></li>
   <li><a data-toggle="tab" href="#menu3">Beef</a></li>
   <li><a data-toggle="tab" href="#menu1">Fish</a></li>
