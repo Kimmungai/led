@@ -30,8 +30,8 @@ class StoreOrg extends FormRequest
     public function rules()
     {
       $data = [
-          'name' => 'required|max:255',
-          'image' => 'nullable|image|mimes:jpeg,bmp,png|max:1024',
+          'name' => 'required|max:255|unique:orgs',
+          'image' => 'nullable|url',
           'email' => 'nullable|email|max:255',
           'phoneNumber' => 'nullable|numeric|digits_between:10,15',
           'address' => 'nullable|max:255',

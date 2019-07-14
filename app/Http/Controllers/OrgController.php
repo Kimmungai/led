@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Org;
-use Auth;
 use App\Http\Requests\StoreOrg;
+use Illuminate\Support\Facades\Session;
+use Auth;
+Use Image;
+use App\Org;
+
 
 class OrgController extends Controller
 {
@@ -15,7 +18,8 @@ class OrgController extends Controller
      */
     public function index()
     {
-        return view('org.index');
+        $orgs = Org::paginate(env('ITEMS_PER_PAGE',4));
+        return view('org.index',compact('orgs'));
     }
 
     /**
@@ -36,7 +40,10 @@ class OrgController extends Controller
      */
     public function store(StoreOrg $request)
     {
-        return $request->all();
+        $org = Org::create($request->validated());
+        session(['existing_file_url' => '']);
+        Session::flash('message', env("SAVE_SUCCESS_MSG","Organisations saved succesfully!"));
+        return redirect(route('org.index'));
     }
 
     /**
@@ -47,7 +54,7 @@ class OrgController extends Controller
      */
     public function show(Org $org)
     {
-        //
+        return $org;
     }
 
     /**
@@ -83,4 +90,5 @@ class OrgController extends Controller
     {
         //
     }
+
 }

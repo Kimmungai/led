@@ -72,16 +72,19 @@ ul.breadcrumb li a:hover {
   width:100%;
   margin:0;
 }
-.avtar-preview{
+.avatar-preview{
   height: 100px;
   width: 50%;
   margin: 0 auto 1em auto;
 }
-.avtar-preview img{
+.avatar-preview img{
   max-height: 100%;
   max-width: 100%;
   margin: auto auto;
   object-fit: cover;
+}
+.border-red{
+  border: 1px solid #F44336 !important;
 }
 /*ICON CTA*/
 .wrimagecard{
@@ -120,4 +123,9 @@ a.wrimagecard:hover, .wrimagecard-topimage:hover {
     text-decoration: none;
     color: #525c65;
     transition: color 0.3s ease;
+}
+.loader{
+  top: 10%;
+  left: 40%;
+  position: absolute;
 }

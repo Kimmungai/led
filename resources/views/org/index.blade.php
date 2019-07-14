@@ -34,9 +34,15 @@
           </div>
 
           <div class="row">
-          @for($x=0;$x < 1;$x++)
-            @Component('components.dashboard.cta-icon',['title'=>'Ledamcha Ngara','icon'=>'fa fa-building','link'=>route('org.index'),'color'=>'#333'])@endcomponent
-          @endfor
+          @foreach($orgs as $org)
+            @Component('components.dashboard.cta-icon',['org'=>$org,'icon'=>'fa fa-building','color'=>'#333'])@endcomponent
+          @endforeach
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              {{$orgs->links()}}
+            </div>
           </div>
         <!--custom page design ends-->
 

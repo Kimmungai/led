@@ -4,6 +4,8 @@
 <title>{{Route::currentRouteName()}} | {{env('APP_NAME','Ledamcha')}}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- CSRF Token -->
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
  <!-- Bootstrap Core CSS -->
 <link href="{{url('theme-front/css/bootstrap.min.css')}}" rel='stylesheet' type='text/css' />
@@ -64,6 +66,8 @@
 <!--app JS-->
 <script src="{{url('js/app.js')}}"></script>
 <script src="{{url('js/qty-field.js')}}"></script>
+<script src="{{url('js/image-upload.js')}}"></script>
+<script src="{{url('js/validator.js')}}"></script>
 
 @if(Route::is('purchases.create'))
 <script src="{{url('js/image-carousel.js')}}"></script>

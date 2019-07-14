@@ -28,7 +28,7 @@
         <div class="row">
           <form class="" action="{{route('org.store')}}" method="post">
             @csrf
-            
+
           <div class="col-md-8">
             @Component('components.form-inputs.input',['title' => 'Name','name'=>'name','type'=>'text','icon'=>'fas fa-building','placeholder' => 'Enter name','required'=>true])@endcomponent
             @Component('components.form-inputs.input',['title' => 'Email','name'=>'email','type'=>'email','icon'=>'fas fa-envelope','placeholder' => 'Enter email','required'=>false])@endcomponent
@@ -39,14 +39,19 @@
           </div>
 
           <div class="col-md-4">
-            <div class="avtar-preview">
-              <img src="/placeholders/avatar-male.png" alt="">
+            <div class="avatar-preview">
+              <div class="profile-img-loading-preview hidden"><img class="loader" src="/placeholders/img-loader-green.gif"></div>
+              <img id="org-img" class="" src="@if( old('image') ) {{old('image')}} @else /placeholders/avatar-male.png @endif" alt="" >
+              <input id="org-img-url" type="hidden" name="image" value="{{old('image')}}">
             </div>
-            @Component('components.form-inputs.button',['value' => 'add image','type'=>'button','icon'=>'fas fa-upload','classes'=>'btn btn-success btn-sm'])@endcomponent
+            @Component('components.form-inputs.button',['value' => 'add image','type'=>'button','icon'=>'fas fa-upload','classes'=>'btn btn-default btn-sm','click' => 'click_element("org-image",0)' ])@endcomponent
             @Component('components.form-inputs.side-textarea',['title' => 'Remarks','name'=>'remarks','icon'=>'fas fa-info-circle','placeholder' => 'Enter a brief description','rows'=>3,'cols'=>'','required'=>false])@endcomponent
             @Component('components.form-inputs.submit',['value' => 'Save','icon'=>'fas fa-save','classes'=>'btn btn-success btn-sm pay-btn'])@endcomponent
           </div>
 
+        </form>
+        <form id="org-image-form" action="/img-tmp" enctype="multipart/form-data">
+          <input class="hidden d-none"  type="file" name="image" id="org-image" onchange="upload_image(this.value,this.id,'org-img',{required:0,min:0,max:255,type:'image',size:1},'org-img-url')">
         </form>
 
         </div>

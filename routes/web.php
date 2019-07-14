@@ -59,3 +59,6 @@ Route::get('trash','TrashController@index')->name('trash.index');
 
 //org
 Route::resource('org','OrgController');
+
+//image upload ajax
+Route::post('img-tmp','Images\ImageAjaxController@img_tmp');
