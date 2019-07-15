@@ -21,6 +21,7 @@ class CreateInventoriesTable extends Migration
             $table->integer('lowStockAlert')->default(5);
             $table->mediumText('reason');
             $table->text('description');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

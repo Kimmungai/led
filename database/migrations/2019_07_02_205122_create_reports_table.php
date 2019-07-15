@@ -22,6 +22,7 @@ class CreateReportsTable extends Migration
             $table->mediumText('address')->nullable();
             $table->string('email')->nullable();
             $table->text('notes')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

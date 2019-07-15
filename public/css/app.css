@@ -53,8 +53,12 @@ ul.breadcrumb li a:hover {
 }
 .pay-btn{
   background: #8BC34A!important;
-  border-radius: 0;
+  /*border-radius: 0;*/
   display: block;
+}
+.btn-green{
+  background: #8BC34A!important;
+  color: #fff!important;
 }
 .pay-btn:hover{
   opacity: 0.9;

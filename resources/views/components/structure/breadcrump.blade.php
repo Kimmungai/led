@@ -220,4 +220,10 @@
   </li>
   @endif
 
+  @if( isset($specified) )
+  <li>
+    {{$specified}}
+  </li>
+  @endif
+
 </ul>

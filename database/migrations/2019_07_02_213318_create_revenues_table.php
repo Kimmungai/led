@@ -23,7 +23,7 @@ class CreateRevenuesTable extends Migration
             $table->float('normalPrice')->default(0.00);
             $table->float('discount')->default(0.00);
             $table->float('discountPercent')->default(0.00);
-            $table->timestamp('deleted_at')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -21,6 +21,7 @@ function upload_image(value,input_id,img_id,validationRules,img_url_field)
 
 function send_post_data(route,fd,img_id,img_url_field)
 {
+   var host_url = window.location.origin + '/';
 
     $.ajax({
           url: route,
@@ -31,7 +32,7 @@ function send_post_data(route,fd,img_id,img_url_field)
           success: function(response){
 
               if(response != 0){
-                  $("#"+img_id).attr("src",response);
+                  $("#"+img_id).attr("src",host_url+response);
                   $("#"+img_url_field).val(response);
               }else{
                   alert('file not uploaded!');

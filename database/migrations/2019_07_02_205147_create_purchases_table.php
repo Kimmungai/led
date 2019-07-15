@@ -22,7 +22,7 @@ class CreatePurchasesTable extends Migration
             $table->double('amountOutStanding')->nullable();
             $table->integer('paymentMethod')->nullable();
             $table->text('remarks')->nullable();
-            $table->timestamp('deleted_at')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

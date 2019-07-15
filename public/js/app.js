@@ -27,6 +27,12 @@ $(document).ajaxStop(function(){
   $('.profile-img-loading-preview ').addClass('hidden').addClass('d-none');
 });
 
+/*Show confrim modal*/
+function confirm_modal(modalID)
+{
+  event.preventDefault();
+  $("#"+modalID).modal();
+}
 /**Cards**/
 $(function() {
         $('.material-card > .mc-btn-action').click(function () {

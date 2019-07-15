@@ -37,10 +37,10 @@ class ImageAjaxController extends Controller
     {
       $dir_path = env('ORG_IMAGE','images/org');
 
-      if( Session('existing_file_url') )
+      if( $request->existing_file_url )
       {
         //delete temporary file
-        File::delete(Session('existing_file_url'));
+        File::delete( $request->existing_file_url );
       }
 
       if( $request->hasFile($value) )
@@ -60,7 +60,6 @@ class ImageAjaxController extends Controller
       $name = time().'.'.$image->getClientOriginalExtension();
       $image->move($storageLoc, $name);
       $path = $storageLoc.'/'.$name;
-      Session(['existing_file_url' => $path]);
-      return asset($path);
+      return $path;
     }
 }

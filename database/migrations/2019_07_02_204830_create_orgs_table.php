@@ -25,6 +25,7 @@ class CreateOrgsTable extends Migration
             $table->text('vision')->nullable();
             $table->text('mission')->nullable();
             $table->text('slogan')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

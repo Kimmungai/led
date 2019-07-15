@@ -36,7 +36,7 @@ class CreateProductsTable extends Migration
             $table->integer('rating')->nullable();
             $table->integer('specialFeatured')->default(0);
             $table->integer('vegetarian')->default(0);
-            $table->timestamp('deleted_at')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

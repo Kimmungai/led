@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
 use Auth;
 
 class StoreOrg extends FormRequest
@@ -30,12 +31,12 @@ class StoreOrg extends FormRequest
     public function rules()
     {
       $data = [
-          'name' => 'required|max:255|unique:orgs',
-          'image' => 'nullable|url',
+          'name' => 'required|max:255|unique:orgs,name,'.\Request::segment(2),
+          'image' => 'nullable|max:255',
           'email' => 'nullable|email|max:255',
           'phoneNumber' => 'nullable|numeric|digits_between:10,15',
           'address' => 'nullable|max:255',
-          'remarks' => 'nullable',
+          'description' => 'nullable',
       ];
 
       return $data;

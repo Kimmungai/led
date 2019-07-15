@@ -20,7 +20,7 @@ class CreateExpensesTable extends Migration
             $table->integer('product_id')->unsigned()->index()->nullable();
             $table->float('cost')->default(0.00);
             $table->integer('suppliedQuantity')->default(0);
-            $table->timestamp('deleted_at')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

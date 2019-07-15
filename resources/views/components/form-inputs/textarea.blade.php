@@ -5,7 +5,7 @@
       <span class="input-group-addon">
         <i class="{{$icon}}"></i>
       </span>
-      <textarea id="{{$name}}" name="{{$name}}" class="form-control" placeholder="{{$placeholder}}" cols="$cols" rows="{{$rows}}" @if($required) required @endif>{{old($name)}}</textarea>
+      <textarea id="{{$name}}" name="{{$name}}" class="form-control" placeholder="{{$placeholder}}" cols="$cols" rows="{{$rows}}" @if($required) required @endif>@if(old($name)){{old($name)}}@elseif(isset($value)){{$value}}@endif</textarea>
     </div>
   </div>
   @if ($errors->has($name))

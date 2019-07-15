@@ -18,7 +18,7 @@ class OrgController extends Controller
      */
     public function index()
     {
-        $orgs = Org::paginate(env('ITEMS_PER_PAGE',4));
+        $orgs = Org::orderBy('created_at','DESC')->paginate(env('ITEMS_PER_PAGE',4));
         return view('org.index',compact('orgs'));
     }
 
@@ -41,8 +41,7 @@ class OrgController extends Controller
     public function store(StoreOrg $request)
     {
         $org = Org::create($request->validated());
-        session(['existing_file_url' => '']);
-        Session::flash('message', env("SAVE_SUCCESS_MSG","Organisations saved succesfully!"));
+        Session::flash('message', env("SAVE_SUCCESS_MSG","Organisation saved succesfully!"));
         return redirect(route('org.index'));
     }
 
@@ -54,7 +53,7 @@ class OrgController extends Controller
      */
     public function show(Org $org)
     {
-        return $org;
+        return view('org.edit',compact('org'));
     }
 
     /**
@@ -77,7 +76,9 @@ class OrgController extends Controller
      */
     public function update(StoreOrg $request, Org $org)
     {
-        //
+      $org->update($request->validated());
+      Session::flash('message', env("SAVE_SUCCESS_MSG","Organisation updated succesfully!"));
+      return back();
     }
 
     /**
@@ -88,7 +89,17 @@ class OrgController extends Controller
      */
     public function destroy(Org $org)
     {
-        //
+        if($org->delete()){
+
+          Session::flash('message', env("SAVE_SUCCESS_MSG","Organisation deleted succesfully!"));
+
+        }else{
+
+          Session::flash('error', env("SAVE_SUCCESS_MSG","An error occured! Please contact admin."));
+          return back();
+
+        }
+        return redirect(route('org.index'));
     }
 
 }

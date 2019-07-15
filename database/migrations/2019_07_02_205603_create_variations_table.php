@@ -21,6 +21,7 @@ class CreateVariationsTable extends Migration
             $table->string('color')->nullable();
             $table->string('size')->nullable();
             $table->double('weight')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -5,24 +5,23 @@
     <section>
 
     <!-- left side start-->
-    @Component('components.structure.side-menu')
-    @endcomponent
+    @Component('components.structure.side-menu')@endcomponent
     <!-- left side end-->
 
 		<!-- main content start-->
 		<div class="main-content">
 
 			<!-- header-starts -->
-      @Component('components.structure.header-menu')
-      @endcomponent
+      @Component('components.structure.header-menu')@endcomponent
 		 <!-- //header-ends -->
 
      <!--body wrapper start-->
 			<div id="page-wrapper">
         @Component('components.structure.page-title',['title'=>'All organisations'])@endcomponent
 
-        @Component('components.structure.breadcrump',['home'=>route('home'),'organisations'=>''])
-        @endcomponent
+        @Component('components.form-inputs.link',['title'=>'New','href'=>route('org.create'),'toolTip'=>'create new organisation','icon'=>'fas fa-plus-circle','classes'=>'btn btn-default btn-xs pull-right'])@endcomponent
+
+        @Component('components.structure.breadcrump',['home'=>route('home'),'organisations'=>''])@endcomponent
 
         <!--custom page design starts-->
           <div class="row">
