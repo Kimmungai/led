@@ -102,4 +102,55 @@ class OrgController extends Controller
         return redirect(route('org.index'));
     }
 
+    /**
+     * Display a listing of trashed resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+     public function trashed_org()
+     {
+       $orgs = Org::orderBy('created_at','DESC')->onlyTrashed()->paginate(env('ITEMS_PER_PAGE',4));
+       return view('org.trash.index',compact('orgs'));
+     }
+
+     /**
+      * Display the specified trashed resource.
+      *
+      * @param  $id
+      * @return \Illuminate\Http\Response
+      */
+     public function trashed_org_show($id)
+     {
+         $org = Org::where('id',$id)->onlyTrashed()->first();
+         return view('org.trash.edit',compact('org'));
+     }
+
+     /**
+      * Restore the specified trashed resource.
+      *
+      * @param  $id
+      * @return \Illuminate\Http\Response
+      */
+     public function org_restore($id)
+     {
+         $org = Org::where('id',$id)->onlyTrashed()->first();
+         $org->restore();
+         Session::flash('message', env("SAVE_SUCCESS_MSG","Organisation restored succesfully!"));
+         return redirect(route('trash.org',$id));
+     }
+
+     /**
+      * Remove the specified trashed resource permanently.
+      *
+      * @param  $id
+      * @return \Illuminate\Http\Response
+      */
+     public function org_remove($id)
+     {
+         $org = Org::where('id',$id)->onlyTrashed()->first();
+         $org->forceDelete();
+         Session::flash('message', env("SAVE_SUCCESS_MSG","Organisation permanently deleted succesfully!"));
+         return redirect(route('trash.org',$id));
+     }
+
 }

@@ -220,10 +220,20 @@
   </li>
   @endif
 
+  @if( isset($specifiedLinked) )
+  <li>
+    @if($specifiedLinked!='')
+      <a href="{{$specifiedLinked}}">{{$specifiedText}}</a>
+    @endif
+  </li>
+  @endif
+
   @if( isset($specified) )
   <li>
     {{$specified}}
   </li>
   @endif
+
+
 
 </ul>

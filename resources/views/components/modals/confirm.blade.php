@@ -10,7 +10,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">{{$cancelBtnTitle}}</button>
-        <button type="button" class="btn btn-default btn-green" onclick="submit_form('{{$formID}}')">{{$saveBtnTitle}}</button>
+        <button type="button" class="btn btn-default btn-green" onclick="@if(isset($formID)) submit_form('{{$formID}}') @elseif(isset($url)) open_url('{{$url}}') @endif">{{$saveBtnTitle}}</button>
 
       </div>
     </div>

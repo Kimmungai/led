@@ -5,7 +5,7 @@
       <span class="input-group-addon">
         <i class="{{$icon}}"></i>
       </span>
-      <input id="{{$name}}" name="{{$name}}" class="form-control1" type="{{$type}}" value="@if(old($name)){{old($name)}}@elseif(isset($value)){{$value}}@endif" placeholder="{{$placeholder}}" @if($required) required @endif>
+      <input id="{{$name}}" name="{{$name}}" class="form-control1" type="{{$type}}" value="@if(old($name)){{old($name)}}@elseif(isset($value)){{$value}}@endif" placeholder="{{$placeholder}}" @if($required) required @endif @if(isset($disabled)) disabled @endif>
     </div>
   </div>
   @if ($errors->has($name))

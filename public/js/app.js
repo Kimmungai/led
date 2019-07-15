@@ -27,6 +27,12 @@ $(document).ajaxStop(function(){
   $('.profile-img-loading-preview ').addClass('hidden').addClass('d-none');
 });
 
+/*Open url*/
+function open_url(url)
+{
+  window.open(url,'_self');
+}
+
 /*Show confrim modal*/
 function confirm_modal(modalID)
 {

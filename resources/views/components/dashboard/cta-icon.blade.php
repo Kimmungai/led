@@ -1,6 +1,6 @@
 <div class="col-md-3 col-sm-4">
   <div class="wrimagecard wrimagecard-topimage">
-      <a href="@if(isset($org)){{route('org.show',$org->id)}}@elseif(isset($link)){{$link}}@endif">
+      <a href="@if(isset($link)){{$link}}@elseif(isset($org)){{route('org.show',$org->id)}}@endif">
       <div class="wrimagecard-topimage_header" style="background-color: rgba(22, 160, 133, 0.1);color:{{$color}};">
         <center><i class = "{{$icon}}"></i></center>
       </div>
