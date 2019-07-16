@@ -21,8 +21,9 @@ class TrashController extends Controller
     public function index()
     {
       $orgs = Org::onlyTrashed()->get();
+      $staffs = User::where('type',env('STAFF',1))->onlyTrashed()->get();
 
-      return view('trash.index',compact('orgs'));
+      return view('trash.index',compact('orgs','staffs'));
     }
 
     public function empty()
@@ -37,7 +38,7 @@ class TrashController extends Controller
       //Sale::onlyTrashed()->forceDelete();
       //UserTransactions::onlyTrashed()->forceDelete();
       //Variation::onlyTrashed()->forceDelete();
-      //User::onlyTrashed()->forceDelete();
+      User::onlyTrashed()->forceDelete();
       Session::flash('message', env("SAVE_SUCCESS_MSG","Trash emptied!"));
       return redirect(route('trash.index'));
     }

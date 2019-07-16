@@ -1,4 +1,4 @@
-function upload_image(value,input_id,img_id,validationRules,img_url_field)
+function upload_image(value,input_id,img_id,validationRules,img_url_field,image_field='image')
 {
   //$("#"+img_id).addClass('border-red')
   var validatedImage = validateImage(input_id,validationRules,value);
@@ -6,7 +6,7 @@ function upload_image(value,input_id,img_id,validationRules,img_url_field)
     //send to server
     var fd = new FormData();
     var files = $('#'+input_id)[0].files[0];
-    fd.append('image',files);
+    fd.append(image_field,files);
     var existing_file_url = $('#'+img_url_field).val();
     fd.append('existing_file_url',existing_file_url);
     send_post_data('/img-tmp',fd,img_id,img_url_field);
@@ -22,7 +22,6 @@ function upload_image(value,input_id,img_id,validationRules,img_url_field)
 function send_post_data(route,fd,img_id,img_url_field)
 {
    var host_url = window.location.origin + '/';
-
     $.ajax({
           url: route,
           type: 'post',
@@ -30,12 +29,11 @@ function send_post_data(route,fd,img_id,img_url_field)
           contentType: false,
           processData: false,
           success: function(response){
-
               if(response != 0){
                   $("#"+img_id).attr("src",host_url+response);
                   $("#"+img_url_field).val(response);
               }else{
-                  alert('file not uploaded!');
+                  alert('file not uploaded! '+response);
               }
           },
       });

@@ -19,25 +19,17 @@
 
      <!--body wrapper start-->
 			<div id="page-wrapper">
-        @Component('components.structure.page-title',['title'=>'All staff'])@endcomponent
+        @Component('components.structure.page-title',['title'=>'Deleted staff'])@endcomponent
 
-        @Component('components.form-inputs.link',['title'=>'New','href'=>route('users.create'),'toolTip'=>'create new staff','icon'=>'fas fa-plus-circle','classes'=>'btn btn-default btn-xs pull-right'])@endcomponent
-
-        @Component('components.structure.breadcrump',['home'=>route('home'),'staff'=>''])
+        @Component('components.structure.breadcrump',['home'=>route('home'),'specified'=>'Deleted staff'])
         @endcomponent
 
         <!--custom page design starts-->
-          <div class="row">
-            <!--search form-->
-            <div class="col-md-12">
-              @Component('components.forms.search',['action'=>'','method'=>'','placeholder'=>'Search staff...'])@endcomponent
-            </div>
-            <!--end search form-->
-          </div>
+
           <div class="row">
             @foreach($staffs as $staff)
             <div class="col-md-3 mt-2">
-              @Component('components.user.card',['user'=>$staff])@endcomponent
+              @Component('components.user.card',['user'=>$staff,'link'=>route('trash.staff.show',$staff->id),'restoreLink'=>route('staff.restore',$staff->id)])@endcomponent
             </div>
             @endforeach
           </div>

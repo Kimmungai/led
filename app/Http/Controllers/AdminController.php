@@ -14,7 +14,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('user.admin');
+      $admins = User::where('type',env('ADMIN',3))->orderBy('created_at','DESC')->paginate(env('ITEMS_PER_PAGE',4));
+      return view('user.admin',compact('admins'));
     }
 
     /**

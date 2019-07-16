@@ -1,13 +1,15 @@
 <div class="form-group @if ($errors->has($name)) has-error @endif">
+  @if( !isset($noLabel) )
   <label class="col-md-2 control-label" style="line-height:35px;text-overflow:ellipse">{{$title}}</label>
-  <div class="col-md-8">
+  @endif
+  <div class="@if( !isset($noLabel) ) col-md-8 @else col-md-12 @endif">
     <div class="input-group input-icon right in-grp1">
       <span class="input-group-addon">
         <i class="{{$icon}}"></i>
       </span>
-      <select id="{{$name}}" name="{{$name}}" class="form-control1" @if(isset($disabled)) disabled @endif>
+      <select id="{{$name}}" name="{{$name}}" class="form-control1" @if(isset($disabled)) disabled @endif >
         @foreach($options as $option)
-          <option value="{{$option['value']}}" @if(old('type')==$option['value']) selected @endif>{{$option['name']}}</option>
+          <option value="{{$option->id}}" @if(isset($selected)) @if($selected == $option->id ) selected @endif @endif>{{$option->name}}</option>
         @endforeach
       </select>
     </div>

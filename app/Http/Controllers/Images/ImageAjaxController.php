@@ -12,10 +12,14 @@ class ImageAjaxController extends Controller
 {
     public function img_tmp( Request $request )
     {
-      $rules = ['image' => 'nullable|image|mimes:jpeg,bmp,png|max:1024'];
+      //$rules = ['image' => 'nullable|image|mimes:jpeg,bmp,png|max:1024'];
 
       if ( $request->hasFile('image') ) {
         return $this->uploads($request,'image');
+      }
+
+      if ( $request->hasFile('staff') ) {
+        return $this->uploads($request,'staff');
       }
 
       return 0;
@@ -35,7 +39,7 @@ class ImageAjaxController extends Controller
 
     private function uploads($request,$value='avatar')
     {
-      $dir_path = env('ORG_IMAGE','images/org');
+      $dir_path = $this->get_dir_path($value);
 
       if( $request->existing_file_url )
       {
@@ -61,5 +65,30 @@ class ImageAjaxController extends Controller
       $image->move($storageLoc, $name);
       $path = $storageLoc.'/'.$name;
       return $path;
+    }
+
+    /*
+    *Function to return dir path to store files
+    */
+    private function get_dir_path($value)
+    {
+      switch ($value) {
+
+        case 'image':
+          return env('ORG_IMAGE','images/org');
+          break;
+
+        case 'product':
+          return env('PROD_IMAGE','images/prod');
+          break;
+
+        case 'staff':
+          return env('STAFF_IMAGE','images/user/staff');
+          break;
+
+        default:
+          return env('USER_IMAGE','images/user');
+          break;
+      }
     }
 }

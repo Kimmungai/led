@@ -1,15 +1,25 @@
+<a href="@if(isset($link)) {{$link}} @else {{route('users.show',$user->id)}} @endif" title="open {{$user->name}} profile">
 <div class="image-area">
 		<div class="img-wrapper">
-			<img src="https://scontent-lga3-1.cdninstagram.com/vp/d463fae660dfebcee14ad405ec34ef11/5D38F164/t51.2885-15/sh0.08/e35/s750x750/53740642_423012385121406_298701359536165197_n.jpg?_nc_ht=scontent-lga3-1.cdninstagram.com&ig_cache_key=MjAwMTk1NDAxMDI2NTI4MTA5MQ%3D%3D.2" alt="Atul Prajapati">
+			@if($user->avatar)
+			<img src="{{$user->avatar}}" alt="{{$user->name}}">
+			@else
+			<img src="@if($user->gender == 1) /placeholders/avatar-male.png @else /placeholders/avatar-female.png @endif" alt="{{$user->name}}">
+			@endif
 			<h2>
-        David james
-        <br><span><i class="fa fa-phone"></i> 0790-643-963</span>
-        <br><span><i class="fa fa-envelope-open"></i> kimpita9@gmail.com</span>
+        {{$user->name}}
+        <br><span><i class="fa fa-phone"></i> {{$user->phoneNumber}}</span>
+        <br><span><i class="fa fa-envelope-open"></i> {{$user->email}}</span>
       </h2>
 			<ul>
-				<li><a href="https://www.instagram.com/atulkprajapati2000/"><i class="fab fa-facebook"></i></a></li>
-				<li><a href="https://twitter.com/atuljustano"><i class="fab fa-twitter"></i></a></li>
-				<li><a href="https://www.youtube.com/channel/UCf-KfxuY8PZBSD_8RW2nYsw"><i class="fa fa-user"></i></a></li>
+				<!--<li><a href="https://www.instagram.com/atulkprajapati2000/"><i class="fab fa-facebook"></i></a></li>-->
+				@if( $user->type == env('STAFF',1) )
+				<li><a href="@if(isset($link)) {{$link}} @else {{route('users.show',$user->id)}} @endif" title="open {{$user->name}} profile"><i class="fa fa-user"></i></a></li>
+				@elseif( $user->type == env('ADMIN',3) )
+				<li><a href="@if(isset($link)) {{$link}} @else {{route('admin.show',$user->id)}} @endif" title="open {{$user->name}} profile"><i class="fa fa-user"></i></a></li>
+				@endif
+
+				<!--<li><a href="#" title="delete {{$user->name}}"><i class="fas fa-trash-alt"></i></a></li>-->
 			</ul>
 		</div>
-	</div>
+</div></a>

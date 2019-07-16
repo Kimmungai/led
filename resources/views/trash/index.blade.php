@@ -28,9 +28,16 @@
 
         <!--custom page design starts-->
         <div class="row">
+
           @if( isset($orgs) )
             @if( count($orgs) )
               @Component('components.dashboard.cta-icon',['title'=>'Organisations ('.count($orgs).')','icon'=>'fa fa-building','link'=>route('trash.org'),'color'=>'#333'])@endcomponent
+            @endif
+          @endif
+
+          @if( isset($staffs) )
+            @if( count($staffs) )
+              @Component('components.dashboard.cta-icon',['title'=>'Staff ('.count($staffs).')','icon'=>'fa fa-user-tag','link'=>route('trash.staff'),'color'=>'#333'])@endcomponent
             @endif
           @endif
         </div>

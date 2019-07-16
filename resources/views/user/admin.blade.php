@@ -21,6 +21,8 @@
 			<div id="page-wrapper">
         @Component('components.structure.page-title',['title'=>'All admins'])@endcomponent
 
+        @Component('components.form-inputs.link',['title'=>'New','href'=>route('users.create'),'toolTip'=>'create new admin','icon'=>'fas fa-plus-circle','classes'=>'btn btn-default btn-xs pull-right'])@endcomponent
+
         @Component('components.structure.breadcrump',['home'=>route('home'),'admins'=>''])
         @endcomponent
 
@@ -33,11 +35,14 @@
             <!--end search form-->
           </div>
           <div class="row">
-            @for($x=0;$x < 9;$x++)
+            @foreach($admins as $admin)
             <div class="col-md-3 mt-2">
-              @Component('components.user.card')@endcomponent
+              @Component('components.user.card',['user'=>$admin])@endcomponent
             </div>
-            @endfor
+            @endforeach
+          </div>
+          <div class="row">
+            {{$admins->links()}}
           </div>
         <!--custom page design ends-->
 

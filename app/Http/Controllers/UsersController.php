@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUser;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Hash;
 use App\User;
+use App\Org;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
@@ -24,7 +28,8 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('user.create');
+        $orgs = Org::all();
+        return view('user.create',compact('orgs'));
     }
 
     /**
@@ -33,9 +38,19 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUser $request)
     {
-        //
+      $validatedData = $request->validated();
+      if( !$request->password ){$validatedData['password']=env('DEFAULT_PASSWORD','ledamcha');}
+      if( $validatedData['avatar'] == '' ){$validatedData['avatar'] = '/placeholders/avatar-male.png';}
+      $validatedData['password'] = Hash::make($validatedData['password']);
+      $user = User::create($validatedData);
+      Session::flash('message', env("SAVE_SUCCESS_MSG","User saved succesfully!"));
+
+     if( $request->type == 3 ){
+        return redirect(route('admin.index'));
+      }
+      return redirect(route('staff.index'));
     }
 
     /**
@@ -46,7 +61,8 @@ class UsersController extends Controller
      */
     public function show(User $user)
     {
-        //
+        $orgs = Org::all();
+        return view('user.edit',compact('user','orgs'));
     }
 
     /**
@@ -67,9 +83,14 @@ class UsersController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(StoreUser $request, User $user)
     {
-        //
+      $validatedData = $request->validated();
+      if( !$request->password ){$validatedData['password']=env('DEFAULT_PASSWORD','ledamcha');}
+      $validatedData['password'] = Hash::make($validatedData['password']);
+      $user->update($validatedData);
+      Session::flash('message', env("SAVE_SUCCESS_MSG","User updated succesfully!"));
+      return back();
     }
 
     /**
@@ -80,6 +101,13 @@ class UsersController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+      $user->delete();
+      Session::flash('message', env("SAVE_SUCCESS_MSG","User deleted succesfully!"));
+
+      if( $user->type == 3 ){
+         return redirect(route('admin.index'));
+       }
+
+       return redirect(route('staff.index'));
     }
 }

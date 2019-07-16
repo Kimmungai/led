@@ -37,6 +37,10 @@ Route::resource('suppliers','SuppliersController');
 
 //staff
 Route::resource('staff','StaffController');
+Route::get('trash-staff','StaffController@trashed_staff')->name('trash.staff');
+Route::get('trash-staff-show/{id}','StaffController@trashed_staff_show')->name('trash.staff.show');
+Route::post('staff-restore/{id}','StaffController@staff_restore')->name('staff.restore');
+Route::delete('staff-remove/{id}','StaffController@staff_remove')->name('staff.remove');
 
 //admin
 Route::resource('admin','AdminController');
@@ -61,7 +65,7 @@ Route::get('trash-empty','TrashController@empty')->name('trash.empty');
 //org
 Route::resource('org','OrgController');
 Route::get('trash-org','OrgController@trashed_org')->name('trash.org');
-Route::get('trash-show/{id}','OrgController@trashed_org_show')->name('trash.org.show');
+Route::get('trash-org-show/{id}','OrgController@trashed_org_show')->name('trash.org.show');
 Route::post('org-restore/{id}','OrgController@org_restore')->name('org.restore');
 Route::delete('org-remove/{id}','OrgController@org_remove')->name('org.remove');
 
