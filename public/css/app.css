@@ -133,3 +133,6 @@ a.wrimagecard:hover, .wrimagecard-topimage:hover {
   left: 40%;
   position: absolute;
 }
+.text-bold{
+  font-weight: bold!important;
+}

@@ -40,6 +40,24 @@
               @Component('components.dashboard.cta-icon',['title'=>'Staff ('.count($staffs).')','icon'=>'fa fa-user-tag','link'=>route('trash.staff'),'color'=>'#333'])@endcomponent
             @endif
           @endif
+
+          @if( isset($admins) )
+            @if( count($admins) )
+              @Component('components.dashboard.cta-icon',['title'=>'Admins ('.count($admins).')','icon'=>'fa fa-user-tie','link'=>route('trash.admin'),'color'=>'#333'])@endcomponent
+            @endif
+          @endif
+
+          @if( isset($suppliers) )
+            @if( count($suppliers) )
+              @Component('components.dashboard.cta-icon',['title'=>'Suppliers ('.count($suppliers).')','icon'=>'fa fa-user-check','link'=>route('trash.suppliers'),'color'=>'#333'])@endcomponent
+            @endif
+          @endif
+
+          @if( isset($customers) )
+            @if( count($customers) )
+              @Component('components.dashboard.cta-icon',['title'=>'Customers ('.count($customers).')','icon'=>'fa fa-users','link'=>route('trash.customers'),'color'=>'#333'])@endcomponent
+            @endif
+          @endif
         </div>
         <!--custom page design ends-->
 

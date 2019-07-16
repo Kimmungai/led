@@ -38,7 +38,7 @@ class StoreUser extends FormRequest
           'email' => 'nullable|email|max:255|unique:users,email,'.\Request::segment(2),
           'phoneNumber' => 'nullable|numeric|digits_between:10,15',
           'address' => 'nullable|max:255',
-          'description' => 'nullable',
+          'remarks' => 'nullable',
           'password' => 'nullable',
       ];
 

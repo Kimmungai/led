@@ -11,7 +11,6 @@
 
 		<!-- main content start-->
 		<div class="main-content">
-
 			<!-- header-starts -->
       @Component('components.structure.header-menu')
       @endcomponent
@@ -19,9 +18,9 @@
 
      <!--body wrapper start-->
 			<div id="page-wrapper">
-        @Component('components.structure.page-title',['title'=>'Edit user'])@endcomponent
+        @Component('components.structure.page-title',['title'=>$user->name])@endcomponent
 
-        @Component('components.structure.breadcrump',['home'=>route('home'),'users'=>route('users.index'),'specified'=>$user->name])
+        @Component('components.structure.breadcrump',['home'=>route('home'),'customers'=>route('customers.index'),'specified'=>$user->name])
         @endcomponent
 
         <div class="row">
@@ -29,10 +28,11 @@
             @csrf
             @method('PUT')
           <div class="col-md-8">
-            <?php //if($user->type == 1){} ?>
             <?php $userTypes=[
               'staff' => ['name'=>'Staff','value'=>env('STAFF',1)],
               'admin' => ['name'=>'Admin','value'=>env('ADMIN',3)],
+              'supplier' => ['name'=>'Supplier','value'=>env('SUPPLIER',4)],
+              'customer' => ['name'=>'Customer','value'=>env('SUPPLIER',2)],
             ]; ?>
             @Component('components.form-inputs.select',['title' => 'Type','name'=>'type','icon'=>'fas fa-user-tag','options'=>$userTypes,'required'=>false,'selected' => $user->type])@endcomponent
             @Component('components.form-inputs.input',['title' => 'Name','name'=>'name','type'=>'text','icon'=>'fas fa-user','placeholder' => 'Enter name','required'=>true,'value' =>$user->name])@endcomponent
@@ -47,7 +47,21 @@
           </div>
 
           <div class="col-md-4">
-            <div class="avatar-preview">
+            <?php $paymentTypes=[
+              'cheque' => ['name'=>'Cheque','value'=>1],
+              'mpesa' => ['name'=>'MPESA','value'=>2],
+              'bank' => ['name'=>'Bank trasnfer','value'=>3],
+            ]; ?>
+            <h4>Account</h4>
+            <?php $wallet = 0; ?>
+            @foreach ($user->UserTransactions as $transaction) <?php $wallet += $transaction->credit;  ?> @endforeach
+            @Component('components.form-inputs.input',['title' => 'Name','name'=>'','type'=>'text','icon'=>'fas fa-wallet','placeholder' => 'Enter name','required'=>false,'value' =>'Ksh. '.number_format($wallet,2).'','noLabel'=>true,'disabled'=>true])@endcomponent
+            @Component('components.form-inputs.select',['title' => 'Method','name'=>'paymentMethod','icon'=>'fas fa-dollar','options'=>$paymentTypes,'required'=>false])@endcomponent
+            @Component('components.form-inputs.input',['title' => 'Amount','name'=>'credit','type'=>'number','icon'=>'fas fa-money-bill','placeholder' => 'Enter amount','required'=>false,'value' =>0,'min'=>0])@endcomponent
+
+
+            <div class="avatar-preview mt-2">
+
               <div class="profile-img-loading-preview hidden"><img class="loader" src="/placeholders/img-loader-green.gif"></div>
               <img id="user-avatar" class="" src="@if( old('avatar') ) {{url(old('avatar'))}} @elseif( $user->avatar ) {{url($user->avatar)}} @else /placeholders/avatar-male.png @endif" alt="" >
               <input id="user-avatar-url" type="hidden" name="avatar" value="@if( old('avatar') ) {{old('avatar')}} @elseif( $user->avatar ) {{$user->avatar}} @else /placeholders/avatar-male.png @endif">

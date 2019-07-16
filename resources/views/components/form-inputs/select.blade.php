@@ -7,7 +7,7 @@
       </span>
       <select id="{{$name}}" name="{{$name}}" class="form-control1" @if(isset($disabled)) disabled @endif>
         @foreach($options as $option)
-          <option value="{{$option['value']}}" @if(old('type')==$option['value']) selected @endif>{{$option['name']}}</option>
+          <option value="{{$option['value']}}" @if(old('type')==$option['value']) selected @elseif(isset($selected)) @if($selected == $option['value']) selected @endif @endif>{{$option['name']}}</option>
         @endforeach
       </select>
     </div>

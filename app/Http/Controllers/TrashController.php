@@ -22,8 +22,11 @@ class TrashController extends Controller
     {
       $orgs = Org::onlyTrashed()->get();
       $staffs = User::where('type',env('STAFF',1))->onlyTrashed()->get();
+      $admins = User::where('type',env('ADMIN',3))->onlyTrashed()->get();
+      $suppliers = User::where('type',env('SUPPLER',4))->onlyTrashed()->get();
+      $customers = User::where('type',env('CUSTOMER',2))->onlyTrashed()->get();
 
-      return view('trash.index',compact('orgs','staffs'));
+      return view('trash.index',compact('orgs','staffs','admins','suppliers','customers'));
     }
 
     public function empty()

@@ -31,9 +31,18 @@ Route::resource('users','UsersController');
 
 //customers
 Route::resource('customers','CustomersController');
+Route::get('trash-customers','CustomersController@trashed_customers')->name('trash.customers');
+Route::get('trash-customer-show/{id}','CustomersController@trashed_customer_show')->name('trash.customer.show');
+Route::post('customer-restore/{id}','CustomersController@customer_restore')->name('customer.restore');
+Route::delete('customer-remove/{id}','CustomersController@customer_remove')->name('customer.remove');
+
 
 //suppliers
 Route::resource('suppliers','SuppliersController');
+Route::get('trash-suppliers','SuppliersController@trashed_suppliers')->name('trash.suppliers');
+Route::get('trash-supplier-show/{id}','SuppliersController@trashed_supplier_show')->name('trash.supplier.show');
+Route::post('supplier-restore/{id}','SuppliersController@supplier_restore')->name('supplier.restore');
+Route::delete('supplier-remove/{id}','SuppliersController@supplier_remove')->name('supplier.remove');
 
 //staff
 Route::resource('staff','StaffController');
@@ -44,6 +53,8 @@ Route::delete('staff-remove/{id}','StaffController@staff_remove')->name('staff.r
 
 //admin
 Route::resource('admin','AdminController');
+Route::get('trash-admin','AdminController@trashed_admin')->name('trash.admin');
+Route::get('trash-admin-show/{id}','AdminController@trashed_admin_show')->name('trash.admin.show');
 
 
 //sales

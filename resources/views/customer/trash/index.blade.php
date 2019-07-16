@@ -19,23 +19,17 @@
 
      <!--body wrapper start-->
 			<div id="page-wrapper">
-        @Component('components.structure.page-title',['title'=>'All customers'])@endcomponent
+        @Component('components.structure.page-title',['title'=>'Deleted customers'])@endcomponent
 
-        @Component('components.structure.breadcrump',['home'=>route('home'),'customers'=>''])
+        @Component('components.structure.breadcrump',['home'=>route('home'),'specified'=>'Deleted customers'])
         @endcomponent
 
         <!--custom page design starts-->
-          <div class="row">
-            <!--search form-->
-            <div class="col-md-12">
-              @Component('components.forms.search',['action'=>'','method'=>'','placeholder'=>'Search customer...'])@endcomponent
-            </div>
-            <!--end search form-->
-          </div>
+
           <div class="row">
             @foreach($customers as $customer)
             <div class="col-md-3 mt-2">
-              @Component('components.user.card',['user'=>$customer,'link' => route('customers.show',$customer->id)])@endcomponent
+              @Component('components.user.card',['user'=>$customer,'link' => route('trash.customer.show',$customer->id)])@endcomponent
             </div>
             @endforeach
           </div>

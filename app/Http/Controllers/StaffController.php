@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\UserTransactions;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Org;
@@ -93,7 +94,7 @@ class StaffController extends Controller
      */
      public function trashed_staff()
      {
-       $staffs = User::orderBy('created_at','DESC')->onlyTrashed()->paginate(env('ITEMS_PER_PAGE',4));
+       $staffs = User::where('type',env('STAFF',1))->orderBy('created_at','DESC')->onlyTrashed()->paginate(env('ITEMS_PER_PAGE',4));
        return view('user.trash.staff',compact('staffs'));
      }
 
@@ -104,7 +105,8 @@ class StaffController extends Controller
       * @return \Illuminate\Http\Response
       */
      public function trashed_staff_show($id)
-     {
+     {         UserTransactions::where('user_id',$user->id)->restore();
+
          $user = User::where('id',$id)->onlyTrashed()->first();
          $orgs = Org::all();
          return view('user.trash.edit',compact('user','orgs'));
@@ -120,6 +122,7 @@ class StaffController extends Controller
      {
          $user = User::where('id',$id)->onlyTrashed()->first();
          $user->restore();
+         UserTransactions::where('user_id',$user->id)->restore();
          Session::flash('message', env("SAVE_SUCCESS_MSG","User restored succesfully!"));
          return redirect(route('trash.staff',$id));
      }
@@ -133,6 +136,7 @@ class StaffController extends Controller
      public function staff_remove($id)
      {
          $user = User::where('id',$id)->onlyTrashed()->first();
+         UserTransactions::where('user_id',$user->id)->forceDelete();
          $user->forceDelete();
          Session::flash('message', env("SAVE_SUCCESS_MSG","User permanently deleted succesfully!"));
          return redirect(route('trash.staff',$id));

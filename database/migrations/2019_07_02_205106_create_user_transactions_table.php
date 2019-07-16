@@ -19,6 +19,7 @@ class CreateUserTransactionsTable extends Migration
             $table->double('debit')->nullable();
             $table->double('credit')->nullable();
             $table->text('remarks')->nullable();
+            $table->tinyInteger('paymentMethod')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

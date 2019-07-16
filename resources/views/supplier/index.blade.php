@@ -33,11 +33,11 @@
             <!--end search form-->
           </div>
           <div class="row">
-            @for($x=0;$x < 9;$x++)
+            @foreach($suppliers as $supplier)
             <div class="col-md-3 mt-2">
-              @Component('components.user.card')@endcomponent
+              @Component('components.user.card',['user'=>$supplier,'link' => route('suppliers.show',$supplier->id)])@endcomponent
             </div>
-            @endfor
+            @endforeach
           </div>
         <!--custom page design ends-->
 
