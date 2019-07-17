@@ -136,3 +136,6 @@ a.wrimagecard:hover, .wrimagecard-topimage:hover {
 .text-bold{
   font-weight: bold!important;
 }
+.text-white{
+  color: #fff!important;
+}

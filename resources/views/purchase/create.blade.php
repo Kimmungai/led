@@ -39,30 +39,13 @@
                 <div class="col-md-12 mt-1">
                 <div class="carousel slide" data-ride="carousel" data-type="multi" data-interval="" id="myCarousel">
                   <div class="carousel-inner">
-                    <div class="item active">
-                      <div class="col-xs-2"><a href="#"><img src="/placeholders/s1.png" class="img-responsive" style="height:75px;width:75px;"></a></div>
-                    </div>
-                    <div class="item">
-                      <div class="col-xs-2"><a href="#"><img src="https://scontent-lga3-1.cdninstagram.com/vp/d463fae660dfebcee14ad405ec34ef11/5D38F164/t51.2885-15/sh0.08/e35/s750x750/53740642_423012385121406_298701359536165197_n.jpg?_nc_ht=scontent-lga3-1.cdninstagram.com&ig_cache_key=MjAwMTk1NDAxMDI2NTI4MTA5MQ%3D%3D.2" class="img-responsive" style="height:75px;width:75px;"></a></div>
-                    </div>
-                    <div class="item">
-                      <div class="col-xs-2"><a href="#"><img src="/placeholders/s1.png" class="img-responsive" style="height:75px;width:75px;"></a></div>
-                    </div>
-                    <div class="item">
-                      <div class="col-xs-2"><a href="#"><img src="https://scontent-lga3-1.cdninstagram.com/vp/d463fae660dfebcee14ad405ec34ef11/5D38F164/t51.2885-15/sh0.08/e35/s750x750/53740642_423012385121406_298701359536165197_n.jpg?_nc_ht=scontent-lga3-1.cdninstagram.com&ig_cache_key=MjAwMTk1NDAxMDI2NTI4MTA5MQ%3D%3D.2" class="img-responsive" style="height:75px;width:75px;"></a></div>
-                    </div>
-                    <div class="item">
-                      <div class="col-xs-2"><a href="#"><img src="/placeholders/s1.png" class="img-responsive" style="height:75px;width:75px;"></a></div>
-                    </div>
-                    <div class="item">
-                      <div class="col-xs-2"><a href="#"><img src="/placeholders/s1.png" class="img-responsive" style="height:75px;width:75px;"></a></div>
-                    </div>
-                    <div class="item">
-                      <div class="col-xs-2"><a href="#"><img src="https://scontent-lga3-1.cdninstagram.com/vp/d463fae660dfebcee14ad405ec34ef11/5D38F164/t51.2885-15/sh0.08/e35/s750x750/53740642_423012385121406_298701359536165197_n.jpg?_nc_ht=scontent-lga3-1.cdninstagram.com&ig_cache_key=MjAwMTk1NDAxMDI2NTI4MTA5MQ%3D%3D.2" class="img-responsive" style="height:75px;width:75px;"></a></div>
-                    </div>
-                    <div class="item">
-                      <div class="col-xs-2"><a href="#"><img src="/placeholders/s1.png" class="img-responsive" style="height:75px;width:75px;"></a></div>
-                    </div>
+                    <?php $count = 0; ?>
+                    @foreach ($products as $product )
+                      @Component('components.products.carousel',['product' => $product, 'active'=>$count])'])@endcomponent
+                      <?php $count++; ?>
+                    @endforeach
+
+
                   </div>
                   <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
                   <a class="right carousel-control" href="#myCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
@@ -126,7 +109,7 @@
               @Component('components.forms.search',['action'=>'','method'=>'','placeholder'=>'Search supplier...'])@endcomponent
               <!--end search form-->
 
-              @Component('components.user.card-2')@endcomponent
+              @Component('components.user.card-2',['user'=>$supplier])@endcomponent
 
               <a href="#" class="">create new supplier</a>
 

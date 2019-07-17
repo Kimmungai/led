@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Purchase;
 use App\Org;
+use App\Product;
+use App\User;
 use Illuminate\Http\Request;
 
 class PurchasesController extends Controller
@@ -15,7 +17,8 @@ class PurchasesController extends Controller
      */
     public function index()
     {
-        return view('purchase.index');
+        $purchases = Purchase::all();
+        return view('purchase.index',compact('purchases'));
     }
 
     /**
@@ -28,8 +31,10 @@ class PurchasesController extends Controller
         $prodRegMainFields = $this->product_reg_main_fields();
         $prodRegSideFields = $this->product_reg_side_fields();
         $orgs = Org::all();
+        $products = Product::all();
+        $supplier = User::where('type',env('SUPPLIER',4))->first();
 
-        return view('purchase.create',compact('orgs','prodRegMainFields','prodRegSideFields'));
+        return view('purchase.create',compact('orgs','prodRegMainFields','prodRegSideFields','products','supplier'));
     }
 
     /**
