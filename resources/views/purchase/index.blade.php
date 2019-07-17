@@ -36,24 +36,30 @@
               <th>Action</th>
             </thead>
             <tbody>
+              @foreach( $purchases as $purchase )
               <tr>
-                <th><a href="#" style="color:inherit"><span class="fa fa-times-circle"></span></a> 1</th>
-                <td>Peter kimani</td>
-                <td>Ksh. 3,000</td>
-                <td>3 minutes ago</td>
-                @if(0)
+                <th><a href="#" style="color:inherit"><span class="fa fa-times-circle"></span></a> {{$purchase->id}}</th>
+                <td>{{$purchase->user->name}}</td>
+                <td>Ksh. {{$purchase->amountOwed}}</td>
+                <td>{{ \Carbon\Carbon::parse($purchase->created_at)->diffForHumans() }}</td>
+                @if( $purchase->amountOwed <= $purchase->amountPaid)
                 <td><span class="fa fa-circle text-green"></span> Paid</td>
                 @else
                 <td><span class="fa fa-circle text-danger"></span> Unpaid</td>
                 @endif
                 <td><a href="#" class="btn btn-xs btn-default"><span class="fa fa-eye"></span> Open</a></td>
               </tr>
+              @endforeach
             </tbody>
           </table>
         </div>
         <!--custom page design ends-->
 
-
+        <div class="row">
+          <div class="col-md-12">
+            {{$purchases->links()}}
+          </div>
+        </div>
 
 			</div>
 			 <!--body wrapper end-->

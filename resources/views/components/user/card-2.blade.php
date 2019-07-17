@@ -10,7 +10,7 @@
 
 			<strong>
 					<i class="fa fa-fw fa-dollar"></i>
-					<small class="text-white">Owed Ksh.</small> <b class="owed-supplier">{{number_format(old('amountOwed'),2)}}</b>
+					<small class="text-white">Owed Ksh.</small> <b class="owed-supplier">{{number_format(session('purchaseCost'),2)}}</b>
 			</strong>
 	</h2>
 	<div class="mc-content">

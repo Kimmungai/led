@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Session;
 
 use App\Purchase;
 use App\Org;
 use App\Product;
 use App\User;
+use App\Expense;
 use Illuminate\Http\Request;
 
 class PurchasesController extends Controller
@@ -17,7 +19,7 @@ class PurchasesController extends Controller
      */
     public function index()
     {
-        $purchases = Purchase::all();
+        $purchases = Purchase::paginate(env('ITEMS_PER_PAGE',4));
         return view('purchase.index',compact('purchases'));
     }
 
@@ -45,7 +47,31 @@ class PurchasesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $purchase = new Purchase;
+        $purchase->user_id = $request->user_id;
+        $purchase->amountOwed = session('purchaseCost');
+        $purchase->save();
+
+        $purchaseLists = [];
+        if( session('purchaseList') != null) {$purchaseLists = session('purchaseList');}
+
+        foreach ($purchaseLists as $purchaseList) {
+          $expense = new Expense;
+          $expense->purchase_id = $purchase->id;
+          $expense->product_id = $purchaseList['id'];
+          $expense->suppliedQuantity = $purchaseList['qty'];
+          $expense->save();
+        }
+
+
+
+        session(['purchaseList' => []]);
+        session(['purchaseCost' => 0]);
+
+        Session::flash('message', env("SAVE_SUCCESS_MSG","Purchase saved succesfully!"));
+
+
+        return redirect(route('purchases.index'));
     }
 
     /**
@@ -120,5 +146,12 @@ class PurchasesController extends Controller
         'color' => ['title' => 'Color','name' => 'color', 'id' => 'color', 'type' => 'text','icon' => 'fas fa-info-circle', 'placeholder' => 'Color','min'=>'','click'=>'','required'=>false],
         'height' => ['title' => 'Height','name' => 'height', 'id' => 'height', 'type' => 'number','icon' => 'fas fa-info-circle', 'placeholder' => 'Height','min'=>'','click'=>'','required'=>false],
       ];
+    }
+
+    public function save_purchase_list(Request $request)
+    {
+      session(['purchaseList' => $request->suppliedProds]);
+      session(['purchaseCost' => $request->purchaseCost]);
+      return 1;
     }
 }

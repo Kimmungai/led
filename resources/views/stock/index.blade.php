@@ -36,9 +36,14 @@
 
               <!--products-->
                 <div class="row">
-                  @for($x = 0; $x < 6; $x++ )
-                    @Component('components.products.single',['paragraph'=>''])@endcomponent
-                  @endfor
+                  @foreach($products as $product)
+                    @Component('components.products.single',['paragraph'=>'','product'=>$product])@endcomponent
+                  @endforeach
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  {{$products->links()}}
                 </div>
               </div>
               <!--products end-->

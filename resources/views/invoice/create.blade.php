@@ -37,7 +37,7 @@
             <p class="title-2"> <span>Delivery / Invoice</span> </p>
 
             <div class="heading">
-              <h1>Ledamcha Multisuppliers</h1>
+              <h1>Ledamcha Multsuppliers</h1>
               <p>Dealers in: Whole Chicken, Wings, Drumsticks, Boneless, Legs, Gizzard, Eggs, Fish Fillet, Beef, Mutton and Pishori Rice</p>
             </div>
 

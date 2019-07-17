@@ -41,10 +41,9 @@
                   <div class="carousel-inner">
                     <?php $count = 0; ?>
                     @foreach ($products as $product )
-                      @Component('components.products.carousel',['product' => $product, 'active'=>$count])'])@endcomponent
+                      @Component('components.products.carousel',['product' => $product, 'active'=>$count,'click'=>'add_prod('.$product->id.',"purchased-prods")'])'])@endcomponent
                       <?php $count++; ?>
                     @endforeach
-
 
                   </div>
                   <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
@@ -64,40 +63,38 @@
   								<table class="table text-center">
   									<thead >
   										<tr >
-  											<th class="text-center">#</th>
                         <th class="text-center">Image</th>
   											<th class="text-center">Products</th>
   											<th class="text-center">Serial</th>
   											<th class="text-center">Quantity supplied</th>
   										</tr>
   									</thead>
-  									<tbody>
-  										<tr>
-  											<td>1</td>
-                        <td> <img class="img-responsive img-circle" src="https://scontent-lga3-1.cdninstagram.com/vp/d463fae660dfebcee14ad405ec34ef11/5D38F164/t51.2885-15/sh0.08/e35/s750x750/53740642_423012385121406_298701359536165197_n.jpg?_nc_ht=scontent-lga3-1.cdninstagram.com&ig_cache_key=MjAwMTk1NDAxMDI2NTI4MTA5MQ%3D%3D.2" height="50" width="50"> </td>
-  											<td>Mark</td>
-  											<td>Otto</td>
-  											<td>@Component('components.form-inputs.quantity',['minusID'=>'minus-prod-1','plusID'=>'plus-prod-1','field'=>'prod-1'])@endcomponent</td>
-  										</tr>
-  										<tr>
-  											<td>2</td>
-                        <td> <img class="img-responsive img-circle" src="https://scontent-lga3-1.cdninstagram.com/vp/d463fae660dfebcee14ad405ec34ef11/5D38F164/t51.2885-15/sh0.08/e35/s750x750/53740642_423012385121406_298701359536165197_n.jpg?_nc_ht=scontent-lga3-1.cdninstagram.com&ig_cache_key=MjAwMTk1NDAxMDI2NTI4MTA5MQ%3D%3D.2" height="50" width="50"> </td>
+  									<tbody id="purchased-prods">
+                    <?php $purchaseLists = []; ?>
+                    <?php if( session('purchaseList') != null) {$purchaseLists = session('purchaseList');}?>
 
-  											<td>Jacob</td>
-  											<td>Thornton</td>
-  											<td>@Component('components.form-inputs.quantity',['minusID'=>'minus-prod-1','plusID'=>'plus-prod-1','field'=>'prod-2'])@endcomponent</td>
-  										</tr>
-  										<tr>
-  											<td>3</td>
-                        <td> <img class="img-responsive img-circle" src="https://scontent-lga3-1.cdninstagram.com/vp/d463fae660dfebcee14ad405ec34ef11/5D38F164/t51.2885-15/sh0.08/e35/s750x750/53740642_423012385121406_298701359536165197_n.jpg?_nc_ht=scontent-lga3-1.cdninstagram.com&ig_cache_key=MjAwMTk1NDAxMDI2NTI4MTA5MQ%3D%3D.2" height="50" width="50"> </td>
-  											<td>Larry</td>
-  											<td>the Bird</td>
-  											<td>@Component('components.form-inputs.quantity',['minusID'=>'minus-prod-1','plusID'=>'plus-prod-1','field'=>'prod-3'])@endcomponent</td>
-  										</tr>
+                    @foreach ( $purchaseLists as $purchaseList)
+                      <tr data-id="{{$purchaseList['id']}}" id="purchased-product-{{$purchaseList['id']}}">
+                        <td> <img id="img-prod-{{$purchaseList['id']}}" class="img-responsive img-circle" src="{{url($purchaseList['image'])}}" height="50" width="50"> </td>
+                        <td data-name="{{$purchaseList['name']}}" id="name-prod-{{$purchaseList['id']}}" >{{$purchaseList['name']}}</td>
+                        <td data-sku="{{$purchaseList['sku']}}" id="sku-prod-{{$purchaseList['id']}}">{{$purchaseList['sku']}}</td>
+                        <td><input id="qty-prod-{{$purchaseList['id']}}" type="number" value="{{$purchaseList['qty']}}" onchange="save_product_list('purchased-prods')"/></td>
+                      </tr>
+                   @endforeach
+
   									</tbody>
+
   								</table>
+
   							</div>
   						</div>
+              <form id="new-purchase-form" class="" action="{{route('purchases.store')}}" method="post" onsubmit="confirm_modal('newPurchaseConfirmModal')">
+                @csrf
+                <input type="hidden" name="" id="owed-supplier" class=" form-control" value="@if(session('purchaseCost')){{session('purchaseCost')}}@else 0 @endif" disabled/>
+                <input type="hidden" name="user_id" value="{{$supplier->id}}">
+              @Component('components.form-inputs.submit',['value' => 'Save','icon'=>'fas fa-save','classes'=>'btn btn-success btn-block btn-lg pay-btn'])@endcomponent
+            </form>
+
               <!--end supplied products-->
             </div>
           </div>
@@ -112,6 +109,7 @@
               @Component('components.user.card-2',['user'=>$supplier])@endcomponent
 
               <a href="#" class="">create new supplier</a>
+
 
             </div>
           </div>
@@ -128,6 +126,7 @@
     <!--modals-->
     @Component('components.modals.create-prod',['title'=>'New product','mainFields'=>$prodRegMainFields,'sideFields'=>$prodRegSideFields,'modalID'=>'createProductModal','cancelBtnTitle'=>'Cancel','saveBtnTitle'=>'Create & add','url'=>route('trash.empty')])@endcomponent
     @Component('components.modals.confirm',['title'=>'Save new product','question'=>'Are you sure you want to save product?','modalID'=>'newProdConfirmModal','cancelBtnTitle'=>'Cancel','saveBtnTitle'=>'Confirm save','formID'=>'new-prod-form'])@endcomponent
+    @Component('components.modals.confirm',['title'=>'Save new purchase','question'=>'Are you sure you want to save purchase?','modalID'=>'newPurchaseConfirmModal','cancelBtnTitle'=>'Cancel','saveBtnTitle'=>'Confirm save','formID'=>'new-purchase-form'])@endcomponent
 
 @if(count($errors))
   <script>

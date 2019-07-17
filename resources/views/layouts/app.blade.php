@@ -71,6 +71,7 @@
 
 @if(Route::is('purchases.create'))
 <script src="{{url('js/image-carousel.js')}}"></script>
+<script src="{{url('js/add-prod.js')}}"></script>
 @endif
 </body>
 </html>

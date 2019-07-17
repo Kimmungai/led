@@ -62,16 +62,18 @@ Route::resource('sales','SalesController');
 
 //purchases
 Route::resource('purchases','PurchasesController');
+Route::post('save-purchase-list','PurchasesController@save_purchase_list')->name('save.purchase.list');
 
 //product
 Route::resource('stock','ProductsController');
+Route::post('get-product','Products\ProductAjaxController@get_product')->name('product.get');
 
 //payments
 Route::resource('payments','PaymentsController');
+Route::get('trash-empty','TrashController@empty')->name('trash.empty');
 
 //trash
 Route::get('trash','TrashController@index')->name('trash.index');
-Route::get('trash-empty','TrashController@empty')->name('trash.empty');
 
 //org
 Route::resource('org','OrgController');

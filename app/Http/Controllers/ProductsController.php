@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Session;
 use App\Product;
 use App\Expense;
 use App\Variation;
+use App\Inventory;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller
@@ -18,7 +19,8 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        return view('stock.index');
+        $products = Product::paginate(env('ITEMS_PER_PAGE',3));
+        return view('stock.index',compact('products'));
     }
 
     /**
@@ -39,14 +41,17 @@ class ProductsController extends Controller
      */
     public function store(StoreProduct $request)
     {
-        //return $request->validated();
+        $expenseList = [];
         $product = Product::create($request->only(['name','sku','img1','description']));
         $expense = $request->only(['cost','suppliedQuantity','img1','description']);
         $expense['product_id'] = $product->id;
-        Expense::create($expense);
+        $newExpence = Expense::create($expense);
         $variation = $request->only(['weight','height','color']);
         $variation['product_id'] = $product->id;
         Variation::create($variation);
+        $inventory['availableQuantity'] =  $request->suppliedQuantity;
+        $inventory['product_id'] = $product->id;
+        Inventory::create($inventory);
         Session::flash('message', env("SAVE_SUCCESS_MSG","Product saved succesfully!"));
         return back();
     }
