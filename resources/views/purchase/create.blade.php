@@ -32,9 +32,11 @@
               <!--search form-->
               @Component('components.forms.search',['action'=>'','method'=>'','placeholder'=>'Search product...'])@endcomponent
               <!--end search form-->
+              @Component('components.form-inputs.link',['title'=>'New product','href'=>route('trash.empty'),'toolTip'=>'Create new product','icon'=>'fas fa-plus-circle','classes'=>'btn btn-default btn-xs pull-right','click'=>'confirm_modal("createProductModal")'])@endcomponent
+
               <!--couresel-->
               <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 mt-1">
                 <div class="carousel slide" data-ride="carousel" data-type="multi" data-interval="" id="myCarousel">
                   <div class="carousel-inner">
                     <div class="item active">
@@ -68,6 +70,8 @@
                 </div>
               </div>
               <!--end couresel-->
+
+
               <!--supplied-products-->
               <div class="panel panel-warning" >
   							<div class="panel-heading">
@@ -137,4 +141,17 @@
 			</div>
 			 <!--body wrapper end-->
 		</div>
+
+    <!--modals-->
+    @Component('components.modals.create-prod',['title'=>'New product','mainFields'=>$prodRegMainFields,'sideFields'=>$prodRegSideFields,'modalID'=>'createProductModal','cancelBtnTitle'=>'Cancel','saveBtnTitle'=>'Create & add','url'=>route('trash.empty')])@endcomponent
+    @Component('components.modals.confirm',['title'=>'Save new product','question'=>'Are you sure you want to save product?','modalID'=>'newProdConfirmModal','cancelBtnTitle'=>'Cancel','saveBtnTitle'=>'Confirm save','formID'=>'new-prod-form'])@endcomponent
+
+@if(count($errors))
+  <script>
+  $(document).ready(function(){
+    confirm_modal("createProductModal");
+  });
+  </script>
+@endif
+
 @endsection

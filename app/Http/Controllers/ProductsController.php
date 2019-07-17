@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreProduct;
+use Illuminate\Support\Facades\Session;
 use App\Product;
+use App\Expense;
+use App\Variation;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller
@@ -33,9 +37,18 @@ class ProductsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProduct $request)
     {
-        //
+        //return $request->validated();
+        $product = Product::create($request->only(['name','sku','img1','description']));
+        $expense = $request->only(['cost','suppliedQuantity','img1','description']);
+        $expense['product_id'] = $product->id;
+        Expense::create($expense);
+        $variation = $request->only(['weight','height','color']);
+        $variation['product_id'] = $product->id;
+        Variation::create($variation);
+        Session::flash('message', env("SAVE_SUCCESS_MSG","Product saved succesfully!"));
+        return back();
     }
 
     /**
@@ -67,7 +80,7 @@ class ProductsController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(StoreProduct $request, Product $product)
     {
         //
     }

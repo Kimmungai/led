@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+  protected $fillable = [
+    'name','sku','img1','img2','img3','img4','img5','type','virtualProduct','price','salePrice','regularPrice','description','purchaseNote','excerpt','rating','specialFeatured','vegetarian',
+  ];
+
   public function org()
   {
     return $this->belongsTo('App\Org');

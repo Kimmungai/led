@@ -22,6 +22,10 @@ class ImageAjaxController extends Controller
         return $this->uploads($request,'staff');
       }
 
+      if ( $request->hasFile('product') ) {
+        return $this->uploads($request,'product');
+      }
+
       return 0;
 
     }
