@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 
 class ProductsController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -42,10 +43,10 @@ class ProductsController extends Controller
     public function store(StoreProduct $request)
     {
         $expenseList = [];
-        $product = Product::create($request->only(['name','sku','img1','description']));
-        $expense = $request->only(['cost','suppliedQuantity','img1','description']);
-        $expense['product_id'] = $product->id;
-        $newExpence = Expense::create($expense);
+        $product = Product::create($request->only(['name','sku','img1','description','cost']));
+        //$expense = $request->only(['cost','suppliedQuantity']);
+        //$expense['product_id'] = $product->id;
+        //$newExpence = Expense::create($expense);
         $variation = $request->only(['weight','height','color']);
         $variation['product_id'] = $product->id;
         Variation::create($variation);
@@ -53,6 +54,7 @@ class ProductsController extends Controller
         $inventory['product_id'] = $product->id;
         Inventory::create($inventory);
         Session::flash('message', env("SAVE_SUCCESS_MSG","Product saved succesfully!"));
+        Session::flash('newProduct',$product);
         return back();
     }
 

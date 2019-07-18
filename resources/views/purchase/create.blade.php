@@ -29,6 +29,7 @@
 
           <div class="col-md-9">
             <div class="purchase-main">
+
               <!--search form-->
               @Component('components.forms.search',['action'=>'','method'=>'','placeholder'=>'Search product...'])@endcomponent
               <!--end search form-->
@@ -90,7 +91,7 @@
   						</div>
               <form id="new-purchase-form" class="" action="{{route('purchases.store')}}" method="post" onsubmit="confirm_modal('newPurchaseConfirmModal')">
                 @csrf
-                <input type="hidden" name="" id="owed-supplier" class=" form-control" value="@if(session('purchaseCost')){{session('purchaseCost')}}@else 0 @endif" disabled/>
+                <input type="hidden" name="" id="owed-supplier" class=" form-control" value="@if(session('purchaseCost')){{session('purchaseCost')}}@else 0 @endif" />
                 <input type="hidden" name="user_id" value="{{$supplier->id}}">
               @Component('components.form-inputs.submit',['value' => 'Save','icon'=>'fas fa-save','classes'=>'btn btn-success btn-block btn-lg pay-btn'])@endcomponent
             </form>
@@ -132,6 +133,14 @@
   <script>
   $(document).ready(function(){
     confirm_modal("createProductModal");
+  });
+  </script>
+@endif
+
+@if( session('newProduct') )
+  <script>
+  $(document).ready(function(){
+  add_prod({{session('newProduct')['id']}},"purchased-prods");
   });
   </script>
 @endif

@@ -21,7 +21,7 @@ function update_table(tableID,product)
     $("#"+tableID).append(tr);
     //update amount owed
     var totalOwed = parseFloat($("#owed-supplier").val());
-    totalOwed += product.price;
+    totalOwed += product.cost;
     $("#owed-supplier").val(totalOwed);
     $(".owed-supplier").text(totalOwed.toLocaleString());
     save_product_list(tableID);

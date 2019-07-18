@@ -16,7 +16,7 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
-
+Route::redirect('/home','/');
 //Invoices
 Route::get('invoices','InvoicesController@index')->name('invoices.index');
 Route::get('invoices/create','InvoicesController@create')->name('invoices.create');
