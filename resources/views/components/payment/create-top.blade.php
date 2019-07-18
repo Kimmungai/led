@@ -18,22 +18,22 @@
 </div>
 
 <div class="col-md-2">
-  <h5>Discount %</h5>
-  <input type="number" class="form-control" name="" value="3">
+  <!--<h5>Discount %</h5>
+  <input type="number" class="form-control" name="" value="3">-->
 </div>
 
 <div class="col-md-2">
-  <h5>VAT %</h5>
-  <input type="number" class="form-control" name="" value="16">
+  <!--<h5>VAT %</h5>
+  <input type="number" class="form-control" name="" value="16">-->
 </div>
 
 <div class="col-md-5">
-  <h3>Total , Discount & VAT </h3>
-    <p class="text-bold text-right">Sub total: 10,000.00/=</p>
-    <ul class="prices-notes text-right">
+  <h3>Total</h3>
+    <p class="text-bold text-right">Sub total: {{number_format(session('salePrice'),2)}}/=</p>
+    <!--<ul class="prices-notes text-right">
       <li>Discount: 3% -100/=</li>
       <li>VAT: 16% +1600/=</li>
-    </ul>
+    </ul>-->
   <div class="row mt-1">
     <div class="col-xs-4">
       <button type="button" class="btn btn-success pay-btn btn-block " name="button">Pay</button>
@@ -42,7 +42,7 @@
       <button type="button" class="btn btn-success cancel-btn btn-block" name="button"><span class="fa fa-times"></span> Cancel</button>
     </div>
     <div class="col-xs-4">
-      <p class="text-bold">Grand Total: 10,000.00/=</p>
+      <p class="text-bold">Grand Total: {{number_format(session('salePrice'),2)}}/=</p>
     </div>
   </div>
 </div>

@@ -73,5 +73,8 @@
 <script src="{{url('js/image-carousel.js')}}"></script>
 <script src="{{url('js/add-prod.js')}}"></script>
 @endif
+@if(Route::is('sales.create'))
+<script src="{{url('js/add-prod-to-register.js')}}"></script>
+@endif
 </body>
 </html>

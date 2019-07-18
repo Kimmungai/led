@@ -1,8 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Session;
 
 use App\Sale;
+use App\Product;
+use App\User;
+use App\Revenue;
 use Illuminate\Http\Request;
 
 class SalesController extends Controller
@@ -28,7 +32,9 @@ class SalesController extends Controller
      */
     public function create()
     {
-        return view('sale.create');
+        $products = Product::paginate(env('ITEMS_PER_PAGE',3));
+        $customer = User::where('type',env('CUSTOMER',2))->first();
+        return view('sale.create',compact('products','customer'));
     }
 
     /**
@@ -39,7 +45,31 @@ class SalesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $sale = new Sale;
+      $sale->user_id = $request->user_id;
+      $sale->amountDue = session('salePrice');
+      $sale->save();
+
+      $soldProds = [];
+      if( session('soldProds') != null) {$soldProds = session('soldProds');}
+
+      foreach ($soldProds as $soldProd) {
+        $revenue = new Revenue;
+        $revenue->sale_id = $sale->id;
+        $revenue->product_id = $soldProd['id'];
+        $revenue->soldQuantity = $soldProd['qty'];
+        $revenue->save();
+      }
+
+
+
+      //session(['soldProds' => []]);
+      //session(['salePrice' => 0]);
+
+      Session::flash('message', env("SAVE_SUCCESS_MSG","Sale recorded succesfully!"));
+
+
+      return redirect(route('payments.create'));
     }
 
     /**
@@ -85,5 +115,12 @@ class SalesController extends Controller
     public function destroy(Sale $sale)
     {
         //
+    }
+
+    public function save_cart_list(Request $request)
+    {
+      session(['soldProds' => $request->soldProds]);
+      session(['salePrice' => $request->salePrice]);
+      return 1;
     }
 }

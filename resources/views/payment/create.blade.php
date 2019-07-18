@@ -21,7 +21,7 @@
 			<div id="page-wrapper">
         @Component('components.structure.page-title',['title'=>'Receive payment'])@endcomponent
 
-        @Component('components.structure.breadcrump',['home'=>route('home'),'sales'=>route('sales.index'),'newSale'=>route('sales.show',1),'newSalePayment'=>''])
+        @Component('components.structure.breadcrump',['home'=>route('home'),'sales'=>route('sales.index'),'newSalePayment'=>''])
         @endcomponent
 
         <!--custom page design starts-->
@@ -67,19 +67,28 @@
                 <table class="table">
                   <thead>
                     <tr>
-                      <th>Image</th>
                       <th>Item</th>
                       <th>Quantity (Units)</th>
                       <th>Price</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
+                    <?php $soldProds = []; ?>
+                    <?php if( session('soldProds') != null) {$soldProds = session('soldProds');$tableID="payment-table";}?>
+
+                    @foreach( $soldProds as $soldProd )
+                      <tr data-cost="{{$soldProd['price']}}" data-id="{{$soldProd['id']}}" id="sold-product-{{$soldProd['id']}}" >
+                        <td data-name="{{$soldProd['name']}}" id="name-prod-{{$soldProd['id']}}"> {{$soldProd['name']}}</td>
+                        <td> <input id="qty-prod-{{$soldProd['id']}}" class="form-control" type="number" name="" value="{{$soldProd['qty']}}" onchange="save_cart_list('{{$tableID}}')"> </td>
+                        <td data-price="{{$soldProd['price']}}" id="price-prod-{{$soldProd['id']}}">Ksh. {{number_format($soldProd['price'],2)}}</td>
+                      </tr>
+                    @endforeach
+                    <!--<tr>
                       <td> <span class="fa fa-times-circle"></span> <img  src="/placeholders/s1.png" height="50" width="50" alt="" > </td>
                       <td >Full chicken</td>
                       <td> <input class="form-control" type="number" name="" value="100"> </td>
                       <td >Ksh. 20,000</td>
-                    </tr>
+                    </tr>-->
 
                   </tbody>
 

@@ -59,6 +59,7 @@ Route::get('trash-admin-show/{id}','AdminController@trashed_admin_show')->name('
 
 //sales
 Route::resource('sales','SalesController');
+Route::post('save-cart-list','SalesController@save_cart_list')->name('save.cart.list');
 
 //purchases
 Route::resource('purchases','PurchasesController');
