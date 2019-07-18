@@ -15,13 +15,16 @@ class CreateReportsTable extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('org_id')->unsigned()->index()->nullable();
+            $table->integer('user_id')->unsigned()->index()->nullable();
+            $table->integer('sale_id')->unsigned()->index()->nullable();
+            $table->integer('purchase_id')->unsigned()->index()->nullable();
             $table->string('name')->nullable();
-            $table->string('logo')->nullable();
-            $table->text('heading')->nullable();
-            $table->mediumText('address')->nullable();
-            $table->string('email')->nullable();
             $table->text('notes')->nullable();
+            $table->double('amount')->nullable();
+            $table->tinyInteger('status')->default(0);
+            $table->text('recipient')->nullable();
+            $table->text('send_to')->nullable();
+            $table->datetime('dueDate')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

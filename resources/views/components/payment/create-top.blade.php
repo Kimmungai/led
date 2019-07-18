@@ -7,11 +7,19 @@
       <span class="input-group-addon">
         <i class="fa fa-money-bill-wave"></i>
       </span>
-      <select class="form-control" name="">
-        <option value="">Cash</option>
-        <option value="">Cheque</option>
-        <option value="">Mpesa</option>
-      </select>
+
+      <form id="new-payment-form" action="{{route('payments.store')}}" method="post">
+        @csrf
+        <select class="form-control" name="paymentMethod">
+          <option value="1">Cash</option>
+          <option value="2">Cheque</option>
+          <option value="3">Mpesa</option>
+        </select>
+        <input type="hidden" name="balance" id="saleBalance" class=" form-control"  />
+        <input type="hidden" name="amountReceived" id="amountReceived" class=" form-control"  />
+      </form>
+
+
     </div>
     <div class="clearfix"> </div>
   </div>
@@ -36,7 +44,7 @@
     </ul>-->
   <div class="row mt-1">
     <div class="col-xs-4">
-      <button type="button" class="btn btn-success pay-btn btn-block " name="button">Pay</button>
+      <button id="save-payment-btn" type="button" class="btn btn-success pay-btn btn-block " name="button" onclick="confirm_modal('newPaymentConfirmModal')" disabled>Save</button>
     </div>
     <div class="col-xs-4">
       <button type="button" class="btn btn-success cancel-btn btn-block" name="button"><span class="fa fa-times"></span> Cancel</button>

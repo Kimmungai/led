@@ -22,7 +22,8 @@ class SalesController extends Controller
      */
     public function index()
     {
-        return view('sale.index');
+        $sales = Sale::orderBy('created_at','DESC')->paginate(env('ITEMS_PER_PAGE',4));
+        return view('sale.index',compact('sales'));
     }
 
     /**
@@ -54,14 +55,18 @@ class SalesController extends Controller
       if( session('soldProds') != null) {$soldProds = session('soldProds');}
 
       foreach ($soldProds as $soldProd) {
+        $product = Product::find($soldProd['id']);
         $revenue = new Revenue;
         $revenue->sale_id = $sale->id;
-        $revenue->product_id = $soldProd['id'];
+        $revenue->product_id = $product->id;
         $revenue->soldQuantity = $soldProd['qty'];
+        $revenue->description = $product->name." ".$product->description;
+        $revenue->unitPrice = $product->cost;
+        $revenue->sellingPrice = $product->cost;
         $revenue->save();
       }
 
-
+      session( [ 'sale_id' => $sale->id ] );
 
       //session(['soldProds' => []]);
       //session(['salePrice' => 0]);

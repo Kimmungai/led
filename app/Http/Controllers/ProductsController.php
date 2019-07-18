@@ -43,7 +43,7 @@ class ProductsController extends Controller
     public function store(StoreProduct $request)
     {
         $expenseList = [];
-        $product = Product::create($request->only(['name','sku','img1','description','cost']));
+        $product = Product::create($request->only(['name','sku','img1','description','cost','type']));
         //$expense = $request->only(['cost','suppliedQuantity']);
         //$expense['product_id'] = $product->id;
         //$newExpence = Expense::create($expense);

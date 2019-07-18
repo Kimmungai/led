@@ -36,11 +36,12 @@
               <th>Action</th>
             </thead>
             <tbody>
+              <?php $count = 1; ?>
               @foreach( $purchases as $purchase )
               <tr>
-                <th><a href="#" style="color:inherit"><span class="fa fa-times-circle"></span></a> {{$purchase->id}}</th>
+                <th><a href="#" style="color:inherit"></a> {{$count}}</th>
                 <td>{{$purchase->user->name}}</td>
-                <td>Ksh. {{$purchase->amountOwed}}</td>
+                <td>Ksh. {{number_format($purchase->amountOwed,2)}}</td>
                 <td>{{ \Carbon\Carbon::parse($purchase->created_at)->diffForHumans() }}</td>
                 @if( $purchase->amountOwed <= $purchase->amountPaid)
                 <td><span class="fa fa-circle text-green"></span> Paid</td>
@@ -49,6 +50,7 @@
                 @endif
                 <td><a href="#" class="btn btn-xs btn-default"><span class="fa fa-eye"></span> Open</a></td>
               </tr>
+              <?php $count++; ?>
               @endforeach
             </tbody>
           </table>

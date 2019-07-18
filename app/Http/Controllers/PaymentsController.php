@@ -1,9 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Session;
 
 use App\UserTransactions;
 use Illuminate\Http\Request;
+use App\Sale;
+use App\Report;
+use App\User;
 
 class PaymentsController extends Controller
 {
@@ -35,7 +39,43 @@ class PaymentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $sale_id = session('sale_id');
+
+        if(!$sale_id){
+          session(['soldProds' => []]);
+          session(['salePrice' => 0]);
+          Session::flash('error', env("SAVE_SUCCESS_MSG","An error occured! Please contact admin"));
+          return redirect(route('home'));
+        }
+
+        $sale = Sale::find($sale_id);
+        $user = User::find($sale->user_id);
+
+        Sale::where('id',$sale_id)->update([
+          'paymentMethod' => $request->paymentMethod,
+          'amountReceived' => $request->amountReceived,
+        ]);
+
+        //update user account
+        if( $request->balance < 0 ){
+          $debit = new UserTransactions;
+          $debit->user_id = $sale->user_id;
+          $debit->debit = abs($request->balance);
+          $debit->save();
+          $this->create_invoice($user,$sale,$debit->debit,$name='invoice');
+        }else{
+          $credit = new UserTransactions;
+          $credit->user_id = $sale->user_id;
+          $credit->credit = $request->balance;
+          $credit->save();
+        }
+
+        session(['soldProds' => []]);
+        session(['salePrice' => 0]);
+        session(['sale_id'=>'']);
+        Session::flash('message', env("SAVE_SUCCESS_MSG","Payment recorded successfully!"));
+        return redirect(route('sales.index'));
+
     }
 
     /**
@@ -61,7 +101,7 @@ class PaymentsController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified resourcecreate_invoice() in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\UserTransactions  $userTransactions
@@ -81,5 +121,18 @@ class PaymentsController extends Controller
     public function destroy(UserTransactions $userTransactions)
     {
         //
+    }
+
+    private function create_invoice($user,$sale,$value,$name='invoice')
+    {
+      $invoice = new Report;
+      $invoice->user_id = $user->id;
+      $invoice->sale_id = $sale->id;
+      $invoice->name = $name;
+      $invoice->amount = abs($value);
+      $invoice->recipient = $user->name;
+      $invoice->send_to = $user->email;
+      $invoice->save();
+      return $invoice;
     }
 }

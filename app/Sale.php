@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Sale extends Model
 {
-  public function product()
+  public function revenue()
   {
     return $this->hasMany('App\Revenue');
   }
@@ -14,5 +14,10 @@ class Sale extends Model
   public function user()
   {
     return $this->belongsTo('App\User');
+  }
+
+  public function report()
+  {
+    return $this->hasMany('App\Report');
   }
 }

@@ -58,4 +58,9 @@ class User extends Authenticatable
     {
       return $this->hasMany('App\UserTransactions');
     }
+
+    public function report()
+    {
+      return $this->hasMany('App\Report');
+    }
 }

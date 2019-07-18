@@ -19,7 +19,8 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::redirect('/home','/');
 //Invoices
 Route::get('invoices','InvoicesController@index')->name('invoices.index');
-Route::get('invoices/create','InvoicesController@create')->name('invoices.create');
+Route::get('invoices/create/','InvoicesController@create')->name('invoices.create');
+Route::get('invoices-show/{id}','InvoicesController@show')->name('invoices.show');
 
 //Reports
 Route::resource('reports','ReportsController');

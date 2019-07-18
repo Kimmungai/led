@@ -67,9 +67,11 @@
         </form>
 
         <div class="row">
-        @for($x=0;$x < 8;$x++)
-          @Component('components.dashboard.cta-icon',['title'=>'paid','icon'=>'fa fa-file-invoice-dollar','link'=>route('customers.index'),'color'=>'#8BC34A'])@endcomponent
-        @endfor
+        @foreach( $invoices as $invoice )
+        <?php $color= '#f44336';$status = 'Upaid';?>
+        <?php if( $invoice->status ){$color="#8BC34A";$status = 'Paid';} ?>
+          @Component('components.dashboard.cta-icon',['title'=>$invoice->user->name,'icon'=>'fa fa-file-invoice-dollar','link'=>route('invoices.show',$invoice->id),'color'=>$color,'status'=>$status])@endcomponent
+        @endforeach
         </div>
         <!--custom page design ends-->
 

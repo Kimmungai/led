@@ -28,7 +28,7 @@ class PurchasesController extends Controller
      */
     public function index()
     {
-        $purchases = Purchase::paginate(env('ITEMS_PER_PAGE',4));
+        $purchases = Purchase::orderBy('created_at','DESC')->paginate(env('ITEMS_PER_PAGE',4));
         return view('purchase.index',compact('purchases'));
     }
 
@@ -136,6 +136,7 @@ class PurchasesController extends Controller
     {
         return  [
           'name' => ['title' => 'Name','name' => 'name', 'id' => 'name', 'type' => 'text','icon' => 'fas fa-gift', 'placeholder' => 'Product name','min'=>'','click'=>'','required'=>true],
+          'type' => ['title' => 'Type','name' => 'type', 'id' => 'type', 'type' => 'select','icon' => 'fas fa-info-circle', 'placeholder' => '','min'=>'','click'=>'','required'=>false],
           'sku' => ['title' => 'SKU','name' => 'sku', 'id' => 'sku', 'type' => 'text','icon' => 'fas fa-store', 'placeholder' => 'Product sku','min'=>'','click'=>'','required'=>true],
           'cost' => ['title' => 'Cost','name' => 'cost', 'id' => 'cost', 'type' => 'number','icon' => 'fas fa-money-bill', 'placeholder' => 'Product cost','min'=>0,'click'=>'','required'=>true],
           'Qty' => ['title' => 'Qty','name' => 'suppliedQuantity', 'id' => 'suppliedQuantity', 'type' => 'number','icon' => 'fas fa-info-circle', 'placeholder' => 'Supplied quantity','min'=>0,'click'=>'','required'=>true],

@@ -13,11 +13,11 @@ class Report extends Model
 
   public function sale()
   {
-    return $this->hasMany('App\Sale');
+    return $this->belongsTo('App\Sale');
   }
 
-  public function org()
+  public function user()
   {
-    return $this->belongsTo('App\Org');
+    return $this->belongsTo('App\User');
   }
 }

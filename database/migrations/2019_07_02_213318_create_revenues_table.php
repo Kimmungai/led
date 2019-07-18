@@ -20,8 +20,10 @@ class CreateRevenuesTable extends Migration
             $table->integer('product_id')->unsigned()->index()->nullable();
             $table->integer('soldQuantity')->default(0);
             $table->float('sellingPrice')->default(0.00);
+            $table->float('unitPrice')->default(0.00);
             $table->float('normalPrice')->default(0.00);
             $table->float('discount')->default(0.00);
+            $table->text('description')->nullable();
             $table->float('discountPercent')->default(0.00);
             $table->softDeletes();
             $table->timestamps();

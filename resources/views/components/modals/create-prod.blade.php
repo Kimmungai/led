@@ -24,6 +24,22 @@
             						</span>
             						<textarea id="{{$mainField['id']}}" name="{{$mainField['name']}}" class="form-control"  placeholder="{{$mainField['placeholder']}}" rows="{{$mainField['rows']}}">{{old($mainField['name'])}}</textarea>
             					</div>
+                      @elseif( $mainField['type'] === 'select' )
+                      <div class="input-group input-icon right in-grp1">
+            						<span class="input-group-addon">
+            							<i class="{{$mainField['icon']}}"></i>
+            						</span>
+                        <select id="{{$mainField['id']}}" class="form-control1" name="{{$mainField['name']}}">
+
+                          <option value="1" @if(old($mainField['name']) == 1) selected @endif>Chicken</option>
+                          <option value="2" @if(old($mainField['name']) == 2) selected @endif>Beef</option>
+                          <option value="3" @if(old($mainField['name']) == 3) selected @endif>Fish</option>
+                          <option value="4" @if(old($mainField['name']) == 4) selected @endif>Drumsticks</option>
+                          <option value="5" @if(old($mainField['name']) == 5) selected @endif>Bonless</option>
+
+                        </select>
+
+            					</div>
                       @else
                       <div class="input-group input-icon right in-grp1">
             						<span class="input-group-addon">
@@ -66,7 +82,7 @@
             						<span class="input-group-addon">
             							<i class="{{$sideField['icon']}}"></i>
             						</span>
-            						<input id="{{$sideField['id']}}" name="{{$sideField['name']}}" class="form-control1" type="{{$sideField['type']}}" placeholder="{{$sideField['placeholder']}}" min="{{$sideField['min']}}" value="{{$sideField['name']}}">
+            						<input id="{{$sideField['id']}}" name="{{$sideField['name']}}" class="form-control1" type="{{$sideField['type']}}" placeholder="{{$sideField['placeholder']}}" min="{{$sideField['min']}}" placeholder="{{$mainField['placeholder']}}" value="{{old($sideField['name'])}}">
             					</div>
             				</div>
 

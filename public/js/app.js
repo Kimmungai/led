@@ -79,3 +79,33 @@ headers: {
 }
 
 });
+
+function calculate_balance( due )
+{
+  event.preventDefault();
+  var received = $("#display").val();
+  if( received == '' ){ received = 0;}
+
+  var balance = parseFloat(received) - parseFloat(due);
+
+  $("#calculator-info").removeClass();
+
+  if( balance == 0 ){
+    //no balance to give back
+    $("#calculator-info").html("Amount exact!");
+    $("#calculator-info").addClass('text-success');
+  }else if ( balance < 0 ) {
+    //debit balance to customer account
+    $("#calculator-info").html("Under payment. <strong>Ksh. "+Math.abs(balance).toLocaleString()+" </strong> will be debited to customer account!");
+    $("#calculator-info").addClass('text-danger');
+  }else if ( balance > 0 ) {
+    //credit balance to customer account
+    $("#calculator-info").html("BALANCE: <strong>Ksh. "+balance.toLocaleString()+" </strong>");
+    $("#calculator-info").addClass('text-success');
+  }
+
+  $("#saleBalance").val(balance);
+  $("#amountReceived").val(received);
+  $("#save-payment-btn").attr('disabled',false);
+
+}

@@ -36,20 +36,30 @@
               <th>Action</th>
             </thead>
             <tbody>
+              <?php $count = 1; ?>
+              @foreach( $sales as $sale )
               <tr>
-                <th><a href="#" style="color:inherit"><span class="fa fa-times-circle"></span></a> 1</th>
-                <td>Peter kimani</td>
-                <td>Ksh. 1,000</td>
-                <td>3 minutes ago</td>
-                @if(1)
+                <th><a href="#" style="color:inherit"></a> {{$count}}</th>
+                <td>{{$sale->user->name}}</td>
+                <td>Ksh. {{number_format($sale->amountDue,2)}}</td>
+                <td>{{ \Carbon\Carbon::parse($sale->created_at)->diffForHumans() }}</td>
+                @if( $sale->amountDue <= $sale->amountReceived)
                 <td><span class="fa fa-circle text-green"></span> Paid</td>
                 @else
                 <td><span class="fa fa-circle text-danger"></span> Unpaid</td>
                 @endif
                 <td><a href="#" class="btn btn-xs btn-default"><span class="fa fa-eye"></span> Open</a></td>
               </tr>
+              <?php $count++; ?>
+              @endforeach
             </tbody>
           </table>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            {{$sales->links()}}
+          </div>
         </div>
         <!--custom page design ends-->
 

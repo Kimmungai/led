@@ -32,6 +32,7 @@ class StoreProduct extends FormRequest
       $data = [
           'name' => 'required|max:255',
           'cost' => 'required|numeric',
+          'type' => 'nullable|numeric',
           'suppliedQuantity' => 'required|numeric',
           'img1' => 'nullable|max:255',
           'sku' => 'required|max:255|unique:products,sku,'.\Request::segment(2),
