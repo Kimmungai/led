@@ -7,7 +7,7 @@
       <div class="wrimagecard-topimage_title">
         <h4 class="text-center">@if(isset($org)){{$org->name}}@elseif(isset($title)){{$title}}@endif</h4>
         @if(isset($status))
-        <h5 class="text-center">{{$status}}</h5>
+        <h5 class="text-center">{{$status}} @if(isset($amount)) (<small>ksh. </small>{{number_format($amount,2)}}) @endif</h5>
         @endif
       </div>
     </a>

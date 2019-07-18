@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Product;
+use App\User;
 
 class ProductAjaxController extends Controller
 {
@@ -16,5 +17,17 @@ class ProductAjaxController extends Controller
       $prodID = $request->id;
       $product = Product::find($prodID);
       return $product;
+    }
+
+    public function get_product_type($type)
+    {
+      session(['prodType' => $type]);
+      return redirect(route('stock.index'));
+    }
+
+    public function get_sale_product_type($type)
+    {
+      session(['prodType' => $type]);
+      return redirect(route('sales.create'));
     }
 }

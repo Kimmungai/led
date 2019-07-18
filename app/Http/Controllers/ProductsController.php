@@ -20,8 +20,13 @@ class ProductsController extends Controller
      */
     public function index()
     {
+      if( session('prodType') != null ){ $type = session('prodType'); }else{$type=0;}//active tab is all
+      if( $type ){
+        $products = Product::where('type',$type)->paginate(env('ITEMS_PER_PAGE',3));
+      }else{
         $products = Product::paginate(env('ITEMS_PER_PAGE',3));
-        return view('stock.index',compact('products'));
+      }
+        return view('stock.index',compact('products','type'));
     }
 
     /**

@@ -61,6 +61,7 @@ Route::get('trash-admin-show/{id}','AdminController@trashed_admin_show')->name('
 //sales
 Route::resource('sales','SalesController');
 Route::post('save-cart-list','SalesController@save_cart_list')->name('save.cart.list');
+Route::get('sale-stock-type/{type}','Products\ProductAjaxController@get_sale_product_type')->name('sales.stock.type');
 
 //purchases
 Route::resource('purchases','PurchasesController');
@@ -69,6 +70,7 @@ Route::post('save-purchase-list','PurchasesController@save_purchase_list')->name
 //product
 Route::resource('stock','ProductsController');
 Route::post('get-product','Products\ProductAjaxController@get_product')->name('product.get');
+Route::get('stock-type/{type}','Products\ProductAjaxController@get_product_type')->name('stock.type');
 
 //payments
 Route::resource('payments','PaymentsController');

@@ -6,7 +6,7 @@
   <div class="r3_counter_box">
     <i class="{{$tab['icon']}}"></i>
     <div class="stats">
-      <h5>45 <span>%</span></h5>
+      <h5>@if(isset($tab['model'])) {{count($tab['model'])}} @endif<span>.</span></h5>
       <div class="grow {{$tab['class']}}">
       <p>{{$tab['name']}}</p>
       </div>

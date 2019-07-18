@@ -33,9 +33,14 @@ class SalesController extends Controller
      */
     public function create()
     {
-        $products = Product::paginate(env('ITEMS_PER_PAGE',3));
+        if( session('prodType') != null ){ $type = session('prodType'); }else{$type=0;}//active tab is all
+        if( $type ){
+          $products = Product::where('type',$type)->paginate(env('ITEMS_PER_PAGE',3));
+        }else{
+          $products = Product::paginate(env('ITEMS_PER_PAGE',3));
+        }
         $customer = User::where('type',env('CUSTOMER',2))->first();
-        return view('sale.create',compact('products','customer'));
+        return view('sale.create',compact('products','customer','type'));
     }
 
     /**

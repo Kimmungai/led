@@ -32,7 +32,7 @@
                 <!--search form-->
                 @Component('components.forms.search',['action'=>'','method'=>'','placeholder'=>'Search product...'])@endcomponent
                 <!--end search form-->
-                @Component('components.pos.tabs')@endcomponent
+                @Component('components.pos.tabs',['type' => $type])@endcomponent
 
                 <!--products-->
                   <div class="row">

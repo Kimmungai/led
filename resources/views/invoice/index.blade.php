@@ -70,7 +70,7 @@
         @foreach( $invoices as $invoice )
         <?php $color= '#f44336';$status = 'Upaid';?>
         <?php if( $invoice->status ){$color="#8BC34A";$status = 'Paid';} ?>
-          @Component('components.dashboard.cta-icon',['title'=>$invoice->user->name,'icon'=>'fa fa-file-invoice-dollar','link'=>route('invoices.show',$invoice->id),'color'=>$color,'status'=>$status])@endcomponent
+          @Component('components.dashboard.cta-icon',['title'=>$invoice->user->name,'icon'=>'fa fa-file-invoice-dollar','link'=>route('invoices.show',$invoice->id),'color'=>$color,'status'=>$status,'amount'=>$invoice->amount])@endcomponent
         @endforeach
         </div>
         <!--custom page design ends-->

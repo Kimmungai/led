@@ -27,6 +27,26 @@ $(document).ajaxStop(function(){
   $('.profile-img-loading-preview ').addClass('hidden').addClass('d-none');
 });
 
+/*Open product category*/
+function open_prod_cat(type)
+{
+  var page = window.location.pathname;
+  var host = window.location.origin;
+
+  
+    if( page == '/stock')
+    {
+      open_url(host+'/stock-type/'+type);
+    }
+    else
+    {
+      open_url(host+'/sale-stock-type/'+type);
+    }
+
+
+
+}
+
 /*Open url*/
 function open_url(url)
 {
