@@ -23,7 +23,7 @@
             </ul>
         </li>
         <li class="@if(Route::is('purchases*')) act @endif">
-          <a href="{{route('purchases.index')}}"><i class="fa fa-clipboard-check"></i>
+          <a href="{{route('purchases.create')}}"><i class="fa fa-clipboard-check"></i>
             <span>Receiving</span></a>
             <!--<ul class="sub-menu-list">
               <li class="@if(Route::is('purchases.index')) active @endif"><a href="{{route('purchases.index')}}">Open all</a> </li>

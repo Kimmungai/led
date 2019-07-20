@@ -21,6 +21,8 @@
 			<div id="page-wrapper">
         @Component('components.structure.page-title',['title'=>'All suppliers'])@endcomponent
 
+        @Component('components.form-inputs.link',['title'=>'New','href'=>route('suppliers.create'),'toolTip'=>'create new supplier','icon'=>'fas fa-plus-circle','classes'=>'btn btn-default btn-xs pull-right'])@endcomponent
+
         @Component('components.structure.breadcrump',['home'=>route('home'),'suppliers'=>''])
         @endcomponent
 

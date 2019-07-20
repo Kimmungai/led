@@ -21,7 +21,7 @@
 			<div id="page-wrapper">
         @Component('components.structure.page-title',['title'=>'Edit user'])@endcomponent
 
-        @Component('components.structure.breadcrump',['home'=>route('home'),'users'=>route('users.index'),'specified'=>$user->name])
+        @Component('components.structure.breadcrump',['home'=>route('home'),'specified'=>$user->name])
         @endcomponent
 
         <div class="row">

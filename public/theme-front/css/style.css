@@ -1760,6 +1760,7 @@ ul.dropdown-menu.drp-mnu li a i {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-repeat: no-repeat;
 }
 .span_4 {
     padding: 0;

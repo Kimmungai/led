@@ -19,17 +19,43 @@
 
      <!--body wrapper start-->
 			<div id="page-wrapper">
-        @Component('components.structure.page-title',['title'=>'Detailed report'])@endcomponent
+        @Component('components.structure.page-title',['title'=>'Quick report'])@endcomponent
 
-        @Component('components.structure.breadcrump',['home'=>route('home'),'detailedReport'=>''])
+        @Component('components.structure.breadcrump',['home'=>route('home'),'quickReport'=>''])
         @endcomponent
 
         <!--custom page design starts-->
         <div class="row">
-        @for($x=0;$x < 3;$x++)
-          @Component('components.dashboard.cta-icon',['title'=>'quotations','icon'=>'fa fa-file-invoice','link'=>route('invoices.index'),'color'=>'red'])@endcomponent
-        @endfor
+          <div class="switches">
+
+      			<div class="col-4">
+
+            @for( $x = 0; $x < 3; $x++ )
+              @Component('components.dashboard.reports')
+              @endcomponent
+            @endfor
+
+
+
+      				<div class="clearfix"></div>
+      			</div>
+      		</div>
         </div>
+        <div class="row mt-2">
+
+          <div class="col-md-6">
+
+            @Component('components.reports.bar-chart')@endcomponent
+
+          </div>
+
+          <div class="col-md-4">
+
+            @Component('components.reports.pie-chart')@endcomponent
+
+          </div>
+        </div>
+
         <!--custom page design ends-->
 
 

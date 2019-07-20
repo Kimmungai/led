@@ -17,10 +17,10 @@
     <div class="profile_details">
       <ul>
         <li class="dropdown profile_details_drop">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+          <a href="{{route('users.show',Auth::ID())}}" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
             <div class="profile_img">
               @if( Auth::user()->avatar )
-                <span style="background-image:url({{Auth::user()->avatar}}) "> </span>
+                <span style="background-image:url({{url(Auth::user()->avatar)}});"> </span>
               @else
                 @if( Auth::user()->gender == 1  )
                   <span style="background-image:url({{url('placeholders/avatar-male.png')}}) "> </span>
@@ -38,7 +38,7 @@
           </a>
           <ul class="dropdown-menu drp-mnu">
             <!--<li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li>-->
-            <li> <a href="#"><i class="fa fa-user"></i>Profile</a> </li>
+            <li> <a href="{{route('users.show',Auth::ID())}}"><i class="fa fa-user"></i>Profile</a> </li>
             <li> <a href="#" onclick="submit_form('logout-form')"><i class="fas fa-sign-out-alt"></i> Logout</a> </li>
           </ul>
         </li>

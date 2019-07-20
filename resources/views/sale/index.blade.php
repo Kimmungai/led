@@ -21,6 +21,8 @@
 			<div id="page-wrapper">
         @Component('components.structure.page-title',['title'=>'All sales'])@endcomponent
 
+        @Component('components.form-inputs.link',['title'=>'New','href'=>route('sales.create'),'toolTip'=>'create new sale','icon'=>'fas fa-plus-circle','classes'=>'btn btn-default btn-xs pull-right'])@endcomponent
+
         @Component('components.structure.breadcrump',['home'=>route('home'),'sales'=>''])
         @endcomponent
 
@@ -28,12 +30,11 @@
         <div class="table-responsive">
           <table class="table table-striped">
             <thead>
-              <th>ID</th>
+              <th>Serial</th>
               <th>Customer</th>
               <th>Value</th>
               <th>Date</th>
               <th>Status</th>
-              <th>Action</th>
             </thead>
             <tbody>
               <?php $count = 1; ?>
@@ -48,7 +49,6 @@
                 @else
                 <td><span class="fa fa-circle text-danger"></span> Unpaid</td>
                 @endif
-                <td><a href="#" class="btn btn-xs btn-default"><span class="fa fa-eye"></span> Open</a></td>
               </tr>
               <?php $count++; ?>
               @endforeach

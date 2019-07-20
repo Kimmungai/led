@@ -137,9 +137,9 @@ class PurchasesController extends Controller
         return  [
           'name' => ['title' => 'Name','name' => 'name', 'id' => 'name', 'type' => 'text','icon' => 'fas fa-gift', 'placeholder' => 'Product name','min'=>'','click'=>'','required'=>true],
           'type' => ['title' => 'Type','name' => 'type', 'id' => 'type', 'type' => 'select','icon' => 'fas fa-info-circle', 'placeholder' => '','min'=>'','click'=>'','required'=>false],
-          'sku' => ['title' => 'SKU','name' => 'sku', 'id' => 'sku', 'type' => 'text','icon' => 'fas fa-store', 'placeholder' => 'Product sku','min'=>'','click'=>'','required'=>true],
+          //'sku' => ['title' => 'SKU','name' => 'sku', 'id' => 'sku', 'type' => 'text','icon' => 'fas fa-store', 'placeholder' => 'Product sku','min'=>'','click'=>'','required'=>true],
           'cost' => ['title' => 'Cost','name' => 'cost', 'id' => 'cost', 'type' => 'number','icon' => 'fas fa-money-bill', 'placeholder' => 'Product cost','min'=>0,'click'=>'','required'=>true],
-          'Qty' => ['title' => 'Qty','name' => 'suppliedQuantity', 'id' => 'suppliedQuantity', 'type' => 'number','icon' => 'fas fa-info-circle', 'placeholder' => 'Supplied quantity','min'=>0,'click'=>'','required'=>true],
+          'Qty' => ['title' => 'Qty (Kg)','name' => 'suppliedQuantity', 'id' => 'suppliedQuantity', 'type' => 'number','icon' => 'fas fa-info-circle', 'placeholder' => 'Supplied quantity','min'=>0,'click'=>'','required'=>true],
           'remarks' => ['title' => 'Remarks','name' => 'description', 'id' => 'description', 'type' => 'textarea','icon' => 'fas fa-info-circle', 'placeholder' => 'Enter any description about this product','min'=>'','rows'=>5,'click'=>'','required'=>false],
 
         ];
@@ -152,9 +152,9 @@ class PurchasesController extends Controller
     private function product_reg_side_fields()
     {
       return  [
-        'name' => ['title' => 'Weight','name' => 'weight', 'id' => 'weight', 'type' => 'number','icon' => 'fas fa-info-circle', 'placeholder' => 'Weight','min'=>0.00,'click'=>'','required'=>false],
-        'color' => ['title' => 'Color','name' => 'color', 'id' => 'color', 'type' => 'text','icon' => 'fas fa-info-circle', 'placeholder' => 'Color','min'=>'','click'=>'','required'=>false],
-        'height' => ['title' => 'Height','name' => 'height', 'id' => 'height', 'type' => 'number','icon' => 'fas fa-info-circle', 'placeholder' => 'Height','min'=>'','click'=>'','required'=>false],
+        //'name' => ['title' => 'Weight','name' => 'weight', 'id' => 'weight', 'type' => 'number','icon' => 'fas fa-info-circle', 'placeholder' => 'Weight','min'=>0.00,'click'=>'','required'=>false],
+        //'color' => ['title' => 'Color','name' => 'color', 'id' => 'color', 'type' => 'text','icon' => 'fas fa-info-circle', 'placeholder' => 'Color','min'=>'','click'=>'','required'=>false],
+        //'height' => ['title' => 'Height','name' => 'height', 'id' => 'height', 'type' => 'number','icon' => 'fas fa-info-circle', 'placeholder' => 'Height','min'=>'','click'=>'','required'=>false],
       ];
     }
 

@@ -48,6 +48,9 @@ ul.breadcrumb li a:hover {
 .mt-3{
   margin-top: 3em !important;
 }
+.mr-1{
+  margin-right: 1em !important;
+}
 .text-green{
   color:  #8BC34A!important;
 }

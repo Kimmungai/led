@@ -24,7 +24,7 @@ class QuotationsController extends Controller
      */
     public function index()
     {
-        return "all reports";
+        return view('report.all');
     }
 
     /**
@@ -34,7 +34,7 @@ class QuotationsController extends Controller
      */
     public function create()
     {
-        return "create report";
+        return view('report.create');
     }
 
     /**

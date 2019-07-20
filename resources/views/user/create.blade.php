@@ -21,7 +21,7 @@
 			<div id="page-wrapper">
         @Component('components.structure.page-title',['title'=>'Create user'])@endcomponent
 
-        @Component('components.structure.breadcrump',['home'=>route('home'),'users'=>route('users.index'),'newUser'=>''])
+        @Component('components.structure.breadcrump',['home'=>route('home'),'newUser'=>''])
         @endcomponent
 
         <!--custom page design starts-->

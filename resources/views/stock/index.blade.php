@@ -19,9 +19,9 @@
 
      <!--body wrapper start-->
 			<div id="page-wrapper">
-        @Component('components.structure.page-title',['title'=>'All stock'])@endcomponent
+        @Component('components.structure.page-title',['title'=>'Inventory'])@endcomponent
 
-        @Component('components.structure.breadcrump',['home'=>route('home'),'stock'=>''])
+        @Component('components.structure.breadcrump',['home'=>route('home'),'specified'=>'Inventory'])
         @endcomponent
 
         <!--custom page design starts-->
@@ -30,15 +30,17 @@
           <div class="col-md-12">
             <div class="products-selection-section">
               <!--search form-->
-              @Component('components.forms.search',['action'=>'','method'=>'','placeholder'=>'Search product...'])@endcomponent
+              @Component('components.forms.search-1',['action'=>'','method'=>'','placeholder'=>'Search product...'])@endcomponent
               <!--end search form-->
-              @Component('components.pos.tabs',['type'=>$type])@endcomponent
+              <!--@Component('components.pos.tabs',['type'=>$type])@endcomponent-->
 
               <!--products-->
                 <div class="row">
-                  @foreach($products as $product)
+                  <!--@foreach($products as $product)
                     @Component('components.products.single',['paragraph'=>'','product'=>$product])@endcomponent
-                  @endforeach
+                  @endforeach-->
+                  @Component('components.pos.cart-preview',['tableID' => 'register-preview','soldProds' => $products])@endcomponent
+
                 </div>
               </div>
               <div class="row">
@@ -48,7 +50,9 @@
               </div>
               <!--products end-->
 
-
+              <a href="#" class="btn btn-info br0 pull-right">
+                Update
+              </a>
 
             </div>
 

@@ -21,7 +21,7 @@
 @if(Route::is('payments.create'))
 <link rel="stylesheet" href="{{url('css/payment-design.css')}}">
 @endif
-@if(Route::is('invoice*'))
+@if(Route::is('invoice*') || Route::is('quotation*'))
 <link rel="stylesheet" href="{{url('css/invoice-template.css')}}">
 @endif
 @if(Route::is('purchases.create'))

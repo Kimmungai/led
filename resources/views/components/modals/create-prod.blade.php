@@ -1,5 +1,5 @@
 <div class="modal fade" id="{{$modalID}}" role="dialog">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -11,7 +11,7 @@
             <div class="row">
 
 
-              <div class="col-md-8">
+              <div class="col-md-12">
 
                 @foreach ($mainFields as $mainField)
                   <div class="form-group @if ($errors->has($mainField['name'])) has-error @endif">
@@ -61,7 +61,7 @@
 
               </div>
 
-              <div class="col-md-4">
+              <!--<div class="col-md-4">
 
                 <div class="avatar-preview">
                   <div class="profile-img-loading-preview hidden"><img class="loader" src="/placeholders/img-loader-green.gif"></div>
@@ -89,14 +89,14 @@
             				<div class="clearfix"> </div>
             			</div>
                 @endforeach
-              </div>
+              </div>-->
 
           </div>
 
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">{{$cancelBtnTitle}}</button>
+        <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">{{$cancelBtnTitle}}</button>
         <button type="button" class="btn btn-default btn-green" onclick="confirm_modal('newProdConfirmModal')">{{$saveBtnTitle}}</button>
 
       </div>

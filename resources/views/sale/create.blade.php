@@ -43,23 +43,30 @@
 
                   @Component('components.pos.cart-preview',['tableID' => 'register-preview','soldProds' => $soldProds])@endcomponent
 
-              <div class="form-group code-search">
-                <div class="input-group input-icon right in-grp1">
-                  <span class="input-group-addon">
-                    <i class="fa fa-users"></i>
-                  </span>
-                    <select class="form-control" name="">
-                      <option value="">Nyau</option>
-                      <option value="">Nyau</option>
-                      <option value="">Nyau</option>
-                    </select>
-                </div>
-                <div class="clearfix"> </div>
-              </div>
+                  <div class="form-group code-search @if ($errors->has('user_id')) has-error @endif">
+                    <label class="col-md-2 control-label" style="line-height:35px;text-overflow:ellipse">Sold to </label>
+                    <div class="col-md-8 ">
+                      <div class="input-group input-icon right in-grp1">
+                        <span class="input-group-addon">
+                          <i class="fas fa-users"></i>
+                        </span>
+                        <select class="form-control" name="user_id" id="customer-select">
+                          <option value="">Nyau</option>
+                          <option value="">Mburi</option>
+                        </select>
+                      </div>
+                    </div>
+                    @if ($errors->has('user_id'))
+                      <div class="col-sm-2 jlkdfj1">
+                        <p class="help-block">{{ $errors->first('user_id') }}</p>
+                      </div>
+                    @endif
+                    <div class="clearfix"> </div>
+                  </div>
 
-                </div>
+            </div>
 
-                </div>
+          </div>
 
 
 

@@ -22,7 +22,7 @@ class UsersController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -109,8 +109,10 @@ class UsersController extends Controller
     public function update(StoreUser $request, User $user)
     {
       $validatedData = $request->validated();
-      if( !$request->password ){$validatedData['password']=env('DEFAULT_PASSWORD','ledamcha');}
-      $validatedData['password'] = Hash::make($validatedData['password']);
+      if( $request->password ){
+        $validatedData['password']=$request->password;
+        $validatedData['password'] = Hash::make($validatedData['password']);
+      }
       $user->update($validatedData);
       if( $request->credit > 0 ){
         $userTrans = new UserTransactions;

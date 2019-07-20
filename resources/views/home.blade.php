@@ -32,29 +32,22 @@
               @endcomponent
             @endforeach
 
+            @Component('components.dashboard.button',[ 'name' => 'New Sale', 'icon' => 'fa fa-cash-register', 'link' => route('sales.create') ])
+            @endcomponent
+
+            @Component('components.dashboard.button',[ 'name' => 'Receive inventory', 'icon' => 'fa fa-calculator', 'link' => route('purchases.create') ])
+            @endcomponent
+
 
 						<div class="clearfix"> </div>
 					</div>
 
-        <!--Add buttons-->
-        <div class="container">
-          <div class="row">
 
-            @Component('components.dashboard.button',[ 'name' => 'New Sale', 'icon' => 'fa fa-cash-register', 'link' => route('sales.create') ])
-            @endcomponent
-
-            @Component('components.dashboard.button',[ 'name' => 'New Purchase', 'icon' => 'fa fa-calculator', 'link' => route('purchases.create') ])
-            @endcomponent
-
-
-          </div>
-        </div>
-        <!--end add buttons-->
 
 
 
 			<!-- switches -->
-		<div class="switches">
+		<!--<div class="switches">
 
 			<div class="col-4">
 
@@ -67,7 +60,7 @@
 
 				<div class="clearfix"></div>
 			</div>
-		</div>
+		</div>-->
 		<!-- //switches -->
 
 				</div>
