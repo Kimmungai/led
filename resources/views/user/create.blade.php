@@ -31,9 +31,11 @@
             @csrf
 
           <div class="col-md-8">
+            <?php $selected = 1; ?>
+            <?php if(isset($_GET['type'])){$selected = $_GET['type'];} ?>
             <?php $userTypes=[
-              'staff' => ['name'=>'Staff','value'=>env('STAFF',1)],
-              'admin' => ['name'=>'Admin','value'=>env('ADMIN',3)],
+              'staff' => ['name'=>'Staff','value'=>env('STAFF',1),'selected'=>$selected],
+              'admin' => ['name'=>'Admin','value'=>env('ADMIN',3),'selected'=>$selected],
             ]; ?>
             @Component('components.form-inputs.select',['title' => 'Type','name'=>'type','icon'=>'fas fa-user-tag','options'=>$userTypes,'required'=>false])@endcomponent
             @Component('components.form-inputs.input',['title' => 'Name','name'=>'name','type'=>'text','icon'=>'fas fa-user','placeholder' => 'Enter name','required'=>true])@endcomponent
@@ -59,7 +61,6 @@
         <form id="user-avatar-form" action="/img-tmp" enctype="multipart/form-data">
           <input class="hidden d-none"  type="file" name="image" id="user-avtar-file" onchange="upload_image(this.value,this.id,'user-avatar',{required:0,min:0,max:255,type:'image',size:1},'user-avatar-url','staff')">
         </form>
-
         </div>
         <!--custom page design ends-->
 

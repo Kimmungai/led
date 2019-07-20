@@ -21,7 +21,7 @@
 			<div id="page-wrapper">
         @Component('components.structure.page-title',['title'=>'All staff'])@endcomponent
 
-        @Component('components.form-inputs.link',['title'=>'New','href'=>route('users.create'),'toolTip'=>'create new staff','icon'=>'fas fa-plus-circle','classes'=>'btn btn-default btn-xs pull-right'])@endcomponent
+        @Component('components.form-inputs.link',['title'=>'New','href'=>route('users.create').'/?type=1','toolTip'=>'create new staff','icon'=>'fas fa-plus-circle','classes'=>'btn btn-default btn-xs pull-right'])@endcomponent
 
         @Component('components.structure.breadcrump',['home'=>route('home'),'staff'=>''])
         @endcomponent
