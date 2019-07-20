@@ -26,7 +26,7 @@
 
         <!--custom page design starts-->
         <div class="table-responsive">
-          <table class="table">
+          <table class="table table-striped">
             <thead>
               <th>ID</th>
               <th>Customer</th>

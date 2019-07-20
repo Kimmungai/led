@@ -9,9 +9,9 @@
   <div class="user-panel-top">
     <div class="profile_details_left">
       <!--search-->
-      <form class="" action="index.html" method="post">
+      <!--<form class="" action="index.html" method="post">
         <input type="text" class="form-control" name="" value="" placeholder="search..">
-      </form>
+      </form>-->
       <!--end search-->
     </div>
     <div class="profile_details">
@@ -29,7 +29,7 @@
                 @endif
               @endif
                <div class="user-name">
-                <p>{{Auth::user()->name}}<span>{{Auth::user()->designation}}nogo</span></p>
+                <p>{{Auth::user()->name}}<span>{{Auth::user()->designation}}</span></p>
                </div>
                <i class="lnr lnr-chevron-down"></i>
                <i class="lnr lnr-chevron-up"></i>
