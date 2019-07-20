@@ -23,9 +23,7 @@ Route::get('invoices/create/','InvoicesController@create')->name('invoices.creat
 Route::get('invoices-show/{id}','InvoicesController@show')->name('invoices.show');
 
 //Reports
-Route::resource('reports','ReportsController');
-Route::resource('quick-reports','QuickReportsController');
-Route::resource('detailed-reports','DetailedReportsController');
+Route::resource('quotation','QuotationsController');
 
 //users
 Route::resource('users','UsersController');

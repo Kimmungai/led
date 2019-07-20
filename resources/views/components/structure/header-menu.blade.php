@@ -20,16 +20,16 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
             <div class="profile_img">
               @if( Auth::user()->avatar )
-                <span style="background:url({{Auth::user()->avatar}}) no-repeat center"> </span>
+                <span style="background-image:url({{Auth::user()->avatar}}) "> </span>
               @else
                 @if( Auth::user()->gender == 1  )
-                  <span style="background:url({{url('placeholders/avatar-male.png')}}) no-repeat center"> </span>
+                  <span style="background-image:url({{url('placeholders/avatar-male.png')}}) "> </span>
                 @else
-                  <span style="background:url({{url('placeholders/avatar-female.png')}}) no-repeat center"> </span>
+                  <span style="background-image:url({{url('placeholders/avatar-female.png')}}) "> </span>
                 @endif
               @endif
                <div class="user-name">
-                <p>{{Auth::user()->name}}<span>{{Auth::user()->designation}}</span></p>
+                <p class="Uname">{{Auth::user()->name}}<span>{{Auth::user()->designation}}</span></p>
                </div>
                <i class="lnr lnr-chevron-down"></i>
                <i class="lnr lnr-chevron-up"></i>

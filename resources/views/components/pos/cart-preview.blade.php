@@ -1,10 +1,9 @@
-<div class="cart-preview-section">
-  <div class="table table-responsive">
+  <div class="table-responsive">
     <table class="table">
       <thead>
         <tr>
           <th>Item</th>
-          <th>Quantity (Units)</th>
+          <th>Quantity (Kg)</th>
           <th>Price</th>
         </tr>
       </thead>
@@ -53,12 +52,8 @@
     </table>
   </div>
 
-  <!--<a href="#" class="btn btn-info br0">
-   <span class="fa fa-users"></span> Select customer
- </a>-->
+
 
  <!--<a href="{{route('payments.create')}}" class="btn btn-success mt-2 pay-btn">
   Payment
 </a>-->
-
-</div>

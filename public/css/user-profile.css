@@ -62,8 +62,8 @@
 	position: absolute;
 	bottom: 0;
 	width: 100%;
-	transform: perspective(400px) rotateY(90deg);
-	transform-origin: right;
+	/*transform: perspective(400px) rotateY(90deg);
+	transform-origin: right;*/
 	transition: 1s;
   font-size: 18px;
 }
@@ -76,7 +76,7 @@
 
 .img-wrapper:hover h2
 {
-	transform: perspective(400px) rotateY(0deg);
+	/*transform: perspective(400px) rotateY(0deg);*/
 }
 
 .img-wrapper ul
@@ -97,8 +97,8 @@
 	width: 40px;
 	text-align: center;
 	line-height: 40px;
-	transform: perspective(800px) rotateY(90deg);
-	transition: .5s;
+	/*transform: perspective(800px) rotateY(90deg);
+	transition: .5s;*/
 	transform-origin: left;
 }
 
@@ -135,7 +135,7 @@
 
 .img-wrapper ul li i
 {
-	color: #F44336!important;
+	color: #F44336;
 	background: rgba(255,255,255,0);
 }
 
@@ -430,6 +430,15 @@
 .material-card.mc-active .mc-footer h4 {
   top: -32px;
 }
+.Red{
+	background-color: #F44336!important;
+}
+.text-Red{
+	color: #F44336!important;
+}
+.text-Red i{
+	color: #F44336!important;
+}
 .material-card.Red h2 {
   background-color: #F44336;
 }
@@ -721,6 +730,15 @@
 .material-card.Blue h2 {
   background-color: #2196F3;
 }
+.Blue{
+	background-color: #2196F3!important;
+}
+.text-Blue{
+	color: #2196F3!important;
+}
+.text-Blue i{
+	color: #2196F3!important;
+}
 .material-card.Blue h2:after {
   border-top-color: #2196F3;
   border-right-color: #2196F3;
@@ -912,6 +930,15 @@
 }
 .material-card.Green h2 {
   background-color: #4CAF50;
+}
+.Green{
+	background-color: #4CAF50!important;
+}
+.text-Green{
+	color: #4CAF50!important;
+}
+.text-Green i{
+	color: #4CAF50!important;
 }
 .material-card.Green h2:after {
   border-top-color: #4CAF50;

@@ -1756,10 +1756,10 @@ ul.dropdown-menu.drp-mnu li a i {
 	-webkit-border-radius:3em;
 	-moz-border-radius:3em;
 	-o-border-radius:3em;
-	  -webkit-background-size: cover;
-	  -moz-background-size: cover;
-	  -o-background-size: cover;
-	  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 .span_4 {
     padding: 0;
@@ -1770,6 +1770,11 @@ ul.dropdown-menu.drp-mnu li a i {
 	 margin-left:5px;
 	 height:35px;
 	 width:45%;
+}
+.Uname{
+  white-space: nowrap;
+ overflow: hidden;
+ text-overflow: ellipsis;
 }
 .profile_details ul li{
 	list-style-type:none;

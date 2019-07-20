@@ -1,3 +1,7 @@
+<?php $debit = 0;$credit = 0; ?>
+@foreach ($user->UserTransactions as $transaction) <?php $credit += $transaction->credit;  $debit += $transaction->debit;?> @endforeach
+<?php $wallet = $credit - $debit;?>
+
 <a href="@if(isset($link)) {{$link}} @else {{route('users.show',$user->id)}} @endif" title="open {{$user->name}} profile">
 <div class="image-area">
 		<div class="img-wrapper">
@@ -6,15 +10,16 @@
 			@else
 			<img src="@if($user->gender == 1) /placeholders/avatar-male.png @else /placeholders/avatar-female.png @endif" alt="{{$user->name}}">
 			@endif
-			<h2>
+			<h2 class="@if($wallet > 0) Green @elseif($wallet < 0) Red @else Blue @endif">
         {{$user->name}}
-        <br><span><i class="fa fa-phone"></i> {{$user->phoneNumber}}</span>
-        <br><span><i class="fa fa-envelope-open"></i> {{$user->email}}</span>
+        @if($user->phoneNumber)<br><span><i class="fa fa-phone"></i> {{$user->phoneNumber}}</span>@endif
+        @if($user->email)<br><span ><i class="fa fa-envelope-open"></i> {{$user->email}}</span>@endif
+				@if($user->type == 2 || $user->type == 4)<br><span><i class="fas fa-wallet"></i> <span>Ksh. {{$wallet}}</span></span>@endif
       </h2>
 			<ul>
 				<!--<li><a href="https://www.instagram.com/atulkprajapati2000/"><i class="fab fa-facebook"></i></a></li>-->
-				<li><a href="@if(isset($link)) {{$link}} @else {{route('users.show',$user->id)}} @endif" title="open {{$user->name}} profile"><i class="fa fa-user"></i></a></li>
-				<!--<li><a href="#" title="delete {{$user->name}}"><i class="fas fa-trash-alt"></i></a></li>-->
+				<li><a class="@if($wallet > 0) text-Green @elseif($wallet < 0) text-Red @else text-Blue @endif" href="@if(isset($link)) {{$link}} @else {{route('users.show',$user->id)}} @endif" title="open {{$user->name}} profile"><i class="fa fa-user"></i></a></li>
+				<li><a class="@if($wallet > 0) text-Green @elseif($wallet < 0) text-Red @else text-Blue @endif" href="#" title="delete {{$user->name}}"><i class="fas fa-trash-alt"></i></a></li>
 			</ul>
 		</div>
 </div></a>

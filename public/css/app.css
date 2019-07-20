@@ -139,3 +139,12 @@ a.wrimagecard:hover, .wrimagecard-topimage:hover {
 .text-white{
   color: #fff!important;
 }
+.code-search{
+  width: 50%;
+  margin: 1em auto;
+
+}
+.code-search input{
+  height: 50px;
+  font-size: 2em;
+}

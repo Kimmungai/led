@@ -10,6 +10,16 @@ use File;
 
 class ImageAjaxController extends Controller
 {
+  /**
+   * Create a new controller instance.
+   *
+   * @return void
+   */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function img_tmp( Request $request )
     {
       //$rules = ['image' => 'nullable|image|mimes:jpeg,bmp,png|max:1024'];
