@@ -28,7 +28,7 @@
 
         <!--custom page design starts-->
         <div class="table-responsive">
-          <table class="table table-striped">
+          <table class="table table-bordered">
             <thead>
               <th>Serial</th>
               <th>Customer</th>

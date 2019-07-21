@@ -19,7 +19,7 @@
 
      <!--body wrapper start-->
 			<div id="page-wrapper">
-        @Component('components.structure.page-title',['title'=>'Detailed report'])@endcomponent
+        @Component('components.structure.page-title',['title'=>'Quotations'])@endcomponent
 
         @Component('components.structure.breadcrump',['home'=>route('home'),'detailedReport'=>''])
         @endcomponent

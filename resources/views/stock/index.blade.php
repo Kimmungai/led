@@ -21,6 +21,8 @@
 			<div id="page-wrapper">
         @Component('components.structure.page-title',['title'=>'Inventory'])@endcomponent
 
+        @Component('components.form-inputs.link',['title'=>'Download','href'=>'#','toolTip'=>'Download list','icon'=>'fas fa-download','classes'=>'btn btn-default btn-xs pull-right','click'=>'confirm_modal("deleteOrgConfirmModal")'])@endcomponent
+
         @Component('components.structure.breadcrump',['home'=>route('home'),'specified'=>'Inventory'])
         @endcomponent
 
@@ -39,7 +41,9 @@
                   <!--@foreach($products as $product)
                     @Component('components.products.single',['paragraph'=>'','product'=>$product])@endcomponent
                   @endforeach-->
-                  @Component('components.pos.cart-preview',['tableID' => 'register-preview','soldProds' => $products])@endcomponent
+                  <div class="col-md-12">
+                    @Component('components.pos.cart-preview',['tableID' => 'register-preview','soldProds' => $products])@endcomponent
+                  </div>
 
                 </div>
               </div>

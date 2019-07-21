@@ -47,10 +47,10 @@
     </ul>
   <div class="row mt-1">
     <div class="col-xs-4">
-      <button id="save-payment-btn" type="button" class="btn btn-success pay-btn btn-block " name="button" onclick="confirm_modal('newPaymentConfirmModal')" disabled>Save</button>
+      <button id="save-payment-btn" type="button" class="btn btn-success pay-btn btn-sm btn-block " name="button" onclick="confirm_modal('newPaymentConfirmModal')" disabled>Save</button>
     </div>
     <div class="col-xs-4">
-      <button type="button" class="btn btn-success cancel-btn btn-block" name="button"><span class="fa fa-times"></span> Cancel</button>
+      <button type="button" class="btn btn-success cancel-btn btn-sm btn-block" name="button"><span class="fa fa-times"></span> Cancel</button>
     </div>
     <div class="col-xs-4">
       <p class="text-bold">Grand Total: {{number_format(session('salePrice'),2)}}/=</p>

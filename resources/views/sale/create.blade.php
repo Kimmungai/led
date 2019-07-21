@@ -31,38 +31,20 @@
                 <!--search form-->
                 @Component('components.forms.search-1',['action'=>'','method'=>'','placeholder'=>'Enter product code...'])@endcomponent
                 <!--end search form-->
-                <!--@Component('components.pos.tabs',['type' => $type])@endcomponent-->
 
-                  <!--<div class="row">
-                    @foreach($products as $product )
-                      @Component('components.products.single',['product' => $product,'addClik' => 'add_prod_to_register(this.id,"register-preview")'])@endcomponent
-                    @endforeach
-                  </div>-->
                   <?php $soldProds = []; ?>
                   <?php if( session('soldProds') != null) {$soldProds = session('soldProds');}?>
 
                   @Component('components.pos.cart-preview',['tableID' => 'register-preview','soldProds' => $soldProds])@endcomponent
 
-                  <div class="form-group code-search @if ($errors->has('user_id')) has-error @endif">
-                    <label class="col-md-2 control-label" style="line-height:35px;text-overflow:ellipse">Sold to </label>
-                    <div class="col-md-8 ">
-                      <div class="input-group input-icon right in-grp1">
-                        <span class="input-group-addon">
-                          <i class="fas fa-users"></i>
-                        </span>
-                        <select class="form-control" name="user_id" id="customer-select">
-                          <option value="">Nyau</option>
-                          <option value="">Mburi</option>
-                        </select>
-                      </div>
-                    </div>
-                    @if ($errors->has('user_id'))
-                      <div class="col-sm-2 jlkdfj1">
-                        <p class="help-block">{{ $errors->first('user_id') }}</p>
-                      </div>
-                    @endif
-                    <div class="clearfix"> </div>
-                  </div>
+
+
+                  <?php $userTypes=[
+                    'staff' => ['name'=>'Staff','value'=>env('STAFF',1)],
+                    'admin' => ['name'=>'Admin','value'=>env('ADMIN',3)],
+                  ]; ?>
+
+                  @Component('components.form-inputs.select',['title' => 'Customer','name'=>'type','icon'=>'fas fa-users','options'=>$userTypes,'required'=>false])@endcomponent
 
             </div>
 
@@ -71,10 +53,15 @@
 
 
 
-                <a href="#" class="btn btn-info br0 pull-right">
-                  Continue
-                </a>
 
+
+              </div>
+              <div class="row mt-2">
+                <div class="col-md-12">
+                  <a href="{{route('payments.create')}}" class="btn btn-info br0 pull-right">
+                    Continue
+                  </a>
+                </div>
               </div>
 
 

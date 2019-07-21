@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>{{Route::currentRouteName()}} | {{env('APP_NAME','Ledamcha')}}</title>
+<title>{{Route::currentRouteName()}} | {{env('APP_NAME','ledamcha')}}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <!-- CSRF Token -->
@@ -68,6 +68,7 @@
 <script src="{{url('js/qty-field.js')}}"></script>
 <script src="{{url('js/image-upload.js')}}"></script>
 <script src="{{url('js/validator.js')}}"></script>
+<script src="{{url('js/edit-doc.js')}}"></script>
 
 @if(Route::is('purchases.create'))
 <script src="{{url('js/image-carousel.js')}}"></script>

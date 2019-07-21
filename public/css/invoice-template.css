@@ -1,30 +1,48 @@
 .invoice-panel{
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
   padding: 1%;
   border: 1px solid #ccc;
 }
 .title-1{
   text-align: center;
+  word-break: break-word;
 }
-.title-1 span{
+.title-1 strong{
   border: 1px solid #000;
   padding: 0 10px;
   font-weight: bold;
   text-transform: capitalize;
   border-radius: 5px;
 }
+.title-1 input{
+  border: 1px solid #000;
+  z-index: -1;
+  padding: 0 10px;
+  font-weight: bold;
+  text-transform: capitalize;
+  border-radius: 5px;
+  max-width: 100px;
+}
 .title-2{
   text-align: center;
   margin: 1% 0;
+  word-break: break-word;
 }
-.title-2 span{
+.title-2 strong{
   padding: 0 10px;
   background-color: #000;
   font-size: 22px;
   text-transform: uppercase;
   border-radius: 5px;
   color: #fff;
+}
+.title-2 input{
+  border: 1px solid #000;
+  padding: 0 10px;
+  font-size: 22px;
+  text-transform: uppercase;
+  border-radius: 5px;
 }
 .heading{
   width: 56%;
@@ -36,10 +54,19 @@
   font-weight: bold;
   font-size: 28px;
   margin: 0;
+  word-break: break-word;
+}
+.heading input{
+  border: 1px solid #000;
+  padding: 0 10px;
+  font-size: 22px;
+  text-transform: uppercase;
+  border-radius: 5px;
 }
 .heading p{
   text-align: center;
   font-size: 14px;
+  word-break: break-word;
 }
 .contacts{
   margin-top: 1em;
@@ -54,6 +81,13 @@
   margin: 0;
   padding: 0;
 }
+.contacts input{
+  border: 1px solid #000;
+  padding: 0 10px;
+  font-size: 22px;
+  text-transform: capitalize;
+  border-radius: 5px;
+}
 .text-white{
   color: #fff;
 }
@@ -65,7 +99,11 @@
   margin-top: 20px;
 }
 .addresse p{
-  border-bottom: 1px dotted #000;
+  /*border-bottom: 1px dotted #000;*/
+  width: 100%;
+  text-decoration: underline;
+  text-decoration-style:dotted;
+  word-break: break-word;
 }
 .doc-ids span{
   font-size: 12px;
@@ -76,6 +114,8 @@
   border-radius: 7px;
   margin-top: 5px;
   padding: 5px 10px;
+  width: 100%;
+  word-break: break-word;
 }
 .invoice-table {
   margin-top: 10px;
@@ -88,15 +128,37 @@
   border:1px solid #000;
   text-align: center;
 }
+.invoice-table td span{
+  cursor: pointer;
+  font-size: 12px;
+}.invoice-table tbody td{
+  text-align: left;
+}
+
 .table-highlight{
   background: #D8D8D8 !important;
 }
 .footnote p{
   text-align: center;
   font-style: italic;
+  word-wrap: break-word;
 }
 .inspector p{
   text-align: left;
   font-style: normal;
   border-bottom: 1px dotted #000;
+}
+
+.doc-ids input{
+  border: 1px solid #000;
+  padding: 0 10px;
+  font-size: 12px;
+  text-transform: capitalize;
+  border-radius: 5px;
+  max-width: 100%;
+}
+.doc-ids span{
+  display: block;
+  word-wrap: break-word;
+  width: 100%;
 }

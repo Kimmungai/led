@@ -36,37 +36,14 @@
               @Component('components.forms.search-1',['action'=>'','method'=>'','placeholder'=>'Search product...'])@endcomponent
               <!--end search form-->
 
-              <!--couresel-->
-              <!--<div class="row">
-                <div class="col-md-12 mt-1">
-                <div class="carousel slide" data-ride="carousel" data-type="multi" data-interval="" id="myCarousel">
-                  <div class="carousel-inner">
-                    <?php $count = 0; ?>
-                    @foreach ($products as $product )
-                      @Component('components.products.carousel',['product' => $product, 'active'=>$count,'click'=>'add_prod('.$product->id.',"purchased-prods")'])'])@endcomponent
-                      <?php $count++; ?>
-                    @endforeach
 
-                  </div>
-                  <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
-                  <a class="right carousel-control" href="#myCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
-                </div>
-                </div>
-              </div>-->
-              <!--end couresel-->
-
-
-              <!--supplied-products-->
-  							<!--<div class="panel-heading">
-  								<h2>Suplied products</h2>
-  							</div>-->
-  							<div class="panel-body no-padding">
+  							<div class="panel-body no-padding mt-3">
   								<table class="table text-center">
   									<thead >
   										<tr >
-  											<th class="text-center">Product</th>
+  											<th class="text-center">Product name</th>
   											<th class="text-center">Supply price</th>
-  											<th class="text-center">Quantity supplied (Kg)</th>
+  											<th class="text-center">Supplied (Kg)</th>
   										</tr>
   									</thead>
   									<tbody id="purchased-prods">
@@ -91,26 +68,12 @@
                 <input type="hidden" name="" id="owed-supplier" class=" form-control" value="@if(session('purchaseCost')){{session('purchaseCost')}}@else 0 @endif" />
                 <input type="hidden" name="user_id" value="@if(isset($supplier)){{$supplier->id}}@endif">
 
-                <div class="form-group code-search @if ($errors->has('user_id')) has-error @endif">
-                  <label class="col-md-2 control-label" style="line-height:35px;text-overflow:ellipse">From </label>
-                  <div class="col-md-8 ">
-                    <div class="input-group input-icon right in-grp1">
-                      <span class="input-group-addon">
-                        <i class="fas fa-user-check"></i>
-                      </span>
-                      <select class="form-control" name="user_id" id="customer-select">
-                        <option value="">Nyau</option>
-                        <option value="">Mburi</option>
-                      </select>
-                    </div>
-                  </div>
-                  @if ($errors->has('user_id'))
-                    <div class="col-sm-2 jlkdfj1">
-                      <p class="help-block">{{ $errors->first('user_id') }}</p>
-                    </div>
-                  @endif
-                  <div class="clearfix"> </div>
-                </div>
+                <?php $userTypes=[
+                  'staff' => ['name'=>'Staff','value'=>env('STAFF',1)],
+                  'admin' => ['name'=>'Admin','value'=>env('ADMIN',3)],
+                ]; ?>
+
+                @Component('components.form-inputs.select',['title' => 'Supplier','name'=>'type','icon'=>'fas fa-user-tag','options'=>$userTypes,'required'=>false])@endcomponent
 
             </form>
 

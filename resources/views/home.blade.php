@@ -24,19 +24,23 @@
         @endcomponent
 
 
-				<div class="graphs">
-					<div class="col_3">
+				<div class="row">
+            @Component('components.dashboard.button',[ 'name' => 'Sell', 'icon' => 'fa fa-cash-register', 'link' => route('sales.create') ])
+            @endcomponent
+
+            @Component('components.dashboard.button',[ 'name' => 'Receive', 'icon' => 'fa fa-calculator', 'link' => route('purchases.create') ])
+            @endcomponent
+        </div>
+
+            <div class="graphs mb-1 mt-1">
+    					<div class="col_3">
 
             @foreach( $tabs as $tab )
               @Component('components.dashboard.tabs',['tab' => $tab])
               @endcomponent
             @endforeach
 
-            @Component('components.dashboard.button',[ 'name' => 'New Sale', 'icon' => 'fa fa-cash-register', 'link' => route('sales.create') ])
-            @endcomponent
 
-            @Component('components.dashboard.button',[ 'name' => 'Receive inventory', 'icon' => 'fa fa-calculator', 'link' => route('purchases.create') ])
-            @endcomponent
 
 
 						<div class="clearfix"> </div>

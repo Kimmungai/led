@@ -511,7 +511,7 @@ footer {
     width: 100%;
     border-top: 1px solid #eff0f4;
     text-align:center;
-    position: fixed;
+    /*position: fixed;*/
     bottom: 0;
 }
 footer  p {
@@ -1844,15 +1844,15 @@ ul.dropdown-menu.drp-mnu li a i {
 .main-content {
     margin-left: 200px;
     background:#F8F8F8;
-    min-height: 1000px;
+    /*min-height: 1000px;*/
 }
 .main-content2{
-	min-height: 1250px !important;
+	/*min-height: 1250px !important;*/
 }
 .main-content5{
-	min-height: 1030px !important;
+	/*min-height: 1030px !important;*/
 }
-.main-content6{
+/*.main-content6{
 	min-height: 1700px !important;
 }
 .main-content3{
@@ -1860,7 +1860,7 @@ ul.dropdown-menu.drp-mnu li a i {
 }
 .main-content4{
 	min-height: 2275px !important;
-}
+}*/
 /*-- switches1 --*/
 .switches1 {
     margin:2.3em 1em 0;
@@ -2871,9 +2871,9 @@ button.note-color-btn {
 	background:#fff;
 	padding:2em;
 }
-.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+/*.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
   border-top: none !important;
-}
+}*/
 .tab-content > .active {
   display: block;
   visibility: visible;
@@ -3441,19 +3441,19 @@ div.checker input {
 .icon-state-warning {
   color:#b8c9f1;
 }
-.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+/*.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
   font-size: 0.85em;
   color:#000;
-}
+}*/
 .mailbox-content table tbody tr:hover {
   background: #EFF0F4;
 }
-.table td, .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+/*.table td, .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
   padding:15px !important;
 }
 .table > thead > tr > th {
   border-bottom:1px solid #ACACAC !important;
-}
+}*/
 .badge-success, .bg-green, .bootstrap-switch-success, .btn-success {
 	border: none;
     background:#27cce4;
@@ -4430,9 +4430,9 @@ h1.blank,h3.blank1 {
 .grd_tble {
     margin-bottom: 0px;
 }
-.main-content1 {
+/*.main-content1 {
     min-height: 1080px !important;
-}
+}*/
 /*-- //grid_page --*/
 /*-- widget_page --*/
 .flexi_bottom {
@@ -5331,15 +5331,15 @@ canvas#pie {
 .editor {
     padding: 1em 1.2em 2.5em 1.2em;
 }
-.table td, .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+/*.table td, .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
     padding: 16px !important;
-}
+}*/
 .control2 {
     height: 272px;
 }
-.main-content6 {
+/*.main-content6 {
     min-height: 1735px !important;
-}
+}*/
 .signin:after {
     background: url(../images/6.png) no-repeat 0px 0px;
     width: 520px;
@@ -5472,12 +5472,12 @@ div#vmap {
 .bs-example1 {
   padding: 10px;
 }
-.table td, .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+/*.table td, .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
   padding: 12px !important;
 }
 .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
   font-size: 12px;
-}
+}*/
 .col_2 {
   padding: 5px;
 }
@@ -5724,7 +5724,7 @@ h4.asd label {
     min-height: 1065px !important;
 }
 .main-content {
-    min-height: 975px;
+    /*min-height: 975px;*/
 }
 .input-group {
     width: 80%;
@@ -6660,12 +6660,12 @@ button.btn.btn-success {
 .widget_5 {
   margin: 0;
 }
-.table td, .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+/*.table td, .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
   padding: 5px !important;
 }
 td.head {
   font-size:1em !important;
-}
+}*/
 div#container-speed{
 	width:210px !important;
 	height:150px !important;
@@ -7463,10 +7463,10 @@ h1.blank, h3.blank1 {
     font-size: 1.3em;
     margin: 0 0 0.7em;
 }
-.table td, .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+/*.table td, .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
     padding: 5px !important;
     display: block;
-}
+}*/
 .main-content1 {
     min-height: 1480px !important;
 }
