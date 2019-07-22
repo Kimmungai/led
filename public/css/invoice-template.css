@@ -32,7 +32,7 @@
 .title-2 strong{
   padding: 0 10px;
   background-color: #000;
-  font-size: 22px;
+  font-size: 20px;
   text-transform: uppercase;
   border-radius: 5px;
   color: #fff;
@@ -52,7 +52,7 @@
   text-transform: uppercase;
   text-align: center;
   font-weight: bold;
-  font-size: 28px;
+  font-size: 26px;
   margin: 0;
   word-break: break-word;
 }
@@ -65,7 +65,7 @@
 }
 .heading p{
   text-align: center;
-  font-size: 14px;
+  font-size: 12px;
   word-break: break-word;
 }
 .contacts{

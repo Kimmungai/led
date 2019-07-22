@@ -32,22 +32,27 @@
 
 				<div class="graphs">
 
-			<!-- switches -->
-		<div class="switches">
+          <!--invoice template-->
+          <div class="row">
 
-			<div class="col-4">
-        <!--invoice template-->
-        @Component('components.docs.quotation-template',['docId'=>'quote'])@endcomponent
+            <div class="col-md-12">
+
+              @Component('components.docs.quotation-template',['docId'=>'invoice'])@endcomponent
+
+            </div>
+
+          </div>
+
+          <div class="row mt-1 mb-1">
+            <div class="col-md-12">
+              @Component('components.form-inputs.link',['title'=>'Save','href'=>route('sales.create'),'toolTip'=>'download quote','icon'=>'fas fa-download','classes'=>'btn btn-default btn-xs pull-right mr-1'])@endcomponent
+
+              @Component('components.form-inputs.link',['title'=>'Print','href'=>'#','toolTip'=>'print quote','icon'=>'fas fa-print','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'window.print()'])@endcomponent
+
+              @Component('components.form-inputs.link',['title'=>'Share','href'=>'#','toolTip'=>'share quote','icon'=>'fas fa-share-alt','classes'=>'btn btn-default btn-xs pull-right mr-1'])@endcomponent
+            </div>
 
         <!--end invoice template-->
-
-
-
-
-				<div class="clearfix"></div>
-			</div>
-		</div>
-		<!-- //switches -->
 
 
 

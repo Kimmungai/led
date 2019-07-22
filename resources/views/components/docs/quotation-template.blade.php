@@ -85,11 +85,14 @@
 
     </div>
 
-    <div class="row">
-      <div class="col-md-12">
-        <input type="text" name="" value="" placeholder="Product code">
-
-        <!--<a href="#" class="btn btn-xs btn-default" onclick="add_table_row('{{$docId}}-table-body','quote')"><span class="fas fa-plus-circle"></span> Row</a>-->
+    <div class="row mt-1">
+      <div class="col-md-6">
+        <div class="input-group input-icon right in-grp1">
+          <span class="input-group-addon">
+            <i class="fas fa-search"></i>
+          </span>
+          <input id="search" name="search" class="form-control1" type="search" value="" placeholder="Product code..." >
+        </div>
       </div>
     </div>
 
