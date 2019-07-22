@@ -19,7 +19,7 @@
 
      <!--body wrapper start-->
 			<div id="page-wrapper">
-        @Component('components.structure.page-title',['title'=>'Record a new supply'])@endcomponent
+        @Component('components.structure.page-title',['title'=>'Receiving'])@endcomponent
 
         <div class="row">
           <div class="col-md-12">
@@ -37,17 +37,18 @@
             <div class="purchase-main">
 
               <!--search form-->
-              @Component('components.forms.search-1',['action'=>'','method'=>'','placeholder'=>'Product code...'])@endcomponent
+              @Component('components.forms.search-1',['action'=>'','method'=>'','placeholder'=>'Product code...','keyup' => 'search_product(this.value,\'purchased-prods\')'])@endcomponent
+              @Component('components.search.results-panel',['action'=>'','method'=>'','placeholder'=>'Product code...'])@endcomponent
               <!--end search form-->
 
 
   							<div class="panel-body no-padding mt-3">
-  								<table class="table text-center">
-  									<thead >
+  								<table class="table">
+  									<thead>
   										<tr >
-  											<th class="text-center">Product name</th>
-  											<th class="text-center">Supply price</th>
-  											<th class="text-center">Supplied (Kg)</th>
+  											<th >Product name</th>
+  											<th >Supply price</th>
+  											<th >Supplied (Kg)</th>
   										</tr>
   									</thead>
   									<tbody id="purchased-prods">
@@ -56,7 +57,7 @@
 
                     @foreach ( $purchaseLists as $purchaseList)
                       <tr data-id="{{$purchaseList['id']}}" id="purchased-product-{{$purchaseList['id']}}">
-                        <td data-name="{{$purchaseList['name']}}" id="name-prod-{{$purchaseList['id']}}" >{{$purchaseList['name']}}</td>
+                        <td data-name="{{$purchaseList['name']}}" id="name-prod-{{$purchaseList['id']}}" ><span class="fas fa-times-circle pointer" onclick="remove_row('purchased-product-{{$purchaseList['id']}}')"></span> {{$purchaseList['name']}}</td>
                         <td data-cost="{{$purchaseList['cost']}}" id="cost-prod-{{$purchaseList['id']}}">{{$purchaseList['cost']}}</td>
                         <td><input id="qty-prod-{{$purchaseList['id']}}" type="number" value="{{$purchaseList['qty']}}" onchange="save_product_list('purchased-prods')"/></td>
                       </tr>

@@ -5,7 +5,7 @@
       <span class="input-group-addon">
         <i class="fa fa-search"></i>
       </span>
-      <input  class="form-control1" type="text" placeholder="{{$placeholder}}">
+      <input  class="form-control1 search-input" type="text" placeholder="{{$placeholder}}" @if(isset($keyup)) onkeyup="{{$keyup}}" @endif>
     </div>
     <div class="clearfix"> </div>
   </div>

@@ -20,7 +20,7 @@ class ProductAjaxController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function get_product(Request $request)
     {
       $request->validate(['id'=>'required|numeric']);
@@ -39,5 +39,11 @@ class ProductAjaxController extends Controller
     {
       session(['prodType' => $type]);
       return redirect(route('sales.create'));
+    }
+
+    public function search_products(Request $request)
+    {
+      $products = Product::where('id', 'LIKE' ,$request->prod_cod.'%' )->get();
+      return $products;
     }
 }
