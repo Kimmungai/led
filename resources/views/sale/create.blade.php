@@ -29,7 +29,7 @@
             <div class="col-md-12">
               <div class="products-selection-section">
                 <!--search form-->
-                @Component('components.forms.search-1',['action'=>'','method'=>'','placeholder'=>'Enter product code...'])@endcomponent
+                @Component('components.forms.search-1',['action'=>'','method'=>'','placeholder'=>'Product code...'])@endcomponent
                 <!--end search form-->
 
                   <?php $soldProds = []; ?>

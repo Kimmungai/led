@@ -43,9 +43,9 @@ class PurchasesController extends Controller
         $prodRegSideFields = $this->product_reg_side_fields();
         $orgs = Org::all();
         $products = Product::all();
-        $supplier = User::where('type',env('SUPPLIER',4))->first();
+        $suppliers = User::where('type',env('SUPPLIER',4))->get();
 
-        return view('purchase.create',compact('orgs','prodRegMainFields','prodRegSideFields','products','supplier'));
+        return view('purchase.create',compact('orgs','prodRegMainFields','prodRegSideFields','products','suppliers'));
     }
 
     /**
@@ -80,7 +80,7 @@ class PurchasesController extends Controller
         Session::flash('message', env("SAVE_SUCCESS_MSG","Purchase saved succesfully!"));
 
 
-        return redirect(route('purchases.index'));
+        return redirect(route('stock.index'));
     }
 
     /**

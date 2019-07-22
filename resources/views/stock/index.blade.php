@@ -32,7 +32,7 @@
           <div class="col-md-12">
             <div class="products-selection-section">
               <!--search form-->
-              @Component('components.forms.search-1',['action'=>'','method'=>'','placeholder'=>'Search product...'])@endcomponent
+              @Component('components.forms.search-1',['action'=>'','method'=>'','placeholder'=>'Product code...'])@endcomponent
               <!--end search form-->
               <!--@Component('components.pos.tabs',['type'=>$type])@endcomponent-->
 
@@ -42,7 +42,22 @@
                     @Component('components.products.single',['paragraph'=>'','product'=>$product])@endcomponent
                   @endforeach-->
                   <div class="col-md-12">
-                    @Component('components.pos.cart-preview',['tableID' => 'register-preview','soldProds' => $products])@endcomponent
+                    <div class="table-responsive">
+                      <table class="table table-bordered">
+                        <thead>
+                          <th>#</th>
+                          <th>Code</th>
+                          <th>Name</th>
+                          <th>Price (Ksh.)</th>
+                          <th>Inventory (Kg)</th>
+                        </thead>
+                        <tbody>
+
+                          @Component('components.stock.preview',['products' => $products])@endcomponent
+
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
 
                 </div>

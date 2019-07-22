@@ -40,7 +40,7 @@
               @foreach( $purchases as $purchase )
               <tr>
                 <th><a href="#" style="color:inherit"></a> {{$count}}</th>
-                <td>{{$purchase->user->name}}</td>
+                <td>@if($purchase->user){{$purchase->user->name}}@endif</td>
                 <td>Ksh. {{number_format($purchase->amountOwed,2)}}</td>
                 <td>{{ \Carbon\Carbon::parse($purchase->created_at)->diffForHumans() }}</td>
                 @if( $purchase->amountOwed <= $purchase->amountPaid)

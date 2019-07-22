@@ -21,7 +21,11 @@
 			<div id="page-wrapper">
         @Component('components.structure.page-title',['title'=>'Record a new supply'])@endcomponent
 
-        @Component('components.form-inputs.link',['title'=>'New product','href'=>route('trash.empty'),'toolTip'=>'Create new product','icon'=>'fas fa-plus-circle','classes'=>'btn btn-default btn-xs pull-right','click'=>'confirm_modal("createProductModal")'])@endcomponent
+        <div class="row">
+          <div class="col-md-12">
+            @Component('components.form-inputs.link',['title'=>'New product','href'=>route('trash.empty'),'toolTip'=>'Create new product','icon'=>'fas fa-plus-circle','classes'=>'btn btn-default btn-xs pull-right','click'=>'confirm_modal("createProductModal")'])@endcomponent
+          </div>
+        </div>
 
         @Component('components.structure.breadcrump',['home'=>route('home'),'specified'=>'New supply'])
         @endcomponent
@@ -33,7 +37,7 @@
             <div class="purchase-main">
 
               <!--search form-->
-              @Component('components.forms.search-1',['action'=>'','method'=>'','placeholder'=>'Search product...'])@endcomponent
+              @Component('components.forms.search-1',['action'=>'','method'=>'','placeholder'=>'Product code...'])@endcomponent
               <!--end search form-->
 
 
@@ -53,7 +57,7 @@
                     @foreach ( $purchaseLists as $purchaseList)
                       <tr data-id="{{$purchaseList['id']}}" id="purchased-product-{{$purchaseList['id']}}">
                         <td data-name="{{$purchaseList['name']}}" id="name-prod-{{$purchaseList['id']}}" >{{$purchaseList['name']}}</td>
-                        <td data-sku="{{$purchaseList['sku']}}" id="sku-prod-{{$purchaseList['id']}}">{{$purchaseList['sku']}}</td>
+                        <td data-cost="{{$purchaseList['cost']}}" id="cost-prod-{{$purchaseList['id']}}">{{$purchaseList['cost']}}</td>
                         <td><input id="qty-prod-{{$purchaseList['id']}}" type="number" value="{{$purchaseList['qty']}}" onchange="save_product_list('purchased-prods')"/></td>
                       </tr>
                    @endforeach
@@ -68,12 +72,7 @@
                 <input type="hidden" name="" id="owed-supplier" class=" form-control" value="@if(session('purchaseCost')){{session('purchaseCost')}}@else 0 @endif" />
                 <input type="hidden" name="user_id" value="@if(isset($supplier)){{$supplier->id}}@endif">
 
-                <?php $userTypes=[
-                  'staff' => ['name'=>'Staff','value'=>env('STAFF',1)],
-                  'admin' => ['name'=>'Admin','value'=>env('ADMIN',3)],
-                ]; ?>
-
-                @Component('components.form-inputs.select',['title' => 'Supplier','name'=>'type','icon'=>'fas fa-user-tag','options'=>$userTypes,'required'=>false])@endcomponent
+                @Component('components.form-inputs.model-select',['title' => 'Supplier','name'=>'user_id','icon'=>'fas fa-user-check','options'=>$suppliers,'required'=>false])@endcomponent
 
             </form>
 
@@ -82,8 +81,16 @@
           </div>
 
 
-
         </div>
+
+        <div class="row mt-2">
+          <div class="col-md-12">
+            <a href="#" class="btn btn-info br0 pull-right" onclick="confirm_modal('newPurchaseConfirmModal')">
+              Save
+            </a>
+          </div>
+        </div>
+
         <!--custom page design ends-->
 
 

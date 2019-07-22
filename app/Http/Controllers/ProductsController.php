@@ -21,7 +21,7 @@ class ProductsController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
 
     /**
      * Display a listing of the resource.
@@ -32,9 +32,9 @@ class ProductsController extends Controller
     {
       if( session('prodType') != null ){ $type = session('prodType'); }else{$type=0;}//active tab is all
       if( $type ){
-        $products = Product::where('type',$type)->paginate(env('ITEMS_PER_PAGE',3));
+        $products = Product::orderBy('created_at','DESC')->where('type',$type)->paginate(env('ITEMS_PER_PAGE',3));
       }else{
-        $products = Product::paginate(env('ITEMS_PER_PAGE',3));
+        $products = Product::orderBy('created_at','DESC')->paginate(env('ITEMS_PER_PAGE',3));
       }
         return view('stock.index',compact('products','type'));
     }
@@ -59,6 +59,7 @@ class ProductsController extends Controller
     {
         $expenseList = [];
         $product = Product::create($request->only(['name','sku','img1','description','cost','type']));
+        $product->update(['salePrice' => $request->cost]);
         //$expense = $request->only(['cost','suppliedQuantity']);
         //$expense['product_id'] = $product->id;
         //$newExpence = Expense::create($expense);
