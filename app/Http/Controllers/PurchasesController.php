@@ -58,11 +58,11 @@ class PurchasesController extends Controller
     {
         $purchase = new Purchase;
         $purchase->user_id = $request->user_id;
-        $purchase->amountOwed = session('purchaseCost');
+        $purchase->amountOwed = session('totalCost');
         $purchase->save();
 
         $purchaseLists = [];
-        if( session('purchaseList') != null) {$purchaseLists = session('purchaseList');}
+        if( session('list') != null) {$purchaseLists = session('list');}
 
         foreach ($purchaseLists as $purchaseList) {
           $expense = new Expense;
@@ -74,13 +74,13 @@ class PurchasesController extends Controller
 
 
 
-        session(['purchaseList' => []]);
-        session(['purchaseCost' => 0]);
+        session(['list' => []]);
+        session(['totaCost' => 0]);
 
-        Session::flash('message', env("SAVE_SUCCESS_MSG","Purchase saved succesfully!"));
+        Session::flash('message', env("SAVE_SUCCESS_MSG","Saved succesfully!"));
 
 
-        return redirect(route('stock.index'));
+        return redirect(route('home'));
     }
 
     /**

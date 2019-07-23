@@ -19,9 +19,9 @@
 
      <!--body wrapper start-->
 			<div id="page-wrapper">
-        @Component('components.structure.page-title',['title'=>'All purchases'])@endcomponent
+        @Component('components.structure.page-title',['title'=>'All supplies'])@endcomponent
 
-        @Component('components.structure.breadcrump',['home'=>route('home'),'purchases'=>''])
+        @Component('components.structure.breadcrump',['home'=>route('home'),'specified'=>'Supplies'])
         @endcomponent
 
         <!--custom page design starts-->
@@ -33,7 +33,6 @@
               <th>Owed</th>
               <th>Date</th>
               <th>Status</th>
-              <th>Action</th>
             </thead>
             <tbody>
               <?php $count = 1; ?>
@@ -48,7 +47,6 @@
                 @else
                 <td><span class="fa fa-circle text-danger"></span> Unpaid</td>
                 @endif
-                <td><a href="#" class="btn btn-xs btn-default"><span class="fa fa-eye"></span> Open</a></td>
               </tr>
               <?php $count++; ?>
               @endforeach

@@ -51,8 +51,12 @@ function update_a_table(prodID,tableID)
 
       var row = get_specific_table_row(data,tableID);
 
+      if( !row ){ alert("Item already in list!");return; }
+
       $("#"+tableID).append(row);
+      calc_table_sum(tableID);
       hide_search_results();
+      save_product_list(tableID)
 
     });
 }
@@ -63,20 +67,25 @@ function hide_search_results()
   $(".search-input").val('');
 }
 
-function remove_row(id)
+function remove_row(id,tableID)
 {
   $("#"+id).remove();
+  calc_table_sum(tableID);
+  save_product_list(tableID)
 }
 
 function get_specific_table_row(data,tableID)
 {
   if( tableID == 'purchased-prods')
   {
-    var row = '<tr data-id="'+data.id+'" id="purchased-product-'+data.id+'">';
-    row += '<td data-name="'+data.name+'" id="name-prod-'+data.id+'" ><span class="fas fa-times-circle pointer" onclick="remove_row(\'purchased-product-'+data.id+'\')"></span> '+data.name+'</td>';
-    row += '<td data-cost="'+data.cost+'" id="cost-prod-'+data.id+'">'+data.cost+'</td>';
-    row += '<td><input id="qty-prod-'+data.id+'" type="number" value="1" onchange="save_product_list(\'purchased-prods\')"/></td>';
-    row += '</tr>';
-    return row;
+    if( !$("#purchased-product-"+data.id).length ){
+      var row = '<tr data-id="'+data.id+'" id="purchased-product-'+data.id+'">';
+      row += '<td data-name="'+data.name+'" id="name-prod-'+data.id+'" ><span class="fas fa-times-circle pointer" onclick="remove_row(\'purchased-product-'+data.id+'\',\''+tableID+'\')"></span> '+data.name+'</td>';
+      row += '<td ><input  id="cost-prod-'+data.id+'" type="number" value="'+data.salePrice+'" onchange="save_product_list(\'purchased-prods\')"/></td>';
+      row += '<td><input id="qty-prod-'+data.id+'" type="number" value="1" onchange="save_product_list(\'purchased-prods\')"/></td>';
+      row += '</tr>';
+      return row;
+    }
+    return 0;
   }
 }

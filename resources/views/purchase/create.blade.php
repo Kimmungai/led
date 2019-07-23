@@ -53,12 +53,12 @@
   									</thead>
   									<tbody id="purchased-prods">
                     <?php $purchaseLists = []; ?>
-                    <?php if( session('purchaseList') != null) {$purchaseLists = session('purchaseList');}?>
+                    <?php if( session('list') != null) {$purchaseLists = session('list');}?>
 
                     @foreach ( $purchaseLists as $purchaseList)
                       <tr data-id="{{$purchaseList['id']}}" id="purchased-product-{{$purchaseList['id']}}">
-                        <td data-name="{{$purchaseList['name']}}" id="name-prod-{{$purchaseList['id']}}" ><span class="fas fa-times-circle pointer" onclick="remove_row('purchased-product-{{$purchaseList['id']}}')"></span> {{$purchaseList['name']}}</td>
-                        <td data-cost="{{$purchaseList['cost']}}" id="cost-prod-{{$purchaseList['id']}}">{{$purchaseList['cost']}}</td>
+                        <td data-name="{{$purchaseList['name']}}" id="name-prod-{{$purchaseList['id']}}" ><span class="fas fa-times-circle pointer" onclick="remove_row('purchased-product-{{$purchaseList['id']}}','purchased-prods')"></span> {{$purchaseList['name']}}</td>
+                        <td  ><input id="cost-prod-{{$purchaseList['id']}}" type="number" value="{{$purchaseList['cost']}}" onchange="save_product_list('purchased-prods')"/></td>
                         <td><input id="qty-prod-{{$purchaseList['id']}}" type="number" value="{{$purchaseList['qty']}}" onchange="save_product_list('purchased-prods')"/></td>
                       </tr>
                    @endforeach
@@ -70,10 +70,20 @@
   							</div>
               <form id="new-purchase-form" class="" action="{{route('purchases.store')}}" method="post" onsubmit="confirm_modal('newPurchaseConfirmModal')">
                 @csrf
-                <input type="hidden" name="" id="owed-supplier" class=" form-control" value="@if(session('purchaseCost')){{session('purchaseCost')}}@else 0 @endif" />
+                <input type="hidden" name="" id="total-cost" class=" form-control" value="@if(session('totalCost')){{session('totalCost')}}@else 0 @endif" />
                 <input type="hidden" name="user_id" value="@if(isset($supplier)){{$supplier->id}}@endif">
 
-                @Component('components.form-inputs.model-select',['title' => 'Supplier','name'=>'user_id','icon'=>'fas fa-user-check','options'=>$suppliers,'required'=>false])@endcomponent
+                <div class="row">
+
+                  <div class="col-md-8">
+                    @Component('components.form-inputs.model-select',['title' => 'Supplier','name'=>'user_id','icon'=>'fas fa-user-check','options'=>$suppliers,'required'=>false])@endcomponent
+                  </div>
+                  <div class="col-md-4">
+                    <span class="total-cost"><strong>Total:</strong> KES @if(session('totalCost')){{number_format(session('totalCost'),2)}}@else 0 @endif</span>
+                  </div>
+
+                </div>
+
 
             </form>
 
@@ -103,7 +113,7 @@
     <!--modals-->
     @Component('components.modals.create-prod',['title'=>'New product','mainFields'=>$prodRegMainFields,'sideFields'=>$prodRegSideFields,'modalID'=>'createProductModal','cancelBtnTitle'=>'Cancel','saveBtnTitle'=>'Create & add','url'=>route('trash.empty')])@endcomponent
     @Component('components.modals.confirm',['title'=>'Save new product','question'=>'Are you sure you want to save product?','modalID'=>'newProdConfirmModal','cancelBtnTitle'=>'Cancel','saveBtnTitle'=>'Confirm save','formID'=>'new-prod-form'])@endcomponent
-    @Component('components.modals.confirm',['title'=>'Save new purchase','question'=>'Are you sure you want to save purchase?','modalID'=>'newPurchaseConfirmModal','cancelBtnTitle'=>'Cancel','saveBtnTitle'=>'Confirm save','formID'=>'new-purchase-form'])@endcomponent
+    @Component('components.modals.confirm',['title'=>'Receiving','question'=>'Are you sure you want to save data?','modalID'=>'newPurchaseConfirmModal','cancelBtnTitle'=>'Cancel','saveBtnTitle'=>'Confirm save','formID'=>'new-purchase-form'])@endcomponent
 
 @if(count($errors))
   <script>

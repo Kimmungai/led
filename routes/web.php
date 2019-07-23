@@ -87,3 +87,6 @@ Route::delete('org-remove/{id}','OrgController@org_remove')->name('org.remove');
 
 //image upload ajax
 Route::post('img-tmp','Images\ImageAjaxController@img_tmp');
+
+//Extras
+Route::post('save-list','HomeController@save_list')->name('save.list');
