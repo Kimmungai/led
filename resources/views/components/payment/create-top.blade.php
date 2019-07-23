@@ -30,7 +30,7 @@
           <i class="fas fa-money-bill-wave"></i>
         </span>
 
-          <input  type="text" name="amountReceived" id="amountReceived" class=" form-control" value="" placeholder="Amount received" />
+          <input  type="number" name="amountReceived" id="amountReceived" class=" form-control" value="" placeholder="Amount received" />
 
       </div>
       <div class="clearfix"> </div>

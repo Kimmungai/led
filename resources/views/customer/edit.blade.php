@@ -32,7 +32,7 @@
               'staff' => ['name'=>'Staff','value'=>env('STAFF',1)],
               'admin' => ['name'=>'Admin','value'=>env('ADMIN',3)],
               'supplier' => ['name'=>'Supplier','value'=>env('SUPPLIER',4)],
-              'customer' => ['name'=>'Customer','value'=>env('SUPPLIER',2)],
+              'customer' => ['name'=>'Customer','value'=>env('CUSTOMER',2)],
             ]; ?>
             @Component('components.form-inputs.select',['title' => 'Type','name'=>'type','icon'=>'fas fa-user-tag','options'=>$userTypes,'required'=>false,'selected' => $user->type])@endcomponent
             @Component('components.form-inputs.input',['title' => 'Name','name'=>'name','type'=>'text','icon'=>'fas fa-user','placeholder' => 'Enter name','required'=>true,'value' =>$user->name])@endcomponent
@@ -57,7 +57,7 @@
             @foreach ($user->UserTransactions as $transaction) <?php $credit += $transaction->credit;$debit += $transaction->debit;  ?> @endforeach
             <?php $wallet = $credit -$debit; ?>
             @Component('components.form-inputs.input',['title' => 'Name','name'=>'','type'=>'text','icon'=>'fas fa-wallet','placeholder' => 'Enter name','required'=>false,'value' =>'Ksh. '.number_format($wallet,2).'','noLabel'=>true,'disabled'=>true])@endcomponent
-            @Component('components.form-inputs.select',['title' => 'Method','name'=>'paymentMethod','icon'=>'fas fa-dollar','options'=>$paymentTypes,'required'=>false])@endcomponent
+            @Component('components.form-inputs.select',['title' => 'Method','name'=>'paymentMethod','icon'=>'fas fa-dollar','options'=>$paymentTypes,'required'=>false,'selected' => ''])@endcomponent
             @Component('components.form-inputs.input',['title' => 'Amount','name'=>'credit','type'=>'number','icon'=>'fas fa-money-bill','placeholder' => 'Enter amount','required'=>false,'value' =>0,'min'=>0])@endcomponent
 
 

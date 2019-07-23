@@ -11,7 +11,6 @@
 
 		<!-- main content start-->
 		<div class="main-content">
-
 			<!-- header-starts -->
       @Component('components.structure.header-menu')
       @endcomponent
@@ -126,7 +125,7 @@
 @if( session('newProduct') )
   <script>
   $(document).ready(function(){
-  add_prod({{session('newProduct')['id']}},"purchased-prods");
+  update_a_table({{session('newProduct')['id']}},"purchased-prods");
   });
   </script>
 @endif

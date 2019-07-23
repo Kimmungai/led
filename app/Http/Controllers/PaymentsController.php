@@ -60,6 +60,7 @@ class PaymentsController extends Controller
     public function store(Request $request)
     {
         $sale_id = session('sale_id');
+        $acc_bal = 0;
 
         if(!$sale_id){
           session(['soldProds' => []]);
@@ -71,9 +72,22 @@ class PaymentsController extends Controller
         $sale = Sale::find($sale_id);
         $user = User::find($sale->user_id);
 
+        if( $request->paymentMethod != 1 )
+        {
+          if( $request->amountReceived > 0 ){
+          $this->fundUserAcc( $request->amountReceived - abs($request->balance),$user->id);}
+          $acc_bal = $this->get_user_acc_bal($user);
+          $amountReceived = 0;
+          if( $acc_bal >= $request->balance ){ $amountReceived = $request->balance;}
+
+        }else{
+
+          $amountReceived = $request->amountReceived;
+        }
+
         Sale::where('id',$sale_id)->update([
           'paymentMethod' => $request->paymentMethod,
-          'amountReceived' => $request->amountReceived,
+          'amountReceived' => $amountReceived,
           'transacion_code' => $request->transacion_code,
           'cheque_no' => $request->cheque_no,
         ]);
@@ -84,7 +98,9 @@ class PaymentsController extends Controller
           $debit->user_id = $sale->user_id;
           $debit->debit = abs($request->balance);
           $debit->save();
-          $this->create_invoice($user,$sale,$debit->debit,$name='invoice');
+          if( $acc_bal <= $request->balance || $request->paymentMethod == 1 ){
+            $this->create_invoice($user,$sale,$debit->debit,$name='invoice');
+          }
         }
         /*else{
           $credit = new UserTransactions;
@@ -169,5 +185,13 @@ class PaymentsController extends Controller
       }
 
       return $credit - $debit;
+    }
+
+    private function fundUserAcc($amount,$user_id)
+    {
+      $credit = new UserTransactions;
+      $credit->user_id = $user_id;
+      $credit->credit = $amount;
+      $credit->save();
     }
 }
