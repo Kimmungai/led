@@ -124,7 +124,15 @@
   background: #D8D8D8;
 }
 
-.invoice-table th,td,tr{
+.invoice-table td{
+  border:1px solid #000;
+  text-align: center;
+}
+.invoice-table th{
+  border:1px solid #000;
+  text-align: center;
+}
+.invoice-table tr{
   border:1px solid #000;
   text-align: center;
 }

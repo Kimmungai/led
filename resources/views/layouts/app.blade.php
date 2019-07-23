@@ -19,6 +19,8 @@
 <link rel="stylesheet" href="{{url('css/reg-form.css')}}">
 <link rel="stylesheet" href="{{url('css/pos-design.css')}}">
 <link rel="stylesheet" href="{{url('css/search.css')}}">
+<link rel="stylesheet" href="{{url('css/jquery-ui.min.css')}}">
+
 @if(Route::is('payments.create'))
 <link rel="stylesheet" href="{{url('css/payment-design.css')}}">
 @endif
@@ -71,6 +73,7 @@
 <script src="{{url('js/validator.js')}}"></script>
 <script src="{{url('js/edit-doc.js')}}"></script>
 <script src="{{url('js/search.js')}}"></script>
+<script src="{{url('js/jquery-ui.min.js')}}"></script>
 
 @if(Route::is('purchases.create'))
 <script src="{{url('js/image-carousel.js')}}"></script>

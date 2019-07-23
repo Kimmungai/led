@@ -9,7 +9,17 @@
         @if(isset($status))
         <h5 class="text-center">{{$status}} @if(isset($amount)) (<small>ksh. </small>{{number_format($amount,2)}}) @endif</h5>
         @endif
+
       </div>
     </a>
   </div>
+
+@if(isset($selectable))
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-4">
+      <input type="checkbox" name="" value="{{$invoice->id}}">
+    </div>
+  </div>
+@endif
+
 </div>
