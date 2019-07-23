@@ -74,8 +74,8 @@ class PurchasesController extends Controller
 
 
 
-        session(['list' => []]);
-        session(['totaCost' => 0]);
+        session(['purchaseList' => []]);
+        session(['purchaseCost' => 0]);
 
         Session::flash('message', env("SAVE_SUCCESS_MSG","Saved succesfully!"));
 
@@ -162,6 +162,6 @@ class PurchasesController extends Controller
     {
       session(['purchaseList' => $request->suppliedProds]);
       session(['purchaseCost' => $request->purchaseCost]);
-      return 1;
+      /*return 1;*/
     }
 }

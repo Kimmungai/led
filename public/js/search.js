@@ -88,4 +88,16 @@ function get_specific_table_row(data,tableID)
     }
     return 0;
   }
+  else if( tableID == 'sold-prods' )
+  {
+    if( !$("#sold-product-"+data.id).length ){
+      var row = '<tr data-id="'+data.id+'" id="sold-product-'+data.id+'">';
+      row += '<td data-name="'+data.name+'" id="name-prod-'+data.id+'" ><span class="fas fa-times-circle pointer" onclick="remove_row(\'sold-product-'+data.id+'\',\''+tableID+'\')"></span> '+data.name+'</td>';
+      row += '<td ><input  id="cost-prod-'+data.id+'" type="number" value="'+data.salePrice+'" onchange="save_product_list(\'sold-prods\')"/></td>';
+      row += '<td><input id="qty-prod-'+data.id+'" type="number" value="1" onchange="save_product_list(\'sold-prods\')"/></td>';
+      row += '</tr>';
+      return row;
+    }
+    return 0;
+  }
 }

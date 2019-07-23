@@ -1,4 +1,4 @@
-<div class="form-group @if ($errors->has($name)) has-error @endif">
+<div class="form-group @if ($errors->has($name)) has-error @endif @if(isset($classes)) {{$classes}} @endif">
   @if( !isset($noLabel) )
   <label class="col-md-2 control-label" style="line-height:35px;text-overflow:ellipse">{{$title}} @if($required) <span class="text-danger">*</span> @endif</label>
   @endif

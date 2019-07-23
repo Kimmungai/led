@@ -20,7 +20,7 @@ class PaymentsController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -38,7 +38,17 @@ class PaymentsController extends Controller
      */
     public function create()
     {
-        return view('payment.create');
+        $user_acc_bal = 0;
+        $sale_id = session('sale_id');
+
+        if( $sale_id )
+        {
+          $sale = Sale::find($sale_id);
+          $user = User::find($sale->user_id);
+          $user_acc_bal = $this->get_user_acc_bal($user);
+        }
+
+        return view('payment.create',compact('user_acc_bal'));
     }
 
     /**
@@ -64,21 +74,24 @@ class PaymentsController extends Controller
         Sale::where('id',$sale_id)->update([
           'paymentMethod' => $request->paymentMethod,
           'amountReceived' => $request->amountReceived,
+          'transacion_code' => $request->transacion_code,
+          'cheque_no' => $request->cheque_no,
         ]);
 
         //update user account
-        if( $request->balance < 0 ){
+        if( $request->balance < 0 || $request->paymentMethod == 4){
           $debit = new UserTransactions;
           $debit->user_id = $sale->user_id;
           $debit->debit = abs($request->balance);
           $debit->save();
           $this->create_invoice($user,$sale,$debit->debit,$name='invoice');
-        }else{
+        }
+        /*else{
           $credit = new UserTransactions;
           $credit->user_id = $sale->user_id;
-          $credit->credit = $request->balance;
+          //$credit->credit = $request->balance;
           $credit->save();
-        }
+        }*/
 
         session(['soldProds' => []]);
         session(['salePrice' => 0]);
@@ -144,5 +157,17 @@ class PaymentsController extends Controller
       $invoice->send_to = $user->email;
       $invoice->save();
       return $invoice;
+    }
+
+    private function get_user_acc_bal($user)
+    {
+      $debit = 0;$credit=0;
+      foreach ($user->UserTransactions as $transaction)
+      {
+        $debit += $transaction->debit;
+        $credit += $transaction->credit;
+      }
+
+      return $credit - $debit;
     }
 }

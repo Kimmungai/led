@@ -25,10 +25,15 @@
         @endcomponent
 
         <!--custom page design starts-->
-        @Component('components.payment.create-top')@endcomponent
+        @Component('components.payment.create-top',['user_acc_bal'=>$user_acc_bal])@endcomponent
         <div class="row">
           <div class="col-md-4">
-            @Component('components.pos.calculator')@endcomponent
+            
+            <h4 id="calculator-info" class="text-success">Due: <strong>Ksh. {{number_format(session('salePrice'),2)}}</strong></h4>
+            <input type="hidden" name="" id="totalAmountDue" class=" form-control" value="@if(session('salePrice')){{session('salePrice')}}@else 0 @endif" />
+
+            @Component('components.pos.calculator',[ 'name' => 'pos-calculator' ])@endcomponent
+
           </div>
           <div class="col-md-8">
             <div class="cart-summary">
@@ -36,9 +41,9 @@
                 <table class="table">
                   <thead>
                     <tr>
-                      <th>Item</th>
-                      <th>Quantity (Units)</th>
-                      <th>Price</th>
+                      <th >Item name</th>
+                      <th >Sale price</th>
+                      <th >Sold (Kg)</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -46,10 +51,10 @@
                     <?php if( session('soldProds') != null) {$soldProds = session('soldProds');$tableID="payment-table";}?>
 
                     @foreach( $soldProds as $soldProd )
-                      <tr data-cost="{{$soldProd['price']}}" data-id="{{$soldProd['id']}}" id="sold-product-{{$soldProd['id']}}" >
+                      <tr data-cost="{{$soldProd['cost']}}" data-id="{{$soldProd['id']}}" id="sold-product-{{$soldProd['id']}}" >
                         <td data-name="{{$soldProd['name']}}" id="name-prod-{{$soldProd['id']}}"> {{$soldProd['name']}}</td>
-                        <td> <input id="qty-prod-{{$soldProd['id']}}" class="form-control" type="number" name="" value="{{$soldProd['qty']}}" onchange="save_cart_list('{{$tableID}}')"> </td>
-                        <td data-price="{{$soldProd['price']}}" id="price-prod-{{$soldProd['id']}}">Ksh. {{number_format($soldProd['price'],2)}}</td>
+                        <td>{{$soldProd['qty']}}</td>
+                        <td data-price="{{$soldProd['cost']}}" id="price-prod-{{$soldProd['id']}}">Ksh. {{number_format($soldProd['cost'],2)}}</td>
                       </tr>
                     @endforeach
                     <!--<tr>

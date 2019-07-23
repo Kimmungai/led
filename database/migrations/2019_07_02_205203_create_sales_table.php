@@ -21,6 +21,8 @@ class CreateSalesTable extends Migration
             $table->double('amountDue')->nullable();
             $table->double('amountOutStanding')->nullable();
             $table->integer('paymentMethod')->nullable();
+            $table->string('transacion_code')->nullable();
+            $table->string('cheque_no')->nullable();
             $table->text('remarks')->nullable();
             $table->softDeletes();
             $table->timestamps();

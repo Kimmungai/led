@@ -2,31 +2,78 @@
 
 <div class="col-md-3">
   <h3>Mode of payment</h3>
-  <div class="form-group">
-    <div class="input-group input-icon right in-grp1">
-      <span class="input-group-addon">
-        <i class="fa fa-money-bill-wave"></i>
-      </span>
+  <form id="new-payment-form" action="{{route('payments.store')}}" method="post">
+    @csrf
 
-      <form id="new-payment-form" action="{{route('payments.store')}}" method="post">
-        @csrf
-        <select class="form-control" name="paymentMethod">
-          <option value="1">Cash</option>
-          <option value="2">Cheque</option>
-          <option value="3">Mpesa</option>
-          <option value="4">User account (Ksh. 5,000)</option>
-        </select>
-        <input type="hidden" name="balance" id="saleBalance" class=" form-control"  />
-        <input type="hidden" name="amountReceived" id="amountReceived" class=" form-control"  />
-      </form>
+    <div class="form-group">
+      <div class="input-group input-icon right in-grp1">
+        <span class="input-group-addon">
+          <i class="fa fa-list"></i>
+        </span>
 
+          <select class="form-control" name="paymentMethod" onchange="set_payment_option(this.value)">
+            <option value="1">Cash</option>
+            <option value="2">Cheque</option>
+            <option value="3">Mpesa</option>
+            <option value="4">User account (Ksh. {{$user_acc_bal}})</option>
+          </select>
 
+          <input type="hidden" name="balance" id="saleBalance" class=" form-control" value="@if(session('salePrice')){{session('salePrice')}}@else 0 @endif" />
 
-
+      </div>
+      <div class="clearfix"> </div>
     </div>
-    <div class="clearfix"> </div>
+
+    <div class="form-group hidden" id="amountReceivedField">
+      <div class="input-group input-icon right in-grp1">
+        <span class="input-group-addon">
+          <i class="fas fa-money-bill-wave"></i>
+        </span>
+
+          <input  type="text" name="amountReceived" id="amountReceived" class=" form-control" value="" placeholder="Amount received" />
+
+      </div>
+      <div class="clearfix"> </div>
+    </div>
+
+    <div class="form-group hidden" id="transacion_code">
+      <div class="input-group input-icon right in-grp1">
+        <span class="input-group-addon">
+          <i class="fa fa-mobile-alt"></i>
+        </span>
+
+          <input  class="form-control" placeholder="Mpesa code.." type="text" name="transacion_code" value="">
+
+      </div>
+      <div class="clearfix"> </div>
+    </div>
+
+    <div class="form-group hidden" id="cheque_no">
+      <div class="input-group input-icon right in-grp1">
+        <span class="input-group-addon">
+          <i class="fa fa-money-check"></i>
+        </span>
+
+          <input  class="form-control" placeholder="Cheque no.." type="text" name="cheque_no" value="">
+
+      </div>
+      <div class="clearfix"> </div>
+    </div>
+
+    <div class="form-group hidden" id="user_acc">
+      <div class="input-group input-icon right in-grp1">
+        <span class="input-group-addon">
+          <i class="fa fa-user"></i>
+        </span>
+
+          <input  class="form-control"  type="text"  value="KES {{number_format($user_acc_bal,2)}}" disabled>
+
+      </div>
+      <div class="clearfix"> </div>
+    </div>
+
   </div>
-</div>
+</form>
 
 <div class="col-md-2">
   <h5>Discount %</h5>

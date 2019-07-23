@@ -112,6 +112,8 @@ class UsersController extends Controller
       if( $request->password ){
         $validatedData['password']=$request->password;
         $validatedData['password'] = Hash::make($validatedData['password']);
+      }else{
+        unset($validatedData['password']);
       }
       $user->update($validatedData);
       if( $request->credit > 0 ){

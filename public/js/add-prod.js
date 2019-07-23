@@ -49,29 +49,13 @@ function save_product_list(tableID)
     calc_table_sum(tableID)
     var totalCost = $("#total-cost").val();
 
-    $.post('/save-list',//send details to server
+    $.post('/save-purchase-list',//send details to server
       {
-        list:list,
-        totalCost:totalCost,
+        suppliedProds:list,
+        purchaseCost:totalCost,
         "_token": $('meta[name="csrf-token"]').attr('content'),
       },
       function(data,status){
         //alert(data);
       });
-}
-
-function calc_table_sum(tableID)
-{
-  var sum = 0;
-
-  $("#"+tableID+" tr").each(function() {
-
-    var prodID = $(this).data('id');
-    var sub_total = parseFloat($("#cost-prod-"+prodID).val());
-    sum += sub_total;
-  });
-
-  $("#total-cost").val(sum);
-  $(".total-cost").html('<strong>Total:</strong> '+sum.toLocaleString("en-GB", {style: "currency", currency: "KES", minimumFractionDigits: 2}));
-
 }

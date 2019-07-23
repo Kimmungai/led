@@ -125,7 +125,61 @@ function calculate_balance( due )
   }
 
   $("#saleBalance").val(balance);
-  $("#amountReceived").val(received);
+  if( received > due )
+  {
+    $("#amountReceived").val(due);
+  }else{
+    $("#amountReceived").val(balance);
+  }
   $("#save-payment-btn").attr('disabled',false);
+  $(".save-payment-btn").attr('disabled',false);
 
+}
+/*Addition during selling & receiving*/
+function calc_table_sum(tableID)
+{
+  var sum = 0;
+
+  $("#"+tableID+" tr").each(function() {
+
+    var prodID = $(this).data('id');
+    var sub_total = parseFloat($("#cost-prod-"+prodID).val());
+    sum += sub_total;
+  });
+
+  $("#total-cost").val(sum);
+  $(".total-cost").html('<strong>Total:</strong> '+sum.toLocaleString("en-GB", {style: "currency", currency: "KES", minimumFractionDigits: 2}));
+
+}
+
+function set_payment_option(method)
+{
+  $('#pos-calculator').addClass('hidden');
+  $('#cheque_no').addClass('hidden');
+  $('#transacion_code').addClass('hidden');
+  $('#user_acc').addClass('hidden');
+  $('#amountReceivedField').removeClass('hidden');
+  $("#save-payment-btn").attr('disabled',false);
+  $(".save-payment-btn").attr('disabled',false);
+
+  if ( method == 1 )
+  {
+    $('#pos-calculator').removeClass('hidden');
+    $("#save-payment-btn").attr('disabled',true);
+    $(".save-payment-btn").attr('disabled',true);
+    $('#amountReceivedField').addClass('hidden');
+  }
+  else if ( method == 2 )
+  {
+    $('#cheque_no').removeClass('hidden');
+  }
+  else if ( method == 3 )
+  {
+    $('#transacion_code').removeClass('hidden');
+  }
+  else if ( method == 4 )
+  {
+    $('#user_acc').removeClass('hidden');
+    $('#amountReceivedField').addClass('hidden');
+  }
 }

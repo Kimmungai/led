@@ -53,8 +53,9 @@
               'bank' => ['name'=>'Bank trasnfer','value'=>3],
             ]; ?>
             <h4>Account</h4>
-            <?php $wallet = 0; ?>
-            @foreach ($user->UserTransactions as $transaction) <?php $wallet += $transaction->credit;  ?> @endforeach
+            <?php $debit = 0;$credit=0; ?>
+            @foreach ($user->UserTransactions as $transaction) <?php $credit += $transaction->credit;$debit += $transaction->debit;  ?> @endforeach
+            <?php $wallet = $credit -$debit; ?>
             @Component('components.form-inputs.input',['title' => 'Name','name'=>'','type'=>'text','icon'=>'fas fa-wallet','placeholder' => 'Enter name','required'=>false,'value' =>'Ksh. '.number_format($wallet,2).'','noLabel'=>true,'disabled'=>true])@endcomponent
             @Component('components.form-inputs.select',['title' => 'Method','name'=>'paymentMethod','icon'=>'fas fa-dollar','options'=>$paymentTypes,'required'=>false])@endcomponent
             @Component('components.form-inputs.input',['title' => 'Amount','name'=>'credit','type'=>'number','icon'=>'fas fa-money-bill','placeholder' => 'Enter amount','required'=>false,'value' =>0,'min'=>0])@endcomponent

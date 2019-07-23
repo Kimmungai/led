@@ -5,13 +5,14 @@ use Illuminate\Support\Facades\Session;
 
 use App\Sale;
 use App\Product;
+use App\Inventory;
 use App\User;
 use App\Revenue;
 use Illuminate\Http\Request;
 
 class SalesController extends Controller
 {
-  
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -40,8 +41,8 @@ class SalesController extends Controller
         }else{
           $products = Product::paginate(env('ITEMS_PER_PAGE',3));
         }
-        $customer = User::where('type',env('CUSTOMER',2))->first();
-        return view('sale.create',compact('products','customer','type'));
+        $customers = User::where('type',env('CUSTOMER',2))->get();
+        return view('sale.create',compact('products','customers','type'));
     }
 
     /**
@@ -70,6 +71,14 @@ class SalesController extends Controller
         $revenue->unitPrice = $product->cost;
         $revenue->sellingPrice = $product->cost;
         $revenue->save();
+
+        $prodNewQuantity = $product->inventory->availableQuantity - $soldProd['qty'];
+
+        //update quantity
+        Inventory::where('product_id',$product->id)->update([
+          'availableQuantity' => $prodNewQuantity,
+        ]);
+
       }
 
       session( [ 'sale_id' => $sale->id ] );
@@ -77,10 +86,11 @@ class SalesController extends Controller
       //session(['soldProds' => []]);
       //session(['salePrice' => 0]);
 
-      Session::flash('message', env("SAVE_SUCCESS_MSG","Sale recorded succesfully!"));
+      Session::flash('message', env("SAVE_SUCCESS_MSG","Saved succesfully!"));
 
 
       return redirect(route('payments.create'));
+      
     }
 
     /**

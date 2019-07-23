@@ -53,7 +53,7 @@
   									</thead>
   									<tbody id="purchased-prods">
                     <?php $purchaseLists = []; ?>
-                    <?php if( session('list') != null) {$purchaseLists = session('list');}?>
+                    <?php if( session('purchaseList') != null) {$purchaseLists = session('purchaseList');}?>
 
                     @foreach ( $purchaseLists as $purchaseList)
                       <tr data-id="{{$purchaseList['id']}}" id="purchased-product-{{$purchaseList['id']}}">
@@ -70,7 +70,7 @@
   							</div>
               <form id="new-purchase-form" class="" action="{{route('purchases.store')}}" method="post" onsubmit="confirm_modal('newPurchaseConfirmModal')">
                 @csrf
-                <input type="hidden" name="" id="total-cost" class=" form-control" value="@if(session('totalCost')){{session('totalCost')}}@else 0 @endif" />
+                <input type="hidden" name="" id="total-cost" class=" form-control" value="@if(session('purchaseCost')){{session('purchaseCost')}}@else 0 @endif" />
                 <input type="hidden" name="user_id" value="@if(isset($supplier)){{$supplier->id}}@endif">
 
                 <div class="row">
@@ -79,7 +79,7 @@
                     @Component('components.form-inputs.model-select',['title' => 'Supplier','name'=>'user_id','icon'=>'fas fa-user-check','options'=>$suppliers,'required'=>false])@endcomponent
                   </div>
                   <div class="col-md-4">
-                    <span class="total-cost"><strong>Total:</strong> KES @if(session('totalCost')){{number_format(session('totalCost'),2)}}@else 0 @endif</span>
+                    <span class="total-cost"><strong>Total:</strong> KES @if(session('purchaseCost')){{number_format(session('purchaseCost'),2)}}@else 0 @endif</span>
                   </div>
 
                 </div>

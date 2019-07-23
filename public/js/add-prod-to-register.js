@@ -1,4 +1,4 @@
-function add_prod_to_register(id,tableID)
+/*function add_prod_to_register(id,tableID)
 {
   event.preventDefault();
   var prodID = $("#"+id).data('id');
@@ -79,4 +79,34 @@ function remove_prod(id,tableID)
   sum = "Ksh. "+sum.toLocaleString();
   $("#"+tableID+"-grand-total").text(sum);
   save_cart_list(tableID);
+}*/
+
+function save_product_list(tableID)
+{
+    var list = [];
+    var errors = 0;
+
+    $("#"+tableID+" tr").each(function() {
+      var id = $(this).data('id');
+      var name = $('#name-prod-'+id).data('name');
+      var cost = $('#cost-prod-'+id).val();
+      var qty = $('#qty-prod-'+id).val();
+      if( isNaN(cost) || isNaN(qty) ){ errors += 1; }
+      list.push({id:id,qty:qty,name:name,cost:cost});
+    });
+
+    if( errors ){alert("Invalid data input!");return;}
+
+    calc_table_sum(tableID)
+    var totalCost = $("#total-cost").val();
+
+    $.post('/save-cart-list',//send details to server
+      {
+        soldProds:list,
+        salePrice:totalCost,
+        "_token": $('meta[name="csrf-token"]').attr('content'),
+      },
+      function(data,status){
+        //alert(data);
+      });
 }

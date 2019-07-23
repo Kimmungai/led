@@ -1,6 +1,7 @@
 <?php if( $user ): ?>
-<?php $wallet = 0; ?>
-@foreach ($user->UserTransactions as $transaction) <?php $wallet += $transaction->credit;  ?> @endforeach
+<?php $credit = 0;$debit=0; ?>
+@foreach ($user->UserTransactions as $transaction) <?php $debit += $transaction->debit; $credit += $transaction->credit;  ?> @endforeach
+<?php $wallet = $credit - $debit; ?>
 <article class="material-card Red">
 	<h2>
 			<span>{{$user->name}}</span>

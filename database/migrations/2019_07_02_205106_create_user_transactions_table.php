@@ -18,6 +18,8 @@ class CreateUserTransactionsTable extends Migration
             $table->integer('user_id')->unsigned()->index()->nullable();
             $table->double('debit')->nullable();
             $table->double('credit')->nullable();
+            $table->string('transacion_code')->nullable();
+            $table->string('cheque_no')->nullable();
             $table->text('remarks')->nullable();
             $table->tinyInteger('paymentMethod')->nullable();
             $table->softDeletes();

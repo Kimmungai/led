@@ -1,8 +1,6 @@
-<h4 id="calculator-info" class="text-success">Due: <strong>Ksh. {{number_format(session('salePrice'),2)}}</strong></h4>
 
-<input type="hidden" name="" id="totalAmountDue" class=" form-control" value="@if(session('salePrice')){{session('salePrice')}}@else 0 @endif" />
 
-<div class="calculator">
+<div id="{{$name}}" class="calculator">
   <fieldset id="container">
 <form class="keys" name="calculator" onsubmit="calculate_balance({{session('salePrice')}})">
 <input id="display" type="text" name="display" placeholder="0.00" autofocus>
