@@ -33,7 +33,7 @@ class HomeController extends Controller
 
     protected function dashicons()
     {
-      $sales = Sale::where('amountReceived','<>','')->get();
+      $sales = Sale::all();
       $purchases = Purchase::all();
       $inventory = Inventory::where('availableQuantity','<>',0)->get();
       $invoices = Report::all();

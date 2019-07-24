@@ -31,9 +31,9 @@
 
           <div class="col-md-12">
             <div class="products-selection-section">
-              <!--search form-->
-              @Component('components.forms.search-1',['action'=>'','method'=>'','placeholder'=>'Product code...'])@endcomponent
-              <!--end search form-->
+
+              
+
               <!--@Component('components.pos.tabs',['type'=>$type])@endcomponent-->
 
               <!--products-->
@@ -45,16 +45,26 @@
                     <div class="table-responsive">
                       <table class="table table-bordered">
                         <thead>
-                          <th>#</th>
                           <th>Code</th>
                           <th>Name</th>
                           <th>Price (Ksh.)</th>
                           <th>Inventory (Kg)</th>
                         </thead>
-                        <tbody>
+                        <tbody id="stock-prods">
+                          @foreach( $products as $product )
 
-                          @Component('components.stock.preview',['products' => $products])@endcomponent
+                            <tr id="stock-prods-{{$product->id}}">
+                              <td><span class="fas fa-times-circle pointer" onclick="remove_row_and_submit('stock-prods-{{$product->id}}','stock-prods-{{$product->id}}-remove-form')"></span> {{$product->id}}</td>
+                              <td><input class="form-control1" type="text" value="{{$product->name}}" onchange="update_prod({{$product->id}},this.value,'name')"></td>
+                              <td><input class="form-control1" type="number" value="{{$product->salePrice}}" onchange="update_prod({{$product->id}},this.value,'salePrice')" min="0"></td>
+                              <td><input class="form-control1" type="number" value="{{$product->Inventory->availableQuantity}}" onchange="update_prod({{$product->id}},this.value,'availableQuantity')" min="0"></td>
+                            </tr>
 
+                            <form class="d-none hidden" id="stock-prods-{{$product->id}}-remove-form" action="{{route('stock.destroy',$product->id)}}" method="post">
+                              @csrf
+                              @method('DELETE')
+                            </form>
+                          @endforeach
                         </tbody>
                       </table>
                     </div>
@@ -69,9 +79,9 @@
               </div>
               <!--products end-->
 
-              <a href="#" class="btn btn-info br0 pull-right">
+              <!--<a href="#" class="btn btn-info br0 pull-right">
                 Update
-              </a>
+              </a>-->
 
             </div>
 

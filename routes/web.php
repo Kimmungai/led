@@ -66,10 +66,11 @@ Route::resource('purchases','PurchasesController');
 Route::post('save-purchase-list','PurchasesController@save_purchase_list')->name('save.purchase.list');
 
 //product
-Route::resource('stock','ProductsController');
 Route::post('get-product','Products\ProductAjaxController@get_product')->name('product.get');
 Route::get('stock-type/{type}','Products\ProductAjaxController@get_product_type')->name('stock.type');
 Route::post('search-products','Products\ProductAjaxController@search_products');
+Route::resource('stock','ProductsController');
+Route::post('update-product','Products\ProductAjaxController@update_product');
 
 //payments
 Route::resource('payments','PaymentsController');

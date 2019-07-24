@@ -105,7 +105,7 @@ class ProductsController extends Controller
      */
     public function update(StoreProduct $request, Product $product)
     {
-        //
+        return $request;
     }
 
     /**
@@ -114,8 +114,13 @@ class ProductsController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Product $product,$id)
     {
-        //
+        $product = Product::find($id);
+        $product->Inventory->delete();
+        $product->Variation->delete();
+        $product->delete();
+        Session::flash('message', env("SAVE_SUCCESS_MSG","Product deleted succesfully!"));
+        return back();
     }
 }

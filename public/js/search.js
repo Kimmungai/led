@@ -73,6 +73,15 @@ function remove_row(id,tableID)
   calc_table_sum(tableID);
   save_product_list(tableID)
 }
+function remove_row_and_submit(id,formID)
+{
+  var con = confirm("Are you sure you want to proceed?")
+  if(con)
+  {
+    $("#"+id).remove();
+    $("#"+formID).submit();
+  }
+}
 
 function get_specific_table_row(data,tableID)
 {
@@ -97,6 +106,31 @@ function get_specific_table_row(data,tableID)
       row += '<td><input id="qty-prod-'+data.id+'" type="number" value="1" onchange="save_product_list(\'sold-prods\')"/></td>';
       row += '</tr>';
       return row;
+    }
+  }
+  else if( tableID == 'quote-table-body' )
+  {
+    if( !$("#quote-table-body-row-"+data.id).length ){
+
+      var row = '<tr id="quote-table-body-row-'+data.id+'">';
+        row += '<td><span class="fas fa-times-circle" onclick="remove_table_row(\'quote-table-body-row-'+data.id+'\',\'quote-table-body\')"></span>';
+        row += '<strong id="quote-table-body-row-'+data.id+'-td-1" onclick="edit_doc_field(this.id)">'+data.name+'</strong>';
+        row += '<input id="quote-table-body-row-'+data.id+'-td-1-input" type="text" class="hidden" name="" value="" onfocusout="save_doc_field(\'quote-table-body-row-'+data.id+'-td-1\',this.value)">';
+        row += '</td>';
+        row += '<td>';
+        row += '<strong id="quote-table-body-row-'+data.id+'-td-2" onclick="edit_doc_field(this.id)">'+data.description+'</strong>';
+        row += '<input id="quote-table-body-row-'+data.id+'-td-2-input" type="text" class="hidden" name="" value="" onfocusout="save_doc_field(\'quote-table-body-row-'+data.id+'-td-2\',this.value)">';
+        row += '</td>';
+        row += '<td>';
+        row += '<strong id="quote-table-body-row-'+data.id+'-td-3" onclick="edit_doc_field(this.id)">'+data.salePrice+'</strong>';
+        row += '<input id="quote-table-body-row-'+data.id+'-td-3-input" type="text" class="hidden" name="" value="" onfocusout="save_doc_field(\'quote-table-body-row-'+data.id+'-td-3\',this.value)">';
+        row += '</td>';
+      row += '</tr>';
+
+      return row;
+    }
+    else if( tableID == 'stock-prods' )
+    {
     }
     return 0;
   }

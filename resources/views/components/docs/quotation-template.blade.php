@@ -87,12 +87,10 @@
 
     <div class="row mt-1">
       <div class="col-md-6">
-        <div class="input-group input-icon right in-grp1">
-          <span class="input-group-addon">
-            <i class="fas fa-search"></i>
-          </span>
-          <input id="search" name="search" class="form-control1" type="search" value="" placeholder="Product code..." >
-        </div>
+        <!--search form-->
+        @Component('components.forms.search-1',['action'=>'','method'=>'','placeholder'=>'Product code...','keyup' => 'search_product(this.value,\''.$docId.'-table-body\')'])@endcomponent
+        @Component('components.search.results-panel',['action'=>'','method'=>'','placeholder'=>'Product code...'])@endcomponent
+        <!--end search form-->
       </div>
     </div>
 
@@ -110,7 +108,7 @@
 
             <tbody id="{{$docId}}-table-body">
 
-              <tr id="{{$docId}}-table-body-row-1">
+              <!--<tr id="{{$docId}}-table-body-row-1">
                 <td><span class="fas fa-times-circle" onclick="remove_table_row('{{$docId}}-table-body-row-1','{{$docId}}-table-body')"></span>
                   <strong id="{{$docId}}-table-body-row-1-td-1" onclick="edit_doc_field(this.id)">Managu</strong>
                   <input id="{{$docId}}-table-body-row-1-td-1-input" type="text" class="hidden" name="" value="" onfocusout="save_doc_field('{{$docId}}-table-body-row-1-td-1',this.value)">
@@ -124,7 +122,7 @@
                   <input id="{{$docId}}-table-body-row-1-td-3-input" type="text" class="hidden" name="" value="" onfocusout="save_doc_field('{{$docId}}-table-body-row-1-td-3',this.value)">
                 </td>
 
-              </tr>
+              </tr>-->
 
             </tbody>
 

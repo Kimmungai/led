@@ -183,3 +183,27 @@ function set_payment_option(method)
     $('#amountReceivedField').addClass('hidden');
   }
 }
+
+function confirm_update(id)
+{
+  event.preventDefault();
+  var con = confirm("Are you sure you want to proceed?")
+  if(con)
+  {
+    $("#"+id).submit();
+  }
+}
+
+function update_prod(prodID,value,field)
+{
+  $.post('/update-product',//send details to server
+    {
+      id:prodID,
+      field:field,
+      value:value,
+      "_token": $('meta[name="csrf-token"]').attr('content'),
+    },
+    function(data,status){
+      
+    });
+}

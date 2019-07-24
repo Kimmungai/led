@@ -32,6 +32,7 @@ class StoreProduct extends FormRequest
       $data = [
           'name' => 'required|max:255',
           'cost' => 'required|numeric',
+          'salePrice' => 'nullable|numeric',
           'type' => 'nullable|numeric',
           'suppliedQuantity' => 'nullable|numeric',
           'img1' => 'nullable|max:255',

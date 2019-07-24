@@ -27,13 +27,7 @@
         @endcomponent
 
         <!--custom page design starts-->
-          <div class="row">
-            <!--search form-->
-            <div class="col-md-12">
-              @Component('components.forms.search',['action'=>'','method'=>'','placeholder'=>'Search supplier...'])@endcomponent
-            </div>
-            <!--end search form-->
-          </div>
+          
           <div class="row">
             @foreach($suppliers as $supplier)
             <div class="col-md-3 mt-2">

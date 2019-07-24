@@ -37,7 +37,7 @@
 
             <div class="col-md-12">
 
-              @Component('components.docs.quotation-template',['docId'=>'invoice'])@endcomponent
+              @Component('components.docs.quotation-template',['docId'=>'quote'])@endcomponent
 
             </div>
 
