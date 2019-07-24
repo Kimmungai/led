@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Quote extends Model
 {
   protected $guarded = [];
-  
-  function quote()
+
+  function quoteProds()
   {
-    return $this->hasMany('App\Quote');
+    return $this->hasMany('App\QuoteProds');
   }
 }

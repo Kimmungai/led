@@ -39,10 +39,30 @@ function add_table_row(tableID,type='invoice')
 
 function remove_table_row(rowID,tableID)
 {
+  prodID = $('#'+rowID).data('id');
   $("#"+rowID).remove();
+
+  //remove id field
+  $('#prod-id-field-'+prodID).val('');
 
   //recalculate total
   get_table_total(tableID);
+}
+
+function update_invoice(value,field,id)
+{
+  $.post('/update-invoice',//send details to server
+    {
+      value:value,
+      field:field,
+      id:id,
+      "_token": $('meta[name="csrf-token"]').attr('content'),
+    },
+    function(data,status){
+
+      //alert(data);
+
+    });
 }
 
 function get_table_total(tableID='invoice-table-body')

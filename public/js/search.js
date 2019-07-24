@@ -59,8 +59,7 @@ function update_a_table(prodID,tableID)
       save_product_list(tableID)
 
     });
-
-   $("#prod-id-holder").append('<input type="hidden" name="product_id[]" value="'+prodID+'">');
+   $("#prod-id-holder").append('<input id="prod-id-field-'+prodID+'" type="hidden" name="product_id[]" value="'+prodID+'">');
 
 }
 
@@ -115,17 +114,17 @@ function get_specific_table_row(data,tableID)
   {
     if( !$("#quote-table-body-row-"+data.id).length ){
 
-      var row = '<tr id="quote-table-body-row-'+data.id+'">';
+      var row = '<tr data-id="'+data.id+'" id="quote-table-body-row-'+data.id+'">';
         row += '<td><span class="fas fa-times-circle" onclick="remove_table_row(\'quote-table-body-row-'+data.id+'\',\'quote-table-body\')"></span>';
-        row += '<strong id="quote-table-body-row-'+data.id+'-td-1" onclick="edit_doc_field(this.id)">'+data.name+'</strong>';
+        row += '<strong id="quote-table-body-row-'+data.id+'-td-1" onclick="">'+data.id+'</strong>';
         row += '<input id="quote-table-body-row-'+data.id+'-td-1-input" type="text" class="hidden" name="" value="" onfocusout="save_doc_field(\'quote-table-body-row-'+data.id+'-td-1\',this.value)">';
         row += '</td>';
         row += '<td>';
-        row += '<strong id="quote-table-body-row-'+data.id+'-td-2" onclick="edit_doc_field(this.id)">'+data.description+'</strong>';
+        row += '<strong id="quote-table-body-row-'+data.id+'-td-2" onclick="">'+data.name+'</strong>';
         row += '<input id="quote-table-body-row-'+data.id+'-td-2-input" type="text" class="hidden" name="" value="" onfocusout="save_doc_field(\'quote-table-body-row-'+data.id+'-td-2\',this.value)">';
         row += '</td>';
         row += '<td>';
-        row += '<strong id="quote-table-body-row-'+data.id+'-td-3" onclick="edit_doc_field(this.id)">'+data.salePrice+'</strong>';
+        row += '<strong id="quote-table-body-row-'+data.id+'-td-3" onclick="">'+data.salePrice+'</strong>';
         row += '<input id="quote-table-body-row-'+data.id+'-td-3-input" type="text" class="hidden" name="" value="" onfocusout="save_doc_field(\'quote-table-body-row-'+data.id+'-td-3\',this.value)">';
         row += '</td>';
       row += '</tr>';

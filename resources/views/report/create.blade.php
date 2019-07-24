@@ -37,9 +37,7 @@
 
               <div class="col-md-12">
 
-                <div class="hidden" id="prod-id-holder">
-                  <!--<input type="hidden" name="product_id[]" value="1">-->
-                </div>
+                
 
                 @Component('components.docs.quotation-template',['docId'=>'quote'])@endcomponent
 

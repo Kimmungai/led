@@ -17,6 +17,8 @@ class CreateQuoteProdsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('quote_id')->unsigned()->index();
             $table->integer('product_id')->unsigned()->index();
+            $table->float('salePrice')->nullable();
+            $table->string('name')->nullable();
             $table->timestamps();
         });
     }

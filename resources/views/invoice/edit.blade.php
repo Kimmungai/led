@@ -20,17 +20,25 @@
 			<div id="page-wrapper">
         @Component('components.structure.page-title',['title'=>$invoice->recipient.' '.$invoice->name])@endcomponent
 
+        @Component('components.form-inputs.link',['title'=>'Print','href'=>'#','toolTip'=>'print quote','icon'=>'fas fa-print','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'window.print()'])@endcomponent
+
+        @Component('components.form-inputs.link',['title'=>'Share','href'=>'#','toolTip'=>'share quote','icon'=>'fas fa-share-alt','classes'=>'btn btn-default btn-xs pull-right mr-1'])@endcomponent
+
+
         @Component('components.structure.breadcrump',['home'=>route('home'),'invoices'=>route('invoices.index'),'specified'=>$invoice->name])
         @endcomponent
 
 				<div class="graphs">
 
-			<!-- switches -->
-		<div class="switches">
+          <div class="row">
+            <div class="col-sm-12">
+              <input type="radio" name="paid" value="1" @if($invoice->status) checked @endif  onchange="update_invoice(this.value,'status',{{$invoice->id}})"> <strong>Paid</strong>
+              <input type="radio" name="paid" value="0" @if(!$invoice->status) checked @endif onchange="update_invoice(this.value,'status',{{$invoice->id}})"> <strong>Unpaid</strong>
+            </div>
+          </div>
 
-			<div class="col-4">
+			<!-- switches -->
         <!--invoice template-->
-        <div class="container">
           <div class="invoice-panel">
 
             <p class="title-1"> <span>Halal</span> </p>
@@ -75,11 +83,11 @@
                   <table class="table table-bodered">
                     <thead>
                       <tr>
-                        <th>Qty.</th>
-                        <th>Description</th>
-                        <th>@</th>
-                        <th>Shs.</th>
-                        <th>Cts</th>
+                        <td>Qty.</td>
+                        <td>Description</td>
+                        <td>@</td>
+                        <td>Shs.</td>
+                        <td>Cts</td>
                       </tr>
                     </thead>
                     <tbody>
@@ -94,13 +102,7 @@
                       </tr>
                       @endforeach
 
-                      <!--<tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td class="table-highlight"></td>
-                      </tr>-->
+
                       <tr>
                         <td></td>
                         <td colspan="2">TOTAL</td>
@@ -134,12 +136,15 @@
 
 
           </div>
-        </div>
         <!--end invoice template-->
-				<div class="clearfix"></div>
-			</div>
-		</div>
-		<!-- //switches -->
+        <div class="row mt-2">
+          <div class="col-md-12">
+            @Component('components.form-inputs.link',['title'=>'Print','href'=>'#','toolTip'=>'print quote','icon'=>'fas fa-print','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'window.print()'])@endcomponent
+
+            @Component('components.form-inputs.link',['title'=>'Share','href'=>'#','toolTip'=>'share quote','icon'=>'fas fa-share-alt','classes'=>'btn btn-default btn-xs pull-right mr-1'])@endcomponent
+
+          </div>
+        </div>
 
 				</div>
 			<!--body wrapper start-->

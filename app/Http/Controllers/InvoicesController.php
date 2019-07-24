@@ -48,4 +48,15 @@ class InvoicesController extends Controller
         $revenues = Revenue::where('sale_id',$invoice->sale_id)->get();
         return view('invoice.edit',compact('invoice','revenues'));
     }
+
+    public function update_invoice(Request $request)
+    {
+      $id = $request->id;
+      $field = $request->field;
+      $value = $request->value;
+
+      Report::where('id',$id)->update([
+        $field => $value,
+      ]);
+    }
 }

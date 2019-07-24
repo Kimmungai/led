@@ -26,13 +26,17 @@
 
         <!--custom page design starts-->
         <div class="row">
-        @for($x=0;$x < 3;$x++)
-          @Component('components.dashboard.cta-icon',['title'=>'quotations','icon'=>'fa fa-file-invoice','link'=>route('invoices.index'),'color'=>'red'])@endcomponent
-        @endfor
+        @foreach($quotes as $quote)
+          @Component('components.dashboard.cta-icon',['title'=>'Quote-'.$quote->id,'icon'=>'fa fa-file-invoice','link'=>route('quotation.show',$quote->id),'color'=>'#2196F3'])@endcomponent
+        @endforeach
         </div>
         <!--custom page design ends-->
 
-
+        <div class="row">
+          <div class="col-md-12">
+            {{$quotes->links()}}
+          </div>
+        </div>
 
 			</div>
 			 <!--body wrapper end-->

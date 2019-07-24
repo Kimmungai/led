@@ -21,6 +21,7 @@ Route::redirect('/home','/');
 Route::get('invoices','InvoicesController@index')->name('invoices.index');
 Route::get('invoices/create/','InvoicesController@create')->name('invoices.create');
 Route::get('invoices-show/{id}','InvoicesController@show')->name('invoices.show');
+Route::post('update-invoice','InvoicesController@update_invoice');
 
 //Reports
 Route::resource('quotation','QuotationsController');

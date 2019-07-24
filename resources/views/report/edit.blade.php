@@ -26,6 +26,8 @@
 
         @Component('components.form-inputs.link',['title'=>'Share','href'=>'#','toolTip'=>'share quote','icon'=>'fas fa-share-alt','classes'=>'btn btn-default btn-xs pull-right mr-1'])@endcomponent
 
+        @Component('components.form-inputs.link',['title'=>'Delete','href'=>'#','toolTip'=>'Delete quote','icon'=>'fas fa-warning','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'confirm_modal("deleteQuoteConfirmModal")'])@endcomponent
+
         @Component('components.form-inputs.link',['title'=>'Update','href'=>'#','toolTip'=>'Update quote','icon'=>'fas fa-save','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'confirm_modal("quoteSaveConfirmModal")'])@endcomponent
 
         @Component('components.structure.breadcrump',['home'=>route('home'),'invoices'=>route('invoices.index'),'newInvoice'=>''])
@@ -34,8 +36,9 @@
 				<div class="graphs">
 
           <!--invoice template-->
-          <form id="new-quote-form" action="{{route('quotation.store')}}" method="post">
+          <form id="edit-quote-form" action="{{route('quotation.update',$quote->id)}}" method="post">
             @csrf
+            @method('PUT')
             <div class="row">
 
               <div class="col-md-12">
@@ -58,12 +61,17 @@
 
               @Component('components.form-inputs.link',['title'=>'Share','href'=>'#','toolTip'=>'share quote','icon'=>'fas fa-share-alt','classes'=>'btn btn-default btn-xs pull-right mr-1'])@endcomponent
 
-              @Component('components.form-inputs.link',['title'=>'Save','href'=>'#','toolTip'=>'Save quote','icon'=>'fas fa-save','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'confirm_modal("quoteSaveConfirmModal")'])@endcomponent
+              @Component('components.form-inputs.link',['title'=>'Delete','href'=>'#','toolTip'=>'Delete quote','icon'=>'fas fa-warning','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'confirm_modal("deleteQuoteConfirmModal")'])@endcomponent
+
+              @Component('components.form-inputs.link',['title'=>'Update','href'=>'#','toolTip'=>'Save quote','icon'=>'fas fa-save','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'confirm_modal("quoteSaveConfirmModal")'])@endcomponent
 
             </div>
 
         <!--end invoice template-->
-
+        <form class="d-none hidden" id="delete-quote-form" action="{{route('quotation.destroy',$quote->id)}}" method="post">
+          @csrf
+          @method('DELETE')
+        </form>
 
 
 				</div>
@@ -73,6 +81,7 @@
 
 		</div>
     <!--modals-->
-    @Component('components.modals.confirm',['title'=>'Save user','question'=>'Are you sure you want to save quote?','modalID'=>'quoteSaveConfirmModal','cancelBtnTitle'=>'Cancel','saveBtnTitle'=>'Confirm save','formID'=>'new-quote-form'])@endcomponent
+    @Component('components.modals.confirm',['title'=>'Save user','question'=>'Are you sure you want to save quote?','modalID'=>'quoteSaveConfirmModal','cancelBtnTitle'=>'Cancel','saveBtnTitle'=>'Confirm save','formID'=>'edit-quote-form'])@endcomponent
+    @Component('components.modals.confirm',['title'=>'Delete quote','question'=>'Are you sure you want to delete quote?','modalID'=>'deleteQuoteConfirmModal','cancelBtnTitle'=>'Cancel','saveBtnTitle'=>'Confirm delete','formID'=>'delete-quote-form'])@endcomponent
 
 @endsection
