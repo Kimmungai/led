@@ -70,12 +70,12 @@
             <li class="@if(Route::is('quotation.create')) active @endif"><a href="{{route('quotation.create')}}">Add new</a> </li>
           </ul>
         </li>
-        <li class="menu-list @if(Route::is('org*')) act @endif">
+        <li class="@if(Route::is('org*')) act @endif">
           <a href="{{route('org.index')}}"><i class="fa fa-building"></i>
             <span>Organisation</span></a>
             <ul class="sub-menu-list">
               <li class="@if(Route::is('org.index')) active @endif"><a href="{{route('org.index')}}">Open all</a> </li>
-              <li class="@if(Route::is('org.create')) active @endif"><a href="{{route('org.create')}}">Add new</a></li>
+              <!--<li class="@if(Route::is('org.create')) active @endif"><a href="{{route('org.create')}}">Add new</a></li>-->
             </ul>
         </li>
         <li class="@if(Route::is('trash.index')) act @endif"><a href="{{route('trash.index')}}"><i class="fa fa-trash-alt"></i> <span>Trash</span></a></li>

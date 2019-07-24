@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Session;
 
 use App\Report;
+use App\Quote;
+use App\QuoteProds;
 use Illuminate\Http\Request;
 
 class QuotationsController extends Controller
@@ -45,7 +48,21 @@ class QuotationsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->except(['product_id','_token']);
+        $prodIDs = $request->product_id;
+
+        $quote = Quote::create($data);
+
+        foreach ($prodIDs as $prodID)
+        {
+          $newQuoteProd = new QuoteProds;
+          $newQuoteProd->product_id = $prodID;
+          $newQuoteProd->quote_id = $quote->id;
+          $newQuoteProd->save();
+        }
+
+        Session::flash('message', env("SAVE_SUCCESS_MSG","Quote saved succesfully!"));
+        return redirect(route('quotation.show',$quote->id));
     }
 
     /**
@@ -54,9 +71,10 @@ class QuotationsController extends Controller
      * @param  \App\Report  $report
      * @return \Illuminate\Http\Response
      */
-    public function show(Report $report)
+    public function show(Report $report,$id)
     {
-        //
+        $quote = Quote::find($id);
+        return view('report.edit',compact('quote'));
     }
 
     /**

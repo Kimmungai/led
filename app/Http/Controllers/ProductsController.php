@@ -117,8 +117,8 @@ class ProductsController extends Controller
     public function destroy(Product $product,$id)
     {
         $product = Product::find($id);
-        $product->Inventory->delete();
-        $product->Variation->delete();
+        if($product->Inventory){$product->Inventory->delete();}
+        if($product->Variation){$product->Variation->delete();}
         $product->delete();
         Session::flash('message', env("SAVE_SUCCESS_MSG","Product deleted succesfully!"));
         return back();

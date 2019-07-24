@@ -59,6 +59,9 @@ function update_a_table(prodID,tableID)
       save_product_list(tableID)
 
     });
+
+   $("#prod-id-holder").append('<input type="hidden" name="product_id[]" value="'+prodID+'">');
+
 }
 
 function hide_search_results()

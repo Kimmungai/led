@@ -1,11 +1,11 @@
   <div class="invoice-panel">
 
     <div class="row">
-      <div class="col-xs-12">
+      <div class="col-xs-12" >
         <p class="title-1">
           <span>
-            <strong id="{{$docId}}-title-1" class="" onclick="edit_doc_field(this.id)">Halal</strong>
-            <input id="{{$docId}}-title-1-input" type="text" class="hidden" name="" value="" onfocusout="save_doc_field('{{$docId}}-title-1',this.value)">
+            <strong id="{{$docId}}-title-1" class="" onclick="edit_doc_field(this.id)">@if(isset($quote)) {{$quote->title_1}}  @else Halal @endif</strong>
+            <input id="{{$docId}}-title-1-input" type="text" class="hidden" name="title_1" value="Halal" onfocusout="save_doc_field('{{$docId}}-title-1',this.value)">
           </span>
         </p>
       </div>
@@ -16,7 +16,7 @@
         <p class="title-2">
           <span>
             <strong id="{{$docId}}-title-2" class="" onclick="edit_doc_field(this.id)">Sales quotation</strong>
-            <input id="{{$docId}}-title-2-input" type="text" class="hidden" name="" value="" onfocusout="save_doc_field('{{$docId}}-title-2',this.value)">
+            <input id="{{$docId}}-title-2-input" type="text" class="hidden" name="title_2" value="Sales quotation" onfocusout="save_doc_field('{{$docId}}-title-2',this.value)">
           </span>
         </p>
       </div>
@@ -27,11 +27,11 @@
         <div class="heading">
           <h1>
             <strong id="{{$docId}}-heading" onclick="edit_doc_field(this.id)">Ledamcha Multsuppliers</strong>
-            <input id="{{$docId}}-heading-input" type="text" class="hidden" name="" value="" onfocusout="save_doc_field('{{$docId}}-heading',this.value)">
+            <input id="{{$docId}}-heading-input" type="text" class="hidden" name="heading" value="Ledamcha Multsuppliers" onfocusout="save_doc_field('{{$docId}}-heading',this.value)">
           </h1>
           <p>
             <strong id="{{$docId}}-sub-heading" onclick="edit_doc_field(this.id)">Dealers in: Whole Chicken, Wings, Drumsticks, Boneless, Legs, Gizzard, Eggs, Fish Fillet, Beef, Mutton and Pishori Rice</strong>
-            <textarea id="{{$docId}}-sub-heading-input" class="form-control hidden" name="" onfocusout="save_doc_field('{{$docId}}-sub-heading',this.value)"></textarea>
+            <textarea id="{{$docId}}-sub-heading-input" class="form-control hidden" name="sub_heading" onfocusout="save_doc_field('{{$docId}}-sub-heading',this.value)">Dealers in: Whole Chicken, Wings, Drumsticks, Boneless, Legs, Gizzard, Eggs, Fish Fillet, Beef, Mutton and Pishori Rice</textarea>
           </p>
         </div>
       </div>
@@ -43,11 +43,11 @@
           <ul>
             <li>
               Cell: <strong id="{{$docId}}-phone-1" onclick="edit_doc_field(this.id)">0731 610 776</strong>
-              <input id="{{$docId}}-phone-1-input" type="text" class="hidden" name="" value="" onfocusout="save_doc_field('{{$docId}}-phone-1',this.value)">
+              <input id="{{$docId}}-phone-1-input" type="text" class="hidden" name="phone_1" value="0731 610 776" onfocusout="save_doc_field('{{$docId}}-phone-1',this.value)">
             </li>
             <li class="pl-2">
               <strong id="{{$docId}}-phone-2" onclick="edit_doc_field(this.id)">0733 205 300</strong>
-              <input id="{{$docId}}-phone-2-input" type="text" class="hidden" name="" value="" onfocusout="save_doc_field('{{$docId}}-phone-2',this.value)">
+              <input id="{{$docId}}-phone-2-input" type="text" class="hidden" name="phone_2" value="0733 205 300" onfocusout="save_doc_field('{{$docId}}-phone-2',this.value)">
             </li>
           </ul>
         </div>
@@ -60,7 +60,7 @@
         <div class="addresse" onclick="edit_doc_field('{{$docId}}-addresse')">
           <p>
             <strong id="{{$docId}}-addresse">M/s</strong>
-            <textarea id="{{$docId}}-addresse-input" class="form-control hidden" name="" onfocusout="save_doc_field('{{$docId}}-addresse',this.value)"></textarea>
+            <textarea id="{{$docId}}-addresse-input" class="form-control hidden" name="addresse" onfocusout="save_doc_field('{{$docId}}-addresse',this.value)"></textarea>
           </p>
           <!--<p class="mt-2"></p>
           <p class="mt-2"></p>-->
@@ -73,12 +73,12 @@
           <p onclick="edit_doc_field('{{$docId}}-doc-id-date')">
             Date
             <strong id="{{$docId}}-doc-id-date" >{{date('d / M / Y')}}</strong>
-            <input id="{{$docId}}-doc-id-date-input" type="text" class="hidden" name="" value="" onfocusout="save_doc_field('{{$docId}}-doc-id-date',this.value)">
+            <input id="{{$docId}}-doc-id-date-input" type="text" class="hidden" name="date" value="{{date('d / M / Y')}}" onfocusout="save_doc_field('{{$docId}}-doc-id-date',this.value)">
           </p>
 
           <p onclick="edit_doc_field('{{$docId}}-doc-id-note')">
             <strong id="{{$docId}}-doc-id-note" >Sales quotation</strong>
-            <input id="{{$docId}}-doc-id-note-input" type="text" class="hidden" name="" value="" onfocusout="save_doc_field('{{$docId}}-doc-id-note',this.value)">
+            <input id="{{$docId}}-doc-id-note-input" type="text" class="hidden" name="note" value="Sales quotation" onfocusout="save_doc_field('{{$docId}}-doc-id-note',this.value)">
           </p>
         </div>
       </div>
@@ -138,13 +138,13 @@
 
           <p style="text-align:left;font-style:normal" onclick="edit_doc_field('{{$docId}}-foot-note-p-1')">
             <strong id="{{$docId}}-foot-note-p-1" >NB: Prices are subject to change</strong>
-            <textarea id="{{$docId}}-foot-note-p-1-input" class="form-control hidden" name="" onfocusout="save_doc_field('{{$docId}}-foot-note-p-1',this.value)"></textarea>
+            <textarea id="{{$docId}}-foot-note-p-1-input" class="form-control hidden" name="foot_note_1" onfocusout="save_doc_field('{{$docId}}-foot-note-p-1',this.value)">NB: Prices are subject to change</textarea>
           </p>
 
 
           <p style="text-align:left;font-style:normal" class="mt-2" onclick="edit_doc_field('{{$docId}}-foot-note-p-4')">
             <strong id="{{$docId}}-foot-note-p-4" >Warm regards</strong>
-            <textarea id="{{$docId}}-foot-note-p-4-input" class="form-control hidden" name="" onfocusout="save_doc_field('{{$docId}}-foot-note-p-4',this.value)"></textarea>
+            <textarea id="{{$docId}}-foot-note-p-4-input" class="form-control hidden" name="foot_note_4" onfocusout="save_doc_field('{{$docId}}-foot-note-p-4',this.value)">Warm regards</textarea>
           </p>
         </div>
       </div>
