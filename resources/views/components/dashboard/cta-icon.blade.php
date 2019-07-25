@@ -17,7 +17,7 @@
 @if(isset($selectable))
   <div class="row">
     <div class="col-xs-4 col-xs-offset-4">
-      <input type="checkbox" name="" value="{{$invoice->id}}">
+      <input type="checkbox" name="" value="{{$invoice->id}}" onchange="add_invoice_to_rpt(this.value)">
     </div>
   </div>
 @endif

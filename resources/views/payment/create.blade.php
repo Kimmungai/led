@@ -28,7 +28,7 @@
         @Component('components.payment.create-top',['user_acc_bal'=>$user_acc_bal])@endcomponent
         <div class="row">
           <div class="col-md-4">
-            
+
             <h4 id="calculator-info" class="text-success">Due: <strong>Ksh. {{number_format(session('salePrice'),2)}}</strong></h4>
             <input type="hidden" name="" id="totalAmountDue" class=" form-control" value="@if(session('salePrice')){{session('salePrice')}}@else 0 @endif" />
 
@@ -53,8 +53,8 @@
                     @foreach( $soldProds as $soldProd )
                       <tr data-cost="{{$soldProd['cost']}}" data-id="{{$soldProd['id']}}" id="sold-product-{{$soldProd['id']}}" >
                         <td data-name="{{$soldProd['name']}}" id="name-prod-{{$soldProd['id']}}"> {{$soldProd['name']}}</td>
-                        <td>{{$soldProd['qty']}}</td>
                         <td data-price="{{$soldProd['cost']}}" id="price-prod-{{$soldProd['id']}}">Ksh. {{number_format($soldProd['cost'],2)}}</td>
+                        <td>{{$soldProd['qty']}}</td>
                       </tr>
                     @endforeach
                     <!--<tr>

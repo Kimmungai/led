@@ -55,6 +55,14 @@
               <li class="@if(Route::is('invoices.create')) active @endif"><a href="{{route('invoices.create')}}">Add new</a></li>
             </ul>-->
         </li>
+        <li class="@if(Route::is('report*')) act @endif">
+          <a href="{{route('report.index')}}"><i class="fa fa-chart-bar"></i>
+            <span>Reports</span></a>
+            <!--<ul class="sub-menu-list">
+              <li class="@if(Route::is('invoices.index')) active @endif"><a href="{{route('invoices.index')}}">Open all</a> </li>
+              <li class="@if(Route::is('invoices.create')) active @endif"><a href="{{route('invoices.create')}}">Add new</a></li>
+            </ul>-->
+        </li>
         <li class="menu-list @if(Route::is('users*') || Route::is('staff*') || Route::is('admin*')) act @endif"><a href="{{route('users.index')}}"><i class="fa fa-user-tie"></i> <span>Users</span></a>
           <ul class="sub-menu-list">
             <li class="@if(Route::is('staff.index')) active @endif"><a href="{{route('staff.index')}}">Staff</a> </li>

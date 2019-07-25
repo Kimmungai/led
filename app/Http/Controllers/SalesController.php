@@ -68,8 +68,8 @@ class SalesController extends Controller
         $revenue->product_id = $product->id;
         $revenue->soldQuantity = $soldProd['qty'];
         $revenue->description = $product->name." ".$product->description;
-        $revenue->unitPrice = $product->cost;
-        $revenue->sellingPrice = $product->cost;
+        $revenue->unitPrice = $product->salePrice;
+        $revenue->sellingPrice = $soldProd['cost'];
         $revenue->save();
 
         $prodNewQuantity = $product->inventory->availableQuantity - $soldProd['qty'];
@@ -90,7 +90,7 @@ class SalesController extends Controller
 
 
       return redirect(route('payments.create'));
-      
+
     }
 
     /**

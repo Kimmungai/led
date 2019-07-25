@@ -49,13 +49,19 @@ function remove_table_row(rowID,tableID)
   get_table_total(tableID);
 }
 
-function update_invoice(value,field,id)
+function add_invoice_to_rpt(value)
+{
+  $('#invoices-report-form').append('<input type="hidden" name="invoice_id[]" value="'+value+'">');
+}
+
+function update_invoice(value,field,id,sales)
 {
   $.post('/update-invoice',//send details to server
     {
       value:value,
       field:field,
       id:id,
+      sales:sales,
       "_token": $('meta[name="csrf-token"]').attr('content'),
     },
     function(data,status){

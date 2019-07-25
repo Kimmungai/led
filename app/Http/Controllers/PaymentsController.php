@@ -85,11 +85,14 @@ class PaymentsController extends Controller
           $amountReceived = $request->amountReceived;
         }
 
+        if( $sale->amountDue <= $amountReceived ){$status = 1;}else{$status=0;}
+
         Sale::where('id',$sale_id)->update([
           'paymentMethod' => $request->paymentMethod,
           'amountReceived' => $amountReceived,
           'transacion_code' => $request->transacion_code,
           'cheque_no' => $request->cheque_no,
+          'status' => $status,
         ]);
 
         //update user account
@@ -169,6 +172,7 @@ class PaymentsController extends Controller
       $invoice->sale_id = $sale->id;
       $invoice->name = $name;
       $invoice->amount = abs($value);
+      $invoice->totalAmount = $sale->amountDue;
       $invoice->recipient = $user->name;
       $invoice->send_to = $user->email;
       $invoice->save();

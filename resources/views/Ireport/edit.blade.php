@@ -18,31 +18,26 @@
 		 <!-- //header-ends -->
 
 			<div id="page-wrapper">
-        @Component('components.structure.page-title',['title'=>$invoice->recipient.' '.$invoice->name])@endcomponent
+        @Component('components.structure.page-title',['title'=>'Report'])@endcomponent
 
-        @Component('components.form-inputs.link',['title'=>'Print','href'=>'#','toolTip'=>'download quote','icon'=>'fas fa-download','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'alert("work")'])@endcomponent
+        @Component('components.form-inputs.link',['title'=>'Print','href'=>'#','toolTip'=>'print quote','icon'=>'fas fa-print','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'window.print()'])@endcomponent
 
         @Component('components.form-inputs.link',['title'=>'Share','href'=>'#','toolTip'=>'share quote','icon'=>'fas fa-share-alt','classes'=>'btn btn-default btn-xs pull-right mr-1'])@endcomponent
 
 
-        @Component('components.structure.breadcrump',['home'=>route('home'),'invoices'=>route('invoices.index'),'specified'=>$invoice->name])
+        @Component('components.structure.breadcrump',['home'=>route('home'),'specifiedText'=>'Reports','specifiedLinked'=>route('report.index'),'specified'=>'Report-'.$ireport->id])
         @endcomponent
 
 				<div class="graphs">
 
-          <div class="row">
-            <div class="col-sm-12">
-              <input type="radio" name="paid" value="1" @if($invoice->status) checked @endif  onchange="update_invoice(this.value,'status',{{$invoice->id}},1)"> <strong>Paid</strong>
-              <input type="radio" name="paid" value="0" @if(!$invoice->status) checked @endif onchange="update_invoice(this.value,'status',{{$invoice->id}},1)"> <strong>Unpaid</strong>
-            </div>
-          </div>
+
 
 			<!-- switches -->
         <!--invoice template-->
           <div class="invoice-panel">
 
-            <p class="title-1"> <span>Halal</span> </p>
-            <p class="title-2"> <span>Delivery / Invoice</span> </p>
+            <p class="title-1"> <span><strong>Halal</strong></span> </p>
+            <p class="title-2"> <span><strong>Report</strong></span> </p>
 
             <div class="heading">
               <h1>Ledamcha Multsuppliers</h1>
@@ -60,7 +55,7 @@
 
               <div class="col-xs-6">
                 <div class="addresse">
-                  <p>M/s {{$invoice->recipient}}</p>
+                  <p>M/s </p>
                   <p class="mt-2"></p>
                   <p class="mt-2"></p>
                 </div>
@@ -70,8 +65,8 @@
                 <div class="doc-ids">
                   <span>Email: ledamchamultsuppliers@yahoo.com</span>
                   <p>Date {{date('d / M / Y')}}</p>
-                  <p>Order No. {{$invoice->id}}</p>
-                  <p>Delivery Note</p>
+                  <p>Report No. </p>
+                  <p>Report</p>
                 </div>
               </div>
 
@@ -83,54 +78,37 @@
                   <table class="table table-bodered">
                     <thead>
                       <tr>
-                        <td>Qty.</td>
-                        <td>Description</td>
-                        <td>@</td>
-                        <td>Shs.</td>
-                        <td>Cts</td>
+                        <td>Invoice no.</td>
+                        <td>Date</td>
+                        <td>customer</td>
+                        <td>Value</td>
+                        <td>Sale total</td>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="invoices-table-body">
 
-                      @foreach( $revenues as $revenue )
-                      <tr>
-                        <td>{{$revenue->soldQuantity}}</td>
-                        <td>{{$revenue->description}}</td>
-                        <td>{{$revenue->unitPrice}}</td>
-                        <td>{{$revenue->sellingPrice}}</td>
-                        <td class="table-highlight">00</td>
+                      @foreach( $ireport->IreportInvoices as $invoice )
+                      <tr data-sale="{{$invoice->totalAmount}}" data-value="{{$invoice->amount}}" id="invoices-table-body-row-{{$invoice->id}}">
+                        <td>{{$invoice->invoice_id}}</td>
+                        <td>{{date('d-M-Y',strtotime($invoice->created_at))}}</td>
+                        <td>{{$invoice->recipient}}</td>
+                        <td>{{$invoice->amount}}</td>
+                        <td class="table-highlight">{{$invoice->totalAmount}}</td>
                       </tr>
                       @endforeach
 
-
-                      <tr>
-                        <td></td>
-                        <td colspan="2">TOTAL</td>
-                        <td>{{number_format($revenue->sale->amountDue,2)}}</td>
-                        <td class="table-highlight">00</td>
-                      </tr>
                     </tbody>
                     <tfoot>
                       <tr>
-                        <th></th>
-                        <th colspan="3">Accounts are due on demand</th>
-                        <th></th>
+                        <td></td>
+                        <td colspan="2">TOTAL</td>
+                        <td  id="invoices-table-body-value-total" style="text-align:left">00</td>
+                        <td class="text-left" id="invoices-table-body-sale-total" class="table-highlight" style="text-align:left">00</td>
                       </tr>
                     </tfoot>
                   </table>
                 </div>
-                <div class="footnote">
-                  <p>Prices are subject to change without prior notice.</p>
-                  <div class="row inspector mt-2">
-                    <div class="col-xs-6">
-                      <p>Checked by: </p>
-                    </div>
-                    <div class="col-xs-6">
-                      <p>Date Received:</p>
-                    </div>
-                  </div>
-                  <p class="mt-2">Your premium supplier. Only the best</p>
-                </div>
+
               </div>
             </div>
 
@@ -151,4 +129,14 @@
 			</div>
 			 <!--body wrapper end-->
 		</div>
+    <script type="text/javascript">
+      var value = 0;
+      var sales_total = 0;
+      $('#invoices-table-body tr').each(function () {
+        value += parseFloat($(this).data('value'));
+        sales_total += parseFloat($(this).data('sale'));
+      });
+      $("#invoices-table-body-value-total").text(value.toLocaleString("en-GB", {style: "currency", currency: "KES", minimumFractionDigits: 2}));
+      $("#invoices-table-body-sale-total").text(sales_total.toLocaleString("en-GB", {style: "currency", currency: "KES", minimumFractionDigits: 2}));
+    </script>
 @endsection

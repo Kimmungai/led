@@ -23,6 +23,7 @@ class CreateSalesTable extends Migration
             $table->integer('paymentMethod')->nullable();
             $table->string('transacion_code')->nullable();
             $table->string('cheque_no')->nullable();
+            $table->tinyInteger('status')->default(0);
             $table->text('remarks')->nullable();
             $table->softDeletes();
             $table->timestamps();

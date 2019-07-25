@@ -25,6 +25,7 @@ Route::post('update-invoice','InvoicesController@update_invoice');
 
 //Reports
 Route::resource('quotation','QuotationsController');
+Route::resource('report','IreportsController');
 
 //users
 Route::resource('users','UsersController');

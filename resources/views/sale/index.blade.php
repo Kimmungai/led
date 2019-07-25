@@ -44,7 +44,7 @@
                 <td>{{$sale->user->name}}</td>
                 <td>Ksh. {{number_format($sale->amountDue,2)}}</td>
                 <td>{{ \Carbon\Carbon::parse($sale->created_at)->diffForHumans() }}</td>
-                @if( $sale->amountDue <= $sale->amountReceived)
+                @if( $sale->status)
                 <td><span class="fa fa-circle text-green"></span> Paid</td>
                 @else
                 <td><span class="fa fa-circle text-danger"></span> Unpaid</td>

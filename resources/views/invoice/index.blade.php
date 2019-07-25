@@ -21,7 +21,7 @@
 			<div id="page-wrapper">
         @Component('components.structure.page-title',['title'=>'All invoices'])@endcomponent
 
-        @Component('components.form-inputs.link',['title'=>'Generate report','href'=>route('suppliers.create'),'toolTip'=>'create new supplier','icon'=>'fas fa-file-pdf','classes'=>'btn btn-default btn-xs pull-right'])@endcomponent
+        @Component('components.form-inputs.link',['title'=>'Generate report','href'=>'#','toolTip'=>'Generate a report from invoices','icon'=>'fas fa-file-pdf','classes'=>'btn btn-default btn-xs pull-right','click'=>'confirm_modal("newReportConfirmModal")'])@endcomponent
 
         @Component('components.structure.breadcrump',['home'=>route('home'),'invoices'=>''])
         @endcomponent
@@ -88,7 +88,15 @@
         </div>
         <!--custom page design ends-->
 
+        <div class="row">
+          <div class="col-sm-12">
+            {{$invoices->links()}}
+          </div>
+        </div>
 
+        <form id="invoices-report-form" class="hidden" action="{{route('report.store')}}" method="post">
+          @csrf
+        </form>
 
 			</div>
 			 <!--body wrapper end-->
@@ -102,4 +110,7 @@
         $( "#end-date" ).datepicker();
       } );
   </script>
+  <!--modals-->
+  @Component('components.modals.confirm',['title'=>'Generate report','question'=>'Are you sure you want to generate report?','modalID'=>'newReportConfirmModal','cancelBtnTitle'=>'Cancel','saveBtnTitle'=>'Confirm save','formID'=>'invoices-report-form'])@endcomponent
+
 @endsection

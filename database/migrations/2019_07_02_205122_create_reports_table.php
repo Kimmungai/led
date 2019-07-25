@@ -21,6 +21,7 @@ class CreateReportsTable extends Migration
             $table->string('name')->nullable();
             $table->text('notes')->nullable();
             $table->double('amount')->nullable();
+            $table->double('totalAmount')->nullable();
             $table->tinyInteger('status')->default(0);
             $table->text('recipient')->nullable();
             $table->text('send_to')->nullable();
