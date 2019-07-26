@@ -52,6 +52,7 @@
 <!-- Placed js at the end of the document so the pages load faster -->
 
 </head>
+
 @yield('content')
 <!--footer section start-->
 <footer>

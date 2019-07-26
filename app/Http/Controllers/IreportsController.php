@@ -123,8 +123,19 @@ class IreportsController extends Controller
      * @param  \App\Ireport  $ireport
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Ireport $ireport)
+    public function destroy(Ireport $ireport,$id)
     {
-        //
+        $ireport = Ireport::find($id);
+        if($ireport->IreportInvoices)
+        {
+          foreach ($ireport->IreportInvoices as $invoice)
+          {
+            $invoice->delete();
+          }
+        }
+        $ireport->delete();
+        Session::flash('message', env("SAVE_SUCCESS_MSG","Report deleted successfully!"));
+        return redirect(route('report.index'));
+
     }
 }

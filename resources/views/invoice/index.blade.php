@@ -69,7 +69,14 @@
             </div>
 
             <div class="row">
-              <div class="col-sm-offset-8 col-sm-4">
+
+                <div class="col-md-8">
+                  <?php $selected = ''; ?>
+                  <?php if(isset($_GET['customer_id'])){$selected = $_GET['customer_id'];} ?>
+                  @Component('components.form-inputs.model-select',['title' => 'Customer','name'=>'customer_id','icon'=>'fas fa-users','options'=>$customers,'required'=>false,'selected'=>$selected])@endcomponent
+                </div>
+
+              <div class="col-sm-4">
                 <button class="pull-right" type="submit" name="button"><span class="fas fa-search"></span> Filter</button>
               </div>
             </div>

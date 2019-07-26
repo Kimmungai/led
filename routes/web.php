@@ -22,6 +22,7 @@ Route::get('invoices','InvoicesController@index')->name('invoices.index');
 Route::get('invoices/create/','InvoicesController@create')->name('invoices.create');
 Route::get('invoices-show/{id}','InvoicesController@show')->name('invoices.show');
 Route::post('update-invoice','InvoicesController@update_invoice');
+Route::post('invoices/delete','InvoicesController@destroy_invoice')->name('invoices.destroy');
 
 //Reports
 Route::resource('quotation','QuotationsController');
@@ -93,3 +94,4 @@ Route::post('img-tmp','Images\ImageAjaxController@img_tmp');
 
 //Extras
 Route::post('save-list','HomeController@save_list')->name('save.list');
+Route::post('share-doc','ShareController@share_doc');

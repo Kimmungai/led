@@ -70,7 +70,7 @@
               <form id="new-purchase-form" class="" action="{{route('purchases.store')}}" method="post" onsubmit="confirm_modal('newPurchaseConfirmModal')">
                 @csrf
                 <input type="hidden" name="" id="total-cost" class=" form-control" value="@if(session('purchaseCost')){{session('purchaseCost')}}@else 0 @endif" />
-                <input type="hidden" name="user_id" value="@if(isset($supplier)){{$supplier->id}}@endif">
+                <!--<input type="hidden" name="user_id" value="@if(isset($supplier)){{$supplier->id}}@endif">-->
 
                 <div class="row">
 

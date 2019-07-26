@@ -17,3 +17,16 @@ function validateImage(id,rules,val)
 
   return 0;
 }
+
+//function to validate email
+function testEmail(val)
+{
+  var pattern = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  if(!pattern.test(val))
+  {
+
+    return 0;
+  }
+
+  return 1;
+}

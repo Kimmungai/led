@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Session;
 
 use Illuminate\Http\Request;
 use App\Report;
 use App\Revenue;
 use App\Sale;
+use App\User;
 use Carbon\Carbon;
 
 class InvoicesController extends Controller
@@ -22,6 +24,12 @@ class InvoicesController extends Controller
 
     public function index( Request $request )
     {
+
+      $customers = User::where('type',env('CUSTOMER',2))->get();
+      $customer_id =$customers[0]->id;
+
+      if( $request->customer_id ){ $customer_id = $request->customer_id;}
+
       if( $request->filter  )
       {
         $sign ='=';$val=$request->status;
@@ -30,13 +38,13 @@ class InvoicesController extends Controller
 
         if( $val == -1 ){$sign ='<>';$val=null;}
 
-        $invoices = Report::where('status',$sign,$val)->whereDate('created_at','>=',$startDate)->whereDate('created_at','<=',$endDate)->orderBy('created_at','DESC')->paginate(env('ITEMS_PER_PAGE',3));
+        $invoices = Report::where('user_id',$customer_id)->where('status',$sign,$val)->whereDate('created_at','>=',$startDate)->whereDate('created_at','<=',$endDate)->orderBy('created_at','DESC')->paginate(env('ITEMS_PER_PAGE',3));
 
       }else{
-        $invoices = Report::orderBy('created_at','DESC')->paginate(env('ITEMS_PER_PAGE',4));
+        $invoices = Report::where('user_id',$customer_id)->orderBy('created_at','DESC')->paginate(env('ITEMS_PER_PAGE',4));
       }
 
-      return view('invoice.index',compact('invoices'));
+      return view('invoice.index',compact('invoices','customers'));
     }
 
     public function create()
@@ -68,5 +76,13 @@ class InvoicesController extends Controller
           $field => $value,
         ]);
       }
+    }
+    public function destroy_invoice(Request $request)
+    {
+      $report = Report::find($request->id);
+      $report->delete();
+      Session::flash('message', env("SAVE_SUCCESS_MSG","Invoice deleted succesfully!"));
+
+      return redirect(route('invoices.index'));
     }
 }

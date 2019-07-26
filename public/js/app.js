@@ -204,6 +204,31 @@ function update_prod(prodID,value,field)
       "_token": $('meta[name="csrf-token"]').attr('content'),
     },
     function(data,status){
-      
+
+    });
+}
+function share_modal(modalID)
+{
+  event.preventDefault();
+  $("#"+modalID).modal();
+}
+
+function share_doc(modalID,docId,docType)
+{
+  event.preventDefault();
+  var email = $("#share-email").val();
+  if( email == '' ){alert("Please enter email first!");return;}
+  if(!testEmail(email)){alert("Invalid email!");return;}
+  $("#"+modalID).modal('hide');
+
+  $.post('/share-doc',//send details to server
+    {
+      id:docId,
+      email:email,
+      docType:docType,
+      "_token": $('meta[name="csrf-token"]').attr('content'),
+    },
+    function(data,status){
+      alert(data)
     });
 }

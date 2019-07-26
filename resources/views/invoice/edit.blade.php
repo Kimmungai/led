@@ -20,6 +20,8 @@
 			<div id="page-wrapper">
         @Component('components.structure.page-title',['title'=>$invoice->recipient.' '.$invoice->name])@endcomponent
 
+        @Component('components.form-inputs.link',['title'=>'Delete','href'=>'#','toolTip'=>'Delete invoice','icon'=>'fas fa-warning','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'confirm_modal("deleteInvoiceConfirmModal")'])@endcomponent
+
         @Component('components.form-inputs.link',['title'=>'Print','href'=>'#','toolTip'=>'download quote','icon'=>'fas fa-download','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'alert("work")'])@endcomponent
 
         @Component('components.form-inputs.link',['title'=>'Share','href'=>'#','toolTip'=>'share quote','icon'=>'fas fa-share-alt','classes'=>'btn btn-default btn-xs pull-right mr-1'])@endcomponent
@@ -139,6 +141,8 @@
         <!--end invoice template-->
         <div class="row mt-2">
           <div class="col-md-12">
+            @Component('components.form-inputs.link',['title'=>'Delete','href'=>'#','toolTip'=>'Delete invoice','icon'=>'fas fa-warning','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'confirm_modal("deleteInvoiceConfirmModal")'])@endcomponent
+
             @Component('components.form-inputs.link',['title'=>'Print','href'=>'#','toolTip'=>'print quote','icon'=>'fas fa-print','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'window.print()'])@endcomponent
 
             @Component('components.form-inputs.link',['title'=>'Share','href'=>'#','toolTip'=>'share quote','icon'=>'fas fa-share-alt','classes'=>'btn btn-default btn-xs pull-right mr-1'])@endcomponent
@@ -146,9 +150,17 @@
           </div>
         </div>
 
+        <form class="d-none hidden" id="delete-invoice-form" action="{{route('invoices.destroy')}}" method="post">
+          <input type="hidden" name="id" value="{{$invoice->id}}">
+          @csrf
+        </form>
+
 				</div>
 			<!--body wrapper start-->
 			</div>
 			 <!--body wrapper end-->
 		</div>
+    <!--modals-->
+    @Component('components.modals.confirm',['title'=>'Delete invoice','question'=>'Are you sure you want to delete invoice?','modalID'=>'deleteInvoiceConfirmModal','cancelBtnTitle'=>'Cancel','saveBtnTitle'=>'Confirm delete','formID'=>'delete-invoice-form'])@endcomponent
+
 @endsection

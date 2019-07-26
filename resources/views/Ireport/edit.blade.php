@@ -20,7 +20,9 @@
 			<div id="page-wrapper">
         @Component('components.structure.page-title',['title'=>'Report'])@endcomponent
 
-        @Component('components.form-inputs.link',['title'=>'Print','href'=>'#','toolTip'=>'print quote','icon'=>'fas fa-print','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'window.print()'])@endcomponent
+        @Component('components.form-inputs.link',['title'=>'Delete','href'=>'#','toolTip'=>'Delete report','icon'=>'fas fa-warning','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'confirm_modal("deleteReportConfirmModal")'])@endcomponent
+
+        @Component('components.form-inputs.link',['title'=>'Print','href'=>'#','toolTip'=>'print quote','icon'=>'fas fa-download','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'window.print()'])@endcomponent
 
         @Component('components.form-inputs.link',['title'=>'Share','href'=>'#','toolTip'=>'share quote','icon'=>'fas fa-share-alt','classes'=>'btn btn-default btn-xs pull-right mr-1'])@endcomponent
 
@@ -117,18 +119,29 @@
         <!--end invoice template-->
         <div class="row mt-2">
           <div class="col-md-12">
-            @Component('components.form-inputs.link',['title'=>'Print','href'=>'#','toolTip'=>'print quote','icon'=>'fas fa-print','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'window.print()'])@endcomponent
+            @Component('components.form-inputs.link',['title'=>'Delete','href'=>'#','toolTip'=>'Delete report','icon'=>'fas fa-warning','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'confirm_modal("deleteReportConfirmModal")'])@endcomponent
+
+            @Component('components.form-inputs.link',['title'=>'Print','href'=>'#','toolTip'=>'print quote','icon'=>'fas fa-download','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'window.print()'])@endcomponent
 
             @Component('components.form-inputs.link',['title'=>'Share','href'=>'#','toolTip'=>'share quote','icon'=>'fas fa-share-alt','classes'=>'btn btn-default btn-xs pull-right mr-1'])@endcomponent
 
           </div>
         </div>
 
+        <form class="d-none hidden" id="delete-report-form" action="{{route('report.destroy',$ireport->id)}}" method="post">
+          @csrf
+          @method('DELETE')
+        </form>
+
 				</div>
 			<!--body wrapper start-->
 			</div>
 			 <!--body wrapper end-->
 		</div>
+    <!--modals-->
+    @Component('components.modals.confirm',['title'=>'Delete report','question'=>'Are you sure you want to delete report?','modalID'=>'deleteReportConfirmModal','cancelBtnTitle'=>'Cancel','saveBtnTitle'=>'Confirm delete','formID'=>'delete-report-form'])@endcomponent
+
+
     <script type="text/javascript">
       var value = 0;
       var sales_total = 0;
