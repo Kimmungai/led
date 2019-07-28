@@ -22,9 +22,9 @@
 
         @Component('components.form-inputs.link',['title'=>'Delete','href'=>'#','toolTip'=>'Delete report','icon'=>'fas fa-warning','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'confirm_modal("deleteReportConfirmModal")'])@endcomponent
 
-        @Component('components.form-inputs.link',['title'=>'Print','href'=>'#','toolTip'=>'print quote','icon'=>'fas fa-download','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'window.print()'])@endcomponent
+        @Component('components.form-inputs.link',['title'=>'Print','href'=>route('ireport.download',$ireport->id),'toolTip'=>'print quote','icon'=>'fas fa-download','classes'=>'btn btn-default btn-xs pull-right mr-1'])@endcomponent
 
-        @Component('components.form-inputs.link',['title'=>'Share','href'=>'#','toolTip'=>'share quote','icon'=>'fas fa-share-alt','classes'=>'btn btn-default btn-xs pull-right mr-1'])@endcomponent
+        @Component('components.form-inputs.link',['title'=>'Share','href'=>'#','toolTip'=>'share quote','icon'=>'fas fa-share-alt','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'share_modal("shareModal")'])@endcomponent
 
 
         @Component('components.structure.breadcrump',['home'=>route('home'),'specifiedText'=>'Reports','specifiedLinked'=>route('report.index'),'specified'=>'Report-'.$ireport->id])
@@ -121,9 +121,9 @@
           <div class="col-md-12">
             @Component('components.form-inputs.link',['title'=>'Delete','href'=>'#','toolTip'=>'Delete report','icon'=>'fas fa-warning','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'confirm_modal("deleteReportConfirmModal")'])@endcomponent
 
-            @Component('components.form-inputs.link',['title'=>'Print','href'=>'#','toolTip'=>'print quote','icon'=>'fas fa-download','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'window.print()'])@endcomponent
+            @Component('components.form-inputs.link',['title'=>'Print','href'=>route('ireport.download',$ireport->id),'toolTip'=>'print quote','icon'=>'fas fa-download','classes'=>'btn btn-default btn-xs pull-right mr-1'])@endcomponent
 
-            @Component('components.form-inputs.link',['title'=>'Share','href'=>'#','toolTip'=>'share quote','icon'=>'fas fa-share-alt','classes'=>'btn btn-default btn-xs pull-right mr-1'])@endcomponent
+            @Component('components.form-inputs.link',['title'=>'Share','href'=>'#','toolTip'=>'share report','icon'=>'fas fa-share-alt','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'share_modal("shareModal")'])@endcomponent
 
           </div>
         </div>
@@ -140,6 +140,7 @@
 		</div>
     <!--modals-->
     @Component('components.modals.confirm',['title'=>'Delete report','question'=>'Are you sure you want to delete report?','modalID'=>'deleteReportConfirmModal','cancelBtnTitle'=>'Cancel','saveBtnTitle'=>'Confirm delete','formID'=>'delete-report-form'])@endcomponent
+    @Component('components.modals.share',['title'=>'Share report','docId'=>$ireport->id,'docType'=>'ireport','modalID'=>'shareModal','cancelBtnTitle'=>'Cancel','saveBtnTitle'=>'share'])@endcomponent
 
 
     <script type="text/javascript">

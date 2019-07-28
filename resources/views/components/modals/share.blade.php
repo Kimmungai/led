@@ -1,4 +1,3 @@
-<form class="" action="#" method="post" >
 <div class="modal fade" id="{{$modalID}}" role="dialog">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
@@ -24,4 +23,3 @@
     </div>
   </div>
 </div>
-</form>

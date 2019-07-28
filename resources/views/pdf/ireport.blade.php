@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex">
 
-    <title>{{$doc->cust_name}} {{$doc->title}}</title>
+    <title>{{$doc->recipient}} Report</title>
 
     <!-- Bootstrap core CSS -->
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
@@ -49,7 +49,7 @@
       color: #fff;
       margin-right:auto;
       margin-left: auto;
-      width: 220px;
+      width: 100px;
     }
     .heading h1{
       text-transform: uppercase;
@@ -94,7 +94,7 @@
     .addresse p{
       /*border-bottom: 1px dotted #000;*/
       width: 100%;
-      
+
       word-break: break-word;
       word-wrap: break-word;
     }
@@ -163,16 +163,16 @@
 
         <div class="row">
           <div class="col-xs-12">
-              <p class="title-1"> {{$doc->title_1}}</p>
-              <p class="title-2"> {{$doc->title_2}}</p>
+              <p class="title-1"><strong>Halal</strong></p>
+              <p class="title-2"> <strong>Report</strong></p>
           </div>
         </div>
 
         <div class="row">
           <div class="col-xs-12">
             <div class="heading">
-              <h1>{{$doc->heading}}</h1>
-              <p>{{$doc->sub_heading}}</p>
+              <h1>Ledamcha Multsuppliers</h1>
+              <p>Dealers in: Whole Chicken, Wings, Drumsticks, Boneless, Legs, Gizzard, Eggs, Fish Fillet, Beef, Mutton and Pishori Rice</p>
             </div>
           </div>
         </div>
@@ -181,8 +181,8 @@
           <div class="col-xs-12">
             <div class="contacts">
               <ul>
-                <li>Cell: {{$doc->phone_1}}</li>
-                <li class="pl-2">{{$doc->phone_2}}</li>
+                <li>Cell: 0731 610 776</li>
+                <li class="pl-2">0733 205 300</li>
               </ul>
             </div>
           </div>
@@ -191,7 +191,7 @@
         <div class="row">
           <div class="col-xs-6">
             <div class="addresse">
-              <p>{{$doc->addresse}} </p>
+              <p>M/s {{$doc->recipient}} </p>
               <p class="mt-2"></p>
               <p class="mt-2"></p>
             </div>
@@ -200,9 +200,9 @@
           <div class="col-xs-6">
             <div class="doc-ids">
               <span>Email: ledamchamultsuppliers@yahoo.com</span>
-              <p>Date {{$doc->date}}</p>
+              <p>Date {{date('d / M / Y',strtotime($doc->created_at))}}</p>
               <p>Report No. {{$doc->id}}</p>
-              <p>{{$doc->note}}</p>
+              <p>Report</p>
             </div>
           </div>
         </div>
@@ -212,55 +212,37 @@
             <table class="table table-bodered">
               <thead>
                 <tr>
-                  <td>Item code</td>
-                  <td>Description</td>
-                  <td>Unit cost</td>
+                  <td>Invoice no.</td>
+                  <td>Date</td>
+                  <td>Customer</td>
+                  <td>Value</td>
+                  <td>Sale total</td>
                 </tr>
               </thead>
               <tbody id="invoices-table-body">
-
-                @foreach( $doc->QuoteProds as $product )
+                <?php $value=0;$saleTotal=0; ?>
+                @foreach( $invoices as $invoice )
                 <tr>
-                  <td>{{$product->id}}</td>
-                  <td>{{$product->name}}</td>
-                  <td>{{$product->salePrice}}</td>
+                  <td>{{$invoice->id}}</td>
+                  <td>{{date('d / M / Y',strtotime($invoice->invoice_date))}}</td>
+                  <td>{{$invoice->recipient}}</td>
+                  <td>Ksh. {{number_format($invoice->amount,2)}}</td>
+                  <td class="table-highlight">Ksh. {{number_format($invoice->totalAmount,2)}}</td>
                 </tr>
+                <?php $value += $invoice->amount; ?>
+                <?php $saleTotal += $invoice->totalAmount; ?>
                 @endforeach
-
+                <tr>
+                  <td></td>
+                  <td colspan="2">TOTAL</td>
+                  <td>Ksh. {{number_format($value,2)}}</td>
+                  <td class="table-highlight">Ksh. {{number_format($saleTotal,2)}}</td>
+                </tr>
               </tbody>
 
             </table>
           </div>
         </div>
-
-
-
-        <div style="margin-bottom: 0px">&nbsp;</div>
-
-        <div class="row">
-          <div class="col-xs-12">
-
-            <div class="footnote">
-              <p style="text-align:left;font-style:normal">
-                <strong>{{$doc->foot_note_1}}</strong>
-              </p>
-            </div>
-
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-xs-12">
-
-            <div class="footnote">
-              <p style="text-align:left;font-style:normal" class="mt-2">
-                <strong>{{$doc->foot_note_4}}</strong>
-              </p>
-            </div>
-
-          </div>
-        </div>
-
 
         </div>
 

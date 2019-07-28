@@ -22,9 +22,9 @@
 
         @Component('components.form-inputs.link',['title'=>'Delete','href'=>'#','toolTip'=>'Delete invoice','icon'=>'fas fa-warning','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'confirm_modal("deleteInvoiceConfirmModal")'])@endcomponent
 
-        @Component('components.form-inputs.link',['title'=>'Print','href'=>'#','toolTip'=>'download quote','icon'=>'fas fa-download','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'alert("work")'])@endcomponent
+        @Component('components.form-inputs.link',['title'=>'Print','href'=>route('invoice.download',$invoice->id),'toolTip'=>'download quote','icon'=>'fas fa-download','classes'=>'btn btn-default btn-xs pull-right mr-1'])@endcomponent
 
-        @Component('components.form-inputs.link',['title'=>'Share','href'=>'#','toolTip'=>'share quote','icon'=>'fas fa-share-alt','classes'=>'btn btn-default btn-xs pull-right mr-1'])@endcomponent
+        @Component('components.form-inputs.link',['title'=>'Share','href'=>'#','toolTip'=>'share quote','icon'=>'fas fa-share-alt','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'share_modal("shareModal")'])@endcomponent
 
 
         @Component('components.structure.breadcrump',['home'=>route('home'),'invoices'=>route('invoices.index'),'specified'=>$invoice->name])
@@ -43,8 +43,8 @@
         <!--invoice template-->
           <div class="invoice-panel">
 
-            <p class="title-1"> <span>Halal</span> </p>
-            <p class="title-2"> <span>Delivery / Invoice</span> </p>
+            <p class="title-1"> <strong>Halal</strong> </p>
+            <p class="title-2"> <strong>Delivery / Invoice</strong> </p>
 
             <div class="heading">
               <h1>Ledamcha Multsuppliers</h1>
@@ -54,7 +54,7 @@
             <div class="contacts">
               <ul>
                 <li>Cell: 0731 610 776</li>
-                <li><span class="text-white">Cell: </span>0733 205 300</li>
+                <li class="pl-2">0733 205 300</li>
               </ul>
             </div>
 
@@ -71,7 +71,7 @@
               <div class="col-xs-6">
                 <div class="doc-ids">
                   <span>Email: ledamchamultsuppliers@yahoo.com</span>
-                  <p>Date {{date('d / M / Y')}}</p>
+                  <p>Date {{date('d / M / Y',strtotime($invoice->created_at))}}</p>
                   <p>Order No. {{$invoice->id}}</p>
                   <p>Delivery Note</p>
                 </div>
@@ -143,9 +143,9 @@
           <div class="col-md-12">
             @Component('components.form-inputs.link',['title'=>'Delete','href'=>'#','toolTip'=>'Delete invoice','icon'=>'fas fa-warning','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'confirm_modal("deleteInvoiceConfirmModal")'])@endcomponent
 
-            @Component('components.form-inputs.link',['title'=>'Print','href'=>'#','toolTip'=>'print quote','icon'=>'fas fa-print','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'window.print()'])@endcomponent
+            @Component('components.form-inputs.link',['title'=>'Print','href'=>route('invoice.download',$invoice->id),'toolTip'=>'download quote','icon'=>'fas fa-download','classes'=>'btn btn-default btn-xs pull-right mr-1'])@endcomponent
 
-            @Component('components.form-inputs.link',['title'=>'Share','href'=>'#','toolTip'=>'share quote','icon'=>'fas fa-share-alt','classes'=>'btn btn-default btn-xs pull-right mr-1'])@endcomponent
+            @Component('components.form-inputs.link',['title'=>'Share','href'=>'#','toolTip'=>'share quote','icon'=>'fas fa-share-alt','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'share_modal("shareModal")'])@endcomponent
 
           </div>
         </div>
@@ -162,5 +162,6 @@
 		</div>
     <!--modals-->
     @Component('components.modals.confirm',['title'=>'Delete invoice','question'=>'Are you sure you want to delete invoice?','modalID'=>'deleteInvoiceConfirmModal','cancelBtnTitle'=>'Cancel','saveBtnTitle'=>'Confirm delete','formID'=>'delete-invoice-form'])@endcomponent
+    @Component('components.modals.share',['title'=>'Share invoice','docId'=>$invoice->id,'docType'=>'invoice','modalID'=>'shareModal','cancelBtnTitle'=>'Cancel','saveBtnTitle'=>'share'])@endcomponent
 
 @endsection

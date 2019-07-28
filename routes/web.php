@@ -11,8 +11,11 @@
 |
 */
 
-
-
+/*Route::get('nyau',function(){
+  $doc = App\Quote::first();
+  return view('pdf.quote',compact('doc'));
+});*/
+Route::get('nyau', 'ShareController@share_invoice');
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
@@ -23,10 +26,13 @@ Route::get('invoices/create/','InvoicesController@create')->name('invoices.creat
 Route::get('invoices-show/{id}','InvoicesController@show')->name('invoices.show');
 Route::post('update-invoice','InvoicesController@update_invoice');
 Route::post('invoices/delete','InvoicesController@destroy_invoice')->name('invoices.destroy');
+Route::get('download-invoice/{id}', 'ShareController@download_invoice')->name('invoice.download');
 
 //Reports
 Route::resource('quotation','QuotationsController');
 Route::resource('report','IreportsController');
+Route::get('download-quote/{id}', 'ShareController@download_quote')->name('quote.download');
+Route::get('download-ireport/{id}', 'ShareController@download_ireport')->name('ireport.download');
 
 //users
 Route::resource('users','UsersController');
