@@ -49,7 +49,7 @@ class ShareController extends Controller
       $pdf = PDF::loadView('pdf.quote', compact('doc'));
       $pdf->save('doc-'.$id.'.pdf');
       $pathToPDF = 'doc-'.$id.'.pdf';
-      Mail::to($email)->send(new Quotation($quote,$pathToPDF));
+      Mail::to($email)->queue(new Quotation($quote,$pathToPDF));
       unlink('doc-'.$id.'.pdf');
       return 1;
     }
@@ -70,7 +70,7 @@ class ShareController extends Controller
       $pdf = PDF::loadView('pdf.invoice', compact('doc','revenues'));
       $pdf->save('doc-'.$id.'.pdf');
       $pathToPDF = 'doc-'.$id.'.pdf';
-      Mail::to($email)->send(new Invoice($invoice,$pathToPDF));
+      Mail::to($email)->queue(new Invoice($invoice,$pathToPDF));
       unlink('doc-'.$id.'.pdf');
       return 1;
     }
@@ -93,7 +93,7 @@ class ShareController extends Controller
       $pdf = PDF::loadView('pdf.ireport', compact('doc','invoices'));
       $pdf->save('doc-'.$id.'.pdf');
       $pathToPDF = 'doc-'.$id.'.pdf';
-      Mail::to($email)->send(new IreportEmail($ireport,$pathToPDF));
+      Mail::to($email)->queue(new IreportEmail($ireport,$pathToPDF));
       unlink('doc-'.$id.'.pdf');
       return 1;
     }

@@ -21,8 +21,6 @@
 			<div id="page-wrapper">
         @Component('components.structure.page-title',['title'=>'Inventory'])@endcomponent
 
-        @Component('components.form-inputs.link',['title'=>'Download','href'=>'#','toolTip'=>'Download list','icon'=>'fas fa-download','classes'=>'btn btn-default btn-xs pull-right','click'=>'confirm_modal("deleteOrgConfirmModal")'])@endcomponent
-
         @Component('components.structure.breadcrump',['home'=>route('home'),'specified'=>'Inventory'])
         @endcomponent
 
@@ -32,7 +30,7 @@
           <div class="col-md-12">
             <div class="products-selection-section">
 
-              
+
 
               <!--@Component('components.pos.tabs',['type'=>$type])@endcomponent-->
 

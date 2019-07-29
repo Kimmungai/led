@@ -20,15 +20,18 @@
      <!--body wrapper start-->
 			<div id="page-wrapper">
         @Component('components.structure.page-title',['title'=>'All admins'])@endcomponent
-
-        @Component('components.form-inputs.link',['title'=>'New','href'=>route('users.create').'/?type=3','toolTip'=>'create new admin','icon'=>'fas fa-plus-circle','classes'=>'btn btn-default btn-xs pull-right'])@endcomponent
+        <div class="row">
+          <div class="col-md-12">
+            @Component('components.form-inputs.link',['title'=>'New','href'=>route('users.create').'/?type=3','toolTip'=>'create new admin','icon'=>'fas fa-plus-circle','classes'=>'btn btn-default btn-xs pull-right'])@endcomponent
+          </div>
+        </div>
 
         @Component('components.structure.breadcrump',['home'=>route('home'),'admins'=>''])
         @endcomponent
 
         <!--custom page design starts-->
           <div class="row">
-          
+
           </div>
           <div class="row">
             @foreach($admins as $admin)

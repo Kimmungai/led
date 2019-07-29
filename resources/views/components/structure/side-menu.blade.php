@@ -86,7 +86,7 @@
               <!--<li class="@if(Route::is('org.create')) active @endif"><a href="{{route('org.create')}}">Add new</a></li>-->
             </ul>
         </li>
-        <li class="@if(Route::is('trash.index')) act @endif"><a href="{{route('trash.index')}}"><i class="fa fa-trash-alt"></i> <span>Trash</span></a></li>
+        <!--<li class="@if(Route::is('trash.index')) act @endif"><a href="{{route('trash.index')}}"><i class="fa fa-trash-alt"></i> <span>Trash</span></a></li>-->
       </ul>
     <!--sidebar nav end-->
   </div>

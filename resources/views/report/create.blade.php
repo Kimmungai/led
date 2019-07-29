@@ -21,9 +21,12 @@
         @Component('components.structure.page-title',['title'=>'Create new quotation'])@endcomponent
 
 
+        <div class="row">
+          <div class="col-md-12">
+            @Component('components.form-inputs.link',['title'=>'Save','href'=>'#','toolTip'=>'Save quote','icon'=>'fas fa-save','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'confirm_modal("quoteSaveConfirmModal")'])@endcomponent
+          </div>
+        </div>
 
-
-        @Component('components.form-inputs.link',['title'=>'Save','href'=>'#','toolTip'=>'Save quote','icon'=>'fas fa-save','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'confirm_modal("quoteSaveConfirmModal")'])@endcomponent
 
         @Component('components.structure.breadcrump',['home'=>route('home'),'invoices'=>route('invoices.index'),'newInvoice'=>''])
         @endcomponent
@@ -37,7 +40,7 @@
 
               <div class="col-md-12">
 
-                
+
 
                 @Component('components.docs.quotation-template',['docId'=>'quote'])@endcomponent
 

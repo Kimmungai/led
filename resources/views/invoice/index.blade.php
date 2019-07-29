@@ -20,8 +20,11 @@
      <!--body wrapper start-->
 			<div id="page-wrapper">
         @Component('components.structure.page-title',['title'=>'All invoices'])@endcomponent
-
-        @Component('components.form-inputs.link',['title'=>'Generate report','href'=>'#','toolTip'=>'Generate a report from invoices','icon'=>'fas fa-file-pdf','classes'=>'btn btn-default btn-xs pull-right','click'=>'confirm_modal("newReportConfirmModal")'])@endcomponent
+        <div class="row">
+          <div class="col-md-12">
+            @Component('components.form-inputs.link',['title'=>'Generate report','href'=>'#','toolTip'=>'Generate a report from invoices','icon'=>'fas fa-file-pdf','classes'=>'btn btn-default btn-xs pull-right','click'=>'confirm_modal("newReportConfirmModal")'])@endcomponent
+          </div>
+        </div>
 
         @Component('components.structure.breadcrump',['home'=>route('home'),'invoices'=>''])
         @endcomponent

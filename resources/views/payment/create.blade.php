@@ -25,7 +25,7 @@
         @endcomponent
 
         <!--custom page design starts-->
-        @Component('components.payment.create-top',['user_acc_bal'=>$user_acc_bal])@endcomponent
+        @Component('components.payment.create-top',['user_acc_bal'=>$user_acc_bal,'user'=>$user])@endcomponent
         <div class="row">
           <div class="col-md-4">
 
@@ -76,12 +76,16 @@
         </div>
         <!--custom page design ends-->
 
-
+        <form class="d-none hidden" id="delete-sale-form" action="{{route('sales.destroy',$sale->id)}}" method="post">
+          @csrf
+          @method('DELETE')
+        </form>
 
 			</div>
 			 <!--body wrapper end-->
 		</div>
     <!--modals-->
     @Component('components.modals.confirm',['title'=>'Save payment','question'=>'Are you sure you want to save payment?','modalID'=>'newPaymentConfirmModal','cancelBtnTitle'=>'Cancel','saveBtnTitle'=>'Confirm save','formID'=>'new-payment-form'])@endcomponent
+    @Component('components.modals.confirm',['title'=>'Delete sale','question'=>'Are you sure you want to delete sale?','modalID'=>'deleteSale','cancelBtnTitle'=>'Cancel','saveBtnTitle'=>'Confirm delete','formID'=>'delete-sale-form'])@endcomponent
 
 @endsection

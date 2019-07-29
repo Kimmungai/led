@@ -72,13 +72,13 @@
                 <input type="hidden" name="" id="total-cost" class=" form-control" value="@if(session('purchaseCost')){{session('purchaseCost')}}@else 0 @endif" />
                 <!--<input type="hidden" name="user_id" value="@if(isset($supplier)){{$supplier->id}}@endif">-->
 
-                <div class="row">
+                <div class="row mt-2">
 
                   <div class="col-md-8">
                     @Component('components.form-inputs.model-select',['title' => 'Supplier','name'=>'user_id','icon'=>'fas fa-user-check','options'=>$suppliers,'required'=>false])@endcomponent
                   </div>
                   <div class="col-md-4">
-                    <span class="total-cost"><strong>Total:</strong> KES @if(session('purchaseCost')){{number_format(session('purchaseCost'),2)}}@else 0 @endif</span>
+                    <span class="total-cost" style="line-height:35px"><strong>Total:</strong> KES @if(session('purchaseCost')){{number_format(session('purchaseCost'),2)}}@else 0 @endif</span>
                   </div>
 
                 </div>

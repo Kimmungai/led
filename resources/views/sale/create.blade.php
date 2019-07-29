@@ -66,12 +66,12 @@
                 <input type="hidden" name="" id="total-cost" class=" form-control" value="@if(session('salePrice')){{session('salePrice')}}@else 0 @endif" />
                 <!--<input type="hidden" name="user_id" value="@if(isset($supplier)){{$supplier->id}}@endif">-->
 
-                <div class="row">
+                <div class="row mt-2">
 
                   <div class="col-md-8">
                     @Component('components.form-inputs.model-select',['title' => 'Customer','name'=>'user_id','icon'=>'fas fa-users','options'=>$customers,'required'=>false])@endcomponent
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-4" style="line-height:35px">
                     <span class="total-cost"><strong>Total:</strong> KES @if(session('salePrice')){{number_format(session('salePrice'),2)}}@else 0 @endif</span>
                   </div>
 
@@ -89,7 +89,7 @@
 
         <div class="row mt-2">
           <div class="col-md-12">
-            <a href="#" class="btn btn-info br0 pull-right" onclick="confirm_modal('newSaleConfirmModal')">
+            <a  id="continue-btn" href="#" class="btn btn-info br0 pull-right" onclick="confirm_modal('newSaleConfirmModal')" >
               Continue
             </a>
           </div>

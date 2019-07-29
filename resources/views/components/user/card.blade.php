@@ -19,7 +19,13 @@
 			<ul>
 				<!--<li><a href="https://www.instagram.com/atulkprajapati2000/"><i class="fab fa-facebook"></i></a></li>-->
 				<li><a class="@if($wallet > 0) text-Green @elseif($wallet < 0) text-Red @else text-Blue @endif" href="@if(isset($link)) {{$link}} @else {{route('users.show',$user->id)}} @endif" title="open {{$user->name}} profile"><i class="fa fa-user"></i></a></li>
-				<li><a class="@if($wallet > 0) text-Green @elseif($wallet < 0) text-Red @else text-Blue @endif" href="#" title="delete {{$user->name}}"><i class="fas fa-trash-alt"></i></a></li>
+				<li><a class="@if($wallet > 0) text-Green @elseif($wallet < 0) text-Red @else text-Blue @endif" href="#" title="delete {{$user->name}}" onclick="confirm_modal('DELUserConfirmModal')"><i class="fas fa-trash-alt"></i></a></li>
 			</ul>
 		</div>
 </div></a>
+
+<form class="d-none hidden" id="delete-user-{{$user->id}}-form" action="{{route('users.destroy',$user->id)}}" method="post">
+	@csrf
+	@method('DELETE')
+</form>
+@Component('components.modals.confirm',['title'=>'Delete user','question'=>'Are you sure you want to delete '.$user->name.'?','modalID'=>'DELUserConfirmModal','cancelBtnTitle'=>'Cancel','saveBtnTitle'=>'Confirm save','formID'=>'delete-user-'.$user->id.'-form'])@endcomponent

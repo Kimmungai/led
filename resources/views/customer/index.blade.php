@@ -21,14 +21,18 @@
 			<div id="page-wrapper">
         @Component('components.structure.page-title',['title'=>'All customers'])@endcomponent
 
-        @Component('components.form-inputs.link',['title'=>'New','href'=>route('customers.create'),'toolTip'=>'create new customer','icon'=>'fas fa-plus-circle','classes'=>'btn btn-default btn-xs pull-right'])@endcomponent
+        <div class="row">
+          <div class="col-md-12">
+            @Component('components.form-inputs.link',['title'=>'New','href'=>route('customers.create'),'toolTip'=>'create new customer','icon'=>'fas fa-plus-circle','classes'=>'btn btn-default btn-xs pull-right'])@endcomponent
+          </div>
+        </div>
 
 
         @Component('components.structure.breadcrump',['home'=>route('home'),'customers'=>''])
         @endcomponent
 
         <!--custom page design starts-->
-          
+
           <div class="row">
             @foreach($customers as $customer)
             <div class="col-md-3 mt-2">

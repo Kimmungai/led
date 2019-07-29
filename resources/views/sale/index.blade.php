@@ -19,12 +19,19 @@
 
      <!--body wrapper start-->
 			<div id="page-wrapper">
+
         @Component('components.structure.page-title',['title'=>'All sales'])@endcomponent
 
-        @Component('components.form-inputs.link',['title'=>'New','href'=>route('sales.create'),'toolTip'=>'create new sale','icon'=>'fas fa-plus-circle','classes'=>'btn btn-default btn-xs pull-right'])@endcomponent
+        <div class="row">
+          <div class="col-md-12">
+            @Component('components.form-inputs.link',['title'=>'New','href'=>route('sales.create'),'toolTip'=>'create new sale','icon'=>'fas fa-plus-circle','classes'=>'btn btn-default btn-xs pull-right'])@endcomponent
+          </div>
+        </div>
 
         @Component('components.structure.breadcrump',['home'=>route('home'),'sales'=>''])
         @endcomponent
+
+
 
         <!--custom page design starts-->
         <div class="table-responsive">
@@ -41,7 +48,7 @@
               @foreach( $sales as $sale )
               <tr>
                 <th><a href="#" style="color:inherit"></a> {{$count}}</th>
-                <td>{{$sale->user->name}}</td>
+                <td>@if( $sale->user ){{$sale->user->name}} @endif</td>
                 <td>Ksh. {{number_format($sale->amountDue,2)}}</td>
                 <td>{{ \Carbon\Carbon::parse($sale->created_at)->diffForHumans() }}</td>
                 @if( $sale->status)

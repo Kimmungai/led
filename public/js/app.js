@@ -229,6 +229,6 @@ function share_doc(modalID,docId,docType)
       "_token": $('meta[name="csrf-token"]').attr('content'),
     },
     function(data,status){
-      alert(data)
+      alert("Document shared!")
     });
 }

@@ -141,7 +141,7 @@ class UsersController extends Controller
         return back();
       }
       UserTransactions::where('user_id',$user->id)->delete();
-      $user->delete();
+      $user->forceDelete();
       Session::flash('message', env("SAVE_SUCCESS_MSG","User deleted succesfully!"));
 
       if( $user->type == 3 ){

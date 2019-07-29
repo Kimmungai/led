@@ -18,6 +18,6 @@ class Sale extends Model
 
   public function report()
   {
-    return $this->hasMany('App\Report');
+    return $this->hasOne('App\Report');
   }
 }

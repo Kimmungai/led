@@ -73,31 +73,31 @@
     </div>
 
   </div>
+
+
+<div class="col-md-2">
+  <h5>Email Invoice </h5>
+  <input type="email" class="form-control1 @if ($errors->has('email_invoice')) border-red @endif"  name="email_invoice" value="{{old('email_invoice')}}" placeholder="Enter email">
+</div>
+
+<div class="col-md-2">
+  <h5>Email delivery note </h5>
+  <input type="email" class="form-control1 @if ($errors->has('email_note')) border-red @endif" name="email_note" value="{{old('email_note')}}" placeholder="Enter email">
+</div>
 </form>
-
-<div class="col-md-2">
-  <h5>Discount %</h5>
-  <input type="number" class="form-control" name="" value="3">
-</div>
-
-<div class="col-md-2">
-  <h5>VAT %</h5>
-  <input type="number" class="form-control" name="" value="16">
-</div>
-
 <div class="col-md-5">
   <h3>Total</h3>
     <p class="text-bold text-right">Sub total: {{number_format(session('salePrice'),2)}}/=</p>
     <ul class="prices-notes text-right">
-      <li>Discount: 3% -100/=</li>
-      <li>VAT: 16% +1600/=</li>
+      <!--<li>Discount: 3% -100/=</li>
+      <li>VAT: 16% +1600/=</li>-->
     </ul>
   <div class="row mt-1">
     <div class="col-xs-4">
       <button id="save-payment-btn" type="button" class="btn btn-success pay-btn btn-sm btn-block " name="button" onclick="confirm_modal('newPaymentConfirmModal')" disabled>Save</button>
     </div>
     <div class="col-xs-4">
-      <button type="button" class="btn btn-success cancel-btn btn-sm btn-block" name="button"><span class="fa fa-times"></span> Cancel</button>
+      <button type="button" class="btn btn-success cancel-btn btn-sm btn-block" name="button" onclick="confirm_modal('deleteSale')"><span class="fa fa-times"></span> Cancel</button>
     </div>
     <div class="col-xs-4">
       <p class="text-bold">Grand Total: {{number_format(session('salePrice'),2)}}/=</p>

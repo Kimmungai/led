@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Mail;
 
 use App\UserTransactions;
 use Illuminate\Http\Request;
+use App\Mail\Invoice;
 use App\Sale;
 use App\Report;
 use App\User;
+use App\Revenue;
+use PDF;
 
 class PaymentsController extends Controller
 {
@@ -46,9 +50,8 @@ class PaymentsController extends Controller
           $sale = Sale::find($sale_id);
           $user = User::find($sale->user_id);
           $user_acc_bal = $this->get_user_acc_bal($user);
+          return view('payment.create',compact('user_acc_bal','sale','user'));
         }
-
-        return view('payment.create',compact('user_acc_bal'));
     }
 
     /**
@@ -59,6 +62,11 @@ class PaymentsController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+          'email_invoice' => 'nullable|email|max:255',
+          'email_note' => 'nullable|email|max:255',
+        ]);
+
         $sale_id = session('sale_id');
         $acc_bal = 0;
 
@@ -111,6 +119,17 @@ class PaymentsController extends Controller
           //$credit->credit = $request->balance;
           $credit->save();
         }*/
+
+        //email invoice
+        if($request->email_invoice){
+          $this->share_invoice($sale_id,$request->email_invoice);
+        }
+
+        //email delivery note
+        if($request->email_note){
+          $this->share_delivery_note($sale_id,$request->email_note);
+        }
+
 
         session(['soldProds' => []]);
         session(['salePrice' => 0]);
@@ -197,5 +216,31 @@ class PaymentsController extends Controller
       $credit->user_id = $user_id;
       $credit->credit = $amount;
       $credit->save();
+    }
+
+    private function share_invoice($sale_id,$email)
+    {
+      $invoice = Report::where('sale_id',$sale_id)->first();
+      $doc = $invoice;
+      $revenues = Revenue::where('sale_id',$sale_id)->get();
+      $pdf = PDF::loadView('pdf.invoice', compact('doc','revenues'));
+      $pdf->save('doc-'.$sale_id.'.pdf');
+      $pathToPDF = 'doc-'.$sale_id.'.pdf';
+      Mail::to($email)->send(new Invoice($invoice,$pathToPDF));
+      unlink('doc-'.$sale_id.'.pdf');
+      return 1;
+    }
+
+    private function share_delivery_note($sale_id,$email)
+    {
+      $invoice = Report::where('sale_id',$sale_id)->first();
+      $doc = $invoice;
+      $revenues = Revenue::where('sale_id',$sale_id)->get();
+      $pdf = PDF::loadView('pdf.note', compact('doc','revenues'));
+      $pdf->save('doc-'.$sale_id.'.pdf');
+      $pathToPDF = 'doc-'.$sale_id.'.pdf';
+      Mail::to($email)->send(new Invoice($invoice,$pathToPDF));
+      unlink('doc-'.$sale_id.'.pdf');
+      return 1;
     }
 }

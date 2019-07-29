@@ -135,7 +135,18 @@ class SalesController extends Controller
      */
     public function destroy(Sale $sale)
     {
-        //
+        if($sale->revenue)
+        {
+          Revenue::where('sale_id',$sale->id)->delete();
+        }
+
+        $sale->delete();
+
+        Session::flash('message', env("SAVE_SUCCESS_MSG","Sale deleted succesfully!"));
+        session(['soldProds' => []]);
+        session(['salePrice' => 0]);
+        session(['sale_id'=>'']);
+        return redirect(route('sales.create'));
     }
 
     public function save_cart_list(Request $request)
