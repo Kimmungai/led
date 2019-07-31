@@ -35,7 +35,7 @@
               <!--end search form-->
 
 
-                <div class="panel-body no-padding mt-3">
+                <div class="panel-body no-padding table-responsive mt-3">
                   <table class="table">
                     <thead>
                       <tr >
@@ -51,8 +51,8 @@
                     @foreach ( $soldProds as $soldProd)
                       <tr data-id="{{$soldProd['id']}}" id="sold-product-{{$soldProd['id']}}">
                         <td data-name="{{$soldProd['name']}}" id="name-prod-{{$soldProd['id']}}" ><span class="fas fa-times-circle pointer" onclick="remove_row('sold-product-{{$soldProd['id']}}','sold-prods')"></span> {{$soldProd['name']}}</td>
-                        <td  ><input id="cost-prod-{{$soldProd['id']}}" type="number" value="{{$soldProd['cost']}}" onchange="save_product_list('sold-prods')"/></td>
-                        <td><input id="qty-prod-{{$soldProd['id']}}" type="number" value="{{$soldProd['qty']}}" onchange="save_product_list('sold-prods')"/></td>
+                        <td  ><input class="form-control1" id="cost-prod-{{$soldProd['id']}}" type="number" value="{{$soldProd['cost']}}" onchange="save_product_list('sold-prods')"/></td>
+                        <td><input class="form-control1" id="qty-prod-{{$soldProd['id']}}" type="number" value="{{$soldProd['qty']}}" onchange="save_product_list('sold-prods')"/></td>
                       </tr>
                    @endforeach
 

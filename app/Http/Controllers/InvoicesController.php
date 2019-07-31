@@ -38,10 +38,10 @@ class InvoicesController extends Controller
 
         if( $val == -1 ){$sign ='<>';$val=null;}
 
-        $invoices = Report::where('user_id',$customer_id)->where('status',$sign,$val)->whereDate('created_at','>=',$startDate)->whereDate('created_at','<=',$endDate)->orderBy('created_at','DESC')->paginate(env('ITEMS_PER_PAGE',3));
+        $invoices = Report::where('user_id',$customer_id)->where('status',$sign,$val)->whereDate('created_at','>=',$startDate)->whereDate('created_at','<=',$endDate)->orderBy('created_at','DESC')->paginate(20);
 
       }else{
-        $invoices = Report::where('user_id',$customer_id)->orderBy('created_at','DESC')->paginate(env('ITEMS_PER_PAGE',4));
+        $invoices = Report::where('user_id',$customer_id)->orderBy('created_at','DESC')->paginate(20);
       }
 
       return view('invoice.index',compact('invoices','customers'));

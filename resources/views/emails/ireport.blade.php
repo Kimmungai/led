@@ -58,7 +58,7 @@ $style = [
                     <tr>
                         <td style="{{ $style['email-masthead'] }}">
                             <a style="{{ $fontFamily }} {{ $style['email-masthead_name'] }}" href="{{ url('/') }}" target="_blank">
-                              wajui
+                              Admin
                             </a>
                         </td>
                     </tr>
@@ -71,13 +71,13 @@ $style = [
                                     <td style="{{ $fontFamily }} {{ $style['email-body_cell'] }}">
                                         <!-- Greeting -->
                                         <h1 style="{{ $style['header-1'] }}">
-                                            Hello nogo,
+                                            Hello admin,
                                         </h1>
 
                                         <!-- Intro -->
 
                                             <p style="{{ $style['paragraph'] }}">
-                                                Please find attached  You can check out more products in our shop by clicking the button below.
+                                                Please find attached  report. You can can see more reports by clicking the button below.
                                             </p>
 
 
@@ -90,11 +90,11 @@ $style = [
                                                             $actionColor = 'button--blue';
                                                         ?>
 
-                                                        <a href="http://maxyhonda.co.ke/shop/"
+                                                        <a href="{{route('report.index')}}"
                                                             style="{{ $fontFamily }} {{ $style['button'] }} {{ $style[$actionColor] }}"
                                                             class="button"
                                                             target="_blank">
-                                                            More products
+                                                            More reports
                                                         </a>
                                                     </td>
                                                 </tr>

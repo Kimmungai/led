@@ -58,7 +58,7 @@ $style = [
                     <tr>
                         <td style="{{ $style['email-masthead'] }}">
                             <a style="{{ $fontFamily }} {{ $style['email-masthead_name'] }}" href="{{ url('/') }}" target="_blank">
-                              Invoice
+                              Delivery note
                             </a>
                         </td>
                     </tr>
@@ -71,13 +71,13 @@ $style = [
                                     <td style="{{ $fontFamily }} {{ $style['email-body_cell'] }}">
                                         <!-- Greeting -->
                                         <h1 style="{{ $style['header-1'] }}">
-                                            Hello {{$invoice->recipient}},
+                                            Hello,
                                         </h1>
 
                                         <!-- Intro -->
 
                                             <p style="{{ $style['paragraph'] }}">
-                                                Please find attached Invoice.
+                                                Please find attached delivery note.
                                             </p>
 
 
@@ -90,7 +90,7 @@ $style = [
                                                             $actionColor = 'button--blue';
                                                         ?>
 
-                                                        
+
                                                     </td>
                                                 </tr>
                                             </table>

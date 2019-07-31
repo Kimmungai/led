@@ -30,6 +30,6 @@ class IreportEmail extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.ireport')->attach($this->pathToPDF,['as' => 'nyau.pdf']);
+        return $this->view('emails.ireport')->attach($this->pathToPDF,['as' =>'report.pdf'])->subject('Report');
     }
 }

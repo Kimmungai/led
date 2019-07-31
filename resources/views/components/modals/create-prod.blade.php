@@ -60,37 +60,6 @@
                 @endforeach
 
               </div>
-
-              <!--<div class="col-md-4">
-
-                <div class="avatar-preview">
-                  <div class="profile-img-loading-preview hidden"><img class="loader" src="/placeholders/img-loader-green.gif"></div>
-                  <img id="product-image" class="" src="@if( old('img1') ) {{url(old('img1'))}} @else /placeholders/avatar-male.png @endif" alt="" >
-                  <input id="product-image-url" type="hidden" name="img1" value="{{old('img1')}}">
-                </div>
-                <form id="product-image-form" action="/img-tmp" enctype="multipart/form-data">
-                  <input class="hidden d-none"  type="file" name="" id="prod-image-file" onchange="upload_image(this.value,this.id,'product-image',{required:0,min:0,max:255,type:'image',size:1},'product-image-url','product')">
-                </form>
-
-                @Component('components.form-inputs.button',['value' => 'add image','type'=>'button','icon'=>'fas fa-upload','classes'=>'btn btn-default btn-sm','click' => 'click_element("prod-image-file",0)' ])@endcomponent
-
-                @foreach ($sideFields as $sideField)
-                  <div class="form-group @if ($errors->has($sideField['name'])) has-error @endif">
-
-                    <div class="col-md-12">
-            					<div class="input-group input-icon right in-grp1">
-            						<span class="input-group-addon">
-            							<i class="{{$sideField['icon']}}"></i>
-            						</span>
-            						<input id="{{$sideField['id']}}" name="{{$sideField['name']}}" class="form-control1" type="{{$sideField['type']}}" placeholder="{{$sideField['placeholder']}}" min="{{$sideField['min']}}" placeholder="{{$mainField['placeholder']}}" value="{{old($sideField['name'])}}">
-            					</div>
-            				</div>
-
-            				<div class="clearfix"> </div>
-            			</div>
-                @endforeach
-              </div>-->
-
           </div>
 
         </form>

@@ -41,11 +41,11 @@
               <!--end search form-->
 
 
-  							<div class="panel-body no-padding mt-3">
+  							<div class="panel-body table-responsive no-padding mt-3">
   								<table class="table">
   									<thead>
   										<tr >
-  											<th >Product name</th>
+  											<th >Product name </th>
   											<th >Supply price</th>
   											<th >Supplied (Kg)</th>
   										</tr>
@@ -123,9 +123,11 @@
 @endif
 
 @if( session('newProduct') )
+<?php $suppliedQTY = 1; ?>
+<?php if(session('newProduct')['inventory']) {$suppliedQTY = session('newProduct')['inventory']['availableQuantity'];} ?>
   <script>
   $(document).ready(function(){
-  update_a_table({{session('newProduct')['id']}},"purchased-prods");
+  update_a_table({{session('newProduct')['id']}},"purchased-prods",{{$suppliedQTY}});
   });
   </script>
 @endif

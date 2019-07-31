@@ -8,6 +8,7 @@ use App\Org;
 use App\Product;
 use App\User;
 use App\Expense;
+use App\Inventory;
 use Illuminate\Http\Request;
 
 class PurchasesController extends Controller
@@ -58,11 +59,11 @@ class PurchasesController extends Controller
     {
         $purchase = new Purchase;
         $purchase->user_id = $request->user_id;
-        $purchase->amountOwed = session('totalCost');
+        $purchase->amountOwed = session('purchaseCost');
         $purchase->save();
 
         $purchaseLists = [];
-        if( session('list') != null) {$purchaseLists = session('list');}
+        if( session('purchaseList') != null) {$purchaseLists = session('purchaseList');}
 
         foreach ($purchaseLists as $purchaseList) {
           $expense = new Expense;
@@ -70,6 +71,16 @@ class PurchasesController extends Controller
           $expense->product_id = $purchaseList['id'];
           $expense->suppliedQuantity = $purchaseList['qty'];
           $expense->save();
+
+          $product = Product::find($purchaseList['id']);
+
+          $prodNewQuantity = $product->inventory->availableQuantity + $purchaseList['qty'];
+
+          //update quantity
+          Inventory::where('product_id',$product->id)->update([
+            'availableQuantity' => $prodNewQuantity,
+          ]);
+          
         }
 
 
@@ -162,6 +173,6 @@ class PurchasesController extends Controller
     {
       session(['purchaseList' => $request->suppliedProds]);
       session(['purchaseCost' => $request->purchaseCost]);
-      /*return 1;*/
+      return 1;
     }
 }

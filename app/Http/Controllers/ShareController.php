@@ -49,7 +49,7 @@ class ShareController extends Controller
       $pdf = PDF::loadView('pdf.quote', compact('doc'));
       $pdf->save('doc-'.$id.'.pdf');
       $pathToPDF = 'doc-'.$id.'.pdf';
-      Mail::to($email)->queue(new Quotation($quote,$pathToPDF));
+      Mail::to($email)->send(new Quotation($quote,$pathToPDF));
       unlink('doc-'.$id.'.pdf');
       return 1;
     }
@@ -66,11 +66,12 @@ class ShareController extends Controller
     {
       $invoice = Report::find($id);
       $doc = $invoice;
+      $sale = Sale::find($invoice->sale_id);
       $revenues = Revenue::where('sale_id',$invoice->sale_id)->get();
-      $pdf = PDF::loadView('pdf.invoice', compact('doc','revenues'));
+      $pdf = PDF::loadView('pdf.invoice', compact('doc','revenues','sale'));
       $pdf->save('doc-'.$id.'.pdf');
       $pathToPDF = 'doc-'.$id.'.pdf';
-      Mail::to($email)->queue(new Invoice($invoice,$pathToPDF));
+      Mail::to($email)->send(new Invoice($invoice,$pathToPDF));
       unlink('doc-'.$id.'.pdf');
       return 1;
     }
@@ -79,8 +80,9 @@ class ShareController extends Controller
     {
       $invoice = Report::find($id);
       $doc = $invoice;
+      $sale = Sale::find($invoice->sale_id);
       $revenues = Revenue::where('sale_id',$invoice->sale_id)->get();
-      $pdf = PDF::loadView('pdf.invoice', compact('doc','revenues'));
+      $pdf = PDF::loadView('pdf.invoice', compact('doc','revenues','sale'));
       return $pdf->download();
     }
 
@@ -93,7 +95,7 @@ class ShareController extends Controller
       $pdf = PDF::loadView('pdf.ireport', compact('doc','invoices'));
       $pdf->save('doc-'.$id.'.pdf');
       $pathToPDF = 'doc-'.$id.'.pdf';
-      Mail::to($email)->queue(new IreportEmail($ireport,$pathToPDF));
+      Mail::to($email)->send(new IreportEmail($ireport,$pathToPDF));
       unlink('doc-'.$id.'.pdf');
       return 1;
     }

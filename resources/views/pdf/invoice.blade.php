@@ -233,7 +233,7 @@
                 <tr>
                   <td></td>
                   <td colspan="2">TOTAL</td>
-                  <td>{{number_format($revenue->sale->amountDue,2)}}</td>
+                  <td>{{number_format($SALEPRICE,2)}}</td>
                   <td class="table-highlight">00</td>
                 </tr>
               </tbody>

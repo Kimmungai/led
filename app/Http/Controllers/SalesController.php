@@ -59,28 +59,7 @@ class SalesController extends Controller
       $sale->save();
 
       $soldProds = [];
-      if( session('soldProds') != null) {$soldProds = session('soldProds');}
-
-      foreach ($soldProds as $soldProd) {
-        $product = Product::find($soldProd['id']);
-        $revenue = new Revenue;
-        $revenue->sale_id = $sale->id;
-        $revenue->product_id = $product->id;
-        $revenue->soldQuantity = $soldProd['qty'];
-        $revenue->description = $product->name." ".$product->description;
-        $revenue->unitPrice = $product->salePrice;
-        $revenue->sellingPrice = $soldProd['cost'];
-        $revenue->save();
-
-        $prodNewQuantity = $product->inventory->availableQuantity - $soldProd['qty'];
-
-        //update quantity
-        Inventory::where('product_id',$product->id)->update([
-          'availableQuantity' => $prodNewQuantity,
-        ]);
-
-      }
-
+      
       session( [ 'sale_id' => $sale->id ] );
 
       //session(['soldProds' => []]);

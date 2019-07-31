@@ -7,21 +7,21 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class Quotation extends Mailable
+class Note extends Mailable
 {
     use Queueable, SerializesModels;
-    public $quote;
+    public $invoice;
     public $pathToPDF;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($quote,$pathToPDF)
-    {
-      $this->quote = $quote;
-      $this->pathToPDF = $pathToPDF;
-    }
+     public function __construct($invoice,$pathToPDF)
+     {
+       $this->invoice = $invoice;
+       $this->pathToPDF = $pathToPDF;
+     }
 
     /**
      * Build the message.
@@ -30,6 +30,6 @@ class Quotation extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.quote')->attach($this->pathToPDF,['as' => 'Quotation.pdf']);
+        return $this->view('emails.note')->attach($this->pathToPDF,['as' => 'Delivery-note.pdf'])->subject('Delivery note');
     }
 }

@@ -30,6 +30,6 @@ class Invoice extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.invoice')->attach($this->pathToPDF,['as' => 'nyau.pdf']);
+        return $this->view('emails.invoice')->attach($this->pathToPDF,['as' => 'Invoice.pdf']);
     }
 }

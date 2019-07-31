@@ -7,10 +7,14 @@ use Illuminate\Support\Facades\Mail;
 use App\UserTransactions;
 use Illuminate\Http\Request;
 use App\Mail\Invoice;
+use App\Mail\Note;
 use App\Sale;
 use App\Report;
 use App\User;
 use App\Revenue;
+use App\Product;
+use App\Inventory;
+
 use PDF;
 
 class PaymentsController extends Controller
@@ -120,15 +124,44 @@ class PaymentsController extends Controller
           $credit->save();
         }*/
 
+
+
+        //save products
+
+        if( session('soldProds') != null) {$soldProds = session('soldProds');}
+
+        foreach ($soldProds as $soldProd) {
+          $product = Product::find($soldProd['id']);
+          $revenue = new Revenue;
+          $revenue->sale_id = $sale->id;
+          $revenue->product_id = $product->id;
+          $revenue->soldQuantity = $soldProd['qty'];
+          $revenue->description = $product->name." ".$product->description;
+          $revenue->unitPrice = $product->salePrice;
+          $revenue->sellingPrice = $soldProd['cost'];
+          $revenue->save();
+
+          $prodNewQuantity = $product->inventory->availableQuantity - $soldProd['qty'];
+
+          //update quantity
+          Inventory::where('product_id',$product->id)->update([
+            'availableQuantity' => $prodNewQuantity,
+          ]);
+
+        }
+
         //email invoice
         if($request->email_invoice){
-          $this->share_invoice($sale_id,$request->email_invoice);
+          $SALEPRICE = 0;
+          if(session('salePrice')){$SALEPRICE = session('salePrice');}
+          $this->share_invoice($sale_id,$request->email_invoice,$SALEPRICE);
         }
 
         //email delivery note
         if($request->email_note){
           $this->share_delivery_note($sale_id,$request->email_note);
         }
+
 
 
         session(['soldProds' => []]);
@@ -218,12 +251,13 @@ class PaymentsController extends Controller
       $credit->save();
     }
 
-    private function share_invoice($sale_id,$email)
+    private function share_invoice($sale_id,$email,$SALEPRICE)
     {
       $invoice = Report::where('sale_id',$sale_id)->first();
       $doc = $invoice;
+      $sale = Sale::find($sale_id);
       $revenues = Revenue::where('sale_id',$sale_id)->get();
-      $pdf = PDF::loadView('pdf.invoice', compact('doc','revenues'));
+      $pdf = PDF::loadView('pdf.invoice', compact('doc','revenues','sale','SALEPRICE'));
       $pdf->save('doc-'.$sale_id.'.pdf');
       $pathToPDF = 'doc-'.$sale_id.'.pdf';
       Mail::to($email)->send(new Invoice($invoice,$pathToPDF));
@@ -239,7 +273,7 @@ class PaymentsController extends Controller
       $pdf = PDF::loadView('pdf.note', compact('doc','revenues'));
       $pdf->save('doc-'.$sale_id.'.pdf');
       $pathToPDF = 'doc-'.$sale_id.'.pdf';
-      Mail::to($email)->send(new Invoice($invoice,$pathToPDF));
+      Mail::to($email)->send(new Note($invoice,$pathToPDF));
       unlink('doc-'.$sale_id.'.pdf');
       return 1;
     }
