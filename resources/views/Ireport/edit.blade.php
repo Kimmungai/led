@@ -19,13 +19,15 @@
 
 			<div id="page-wrapper">
         @Component('components.structure.page-title',['title'=>'Report'])@endcomponent
-
+        <div class="row">
+          <div class="col-md-12">
         @Component('components.form-inputs.link',['title'=>'Delete','href'=>'#','toolTip'=>'Delete report','icon'=>'fas fa-warning','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'confirm_modal("deleteReportConfirmModal")'])@endcomponent
 
         @Component('components.form-inputs.link',['title'=>'Print','href'=>route('ireport.download',$ireport->id),'toolTip'=>'print quote','icon'=>'fas fa-download','classes'=>'btn btn-default btn-xs pull-right mr-1'])@endcomponent
 
         @Component('components.form-inputs.link',['title'=>'Share','href'=>'#','toolTip'=>'share quote','icon'=>'fas fa-share-alt','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'share_modal("shareModal")'])@endcomponent
-
+      </div>
+    </div>
 
         @Component('components.structure.breadcrump',['home'=>route('home'),'specifiedText'=>'Reports','specifiedLinked'=>route('report.index'),'specified'=>'Report-'.$ireport->id])
         @endcomponent

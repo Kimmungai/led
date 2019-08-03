@@ -13,6 +13,7 @@ use App\Revenue;
 use App\Ireport;
 use App\IreportInvoices;
 use App\Quote;
+use App\Sale;
 use PDF;
 
 class ShareController extends Controller

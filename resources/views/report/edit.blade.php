@@ -20,7 +20,8 @@
 			<div id="page-wrapper">
         @Component('components.structure.page-title',['title'=>'Quotation-'.$quote->id])@endcomponent
 
-
+        <div class="row">
+          <div class="col-md-12">
         @Component('components.form-inputs.link',['title'=>'Print','href'=>route('quote.download',$quote->id),'toolTip'=>'print quote','icon'=>'fas fa-download','classes'=>'btn btn-default btn-xs pull-right mr-1'])@endcomponent
 
         @Component('components.form-inputs.link',['title'=>'Share','href'=>'#','toolTip'=>'share quote','icon'=>'fas fa-share-alt','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'share_modal("shareModal")'])@endcomponent
@@ -28,7 +29,8 @@
         @Component('components.form-inputs.link',['title'=>'Delete','href'=>'#','toolTip'=>'Delete quote','icon'=>'fas fa-warning','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'confirm_modal("deleteQuoteConfirmModal")'])@endcomponent
 
         @Component('components.form-inputs.link',['title'=>'Update','href'=>'#','toolTip'=>'Update quote','icon'=>'fas fa-save','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'confirm_modal("quoteSaveConfirmModal")'])@endcomponent
-
+        </div>
+      </div>
         @Component('components.structure.breadcrump',['home'=>route('home'),'invoices'=>route('invoices.index'),'newInvoice'=>''])
         @endcomponent
 

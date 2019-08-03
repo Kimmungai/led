@@ -27,13 +27,7 @@
         @Component('components.structure.breadcrump',['home'=>route('home'),'organisations'=>''])@endcomponent
 
         <!--custom page design starts-->
-          <div class="row">
-            <!--search form-->
-            <div class="col-md-12">
-              @Component('components.forms.search',['action'=>'','method'=>'','placeholder'=>'Search organisation...'])@endcomponent
-            </div>
-            <!--end search form-->
-          </div>
+          
 
           <div class="row">
           @foreach($orgs as $org)

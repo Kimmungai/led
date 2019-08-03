@@ -233,7 +233,11 @@
                 <tr>
                   <td></td>
                   <td colspan="2">TOTAL</td>
+                  @if(isset($SALEPRICE))
                   <td>{{number_format($SALEPRICE,2)}}</td>
+                  @else
+                  <td>{{number_format($sale->amountDue,2)}}</td>
+                  @endif
                   <td class="table-highlight">00</td>
                 </tr>
               </tbody>
