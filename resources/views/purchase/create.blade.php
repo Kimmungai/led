@@ -42,7 +42,7 @@
 
 
   							<div class="panel-body table-responsive no-padding mt-3">
-  								<table class="table">
+  								<table class="">
   									<thead>
   										<tr >
   											<th >Product name </th>
@@ -56,9 +56,9 @@
 
                     @foreach ( $purchaseLists as $purchaseList)
                       <tr data-id="{{$purchaseList['id']}}" id="purchased-product-{{$purchaseList['id']}}">
-                        <td data-name="{{$purchaseList['name']}}" id="name-prod-{{$purchaseList['id']}}" ><span class="fas fa-times-circle pointer" onclick="remove_row('purchased-product-{{$purchaseList['id']}}','purchased-prods')"></span> {{$purchaseList['name']}}</td>
-                        <td  ><input id="cost-prod-{{$purchaseList['id']}}" type="number" value="{{$purchaseList['cost']}}" onchange="save_product_list('purchased-prods')"/></td>
-                        <td><input id="qty-prod-{{$purchaseList['id']}}" type="number" value="{{$purchaseList['qty']}}" onchange="save_product_list('purchased-prods')"/></td>
+                        <td data-label="Name" data-name="{{$purchaseList['name']}}" id="name-prod-{{$purchaseList['id']}}" ><span class="fas fa-times-circle pointer" onclick="remove_row('purchased-product-{{$purchaseList['id']}}','purchased-prods')"></span> {{$purchaseList['name']}}</td>
+                        <td  data-label="Supply price"><input class="form-control1" id="cost-prod-{{$purchaseList['id']}}" type="number" value="{{$purchaseList['cost']}}" onchange="save_product_list('purchased-prods')"/></td>
+                        <td data-label="Supplied (Kg)"><input class="form-control1" id="qty-prod-{{$purchaseList['id']}}" type="number" value="{{$purchaseList['qty']}}" onchange="save_product_list('purchased-prods')"/></td>
                       </tr>
                    @endforeach
 

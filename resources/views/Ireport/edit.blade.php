@@ -79,12 +79,12 @@
             <div class="row">
               <div class="col-xs-12">
                 <div class="invoice-table table-responsive">
-                  <table class="table table-bodered">
+                  <table class="table-bodered">
                     <thead>
                       <tr>
                         <td>Invoice no.</td>
                         <td>Date</td>
-                        <td>customer</td>
+                        <td>Customer</td>
                         <td>Value</td>
                         <td>Sale total</td>
                       </tr>
@@ -93,11 +93,11 @@
 
                       @foreach( $ireport->IreportInvoices as $invoice )
                       <tr data-sale="{{$invoice->totalAmount}}" data-value="{{$invoice->amount}}" id="invoices-table-body-row-{{$invoice->id}}">
-                        <td>{{$invoice->invoice_id}}</td>
-                        <td>{{date('d-M-Y',strtotime($invoice->created_at))}}</td>
-                        <td>{{$invoice->recipient}}</td>
-                        <td>{{$invoice->amount}}</td>
-                        <td class="table-highlight">{{$invoice->totalAmount}}</td>
+                        <td data-label="Invoice no.">{{$invoice->invoice_id}}</td>
+                        <td data-label="Date">{{date('d-M-Y',strtotime($invoice->created_at))}}</td>
+                        <td data-label="Customer">{{$invoice->recipient}}</td>
+                        <td data-label="Value">{{$invoice->amount}}</td>
+                        <td data-label="Sale total" class="table-highlight">{{$invoice->totalAmount}}</td>
                       </tr>
                       @endforeach
 

@@ -226,7 +226,7 @@
                   <td>{{$revenue->soldQuantity}}</td>
                   <td>{{$revenue->description}}</td>
                   <td>{{$revenue->unitPrice}}</td>
-                  <td>{{$revenue->sellingPrice}}</td>
+                  <td>{{$revenue->sellingPrice * $revenue->soldQuantity}}</td>
                   <td class="table-highlight">00</td>
                 </tr>
                 @endforeach

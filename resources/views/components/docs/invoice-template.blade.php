@@ -102,7 +102,7 @@
     <div class="row">
       <div class="col-xs-12">
         <div class="invoice-table table-responsive">
-          <table id="{{$docId}}-table" class="table table-bodered">
+          <table id="{{$docId}}-table" class="table-bodered">
             <thead id="{{$docId}}-table-head">
               <tr>
                 <td>Qty.</td>
@@ -116,23 +116,23 @@
             <tbody id="{{$docId}}-table-body">
 
               <tr id="{{$docId}}-table-body-row-1">
-                <td><span class="fas fa-times-circle" onclick="remove_table_row('{{$docId}}-table-body-row-1','{{$docId}}-table-body')"></span>
+                <td data-label="Qty."><span class="fas fa-times-circle" onclick="remove_table_row('{{$docId}}-table-body-row-1','{{$docId}}-table-body')"></span>
                   <strong id="{{$docId}}-table-body-row-1-td-1" onclick="edit_doc_field(this.id)">Managu</strong>
                   <input id="{{$docId}}-table-body-row-1-td-1-input" type="text" class="hidden" name="" value="" onfocusout="save_doc_field('{{$docId}}-table-body-row-1-td-1',this.value)">
                 </td>
-                <td>
+                <td data-label="Description">
                   <strong id="{{$docId}}-table-body-row-1-td-2" onclick="edit_doc_field(this.id)">Nyau</strong>
                   <input id="{{$docId}}-table-body-row-1-td-2-input" type="text" class="hidden" name="" value="" onfocusout="save_doc_field('{{$docId}}-table-body-row-1-td-2',this.value)">
                 </td>
-                <td>
+                <td data-label="@">
                   <strong id="{{$docId}}-table-body-row-1-td-3" onclick="edit_doc_field(this.id)">100</strong>
                   <input id="{{$docId}}-table-body-row-1-td-3-input" type="text" class="hidden" name="" value="" onfocusout="save_doc_field('{{$docId}}-table-body-row-1-td-3',this.value)">
                 </td>
-                <td>
+                <td data-label="Shs.">
                   <strong id="{{$docId}}-table-body-row-1-td-4" onclick="edit_doc_field(this.id)">100</strong>
                   <input id="{{$docId}}-table-body-row-1-td-4-input" type="text" class="hidden" name="" value="" onfocusout="save_doc_field('{{$docId}}-table-body-row-1-td-4',this.value)">
                 </td>
-                <td class="table-highlight">
+                <td data-label="Cts" class="table-highlight">
                   <strong id="{{$docId}}-table-body-row-1-td-5" onclick="edit_doc_field(this.id)">00</strong>
                   <input id="{{$docId}}-table-body-row-1-td-5-input" type="text" class="hidden" name="" value="" onfocusout="save_doc_field('{{$docId}}-table-body-row-1-td-5',this.value)">
                 </td>

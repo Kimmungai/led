@@ -83,8 +83,8 @@
 
             <div class="row">
               <div class="col-xs-12">
-                <div class="invoice-table table-responsive">
-                  <table class="table table-bodered">
+                <div class="invoice-table">
+                  <table class="">
                     <thead>
                       <tr>
                         <td>Qty.</td>
@@ -98,11 +98,11 @@
 
                       @foreach( $revenues as $revenue )
                       <tr>
-                        <td>{{$revenue->soldQuantity}}</td>
-                        <td>{{$revenue->description}}</td>
-                        <td>{{$revenue->unitPrice}}</td>
-                        <td>{{$revenue->sellingPrice}}</td>
-                        <td class="table-highlight">00</td>
+                        <td data-label="Qty.">{{$revenue->soldQuantity}}</td>
+                        <td data-label="Description">{{$revenue->description}}</td>
+                        <td data-label="@">{{$revenue->unitPrice}}</td>
+                        <td data-label="Shs.">{{$revenue->sellingPrice * $revenue->soldQuantity}}</td>
+                        <td data-label="Cts" class="table-highlight">00</td>
                       </tr>
                       @endforeach
 

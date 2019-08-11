@@ -103,8 +103,8 @@
 
     <div class="row">
       <div class="col-xs-12">
-        <div class="invoice-table table-responsive">
-          <table id="{{$docId}}-table" class="table table-bodered">
+        <div class="invoice-table">
+          <table id="{{$docId}}-table" class="table-bodered">
             <thead id="{{$docId}}-table-head">
               <tr>
                 <td>Item code</td>
@@ -120,15 +120,15 @@
                 @foreach( $quote->quoteProds as $quoteProd )
 
                 <tr data-id="{{$quoteProd->product_id}}" id="{{$docId}}-table-body-row-{{$quoteProd->product_id}}">
-                  <td><span class="fas fa-times-circle" onclick="remove_table_row('{{$docId}}-table-body-row-{{$quoteProd->product_id}}','quote-table-body')"></span>
+                  <td data-label="Item code"><span class="fas fa-times-circle" onclick="remove_table_row('{{$docId}}-table-body-row-{{$quoteProd->product_id}}','quote-table-body')"></span>
                     <strong id="{{$docId}}-table-body-row-{{$quoteProd->product_id}}-td-1" onclick="">{{$quoteProd->product_id}}</strong>
                     <input id="{{$docId}}-table-body-row-{{$quoteProd->product_id}}-td-1-input" type="text" class="hidden" name="prod_id[]" value="{{$quoteProd->product_id}}" onfocusout="save_doc_field('{{$docId}}-table-body-row-{{$quoteProd->product_id}}-td-1',this.value)">
                   </td>
-                  <td>
+                  <td data-label="Description">
                     <strong id="{{$docId}}-table-body-row-{{$quoteProd->product_id}}-td-2" onclick="">{{$quoteProd->name}}</strong>
                     <input id="{{$docId}}-table-body-row-{{$quoteProd->product_id}}-td-2-input" type="text" class="hidden" name="prod_name[]" value="{{$quoteProd->name}}" onfocusout="save_doc_field('{{$docId}}-table-body-row-{{$quoteProd->product_id}}-td-2',this.value)">
                   </td>
-                  <td>
+                  <td data-label="Unit cost">
                     <strong id="{{$docId}}-table-body-row-{{$quoteProd->product_id}}-td-3" onclick="edit_doc_field('{{$docId}}-table-body-row-{{$quoteProd->product_id}}-td-3')">{{$quoteProd->salePrice}}</strong>
                     <input id="{{$docId}}-table-body-row-{{$quoteProd->product_id}}-td-3-input" type="text" class="hidden" name="sale_price[]" value="{{$quoteProd->salePrice}}" onfocusout="save_doc_field('{{$docId}}-table-body-row-{{$quoteProd->product_id}}-td-3',this.value)">
                   </td>
