@@ -50,21 +50,22 @@ class QuotationsController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->except(['product_id','_token']);
+        $data = $request->except(['product_id','_token','prod_id','prod_name','sale_price']);
         $prodIDs = $request->product_id;
 
         $quote = Quote::create($data);
-
-        foreach ($prodIDs as $prodID)
+        $count = 0;
+        foreach ($request->prod_id as $prodID)
         {
           $product = Product::find($prodID);
           if(!$product){continue;}
           $newQuoteProd = new QuoteProds;
           $newQuoteProd->product_id = $prodID;
           $newQuoteProd->quote_id = $quote->id;
-          $newQuoteProd->name = $product->name;
-          $newQuoteProd->salePrice = $product->salePrice;
+          $newQuoteProd->name = $request->prod_name[$count];
+          $newQuoteProd->salePrice = $request->sale_price[$count];
           $newQuoteProd->save();
+          $count++;
         }
 
         Session::flash('message', env("SAVE_SUCCESS_MSG","Quote saved succesfully!"));
