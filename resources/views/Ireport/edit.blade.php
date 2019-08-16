@@ -40,37 +40,72 @@
         <!--invoice template-->
           <div class="invoice-panel">
 
-            <p class="title-1"> <span><strong>Halal</strong></span> </p>
-            <p class="title-2"> <span><strong>Report</strong></span> </p>
+            <p class="title-1">
+              <span>
+                <strong id="{{$ireport->id}}-title-1" class="" onclick="edit_ireport_field(this.id)">@if($ireport->title_1) {{$ireport->title_1}} @else Halal @endif</strong>
+                <input id="{{$ireport->id}}-title-1-input" type="text" class="hidden" name="" value="" onfocusout="save_ireport_field('{{$ireport->id}}-title-1',this.value,'title_1',{{$ireport->id}})">
+              </span>
+             </p>
+
+             <p class="title-2">
+               <span>
+                 <strong id="{{$ireport->id}}-title-2" class="" onclick="edit_ireport_field(this.id)">@if($ireport->title_2) {{$ireport->title_2}} @else Report @endif</strong>
+                 <input id="{{$ireport->id}}-title-2-input" type="text" class="hidden" name="" value="" onfocusout="save_ireport_field('{{$ireport->id}}-title-2',this.value,'title_2',{{$ireport->id}})">
+               </span>
+             </p>
 
             <div class="heading">
-              <h1>Ledamcha Multsuppliers</h1>
-              <p>Dealers in: Whole Chicken, Wings, Drumsticks, Boneless, Legs, Gizzard, Eggs, Fish Fillet, Beef, Mutton and Pishori Rice</p>
+              <h1>
+                <strong id="{{$ireport->id}}-heading" onclick="edit_ireport_field(this.id)">@if($ireport->heading) {{$ireport->heading}} @else Ledamcha Multsuppliers @endif</strong>
+                <input id="{{$ireport->id}}-heading-input" type="text" class="hidden" name="" value="" onfocusout="save_ireport_field('{{$ireport->id}}-heading',this.value,'heading',{{$ireport->id}})">
+              </h1>
+              <p>
+                <strong id="{{$ireport->id}}-sub-heading" onclick="edit_ireport_field(this.id)">@if($ireport->sub_heading) {{$ireport->sub_heading}} @else Dealers in: Whole Chicken, Wings, Drumsticks, Boneless, Legs, Gizzard, Eggs, Fish Fillet, Beef, Mutton and Pishori Rice @endif</strong>
+                <textarea id="{{$ireport->id}}-sub-heading-input" class="form-control hidden" name="" onfocusout="save_ireport_field('{{$ireport->id}}-sub-heading',this.value,'sub_heading',{{$ireport->id}})"></textarea>
+              </p>
             </div>
 
             <div class="contacts">
               <ul>
-                <li>Cell: 0731 610 776</li>
-                <li><span class="text-white">Cell: </span>0733 205 300</li>
+                <li>
+                  Cell: <strong id="{{$ireport->id}}-phone-1" onclick="edit_ireport_field(this.id)">@if($ireport->phone_1) {{$ireport->phone_1}} @else 0731 610 776 @endif</strong>
+                  <input id="{{$ireport->id}}-phone-1-input" type="text" class="hidden" name="" value="" onfocusout="save_ireport_field('{{$ireport->id}}-phone-1',this.value,'phone_1',{{$ireport->id}})">
+                </li>
+                <li class="pl-2">
+                  <strong id="{{$ireport->id}}-phone-2" onclick="edit_ireport_field(this.id)">@if($ireport->phone_2) {{$ireport->phone_2}} @else 0733 205 300 @endif</strong>
+                  <input id="{{$ireport->id}}-phone-2-input" type="text" class="hidden" name="" value="" onfocusout="save_ireport_field('{{$ireport->id}}-phone-2',this.value,'phone_2',{{$ireport->id}})">
+                </li>
               </ul>
             </div>
 
             <div class="row">
 
               <div class="col-xs-6">
-                <div class="addresse">
-                  <p>M/s </p>
-                  <p class="mt-2"></p>
-                  <p class="mt-2"></p>
+                <div class="addresse" onclick="edit_ireport_field('{{$ireport->id}}-addresse')">
+                  <p>
+                    <strong id="{{$ireport->id}}-addresse">@if($ireport->addresse) {{$ireport->addresse}} @else M/s {{$ireport->recipient}} @endif</strong>
+                    <textarea id="{{$ireport->id}}-addresse-input" class="form-control hidden" name="" onfocusout="save_ireport_field('{{$ireport->id}}-addresse',this.value,'addresse',{{$ireport->id}})"></textarea>
+                  </p>
                 </div>
               </div>
 
               <div class="col-xs-6">
                 <div class="doc-ids">
-                  <span>Email: ledamchamultsuppliers@yahoo.com</span>
-                  <p>Date {{date('d / M / Y')}}</p>
-                  <p>Report No. </p>
-                  <p>Report</p>
+                  <span onclick="edit_ireport_field('{{$ireport->id}}-doc-id-email')">
+                    Email:
+                    <strong id="{{$ireport->id}}-doc-id-email">@if($ireport->email) {{$ireport->email}} @else ledamchamultsuppliers@yahoo.com @endif</strong>
+                    <input id="{{$ireport->id}}-doc-id-email-input" type="text" class="hidden" name="" value="" onfocusout="save_ireport_field('{{$ireport->id}}-doc-id-email',this.value,'email',{{$ireport->id}})">
+                  </span>
+                  <p >
+                    Date:
+                    <strong id="{{$ireport->id}}-doc-id-date" onclick="edit_ireport_field(this.id)">@if($ireport->date) {{$ireport->date}}  @else {{date('d / M / Y',strtotime($ireport->created_at))}} @endif</strong>
+                    <input id="{{$ireport->id}}-doc-id-date-input" type="text" class="hidden" name="" value="" onfocusout="save_ireport_field('{{$ireport->id}}-doc-id-date',this.value,'date',{{$ireport->id}})">
+                  </p>
+                  <p>Report No. {{$ireport->id}}</p>
+                  <p >
+                    <strong id="{{$ireport->id}}-doc-id-note" onclick="edit_ireport_field(this.id)">@if($ireport->note) {{$ireport->note}}  @else Report @endif</strong>
+                    <input id="{{$ireport->id}}-doc-id-note-input" type="text" class="hidden" name="" value="" onfocusout="save_ireport_field('{{$ireport->id}}-doc-id-note',this.value,'note',{{$ireport->id}})">
+                  </p>
                 </div>
               </div>
 
@@ -91,13 +126,13 @@
                     </thead>
                     <tbody id="invoices-table-body">
 
-                      @foreach( $ireport->IreportInvoices as $invoice )
-                      <tr data-sale="{{$invoice->totalAmount}}" data-value="{{$invoice->amount}}" id="invoices-table-body-row-{{$invoice->id}}">
-                        <td data-label="Invoice no.">{{$invoice->invoice_id}}</td>
-                        <td data-label="Date">{{date('d-M-Y',strtotime($invoice->created_at))}}</td>
-                        <td data-label="Customer">{{$invoice->recipient}}</td>
-                        <td data-label="Value">{{$invoice->amount}}</td>
-                        <td data-label="Sale total" class="table-highlight">{{$invoice->totalAmount}}</td>
+                      @foreach( $ireport->IreportInvoices as $ireport )
+                      <tr data-sale="{{$ireport->totalAmount}}" data-value="{{$ireport->amount}}" id="invoices-table-body-row-{{$ireport->id}}">
+                        <td data-label="Invoice no.">{{$ireport->invoice_id}}</td>
+                        <td data-label="Date">{{date('d-M-Y',strtotime($ireport->created_at))}}</td>
+                        <td data-label="Customer">{{$ireport->recipient}}</td>
+                        <td data-label="Value">{{$ireport->amount}}</td>
+                        <td data-label="Sale total" class="table-highlight">{{$ireport->totalAmount}}</td>
                       </tr>
                       @endforeach
 

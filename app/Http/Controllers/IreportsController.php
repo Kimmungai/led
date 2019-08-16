@@ -138,4 +138,17 @@ class IreportsController extends Controller
         return redirect(route('report.index'));
 
     }
+
+    public function update_ireport(Request $request)
+    {
+      $id = $request->id;
+      $field = $request->field;
+      $value = $request->value;
+
+      Ireport::where('id',$id)->update([
+        $field => $value,
+      ]);
+
+      return 1;
+    }
 }

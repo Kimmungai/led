@@ -45,37 +45,71 @@
         <!--invoice template-->
           <div class="invoice-panel">
 
-            <p class="title-1"> <strong>Halal</strong> </p>
-            <p class="title-2"> <strong>Delivery / Invoice</strong> </p>
+            <p class="title-1">
+              <span>
+                <strong id="{{$invoice->id}}-title-1" class="" onclick="edit_invoice_field(this.id)">@if($invoice->title_1) {{$invoice->title_1}} @else Halal @endif</strong>
+                <input id="{{$invoice->id}}-title-1-input" type="text" class="hidden" name="" value="" onfocusout="save_invoice_field('{{$invoice->id}}-title-1',this.value,'title_1',{{$invoice->id}})">
+              </span>
+            </p>
+            <p class="title-2">
+              <span>
+                <strong id="{{$invoice->id}}-title-2" class="" onclick="edit_invoice_field(this.id)">@if($invoice->title_2) {{$invoice->title_2}} @else Delivery / Invoice @endif</strong>
+                <input id="{{$invoice->id}}-title-2-input" type="text" class="hidden" name="" value="" onfocusout="save_invoice_field('{{$invoice->id}}-title-2',this.value,'title_2',{{$invoice->id}})">
+              </span>
+            </p>
 
             <div class="heading">
-              <h1>Ledamcha Multsuppliers</h1>
-              <p>Dealers in: Whole Chicken, Wings, Drumsticks, Boneless, Legs, Gizzard, Eggs, Fish Fillet, Beef, Mutton and Pishori Rice</p>
+              <h1>
+                <strong id="{{$invoice->id}}-heading" onclick="edit_invoice_field(this.id)">@if($invoice->heading) {{$invoice->heading}} @else Ledamcha Multsuppliers @endif</strong>
+                <input id="{{$invoice->id}}-heading-input" type="text" class="hidden" name="" value="" onfocusout="save_invoice_field('{{$invoice->id}}-heading',this.value,'heading',{{$invoice->id}})">
+              </h1>
+              <p>
+                <strong id="{{$invoice->id}}-sub-heading" onclick="edit_invoice_field(this.id)">@if($invoice->sub_heading) {{$invoice->sub_heading}} @else Dealers in: Whole Chicken, Wings, Drumsticks, Boneless, Legs, Gizzard, Eggs, Fish Fillet, Beef, Mutton and Pishori Rice @endif</strong>
+                <textarea id="{{$invoice->id}}-sub-heading-input" class="form-control hidden" name="" onfocusout="save_invoice_field('{{$invoice->id}}-sub-heading',this.value,'sub_heading',{{$invoice->id}})"></textarea>
+              </p>
             </div>
 
             <div class="contacts">
               <ul>
-                <li>Cell: 0731 610 776</li>
-                <li class="pl-2">0733 205 300</li>
+                <li>
+                  Cell: <strong id="{{$invoice->id}}-phone-1" onclick="edit_invoice_field(this.id)">@if($invoice->phone_1) {{$invoice->phone_1}} @else 0731 610 776 @endif</strong>
+                  <input id="{{$invoice->id}}-phone-1-input" type="text" class="hidden" name="" value="" onfocusout="save_invoice_field('{{$invoice->id}}-phone-1',this.value,'phone_1',{{$invoice->id}})">
+                </li>
+                <li class="pl-2">
+                  <strong id="{{$invoice->id}}-phone-2" onclick="edit_invoice_field(this.id)">@if($invoice->phone_2) {{$invoice->phone_2}} @else 0733 205 300 @endif</strong>
+                  <input id="{{$invoice->id}}-phone-2-input" type="text" class="hidden" name="" value="" onfocusout="save_invoice_field('{{$invoice->id}}-phone-2',this.value,'phone_2',{{$invoice->id}})">
+                </li>
               </ul>
             </div>
 
             <div class="row">
 
               <div class="col-xs-6">
-                <div class="addresse">
-                  <p>M/s {{$invoice->recipient}}</p>
-                  <p class="mt-2"></p>
-                  <p class="mt-2"></p>
+                <div class="addresse" onclick="edit_invoice_field('{{$invoice->id}}-addresse')">
+                  <p>
+                    <strong id="{{$invoice->id}}-addresse">@if($invoice->addresse) {{$invoice->addresse}} @else M/s {{$invoice->recipient}} @endif</strong>
+                    <textarea id="{{$invoice->id}}-addresse-input" class="form-control hidden" name="" onfocusout="save_invoice_field('{{$invoice->id}}-addresse',this.value,'addresse',{{$invoice->id}})"></textarea>
+                  </p>
                 </div>
               </div>
 
               <div class="col-xs-6">
                 <div class="doc-ids">
-                  <span>Email: ledamchamultsuppliers@yahoo.com</span>
-                  <p>Date {{date('d / M / Y',strtotime($invoice->created_at))}}</p>
+                  <span onclick="edit_invoice_field('{{$invoice->id}}-doc-id-email')">
+                    Email:
+                    <strong id="{{$invoice->id}}-doc-id-email">@if($invoice->email) {{$invoice->email}} @else ledamchamultsuppliers@yahoo.com @endif</strong>
+                    <input id="{{$invoice->id}}-doc-id-email-input" type="text" class="hidden" name="" value="" onfocusout="save_invoice_field('{{$invoice->id}}-doc-id-email',this.value,'email',{{$invoice->id}})">
+                  </span>
+                  <p >
+                    Date:
+                    <strong id="{{$invoice->id}}-doc-id-date" onclick="edit_invoice_field(this.id)">@if($invoice->date) {{$invoice->date}}  @else {{date('d / M / Y',strtotime($invoice->created_at))}} @endif</strong>
+                    <input id="{{$invoice->id}}-doc-id-date-input" type="text" class="hidden" name="" value="" onfocusout="save_invoice_field('{{$invoice->id}}-doc-id-date',this.value,'date',{{$invoice->id}})">
+                  </p>
                   <p>Order No. {{$invoice->id}}</p>
-                  <p>Delivery Note</p>
+                  <p >
+                    <strong id="{{$invoice->id}}-doc-id-note" onclick="edit_invoice_field(this.id)">@if($invoice->note) {{$invoice->note}}  @else Delivery Note @endif</strong>
+                    <input id="{{$invoice->id}}-doc-id-note-input" type="text" class="hidden" name="" value="" onfocusout="save_invoice_field('{{$invoice->id}}-doc-id-note',this.value,'note',{{$invoice->id}})">
+                  </p>
                 </div>
               </div>
 
@@ -117,14 +151,20 @@
                     <tfoot>
                       <tr>
                         <th></th>
-                        <th colspan="3">Accounts are due on demand</th>
+                        <th  colspan="3" >
+                          <strong id="{{$invoice->id}}-table-foot-note-1" onclick="edit_invoice_field(this.id)">@if($invoice->foot_note_1) {{$invoice->foot_note_1}}  @else Accounts are due on demand @endif</strong>
+                          <input id="{{$invoice->id}}-table-foot-note-1-input" type="text" class="form-control hidden" name="" value="" onfocusout="save_invoice_field('{{$invoice->id}}-table-foot-note-1',this.value,'foot_note_1',{{$invoice->id}})">
+                        </th>
                         <th></th>
                       </tr>
                     </tfoot>
                   </table>
                 </div>
                 <div class="footnote">
-                  <p>Prices are subject to change without prior notice.</p>
+                  <p onclick="edit_invoice_field('{{$invoice->id}}-foot-note-2')">
+                    <strong id="{{$invoice->id}}-foot-note-2" >@if($invoice->foot_note_2) {{$invoice->foot_note_2}}  @else Prices are subject to change without prior notice. @endif</strong>
+                    <textarea id="{{$invoice->id}}-foot-note-2-input" class="form-control hidden" name="" onfocusout="save_invoice_field('{{$invoice->id}}-foot-note-2',this.value,'foot_note_2',{{$invoice->id}})"></textarea>
+                  </p>
                   <div class="row inspector mt-2">
                     <div class="col-xs-6">
                       <p>Checked by: </p>
@@ -133,7 +173,10 @@
                       <p>Date Received:</p>
                     </div>
                   </div>
-                  <p class="mt-2">Your premium supplier. Only the best</p>
+                  <p  class="mt-2" onclick="edit_invoice_field('{{$invoice->id}}-foot-note-3')">
+                    <strong id="{{$invoice->id}}-foot-note-3" >@if($invoice->foot_note_3) {{$invoice->foot_note_3}}  @else Your premium supplier. Only the best @endif</strong>
+                    <input id="{{$invoice->id}}-foot-note-3-input" class="form-control hidden" name="" onfocusout="save_invoice_field('{{$invoice->id}}-foot-note-3',this.value,'foot_note_3',{{$invoice->id}})"/>
+                  </p>
                 </div>
               </div>
             </div>

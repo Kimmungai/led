@@ -75,7 +75,9 @@ class InvoicesController extends Controller
         Sale::where('id',$sale->id)->update([
           $field => $value,
         ]);
+
       }
+      return 1;
     }
     public function destroy_invoice(Request $request)
     {

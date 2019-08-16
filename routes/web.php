@@ -31,6 +31,7 @@ Route::get('download-invoice/{id}', 'ShareController@download_invoice')->name('i
 //Reports
 Route::resource('quotation','QuotationsController');
 Route::resource('report','IreportsController');
+Route::post('update-ireport','IreportsController@update_ireport');
 Route::get('download-quote/{id}', 'ShareController@download_quote')->name('quote.download');
 Route::get('download-ireport/{id}', 'ShareController@download_ireport')->name('ireport.download');
 

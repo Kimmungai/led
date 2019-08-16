@@ -26,6 +26,22 @@ class CreateReportsTable extends Migration
             $table->text('recipient')->nullable();
             $table->text('send_to')->nullable();
             $table->datetime('dueDate')->nullable();
+
+            $table->string('title_1')->nullable();
+            $table->string('title_2')->nullable();
+            $table->string('heading')->nullable();
+            $table->text('sub_heading')->nullable();
+            $table->string('phone_1')->nullable();
+            $table->string('email')->nullable();
+            $table->string('phone_2')->nullable();
+            $table->text('addresse')->nullable();
+            $table->string('date')->nullable();
+            $table->string('note')->nullable();
+            $table->text('foot_note_1')->nullable();
+            $table->text('foot_note_2')->nullable();
+            $table->text('foot_note_3')->nullable();
+            $table->text('foot_note_4')->nullable();
+
             $table->softDeletes();
             $table->timestamps();
         });

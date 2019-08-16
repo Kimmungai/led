@@ -47,17 +47,21 @@
               <?php $count = 1; ?>
               @foreach( $sales as $sale )
               <tr>
-                <td data-label="Serial"><a href="#" style="color:inherit"></a> {{$count}}</td>
+                <td data-label="Serial"><a href="#" style="color:inherit"></a><span class="fas fa-times-circle pointer" onclick="remove_row_and_submit('sale-{{$sale->id}}','sale-{{$sale->id}}-remove-form')"></span> {{$count}}</td>
                 <td data-label="Customer">@if( $sale->user ){{$sale->user->name}} @endif</td>
                 <td data-label="Value">Ksh. {{number_format($sale->amountDue,2)}}</td>
                 <td data-label="Date">{{ \Carbon\Carbon::parse($sale->created_at)->diffForHumans() }}</td>
                 @if( $sale->status)
                 <td data-label="Status"><span class="fa fa-circle text-green"></span> Paid</td>
                 @else
-                <td data-label="Status"><span class="fa fa-circle text-danger"></span> Unpaid</td>
+                <td data-label="Status"><a href="@if( $sale->report ) {{route('invoices.show',$sale->report->id)}} @else # @endif" title="Open invoice"><span class="fa fa-circle text-danger"></span> Unpaid</a></td>
                 @endif
               </tr>
               <?php $count++; ?>
+              <form class="d-none hidden" id="sale-{{$sale->id}}-remove-form" action="{{route('sales.destroy',$sale->id)}}" method="post">
+                @csrf
+                @method('DELETE')
+              </form>
               @endforeach
             </tbody>
           </table>

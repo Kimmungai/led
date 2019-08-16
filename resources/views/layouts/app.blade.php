@@ -83,5 +83,11 @@
 @if(Route::is('sales.create'))
 <script src="{{url('js/add-prod-to-register.js')}}"></script>
 @endif
+@if(Route::is('invoices.*'))
+<script src="{{url('js/edit-invoice.js')}}"></script>
+@endif
+@if(Route::is('report.*'))
+<script src="{{url('js/edit-ireport.js')}}"></script>
+@endif
 </body>
 </html>

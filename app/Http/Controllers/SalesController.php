@@ -6,8 +6,10 @@ use Illuminate\Support\Facades\Session;
 use App\Sale;
 use App\Product;
 use App\Inventory;
+use App\UserTransactions;
 use App\User;
 use App\Revenue;
+use App\Report;
 use Illuminate\Http\Request;
 
 class SalesController extends Controller
@@ -59,7 +61,7 @@ class SalesController extends Controller
       $sale->save();
 
       $soldProds = [];
-      
+
       session( [ 'sale_id' => $sale->id ] );
 
       //session(['soldProds' => []]);
@@ -119,13 +121,25 @@ class SalesController extends Controller
           Revenue::where('sale_id',$sale->id)->delete();
         }
 
+        if($sale->report)
+        {
+          Report::where('sale_id',$sale->id)->delete();
+        }
+
         $sale->delete();
 
         Session::flash('message', env("SAVE_SUCCESS_MSG","Sale deleted succesfully!"));
         session(['soldProds' => []]);
         session(['salePrice' => 0]);
         session(['sale_id'=>'']);
-        return redirect(route('sales.create'));
+
+        //update user acc
+        $credit = new UserTransactions;
+        $credit->user_id = $sale->user_id;
+        $credit->credit = $sale->amountDue;
+        $credit->save();
+
+        return redirect(route('sales.index'));
     }
 
     public function save_cart_list(Request $request)

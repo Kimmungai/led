@@ -163,16 +163,16 @@
 
         <div class="row">
           <div class="col-xs-12">
-              <p class="title-1"><strong>Halal</strong></p>
-              <p class="title-2"> <strong>Delivery / Invoice</strong></p>
+              <p class="title-1"><strong>@if($doc->title_1) {{$doc->title_1}} @else Halal @endif</strong></p>
+              <p class="title-2"> <strong>@if($doc->title_2) {{$doc->title_2}} @else Delivery/ Invoice @endif</strong></p>
           </div>
         </div>
 
         <div class="row">
           <div class="col-xs-12">
             <div class="heading">
-              <h1>Ledamcha Multsuppliers</h1>
-              <p>Dealers in: Whole Chicken, Wings, Drumsticks, Boneless, Legs, Gizzard, Eggs, Fish Fillet, Beef, Mutton and Pishori Rice</p>
+              <h1>@if($doc->heading) {{$doc->heading}} @else Ledamcha Multsuppliers @endif</h1>
+              <p>@if($doc->sub_heading) {{$doc->sub_heading}} @else Dealers in: Whole Chicken, Wings, Drumsticks, Boneless, Legs, Gizzard, Eggs, Fish Fillet, Beef, Mutton and Pishori Rice @endif</p>
             </div>
           </div>
         </div>
@@ -181,8 +181,8 @@
           <div class="col-xs-12">
             <div class="contacts">
               <ul>
-                <li>Cell: 0731 610 776</li>
-                <li class="pl-2">0733 205 300</li>
+                <li>Cell: @if($doc->phone_1) {{$doc->phone_1}} @else 0731 610 776 @endif</li>
+                <li class="pl-2">@if($doc->phone_2) {{$doc->phone_2}} @else 0733 205 300 @endif</li>
               </ul>
             </div>
           </div>
@@ -191,7 +191,7 @@
         <div class="row">
           <div class="col-xs-6">
             <div class="addresse">
-              <p>M/s {{$doc->recipient}} </p>
+              <p>@if($doc->addresse) {{$doc->addresse}} @else M/s {{$doc->recipient}} @endif </p>
               <p class="mt-2"></p>
               <p class="mt-2"></p>
             </div>
@@ -199,10 +199,10 @@
 
           <div class="col-xs-6">
             <div class="doc-ids">
-              <span>Email: ledamchamultsuppliers@yahoo.com</span>
-              <p>Date {{date('d / M / Y',strtotime($doc->created_at))}}</p>
+              <span>@if($doc->email) {{$doc->email}} @else M/s Email: ledamchamultsuppliers@yahoo.com @endif</span>
+              <p>Date @if($doc->date) {{$doc->date}} @else {{date('d / M / Y',strtotime($doc->created_at))}} @endif</p>
               <p>Order No. {{$doc->id}}</p>
-              <p>Delivery Note</p>
+              <p>@if($doc->note) {{$doc->note}} @else Delivery Note  @endif</p>
             </div>
           </div>
         </div>
@@ -245,7 +245,7 @@
               <tfoot>
                 <tr>
                   <th></th>
-                  <th colspan="3">Accounts are due on demand</th>
+                  <th colspan="3">@if($doc->foot_note_1) {{$doc->foot_note_1}} @else Accounts are due on demand  @endif</th>
                   <th></th>
                 </tr>
               </tfoot>
@@ -262,7 +262,7 @@
           <div class="col-xs-12">
 
             <div class="footnote">
-              <p>Prices are subject to change without prior notice.</p>
+              <p>@if($doc->foot_note_2) {{$doc->foot_note_2}} @else Prices are subject to change without prior notice.  @endif </p>
             </div>
 
           </div>
@@ -294,7 +294,7 @@
           <div class="col-xs-12">
 
             <div class="footnote">
-              <p class="mt-2">Your premium supplier. Only the best</p>
+              <p class="mt-2">@if($doc->foot_note_3) {{$doc->foot_note_3}} @else Your premium supplier. Only the best  @endif </p>
             </div>
 
           </div>
