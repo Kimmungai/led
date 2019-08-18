@@ -126,17 +126,17 @@
                     </thead>
                     <tbody id="invoices-table-body">
 
-                      @foreach( $ireport->IreportInvoices as $ireport )
-                      <tr data-sale="{{$ireport->totalAmount}}" data-value="{{$ireport->amount}}" id="invoices-table-body-row-{{$ireport->id}}">
-                        <td data-label="Invoice no.">{{$ireport->invoice_id}}</td>
-                        @if($ireport->invoice_date_1)
-                        <td data-label="Date">{{$ireport->invoice_date_1}}</td>
+                      @foreach( $ireport->IreportInvoices as $invoice )
+                      <tr data-sale="{{$invoice->totalAmount}}" data-value="{{$invoice->amount}}" id="invoices-table-body-row-{{$invoice->id}}">
+                        <td data-label="Invoice no.">{{$invoice->invoice_id}}</td>
+                        @if($invoice->invoice_date_1)
+                        <td data-label="Date">{{$invoice->invoice_date_1}}</td>
                         @else
-                        <td data-label="Date">{{date('d-M-Y',strtotime($ireport->invoice_date))}}</td>
+                        <td data-label="Date">{{date('d-M-Y',strtotime($invoice->invoice_date))}}</td>
                         @endif
-                        <td data-label="Customer">{{$ireport->recipient}}</td>
-                        <td data-label="Value">{{$ireport->amount}}</td>
-                        <td data-label="Sale total" class="table-highlight">{{$ireport->totalAmount}}</td>
+                        <td data-label="Customer">{{$invoice->recipient}}</td>
+                        <td data-label="Value">{{$invoice->amount}}</td>
+                        <td data-label="Sale total" class="table-highlight">{{$invoice->totalAmount}}</td>
                       </tr>
                       @endforeach
 
