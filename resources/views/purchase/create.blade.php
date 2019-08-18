@@ -124,7 +124,7 @@
 
 @if( session('newProduct') )
 <?php $suppliedQTY = 1; ?>
-<?php if(session('newProduct')['inventory']) {$suppliedQTY = session('newProduct')['inventory']['availableQuantity'];} ?>
+<?php if(session('newProduct')['inventory']) {$suppliedQTY = session('newProductQty');} ?>
   <script>
   $(document).ready(function(){
   update_a_table({{session('newProduct')['id']}},"purchased-prods",{{$suppliedQTY}});

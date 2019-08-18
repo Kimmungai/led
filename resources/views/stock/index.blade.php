@@ -55,7 +55,9 @@
                               <td data-label="Code"><span class="fas fa-times-circle pointer" onclick="remove_row_and_submit('stock-prods-{{$product->id}}','stock-prods-{{$product->id}}-remove-form')"></span> {{$product->id}}</td>
                               <td data-label="Name"><input class="form-control1" type="text" value="{{$product->name}}" onchange="update_prod({{$product->id}},this.value,'name')"></td>
                               <td data-label="Price (Ksh.)"><input class="form-control1" type="number" value="{{$product->salePrice}}" onchange="update_prod({{$product->id}},this.value,'salePrice')" min="0"></td>
+                              @if($product->inventory)
                               <td data-label="Inventory (Kg)"><input class="form-control1" type="number" value="{{$product->Inventory->availableQuantity}}" onchange="update_prod({{$product->id}},this.value,'availableQuantity')" min="0"></td>
+                              @endif
                             </tr>
 
                             <form class="d-none hidden" id="stock-prods-{{$product->id}}-remove-form" action="{{route('stock.destroy',$product->id)}}" method="post">

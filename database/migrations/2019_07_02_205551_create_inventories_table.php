@@ -16,9 +16,9 @@ class CreateInventoriesTable extends Migration
         Schema::create('inventories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('product_id')->unsigned()->index()->nullable();
-            $table->integer('availableQuantity')->default(0);
-            $table->integer('affectedQuantity')->default(0);
-            $table->integer('lowStockAlert')->default(5);
+            $table->double('availableQuantity')->default(0.0);
+            $table->double('affectedQuantity')->default(0.0);
+            $table->double('lowStockAlert')->default(5.0);
             $table->mediumText('reason')->nullable();
             $table->text('description')->nullable();
             $table->softDeletes();

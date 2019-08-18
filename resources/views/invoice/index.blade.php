@@ -104,8 +104,11 @@
           </div>
         </div>
 
-        <form id="invoices-report-form" class="hidden" action="{{route('report.store')}}" method="post">
+        <form id="invoices-report-form" class="hidden d-none" action="{{route('report.store')}}" method="post">
           @csrf
+          <?php $selected = ''; ?>
+          <?php if(isset($_GET['customer_id'])){$selected = $_GET['customer_id'];} ?>
+          @Component('components.form-inputs.model-select',['title' => 'Customer','name'=>'customer_id','icon'=>'fas fa-users','options'=>$customers,'required'=>false,'selected'=>$selected])@endcomponent
         </form>
 
 			</div>

@@ -44,16 +44,18 @@ class IreportsController extends Controller
       $ireport->end_date = $request->end_date;
       $ireport->save();
 
-      if( $request->invoice_id )
+      if( $request->invoice_id && $request->customer_id)
       {
         //generate report from specific invoices
         foreach ( $request->invoice_id as $invoice_id )
         {
           $invoice = Report::find($invoice_id);
+          if( $invoice->user_id !=  $request->customer_id ){continue;}
           $ireportInvoice = new IreportInvoices;
           $ireportInvoice->ireport_id = $ireport->id;
           $ireportInvoice->invoice_id = $invoice->id;
           $ireportInvoice->invoice_date = $invoice->created_at;
+          $ireportInvoice->invoice_date_1 = $invoice->date;
           $ireportInvoice->recipient = $invoice->recipient;
           $ireportInvoice->amount = $invoice->amount;
           $ireportInvoice->totalAmount = $invoice->totalAmount;
@@ -63,13 +65,14 @@ class IreportsController extends Controller
       else
       {
         // generate report from all invoices
-        $invoices = Report::all();
+        $invoices = Report::where('user_id',$request->customer_id)->get();
         foreach ( $invoices as $invoice )
         {
           $ireportInvoice = new IreportInvoices;
           $ireportInvoice->ireport_id = $ireport->id;
           $ireportInvoice->invoice_id = $invoice->id;
           $ireportInvoice->invoice_date = $invoice->created_at;
+          $ireportInvoice->invoice_date_1 = $invoice->date;
           $ireportInvoice->recipient = $invoice->recipient;
           $ireportInvoice->amount = $invoice->amount;
           $ireportInvoice->totalAmount = $invoice->totalAmount;

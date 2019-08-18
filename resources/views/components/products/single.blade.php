@@ -5,7 +5,9 @@
     <h4><a href="details.html">{{$product->name}}</a></h4>
     @if( isset($paragraph) )
      <p class="text-center">{{$product->sku}}</p>
-     <p class="text-center">{{$product->inventory->availableQuantity}}</p>
+     @if($product->inventory)
+      <p class="text-center">{{$product->inventory->availableQuantity}}</p>
+     @endif
     @endif
    <div class="grid_1 simpleCart_shelfItem">
    <div class="item_add"><span class="item_price"><h6>Ksh. @if($product->cost) {{number_format($product->cost,2)}} @else - @endif</h6></span></div>

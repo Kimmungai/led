@@ -129,7 +129,11 @@
                       @foreach( $ireport->IreportInvoices as $ireport )
                       <tr data-sale="{{$ireport->totalAmount}}" data-value="{{$ireport->amount}}" id="invoices-table-body-row-{{$ireport->id}}">
                         <td data-label="Invoice no.">{{$ireport->invoice_id}}</td>
-                        <td data-label="Date">{{date('d-M-Y',strtotime($ireport->created_at))}}</td>
+                        @if($ireport->invoice_date_1)
+                        <td data-label="Date">{{$ireport->invoice_date_1}}</td>
+                        @else
+                        <td data-label="Date">{{date('d-M-Y',strtotime($ireport->invoice_date))}}</td>
+                        @endif
                         <td data-label="Customer">{{$ireport->recipient}}</td>
                         <td data-label="Value">{{$ireport->amount}}</td>
                         <td data-label="Sale total" class="table-highlight">{{$ireport->totalAmount}}</td>

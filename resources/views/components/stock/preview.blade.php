@@ -5,7 +5,9 @@
   <td>{{$product->id}}</td>
   <td>{{$product->name}}</td>
   <td> <input type="number" value="{{$product->salePrice}}" /> </td>
-  <td><input type="number" value="{{$product->inventory->availableQuantity}}" /></td>
+  @if($product->inventory)
+    <td><input type="number" value="{{$product->inventory->availableQuantity}}" /></td>
+  @endif
 </tr>
 <?php $count++; ?>
 @endforeach

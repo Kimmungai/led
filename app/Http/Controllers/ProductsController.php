@@ -66,11 +66,13 @@ class ProductsController extends Controller
         $variation = $request->only(['weight','height','color']);
         $variation['product_id'] = $product->id;
         Variation::create($variation);
-        $inventory['availableQuantity'] =  $request->suppliedQuantity;
+        
         $inventory['product_id'] = $product->id;
         Inventory::create($inventory);
         Session::flash('message', env("SAVE_SUCCESS_MSG","Product saved succesfully!"));
         Session::flash('newProduct',$product);
+        session(['newProductQty' => $request->suppliedQuantity]);
+        
         return back();
     }
 
