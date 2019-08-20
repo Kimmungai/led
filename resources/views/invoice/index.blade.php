@@ -88,7 +88,7 @@
 
         <div class="row">
         @forelse( $invoices as $invoice )
-        <?php $color= '#f44336';$status = 'Upaid';?>
+        <?php $color= '#f44336';$status = 'Unpaid';?>
         <?php if( $invoice->status ){$color="#8BC34A";$status = 'Paid';} ?>
 
           @Component('components.dashboard.cta-icon',['title'=>$invoice->user->name,'icon'=>'fa fa-file-invoice-dollar','link'=>route('invoices.show',$invoice->id),'color'=>$color,'status'=>$status,'amount'=>$invoice->amount,'selectable'=>true,'invoice'=>$invoice])@endcomponent
