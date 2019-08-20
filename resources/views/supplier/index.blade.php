@@ -38,6 +38,10 @@
             </div>
             @endforeach
           </div>
+
+          <div class="row">
+            {{$suppliers->links()}}
+          </div>
         <!--custom page design ends-->
 
 
