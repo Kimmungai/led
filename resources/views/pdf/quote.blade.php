@@ -94,7 +94,7 @@
     .addresse p{
       /*border-bottom: 1px dotted #000;*/
       width: 100%;
-      
+
       word-break: break-word;
       word-wrap: break-word;
     }
@@ -201,7 +201,7 @@
             <div class="doc-ids">
               <span>Email: ledamchamultsuppliers@yahoo.com</span>
               <p>Date {{$doc->date}}</p>
-              <p>Report No. {{$doc->id}}</p>
+              <!--<p>Report No. {{$doc->id}}</p>-->
               <p>{{$doc->note}}</p>
             </div>
           </div>
@@ -221,7 +221,7 @@
 
                 @foreach( $doc->QuoteProds as $product )
                 <tr>
-                  <td>{{$product->id}}</td>
+                  <td>{{$product->product_id}}</td>
                   <td>{{$product->name}}</td>
                   <td>{{$product->salePrice}}</td>
                 </tr>
