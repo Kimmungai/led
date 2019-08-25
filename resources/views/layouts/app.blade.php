@@ -30,6 +30,9 @@
 @if(Route::is('purchases.create'))
 <link rel="stylesheet" href="{{url('css/image-carousel.css')}}">
 @endif
+@if(Route::is('business-card*'))
+<link rel="stylesheet" href="{{url('css/business-card-1.css')}}">
+@endif
 <!-- jQuery -->
 <!-- lined-icons -->
 <link rel="stylesheet" href="{{url('theme-front/css/icon-font.min.css')}}" type='text/css' />

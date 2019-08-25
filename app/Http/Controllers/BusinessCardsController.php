@@ -46,7 +46,8 @@ class BusinessCardsController extends Controller
      */
     public function show($id)
     {
-        return view('user.business-card');
+        $user = User::find($id);
+        return view('user.business-card',compact('user'));
     }
 
     /**
