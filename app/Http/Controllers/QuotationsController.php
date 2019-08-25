@@ -104,12 +104,13 @@ class QuotationsController extends Controller
      */
     public function update(Request $request, Report $report, $id)
     {
-      $data = $request->except(['product_id','_token','_method']);
+      $data = $request->except(['product_id','_token','_method','prod_name','sale_price','prod_id']);
       $prodIDs = $request->product_id;
-
       Quote::where('id',$id)->update($data);
 
       QuoteProds::where('quote_id',$id)->delete();
+
+      $count = 0;
 
       foreach ($prodIDs as $prodID)
       {
@@ -118,9 +119,10 @@ class QuotationsController extends Controller
         $newQuoteProd = new QuoteProds;
         $newQuoteProd->product_id = $prodID;
         $newQuoteProd->quote_id = $id;
-        $newQuoteProd->name = $product->name;
-        $newQuoteProd->salePrice = $product->salePrice;
+        $newQuoteProd->name = $request->prod_name[$count];
+        $newQuoteProd->salePrice = $request->sale_price[$count];
         $newQuoteProd->save();
+        $count++;
       }
 
       Session::flash('message', env("SAVE_SUCCESS_MSG","Updated succesfully!"));

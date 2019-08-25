@@ -15,7 +15,6 @@
   $doc = App\Quote::first();
   return view('pdf.quote',compact('doc'));
 });*/
-Route::get('nyau', 'ShareController@share_invoice');
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
