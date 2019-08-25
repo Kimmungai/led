@@ -17,8 +17,10 @@
 				@if($user->type == 2 || $user->type == 4)<br><span><i class="fas fa-wallet"></i> <span>Ksh. {{$wallet}}</span></span>@endif
       </h2>
 			<ul>
-				<!--<li><a href="https://www.instagram.com/atulkprajapati2000/"><i class="fab fa-facebook"></i></a></li>-->
 				<li><a class="@if($wallet > 0) text-Green @elseif($wallet < 0) text-Red @else text-Blue @endif" href="@if(isset($link)) {{$link}} @else {{route('users.show',$user->id)}} @endif" title="open {{$user->name}} profile"><i class="fa fa-user"></i></a></li>
+				@if($user->type == 1 || $user->type == 3)
+				<li><a class="@if($wallet > 0) text-Green @elseif($wallet < 0) text-Red @else text-Blue @endif" href="{{route('business-card.show',$user->id)}}" title="open business cards for {{$user->name}}"><i class="fa fa-address-card"></i></a></li>
+				@endif
 				<li><a class="@if($wallet > 0) text-Green @elseif($wallet < 0) text-Red @else text-Blue @endif" href="#" title="delete {{$user->name}}" onclick="confirm_modal('DELUserConfirmModal-{{$user->id}}')"><i class="fas fa-trash-alt"></i></a></li>
 			</ul>
 		</div>

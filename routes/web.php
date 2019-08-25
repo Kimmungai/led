@@ -101,3 +101,6 @@ Route::post('img-tmp','Images\ImageAjaxController@img_tmp');
 //Extras
 Route::post('save-list','HomeController@save_list')->name('save.list');
 Route::post('share-doc','ShareController@share_doc');
+
+//Business cards
+Route::resource('business-card','BusinessCardsController');

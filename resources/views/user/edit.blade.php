@@ -21,6 +21,12 @@
 			<div id="page-wrapper">
         @Component('components.structure.page-title',['title'=>'Edit user'])@endcomponent
 
+        <div class="row">
+          <div class="col-xs-12">
+            @Component('components.form-inputs.link',['title'=>'Business cards','href'=>route('business-card.show',$user->id),'toolTip'=>'open business cards','icon'=>'fas fa-address-card','classes'=>'btn btn-default btn-xs pull-right mr-1'])@endcomponent
+          </div>
+        </div>
+
         @Component('components.structure.breadcrump',['home'=>route('home'),'specified'=>$user->name])
         @endcomponent
 
