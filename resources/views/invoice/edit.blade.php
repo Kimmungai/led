@@ -23,9 +23,9 @@
           <div class="col-md-12">
         @Component('components.form-inputs.link',['title'=>'Delete','href'=>'#','toolTip'=>'Delete invoice','icon'=>'fas fa-warning','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'confirm_modal("deleteInvoiceConfirmModal")'])@endcomponent
 
-        @Component('components.form-inputs.link',['title'=>'Print','href'=>route('invoice.download',$invoice->id),'toolTip'=>'download quote','icon'=>'fas fa-download','classes'=>'btn btn-default btn-xs pull-right mr-1'])@endcomponent
+        @Component('components.form-inputs.link',['title'=>'Print','href'=>route('invoice.download',$invoice->id),'toolTip'=>'download invoice','icon'=>'fas fa-download','classes'=>'btn btn-default btn-xs pull-right mr-1'])@endcomponent
 
-        @Component('components.form-inputs.link',['title'=>'Share','href'=>'#','toolTip'=>'share quote','icon'=>'fas fa-share-alt','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'share_modal("shareModal")'])@endcomponent
+        @Component('components.form-inputs.link',['title'=>'Share','href'=>'#','toolTip'=>'share invoice','icon'=>'fas fa-share-alt','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'share_modal("shareModal")'])@endcomponent
         </div>
       </div>
 
@@ -188,9 +188,9 @@
           <div class="col-md-12">
             @Component('components.form-inputs.link',['title'=>'Delete','href'=>'#','toolTip'=>'Delete invoice','icon'=>'fas fa-warning','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'confirm_modal("deleteInvoiceConfirmModal")'])@endcomponent
 
-            @Component('components.form-inputs.link',['title'=>'Print','href'=>route('invoice.download',$invoice->id),'toolTip'=>'download quote','icon'=>'fas fa-download','classes'=>'btn btn-default btn-xs pull-right mr-1'])@endcomponent
+            @Component('components.form-inputs.link',['title'=>'Print','href'=>route('invoice.download',$invoice->id),'toolTip'=>'download invoice','icon'=>'fas fa-download','classes'=>'btn btn-default btn-xs pull-right mr-1'])@endcomponent
 
-            @Component('components.form-inputs.link',['title'=>'Share','href'=>'#','toolTip'=>'share quote','icon'=>'fas fa-share-alt','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'share_modal("shareModal")'])@endcomponent
+            @Component('components.form-inputs.link',['title'=>'Share','href'=>'#','toolTip'=>'share invoice','icon'=>'fas fa-share-alt','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'share_modal("shareModal")'])@endcomponent
 
           </div>
         </div>
