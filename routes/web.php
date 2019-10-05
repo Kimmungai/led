@@ -26,6 +26,7 @@ Route::get('invoices-show/{id}','InvoicesController@show')->name('invoices.show'
 Route::post('update-invoice','InvoicesController@update_invoice');
 Route::post('invoices/delete','InvoicesController@destroy_invoice')->name('invoices.destroy');
 Route::get('download-invoice/{id}', 'ShareController@download_invoice')->name('invoice.download');
+Route::put('edit-invoice','InvoicesController@edit_invoice');
 
 //Reports
 Route::resource('quotation','QuotationsController');
@@ -104,3 +105,4 @@ Route::post('share-doc','ShareController@share_doc');
 
 //Business cards
 Route::resource('business-card','BusinessCardsController');
+Route::get('download-card/{user}', 'BusinessCardsController@download_card')->name('card.download');

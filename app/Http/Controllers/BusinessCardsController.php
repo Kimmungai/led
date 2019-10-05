@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use PDF;
 
 class BusinessCardsController extends Controller
 {
@@ -82,5 +83,12 @@ class BusinessCardsController extends Controller
     public function destroy(User $user)
     {
         //
+    }
+
+    public function download_card( User $user )
+    {
+      $doc  = $user;
+      $pdf = PDF::loadView('pdf.card', compact('doc'));
+      return $pdf->download();
     }
 }

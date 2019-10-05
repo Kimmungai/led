@@ -25,16 +25,24 @@
         @endcomponent
 
         <!--custom page design starts-->
+
+        <div class="row">
+          <div class="col-md-12">
+            @Component('components.form-inputs.link',['title'=>'Print','href'=>route('card.download',$user->id),'toolTip'=>'download card','icon'=>'fas fa-download','classes'=>'btn btn-default btn-xs pull-right mr-1'])@endcomponent
+          </div>
+        </div>
+
         <div class="row">
 
           <div class="col-md-12">
             <div class="products-selection-section">
 
+
               <!--Business card one-->
               <div class="biz-card-1">
 
                 <div class="row">
-                  <div class="col-xs-8">
+                  <div class="col-xs-12">
                     <h1><strong>{{$user->name}}</strong></h1>
                     @if( $user->type == 1 )
                     <h2>Ledamcha Staff</h2>
@@ -48,19 +56,31 @@
                     <div class="underline"></div>
                   </div>
 
-                  <div class="col-xs-4">
+                  <!--<div class="col-xs-4">
                     <div class="qr">
                       <img src="{{url('placeholders/qr.png')}}" alt="">
                     </div>
-                  </div>
+                  </div>-->
                 </div>
 
                 <div class="row">
 
-                  <div class="col-xs-8 details">
+                  <div class="col-xs-7 details">
+                  @if( $user->address )
                   <p><span class="fas fa-map-marker-alt"></span> {{$user->address}}</p>
+                  @endif
+                  @if( $user->phoneNumber )
                   <p><span class="fas fa-phone"></span> {{$user->phoneNumber}}</p>
+                  @endif
+                  @if( $user->email  )
                   <p><span class="fas fa-envelope"></span> {{$user->email}}</p>
+                  @endif
+                  </div>
+
+                  <div class="col-xs-5">
+                    <div class="image">
+
+                    </div>
                   </div>
 
                 </div>
@@ -70,7 +90,6 @@
                     <h2><span>Ledamcha</span> Multsupliers</h2>
                   </div>
                 </div>
-
 
               </div>
               <!--end Business card one-->

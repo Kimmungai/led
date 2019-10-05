@@ -54,7 +54,7 @@
                 @if( $sale->status)
                 <td data-label="Status"><span class="fa fa-circle text-green"></span> Paid</td>
                 @else
-                <td data-label="Status"><a href="@if( $sale->report ) {{route('invoices.show',$sale->report->id)}} @else # @endif" title="Open invoice"><span class="fa fa-circle text-danger"></span> Unpaid</a></td>
+                <td data-label="Status">@if( $sale->report )<a href=" {{route('invoices.show',$sale->report->id)}} " title="Open invoice"><span class="fa fa-circle text-danger"></span> Unpaid</a>@else <span class="fa fa-circle text-danger"></span> Unpaid @endif</td>
                 @endif
               </tr>
               <?php $count++; ?>

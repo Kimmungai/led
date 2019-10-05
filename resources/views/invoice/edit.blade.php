@@ -26,6 +26,9 @@
         @Component('components.form-inputs.link',['title'=>'Print','href'=>route('invoice.download',$invoice->id),'toolTip'=>'download invoice','icon'=>'fas fa-download','classes'=>'btn btn-default btn-xs pull-right mr-1'])@endcomponent
 
         @Component('components.form-inputs.link',['title'=>'Share','href'=>'#','toolTip'=>'share invoice','icon'=>'fas fa-share-alt','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'share_modal("shareModal")'])@endcomponent
+
+        @Component('components.form-inputs.link',['title'=>'Update','href'=>'#','toolTip'=>'Update invoice','icon'=>'fas fa-save','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'confirm_modal("quoteSaveConfirmModal")'])@endcomponent
+
         </div>
       </div>
 
@@ -200,7 +203,10 @@
           @csrf
         </form>
 
-				</div>
+        <form id="edit-invoice-form" action="{{url('edit-invoice')}}" method="post">
+          @csrf
+          @method('PUT')
+				</form>
 			<!--body wrapper start-->
 			</div>
 			 <!--body wrapper end-->
@@ -208,5 +214,6 @@
     <!--modals-->
     @Component('components.modals.confirm',['title'=>'Delete invoice','question'=>'Are you sure you want to delete invoice?','modalID'=>'deleteInvoiceConfirmModal','cancelBtnTitle'=>'Cancel','saveBtnTitle'=>'Confirm delete','formID'=>'delete-invoice-form'])@endcomponent
     @Component('components.modals.share',['title'=>'Share invoice','docId'=>$invoice->id,'docType'=>'invoice','modalID'=>'shareModal','cancelBtnTitle'=>'Cancel','saveBtnTitle'=>'share'])@endcomponent
+    @Component('components.modals.confirm',['title'=>'Save invoice','question'=>'Are you sure you want to save invoice?','modalID'=>'quoteSaveConfirmModal','cancelBtnTitle'=>'Cancel','saveBtnTitle'=>'Confirm save','formID'=>'edit-invoice-form'])@endcomponent <!--Decoy, data saved via ajax. Just here for the usability-->
 
 @endsection

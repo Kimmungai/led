@@ -87,4 +87,10 @@ class InvoicesController extends Controller
 
       return redirect(route('invoices.index'));
     }
+
+    public function edit_invoice( Request $request )
+    {
+      Session::flash('message', env("SAVE_SUCCESS_MSG","Invoice updated succesfully!"));
+      return back();
+    }
 }
