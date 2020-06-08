@@ -95,3 +95,14 @@ td:before {
   .platform-analytics{
   }
 }
+.blog-card h5 span
+{
+  font-size: 12px!important;
+}
+.no-records a{
+  cursor: pointer;
+}
+.no-records a:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}

@@ -106,3 +106,6 @@ Route::post('share-doc','ShareController@share_doc');
 //Business cards
 Route::resource('business-card','BusinessCardsController');
 Route::get('download-card/{user}', 'BusinessCardsController@download_card')->name('card.download');
+
+//Blog
+Route::resource('post','PostsCotroller');

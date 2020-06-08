@@ -71,13 +71,13 @@
             <li class="@if(Route::is('users.create')) active @endif"><a href="{{route('users.create')}}">Add new</a></li>
           </ul>
         </li>
-        <li class="menu-list @if(Route::is('users*') || Route::is('staff*') || Route::is('admin*') || Route::is('business-card*')) act @endif"><a href="{{route('users.index')}}"><i class="fa fa-globe"></i> <span>Blog</span></a>
+        <li class="menu-list @if( Route::is('post*') ) act @endif"><a href="{{route('post.index')}}"><i class="fa fa-globe"></i> <span>Blog</span></a>
           <ul class="sub-menu-list">
-            <li class="@if(Route::is('staff.index')) active @endif"><a href="{{route('staff.index')}}">All posts</a> </li>
-            <li class="@if(Route::is('users.create')) active @endif"><a href="{{route('users.create')}}">Add new</a></li>
+            <li class="@if(Route::is('post.index')) active @endif"><a href="{{route('post.index')}}">All posts</a> </li>
+            <li class="@if(Route::is('post.create')) active @endif"><a href="{{route('post.create')}}">Add new</a></li>
           </ul>
         </li>
-        <li class="@if(Route::is('org*')) act @endif"><a href="#" onclick="submit_form('logout-form')"><i class="fas fa-sign-out-alt"></i> <span>Log out</span></a></li>
+        <li class="@if(Route::is('logout*')) act @endif"><a href="#" onclick="submit_form('logout-form')"><i class="fas fa-sign-out-alt"></i> <span>Log out</span></a></li>
         <!--<li class="@if(Route::is('trash.index')) act @endif"><a href="{{route('trash.index')}}"><i class="fa fa-trash-alt"></i> <span>Trash</span></a></li>-->
       </ul>
     <!--sidebar nav end-->
