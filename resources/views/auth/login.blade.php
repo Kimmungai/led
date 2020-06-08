@@ -7,7 +7,7 @@
        <div class="graphs">
          <div class="sign-in-form">
            <div class="sign-in-form-top">
-             <p><span>Login </span> <a href="/">{{env('APP_NAME','ledamcha')}}</a></p>
+             <p><a href="/">{!! env('APP_NAME','ledamcha') !!} <br>Admin</a></p>
            </div>
            <div class="signin">
 

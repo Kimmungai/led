@@ -73,7 +73,7 @@
     .biz-card-1 .underline{
       height: 2px;
       background: #000;
-      border-left: 50px solid #8BC34A;
+      border-left: 50px solid #fcb608;
       margin: 10px 0;
     }
     .biz-card-1 .details span{
@@ -146,7 +146,7 @@
 
         <div class="row">
           <div class="col-xs-12 brand">
-            <h2><span>Ledamcha</span> Multsupliers</h2>
+            <h2> {!! env('APP_NAME') !!}</h2>
           </div>
         </div>
 

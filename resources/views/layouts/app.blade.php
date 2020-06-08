@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>{{Route::currentRouteName()}} | {{env('APP_NAME','ledamcha')}}</title>
+<title>{{Route::currentRouteName()}} | {!! env('APP_NAME','Rent and Beyond') !!}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <!-- CSRF Token -->
@@ -20,6 +20,7 @@
 <link rel="stylesheet" href="{{url('css/pos-design.css')}}">
 <link rel="stylesheet" href="{{url('css/search.css')}}">
 <link rel="stylesheet" href="{{url('css/jquery-ui.min.css')}}">
+<link rel="icon" href="{{url('images/icons/favicon.ico')}}" type="image/gif" sizes="16x16">
 
 @if(Route::is('payments.create'))
 <link rel="stylesheet" href="{{url('css/payment-design.css')}}">
@@ -59,7 +60,7 @@
 @yield('content')
 <!--footer section start-->
 <footer>
- <p>&copy {{date('Y')}} {{env('APP_NAME','Ledamcha')}}. All Rights Reserved </p>
+ <p>&copy {{date('Y')}} {!! env('APP_NAME','Ledamcha') !!}. All Rights Reserved </p>
 </footer>
 <!--footer section end-->
 

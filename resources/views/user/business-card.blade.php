@@ -87,7 +87,7 @@
 
                 <div class="row">
                   <div class="col-xs-12 brand">
-                    <h2><span>Ledamcha</span> Multsupliers</h2>
+                    <h2>{!! env('APP_NAME','Rent and Beyond') !!}</h2>
                   </div>
                 </div>
 

@@ -1,4 +1,4 @@
-<h3 class="blank1">{{$title}}</h3>
+<h3 class="blank1">{!! $title !!}</h3>
 
 @if (session('message'))
   <div  class="alert alert-success alert-dismissible" role="alert">

@@ -506,10 +506,10 @@ h1, h2, h3, h4, h5 {
 	text-decoration:underline;
 }
 footer {
-    background: #fff;
+    /*background: #fff;*/
     padding: 12px;
     width: 100%;
-    border-top: 1px solid #eff0f4;
+    /*border-top: 1px solid #eff0f4;*/
     text-align:center;
     /*position: fixed;*/
     bottom: 0;
@@ -2599,16 +2599,19 @@ h4.asd label {
     font-size: 3.5em;
 }
 .r3_counter_box .fa-file-invoice{
-	color:#8BC34A;
+
 }
 .r3_counter_box .fa-tags {
-	color:#00BCD4;
+
 }
 .r3_counter_box .fa-clipboard-list {
-	color:#FFCA28;
+
 }
 .r3_counter_box .fa-clipboard-check {
-	color:#F44336;
+
+}
+.r3_counter_box .fa {
+	color:#666;
 }
 .stats span{
 	color:#999;
