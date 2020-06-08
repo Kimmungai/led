@@ -2,7 +2,7 @@
   @if( !isset($noLabel) )
   <label class="col-md-2 control-label" style="line-height:35px;text-overflow:ellipse">{{$title}} @if($required) <span class="text-danger">*</span> @endif</label>
   @endif
-  <div class="@if( !isset($noLabel) ) col-md-8 @else col-md-12 @endif">
+  <div class="@if( !isset($noLabel) ) col-md-8 @else  @endif">
     <div class="input-group input-icon right in-grp1">
       <span class="input-group-addon">
         <i class="{{$icon}}"></i>

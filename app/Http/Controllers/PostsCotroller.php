@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Post;
 use App\Org;
 use Illuminate\Http\Request;
+use App\Http\Requests\StorePost;
 
 class PostsCotroller extends Controller
 {
@@ -40,9 +41,9 @@ class PostsCotroller extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePost $request)
     {
-        //
+        return $request;
     }
 
     /**

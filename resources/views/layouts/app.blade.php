@@ -34,6 +34,9 @@
 @if(Route::is('business-card*'))
 <link rel="stylesheet" href="{{url('css/business-card-1.css')}}">
 @endif
+@if(Route::is('post.create') || Route::is('post.edit'))
+ <script src="https://cdn.tiny.cloud/1/w7ne5sgwzfvt23wsw5gamqfb9k0zu7m4no0kuxmo7xws3c0s/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+@endif
 <!-- jQuery -->
 <!-- lined-icons -->
 <link rel="stylesheet" href="{{url('theme-front/css/icon-font.min.css')}}" type='text/css' />
@@ -92,6 +95,9 @@
 @endif
 @if(Route::is('report.*'))
 <script src="{{url('js/edit-ireport.js')}}"></script>
+@endif
+@if(Route::is('post.*'))
+<script src="{{url('js/blog.js')}}"></script>
 @endif
 </body>
 </html>
