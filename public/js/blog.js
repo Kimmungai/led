@@ -37,3 +37,19 @@ function check_if_recored_attribute(event,action)
   if( event.key === "Enter" )
     add_post_attribute(action)
 }
+
+function check_file_size(inputID)
+{
+  var upload = document.getElementById(inputID);
+  var size = upload.files[0].size / 1000000;
+  if( size  > 1 )
+  {
+    alert("Selected file too big. Upload a file of less than 1MB");
+    $("#"+inputID).val('');
+  }
+}
+
+function open_post_delete_modal(id)
+{
+  $("#"+id).modal();
+}

@@ -9,6 +9,23 @@ table th{
   padding: 8px;
 }
 }
+@media only screen and  (min-width: 992px) {
+  .hidden-medium{
+    display: none;
+  }
+  .hidden-small{
+    display: block;
+  }
+}
+
+@media only screen and  (max-width: 992px) {
+  .hidden-medium{
+    display: block;
+  }
+  .hidden-small{
+    display: none;
+  }
+}
 
 /*Mobile View*/
 @media only screen and  (max-width: 760px) {
@@ -109,6 +126,10 @@ td:before {
 .blog-form{
   background: #fff;
   padding: 2em;
+}
+.blog-form-2{
+  background: #fff;
+  padding: 0 2em;
 }
 .blog-form p{
   padding: 1em 0;

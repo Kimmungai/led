@@ -34,7 +34,7 @@
 @if(Route::is('business-card*'))
 <link rel="stylesheet" href="{{url('css/business-card-1.css')}}">
 @endif
-@if(Route::is('post.create') || Route::is('post.edit'))
+@if(Route::is('post*'))
  <script src="https://cdn.tiny.cloud/1/w7ne5sgwzfvt23wsw5gamqfb9k0zu7m4no0kuxmo7xws3c0s/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 @endif
 <!-- jQuery -->

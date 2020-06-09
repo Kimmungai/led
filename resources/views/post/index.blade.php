@@ -34,7 +34,7 @@
           <div class="row">
 
             @forelse($posts as $post)
-              @Component('components.dashboard.post',['title'=>$post->title,'icon'=>'fa fa-check-circle','link'=>route('post.show',1),'color'=>'#5cb85c','selectable'=>true])@endcomponent
+              @Component('components.dashboard.post',['title'=>$post->title,'post'=>$post,'icon'=>'fa fa-check-circle','link'=>route('post.show',1),'color'=>'#5cb85c','selectable'=>true])@endcomponent
             @empty
             <div class="col-md-12 no-records">
               <h2>No posts found <small><a href="{{route('post.create')}}">Create your first post</a></small></h2>
@@ -42,7 +42,11 @@
             @endforelse
           </div>
           <div class="row">
-            {{$posts->links()}}
+            <div class="col-md-12">
+              <div class="pull-right">
+                {{$posts->links()}}
+              </div>
+            </div>
           </div>
         <!--custom page design ends-->
 
