@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 use Auth;
 use Illuminate\Support\Facades\Session;
-
+use Illuminate\Support\Str;
 class PostsCotroller extends Controller
 {
     public function __construct()
@@ -52,22 +52,34 @@ class PostsCotroller extends Controller
     {
       $post_category = $request->post_category ? $request->post_category : [];
       $post_category_mobile = $request->post_category_mobile ? $request->post_category_mobile : [];
+      $post_category = is_array($post_category) ? $post_category : [$post_category];
+      $post_category_mobile = is_array($post_category_mobile) ? $post_category_mobile : [$post_category_mobile];
       $categories = array_merge($post_category,$post_category_mobile);
       $post_tag = $request->post_tag ? $request->post_tag : [];
       $post_tag_mobile = $request->post_tag_mobile ? $request->post_tag_mobile : [];
+      $post_tag = is_array($post_tag) ? $post_tag : [$post_tag];
+      $post_tag_mobile = is_array($post_tag_mobile) ? $post_tag_mobile : [$post_tag_mobile];
       $tags = array_merge($post_tag,$post_tag_mobile);
+
 
       $postData = $request->only(['title','content','excerpt','featured_img']);
       $postData['excerpt'] = $request->excerpt ? $request->excerpt : $request->excerpt_mobile;
       $postData['featured_img'] = $request->featured_img ? $request->featured_img : $request->featured_img_mobile;
       $postData['publisher'] = Auth::id();
       $postData['published'] = $request->published ? $request->post_tag : 1 ;
+      $postData['excerpt'] = $postData['excerpt'] ? $postData['excerpt'] : Str::words($postData['content'], 3);
+      $postData['slug'] = Str::slug($request->title);
       if( $request->hasFile('featured_img') )
-         $postData['featured_img'] = $this->uploadFeaturedImage($request);
+      {
+        $postData['featured_img'] = $this->uploadFeaturedImage($request);
+        $postData['featured_img_uri'] = url('storage/'.$postData['featured_img']);
+      }
       else
+      {
         $postData['featured_img'] = 'images/bg/blog-bg-placeholder.jpg';
+        $postData['featured_img_uri'] = url($postData['featured_img']);
+      }
 
-      $postData['featured_img_uri'] = url('storage/'.$postData['featured_img']);
 
      $post = Post::create($postData);
      if( count($categories) )

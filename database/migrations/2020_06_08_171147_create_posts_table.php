@@ -17,6 +17,7 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->integer('publisher')->unsigned()->index();
             $table->string('title');
+            $table->string('slug');
             $table->text('content');
             $table->text('excerpt')->nullable();
             $table->tinyInteger('published');
