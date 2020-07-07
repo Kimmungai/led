@@ -53,12 +53,12 @@
           </div>
 
           <div class="col-md-4">
-            <div class="avatar-preview">
+          <!--  <div class="avatar-preview">
               <div class="profile-img-loading-preview hidden"><img class="loader" src="/placeholders/img-loader-green.gif"></div>
               <img id="user-avatar" class="" src="@if( old('avatar') ) {{url(old('avatar'))}} @elseif( $user->avatar ) {{url($user->avatar)}} @else /placeholders/avatar-male.png @endif" alt="" >
               <input id="user-avatar-url" type="hidden" name="avatar" value="@if( old('avatar') ) {{old('avatar')}} @elseif( $user->avatar ) {{$user->avatar}} @else /placeholders/avatar-male.png @endif">
             </div>
-            @Component('components.form-inputs.button',['value' => 'add image','type'=>'button','icon'=>'fas fa-upload','classes'=>'btn btn-default btn-sm','click' => 'click_element("user-avtar-file",0)' ])@endcomponent
+            @Component('components.form-inputs.button',['value' => 'add image','type'=>'button','icon'=>'fas fa-upload','classes'=>'btn btn-default btn-sm','click' => 'click_element("user-avtar-file",0)' ])@endcomponent-->
             @Component('components.form-inputs.model-select',['title' => 'Org','name'=>'org_id','icon'=>'fas fa-building','options'=>$orgs,'required'=>false,'noLabel'=>true,'selected' => $user->org_id])@endcomponent
             @Component('components.form-inputs.side-textarea',['title' => 'Remarks','name'=>'remarks','icon'=>'fas fa-info-circle','placeholder' => 'Enter any remarks about this user','rows'=>3,'cols'=>'','required'=>false,'value' =>$user->remarks])@endcomponent
             @Component('components.form-inputs.submit',['value' => 'Update','icon'=>'fas fa-save','classes'=>'btn btn-success btn-sm pay-btn','toolTip'=>'Update user'])@endcomponent
