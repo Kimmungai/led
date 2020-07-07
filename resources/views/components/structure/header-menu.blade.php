@@ -29,7 +29,7 @@
                 @endif
               @endif
                <div class="user-name">
-                <p class="Uname">{{Auth::user()->name}}<span>{{Auth::user()->designation}}</span></p>
+                <p class="Uname">{{Auth::user()->email}}<span>{{Auth::user()->designation}}</span></p>
                </div>
                <i class="lnr lnr-chevron-down"></i>
                <i class="lnr lnr-chevron-up"></i>
