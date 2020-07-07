@@ -21,3 +21,5 @@ Route::apiResource('posts','Api\PostsApiController');
 Route::apiResource('categories','Api\CategoriesApiController');
 
 Route::apiResource('tags','Api\TagsApiController');
+
+Route::post('img-tmp','Images\ImageAjaxController@img_tmp');
