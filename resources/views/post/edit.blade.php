@@ -50,7 +50,7 @@
                   @endif
                 </div>
                 <div class="mb-4">
-                  <input class="post-content" id="main-editor" type="text" name="content" value="@if(old('content')) {{old('content')}} @else {!! $post->content !!} @endif" required>
+                  <textarea class="post-content" id="main-editor" type="text" name="content"  required>@if(old('content')) {{old('content')}} @else {!! $post->content !!} @endif</textarea>
                   @if ($errors->has('content'))
                     <small class="text-danger">{{ $errors->first('content') }}</small>
                   @endif
