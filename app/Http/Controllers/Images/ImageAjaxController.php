@@ -17,9 +17,9 @@ class ImageAjaxController extends Controller
    */
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
-    
+
     public function img_tmp( Request $request )
     {
       //$rules = ['image' => 'nullable|image|mimes:jpeg,bmp,png|max:1024'];
