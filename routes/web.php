@@ -109,3 +109,6 @@ Route::get('download-card/{user}', 'BusinessCardsController@download_card')->nam
 
 //Blog
 Route::resource('post','PostsCotroller');
+
+//Agents
+Route::resource('agent','AgentController');

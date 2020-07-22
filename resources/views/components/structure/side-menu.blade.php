@@ -30,12 +30,12 @@
               <li class="@if(Route::is('customers.create')) active @endif"><a href="{{route('customers.create')}}">Add new</a></li>
             </ul>
         </li>
-        <li class="menu-list @if(Route::is('customers*')) act @endif">
-          <a href="{{route('customers.index')}}"><i class="fa fa-users"></i>
+        <li class="menu-list @if(Route::is('agent*')) act @endif">
+          <a href="{{route('agent.index')}}"><i class="fa fa-users"></i>
             <span>Agents</span></a>
             <ul class="sub-menu-list">
-              <li class="@if(Route::is('customers.index')) active @endif"><a href="{{route('customers.index')}}">Open all</a> </li>
-              <li class="@if(Route::is('customers.create')) active @endif"><a href="{{route('customers.create')}}">Add new</a></li>
+              <li class="@if(Route::is('agent.index')) active @endif"><a href="{{route('agent.index')}}">Open all</a> </li>
+              <li class="@if(Route::is('agent.create')) active @endif"><a href="{{route('agent.create')}}">Add new</a></li>
             </ul>
         </li>
         <li class="menu-list @if(Route::is('suppliers*')) act @endif">
