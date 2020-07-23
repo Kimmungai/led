@@ -112,3 +112,8 @@ Route::resource('post','PostsCotroller');
 
 //Agents
 Route::resource('agent','AgentController');
+
+//Settings
+Route::get('settings/page','SettingsPageController@index')->name('settings.page');
+Route::get('settings/costs','SettingsCostsController@index')->name('settings.costs');
+Route::put('settings/costs/{id?}','SettingsCostsController@update')->name('settings.costs');

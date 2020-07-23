@@ -71,10 +71,10 @@
             <li class="@if(Route::is('users.create')) active @endif"><a href="{{route('users.create')}}">Add new</a></li>
           </ul>
         </li>
-        <li class="menu-list @if( Route::is('post*') ) act @endif"><a href="{{route('post.index')}}"><i class="fa fa-globe"></i> <span>Blog</span></a>
+        <li class="menu-list @if( Route::is('settings*') ) act @endif"><a href="{{route('settings.page')}}"><i class="fa fa-cog"></i> <span>Settings</span></a>
           <ul class="sub-menu-list">
-            <li class="@if(Route::is('post.index')) active @endif"><a href="{{route('post.index')}}">All posts</a> </li>
-            <li class="@if(Route::is('post.create')) active @endif"><a href="{{route('post.create')}}">Add new</a></li>
+            <!--<li class="@if(Route::is('settings.page')) active @endif"><a href="{{route('settings.page')}}">Page settings</a> </li>-->
+            <li class="@if(Route::is('settings.costs')) active @endif"><a href="{{route('settings.costs')}}">Advertising costs</a></li>
           </ul>
         </li>
         <li class="@if(Route::is('logout*')) act @endif"><a href="#" onclick="submit_form('logout-form')"><i class="fas fa-sign-out-alt"></i> <span>Log out</span></a></li>
