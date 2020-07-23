@@ -48,12 +48,12 @@
         <!--invoice template-->
           <div class="invoice-panel">
 
-            <p class="title-1">
+            <!--<p class="title-1">
               <span>
                 <strong id="{{$invoice->id}}-title-1" class="" onclick="edit_invoice_field(this.id)">@if($invoice->title_1) {{$invoice->title_1}} @else Halal @endif</strong>
                 <input id="{{$invoice->id}}-title-1-input" type="text" class="hidden" name="" value="" onfocusout="save_invoice_field('{{$invoice->id}}-title-1',this.value,'title_1',{{$invoice->id}})">
               </span>
-            </p>
+            </p>-->
             <p class="title-2">
               <span>
                 <strong id="{{$invoice->id}}-title-2" class="" onclick="edit_invoice_field(this.id)">@if($invoice->title_2) {{$invoice->title_2}} @else Delivery / Invoice @endif</strong>

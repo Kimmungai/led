@@ -52,23 +52,23 @@
           <div class="row mt-4">
             <div class="col-md-6">
               <div class="platform-analytics">
-                <h3>Current statics</h3>
+                <h3>Today's new listings</h3>
                   <ul class="list-group">
                     <li class="list-group-item">
-                      <span class="badge">100%</span>
-                      Cras justo odio
+                      <span class="badge">{{$todayListingStats['commercial']}}</span>
+                      Commercial
                     </li>
                     <li class="list-group-item">
-                      <span class="badge">100%</span>
-                      Cras justo odio
+                      <span class="badge">{{$todayListingStats['residential']}}</span>
+                      Residential
                     </li>
                     <li class="list-group-item">
-                      <span class="badge">10%</span>
-                      Cras justo odio
+                      <span class="badge">{{$todayListingStats['agricultural']}}</span>
+                      Agricultural
                     </li>
                     <li class="list-group-item">
-                      <span class="badge">12%</span>
-                      Cras justo odio
+                      <span class="badge">{{$todayListingStats['industrial']}}</span>
+                      Industrial
                     </li>
                   </ul>
                 </div>

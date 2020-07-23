@@ -20,7 +20,7 @@
 			<div id="page-wrapper">
         @Component('components.structure.page-title',['title'=>'Create new invoice'])@endcomponent
 
-        @Component('components.form-inputs.link',['title'=>'Save','href'=>route('sales.create'),'toolTip'=>'download quote','icon'=>'fas fa-download','classes'=>'btn btn-default btn-xs pull-right mr-1'])@endcomponent
+        @Component('components.form-inputs.link',['title'=>'Save','href'=>route('invoices.create'),'toolTip'=>'download quote','icon'=>'fas fa-download','classes'=>'btn btn-default btn-xs pull-right mr-1'])@endcomponent
 
         @Component('components.form-inputs.link',['title'=>'Print','href'=>'#','toolTip'=>'print quote','icon'=>'fas fa-print','classes'=>'btn btn-default btn-xs pull-right mr-1','click'=>'window.print()'])@endcomponent
 

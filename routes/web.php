@@ -113,6 +113,9 @@ Route::resource('post','PostsCotroller');
 //Agents
 Route::resource('agent','AgentController');
 
+//Clients
+Route::resource('client','ClientController');
+
 //Settings
 Route::get('settings/page','SettingsPageController@index')->name('settings.page');
 Route::get('settings/costs','SettingsCostsController@index')->name('settings.costs');

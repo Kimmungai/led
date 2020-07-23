@@ -19,15 +19,15 @@
 
      <!--body wrapper start-->
 			<div id="page-wrapper">
-        @Component('components.structure.page-title',['title'=>'Create agent'])@endcomponent
+        @Component('components.structure.page-title',['title'=>'Create client'])@endcomponent
 
-        @Component('components.structure.breadcrump',['home'=>route('home'),'specifiedLinked'=>route('agent.index'),'specifiedText'=>'All agents','specified'=>'New agent'])
+        @Component('components.structure.breadcrump',['home'=>route('home'),'specifiedLinked'=>route('agent.index'),'specifiedText'=>'All clients','specified'=>'New client'])
         @endcomponent
 
         <!--custom page design starts-->
 
         <div class="row">
-          <form id="new-user-form" action="{{route('agent.store')}}" method="post" onsubmit="confirm_modal('newUserConfirmModal')">
+          <form id="new-user-form" action="{{route('client.store')}}" method="post" onsubmit="confirm_modal('newUserConfirmModal')">
             @csrf
 
           <div class="col-md-8">
@@ -76,6 +76,6 @@
 			 <!--body wrapper end-->
 		</div>
     <!--modals-->
-    @Component('components.modals.confirm',['title'=>'Save new user','question'=>'Are you sure you want to save agent?','modalID'=>'newUserConfirmModal','cancelBtnTitle'=>'Cancel','saveBtnTitle'=>'Confirm save','formID'=>'new-user-form'])@endcomponent
+    @Component('components.modals.confirm',['title'=>'Save new user','question'=>'Are you sure you want to save client?','modalID'=>'newUserConfirmModal','cancelBtnTitle'=>'Cancel','saveBtnTitle'=>'Confirm save','formID'=>'new-user-form'])@endcomponent
 
 @endsection

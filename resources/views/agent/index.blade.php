@@ -21,6 +21,12 @@
 			<div id="page-wrapper">
         @Component('components.structure.page-title',['title'=>'All agents'])@endcomponent
 
+        <div class="row">
+          <div class="col-xs-12">
+            @Component('components.form-inputs.link',['title'=>'New agent','href'=>route('agent.create'),'toolTip'=>'Create a new agent','icon'=>'fas fa-user','classes'=>'btn btn-default btn-xs pull-right mr-1'])@endcomponent
+          </div>
+        </div>
+
         @Component('components.structure.breadcrump',['home'=>route('home'),'specified'=>'Agents'])
         @endcomponent
 

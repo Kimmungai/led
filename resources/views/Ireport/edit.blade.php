@@ -40,12 +40,12 @@
         <!--invoice template-->
           <div class="invoice-panel">
 
-            <p class="title-1">
+            <!--<p class="title-1">
               <span>
                 <strong id="{{$ireport->id}}-title-1" class="" onclick="edit_ireport_field(this.id)">@if($ireport->title_1) {{$ireport->title_1}} @else Halal @endif</strong>
                 <input id="{{$ireport->id}}-title-1-input" type="text" class="hidden" name="" value="" onfocusout="save_ireport_field('{{$ireport->id}}-title-1',this.value,'title_1',{{$ireport->id}})">
               </span>
-             </p>
+            </p>-->
 
              <p class="title-2">
                <span>
