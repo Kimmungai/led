@@ -19,73 +19,49 @@
 
      <!--body wrapper start-->
 			<div id="page-wrapper">
-        @Component('components.structure.page-title',['title'=>'Receive payment'])@endcomponent
+        @Component('components.structure.page-title',['title'=>'Create sale'])@endcomponent
 
-        @Component('components.structure.breadcrump',['home'=>route('home'),'sales'=>route('sales.index'),'newSalePayment'=>''])
+        @Component('components.structure.breadcrump',['home'=>route('home'),'specifiedLinked'=>route('payment.index'),'specifiedText'=>'All sales','specified'=>'New sale'])
         @endcomponent
 
         <!--custom page design starts-->
-        @Component('components.payment.create-top',['user_acc_bal'=>$user_acc_bal,'user'=>$user])@endcomponent
+
         <div class="row">
+          <form id="new-user-form" action="{{route('payment.store')}}" method="post" onsubmit="confirm_modal('newUserConfirmModal')">
+            @csrf
+
+          <div class="col-md-8">
+
+            @Component('components.form-inputs.input',['title' => 'Method','name'=>'method','type'=>'text','icon'=>'fas fa-tag','placeholder' => 'Enter method','required'=>true])@endcomponent
+            @Component('components.form-inputs.input',['title' => 'Due','name'=>'totalDue','type'=>'number','icon'=>'fas fa-money-bill','placeholder' => 'Enter due amount','required'=>true])@endcomponent
+            @Component('components.form-inputs.input',['title' => 'Receivable','name'=>'totalPayable','type'=>'number','icon'=>'fas fa-money-bill','placeholder' => 'Enter receivable amount','required'=>true])@endcomponent
+            @Component('components.form-inputs.input',['title' => 'Status','name'=>'status','type'=>'text','icon'=>'fas fa-circle','placeholder' => 'Enter status','required'=>true])@endcomponent
+            @Component('components.form-inputs.submit',['value' => 'Save','icon'=>'fas fa-save','classes'=>'btn btn-success btn-block btn-lg pay-btn'])@endcomponent
+
+          </div>
+
           <div class="col-md-4">
 
-            <h4 id="calculator-info" class="text-success">Due: <strong>Ksh. {{number_format(session('salePrice'),2)}}</strong></h4>
-            <input type="hidden" name="" id="totalAmountDue" class=" form-control" value="@if(session('salePrice')){{session('salePrice')}}@else 0 @endif" />
+            @Component('components.form-inputs.input',['title' => 'Discount','name'=>'discount','type'=>'number','icon'=>'fas fa-gift','placeholder' => 'Discount','required'=>false])@endcomponent
+            @Component('components.form-inputs.input',['title' => 'Coupon','name'=>'couponCode','type'=>'number','icon'=>'fas fa-gift','placeholder' => 'Coupon code','required'=>false])@endcomponent
+            @Component('components.form-inputs.input',['title' => 'Currency','name'=>'currency','type'=>'text','icon'=>'fas fa-money','placeholder' => 'Currency code','required'=>false])@endcomponent
 
-            @Component('components.pos.calculator',[ 'name' => 'pos-calculator' ])@endcomponent
-
-          </div>
-          <div class="col-md-8">
-            <div class="cart-summary">
-              <div class="table table-responsive mt-1">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th >Item name</th>
-                      <th >Sale price</th>
-                      <th >Sold (Kg)</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php $soldProds = []; ?>
-                    <?php if( session('soldProds') != null) {$soldProds = session('soldProds');$tableID="payment-table";}?>
-
-                    @foreach( $soldProds as $soldProd )
-                      <tr data-cost="{{$soldProd['cost']}}" data-id="{{$soldProd['id']}}" id="sold-product-{{$soldProd['id']}}" >
-                        <td data-name="{{$soldProd['name']}}" id="name-prod-{{$soldProd['id']}}"> {{$soldProd['name']}}</td>
-                        <td data-price="{{$soldProd['cost']}}" id="price-prod-{{$soldProd['id']}}">Ksh. {{number_format($soldProd['cost'],2)}}</td>
-                        <td>{{$soldProd['qty']}}</td>
-                      </tr>
-                    @endforeach
-                    <!--<tr>
-                      <td> <span class="fa fa-times-circle"></span> <img  src="/placeholders/s1.png" height="50" width="50" alt="" > </td>
-                      <td >Full chicken</td>
-                      <td> <input class="form-control" type="number" name="" value="100"> </td>
-                      <td >Ksh. 20,000</td>
-                    </tr>-->
-
-                  </tbody>
-
-                </table>
-              </div>
-            </div>
-
-            <button id="" type="button" class="btn btn-success pay-btn btn-block save-payment-btn" name="button" onclick="confirm_modal('newPaymentConfirmModal')" disabled>Save</button>
+            @Component('components.form-inputs.submit',['value' => 'Save','icon'=>'fas fa-save','classes'=>'btn btn-success btn-sm pay-btn','toolTip'=>'Create agent'])@endcomponent
 
           </div>
+        </form>
+        <form id="user-avatar-form" action="/img-tmp" enctype="multipart/form-data">
+          <input class="hidden d-none"  type="file" name="image" id="user-avtar-file" onchange="upload_image(this.value,this.id,'user-avatar',{required:0,min:0,max:255,type:'image',size:1},'user-avatar-url','staff')">
+        </form>
         </div>
         <!--custom page design ends-->
 
-        <form class="d-none hidden" id="delete-sale-form" action="{{route('sales.destroy',$sale->id)}}" method="post">
-          @csrf
-          @method('DELETE')
-        </form>
+
 
 			</div>
 			 <!--body wrapper end-->
 		</div>
     <!--modals-->
-    @Component('components.modals.confirm',['title'=>'Save payment','question'=>'Are you sure you want to save payment?','modalID'=>'newPaymentConfirmModal','cancelBtnTitle'=>'Cancel','saveBtnTitle'=>'Confirm save','formID'=>'new-payment-form'])@endcomponent
-    @Component('components.modals.confirm',['title'=>'Delete sale','question'=>'Are you sure you want to delete sale?','modalID'=>'deleteSale','cancelBtnTitle'=>'Cancel','saveBtnTitle'=>'Confirm delete','formID'=>'delete-sale-form'])@endcomponent
+    @Component('components.modals.confirm',['title'=>'Save new user','question'=>'Are you sure you want to save client?','modalID'=>'newUserConfirmModal','cancelBtnTitle'=>'Cancel','saveBtnTitle'=>'Confirm save','formID'=>'new-user-form'])@endcomponent
 
 @endsection

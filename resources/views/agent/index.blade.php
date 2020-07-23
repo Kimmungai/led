@@ -42,7 +42,7 @@
             </thead>
             <tbody>
               <?php $count = 1; ?>
-              @foreach( $agents->data as $agent )
+              @forelse( $agents->data as $agent )
               <tr>
                 <td><a href="#" onclick="event.preventDefault();confirm_modal('deleteAgent{{$agent->id}}ConfirmModal')" title="Delete @if(isset($agent->user->firstName)) {{$agent->user->firstName}} {{$agent->user->lastName}} @endif" style="color:inherit"><span class="fa fa-times-circle"></span></a> {{$agent->id}}</td>
                 <td>@if(isset($agent->user->firstName)) {{$agent->user->firstName}} {{$agent->user->lastName}} @endif</td>
@@ -56,7 +56,11 @@
                 </form>
               </tr>
               <?php $count++; ?>
-              @endforeach
+              @empty
+              <tr>
+                <td colspan="4">No agents found. <a href="{{route('agent.create')}}">create new agent?</a> </td>
+              </tr>
+              @endforelse
             </tbody>
           </table>
         </div>

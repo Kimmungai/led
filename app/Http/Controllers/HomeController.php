@@ -37,15 +37,15 @@ class HomeController extends Controller
     {
 
 
-      $sales = $this->getPayments();
+      $sales = $this->getTodayPaymentStats()['totalSales'];
       $agents = $this->getAgents();
       $clients = $this->getClients();
-      $invoices = Report::all();
+      $wallets = $this->getTodayPaymentStats()['walletsTotal'];
       return [
          collect(['name'=>'New agents', 'icon' => 'fa fa-users','class'=>'grow','link'=>url('/agent'),'model'=>$agents]),
          collect(['name'=>'New clients', 'icon' => 'fa fa-user-check','class'=>'grow','link'=>url('/client'),'model'=>$clients]),
-         collect(['name'=>'Sales', 'icon' => 'fa fa-tags','class'=>'grow','link'=>'#','model'=>'KES '.number_format($sales,2),'printAsIs'=>true]),
-         collect(['name'=>'Invoices', 'icon' => 'fa fa-file-invoice','class'=>'grow','link'=>route('invoices.index'),'model'=>$invoices]),
+         collect(['name'=>'Sales', 'icon' => 'fa fa-tags','class'=>'grow','link'=>route('payment.index'),'model'=>'KES '.number_format($sales,2),'printAsIs'=>true]),
+         collect(['name'=>'Wallets', 'icon' => 'fa fa-wallet','class'=>'grow','link'=>"#",'model'=>'KES '.number_format($wallets,2),'printAsIs'=>true]),
       ];
     }
 
@@ -87,5 +87,15 @@ class HomeController extends Controller
       $todayListingStats['agricultural'] = $data->agricultural;
       $todayListingStats['industrial'] = $data->industrial;
       return $todayListingStats;
+    }
+
+    protected function getTodayPaymentStats()
+    {
+      $client = new Client();
+      $response = $client->request('POST','http://34.91.134.230/api/payment-today-stats/');
+      $data = json_decode($response->getBody()->getContents());
+      $todayPaymentStats['totalSales'] = $data->totalSales;
+      $todayPaymentStats['walletsTotal'] = $data->walletsTotal;
+      return $todayPaymentStats;
     }
 }

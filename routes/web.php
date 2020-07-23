@@ -82,10 +82,6 @@ Route::post('search-products','Products\ProductAjaxController@search_products');
 Route::resource('stock','ProductsController');
 Route::post('update-product','Products\ProductAjaxController@update_product');
 
-//payments
-Route::resource('payments','PaymentsController');
-Route::get('trash-empty','TrashController@empty')->name('trash.empty');
-
 //trash
 Route::get('trash','TrashController@index')->name('trash.index');
 
@@ -109,6 +105,9 @@ Route::get('download-card/{user}', 'BusinessCardsController@download_card')->nam
 
 //Blog
 Route::resource('post','PostsCotroller');
+
+//Payment
+Route::resource('payment','PaymentController');
 
 //Agents
 Route::resource('agent','AgentController');

@@ -14,12 +14,12 @@
     <!--sidebar nav start-->
       <ul class="nav nav-pills nav-stacked custom-nav">
         <!--<li class="active"><a href="/"><i class="lnr lnr-power-switch"></i><span>Dashboard</span></a></li>-->
-        <li class="menu-list @if(Route::is('sales*')) act @endif">
-          <a href="{{route('sales.index')}}"><i class="fa fa-tags"></i>
+        <li class="menu-list @if(Route::is('payment*')) act @endif">
+          <a href="{{route('payment.index')}}"><i class="fa fa-tags"></i>
             <span>Sales</span></a>
             <ul class="sub-menu-list">
-              <li class="@if(Route::is('sales.index')) active @endif"><a href="{{route('sales.index')}}">Open all</a> </li>
-              <li class="@if(Route::is('sales.create')) active @endif"><a href="{{route('sales.create')}}">Add new</a></li>
+              <li class="@if(Route::is('payment.index')) active @endif"><a href="{{route('payment.index')}}">Open all</a> </li>
+              <li class="@if(Route::is('payment.create')) active @endif"><a href="{{route('payment.create')}}">Add new</a></li>
             </ul>
         </li>
         <li class="menu-list @if(Route::is('stock*')) act @endif">
@@ -46,14 +46,14 @@
               <li class="@if(Route::is('client.create')) active @endif"><a href="{{route('client.create')}}">Add new</a></li>
             </ul>
         </li>
-        <li class="@if(Route::is('invoice*')) act @endif">
+        <!--<li class="@if(Route::is('invoice*')) act @endif">
           <a href="{{route('invoices.create')}}"><i class="fa fa-file-invoice"></i>
             <span>Invoices</span></a>
-            <!--<ul class="sub-menu-list">
+            <ul class="sub-menu-list">
               <li class="@if(Route::is('invoices.index')) active @endif"><a href="{{route('invoices.index')}}">Open all</a> </li>
               <li class="@if(Route::is('invoices.create')) active @endif"><a href="{{route('invoices.create')}}">Add new</a></li>
-            </ul>-->
-        </li>
+            </ul>
+        </li>-->
         <li class="menu-list @if(Route::is('report*')) act @endif">
           <a href="{{route('report.index')}}"><i class="fa fa-chart-bar"></i>
             <span>Reports</span></a>

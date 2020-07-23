@@ -42,7 +42,7 @@
             </thead>
             <tbody>
               <?php $count = 1; ?>
-              @foreach( $clients->data as $client )
+              @forelse( $clients->data as $client )
               <tr>
                 <td><a href="#" onclick="event.preventDefault();confirm_modal('deleteClient{{$client->id}}ConfirmModal')" title="Delete @if(isset($client->firstName)) {{$client->firstName}} {{$client->lastName}} @endif" style="color:inherit"><span class="fa fa-times-circle"></span></a> {{$client->id}}</td>
                 <td>@if(isset($client->firstName)) {{$client->firstName}} {{$client->lastName}} @endif</td>
@@ -56,7 +56,11 @@
                 </form>
               </tr>
               <?php $count++; ?>
-              @endforeach
+              @empty
+              <tr>
+                <td colspan="4">No clients found. <a href="{{route('client.create')}}">create new client?</a> </td>
+              </tr>
+              @endforelse
             </tbody>
           </table>
         </div>
