@@ -71,9 +71,8 @@ Route::resource('sales','SalesController');
 Route::post('save-cart-list','SalesController@save_cart_list')->name('save.cart.list');
 Route::get('sale-stock-type/{type}','Products\ProductAjaxController@get_sale_product_type')->name('sales.stock.type');
 
-//purchases
-Route::resource('purchases','PurchasesController');
-Route::post('save-purchase-list','PurchasesController@save_purchase_list')->name('save.purchase.list');
+//listings
+Route::resource('listing','ListingsController');
 
 //product
 Route::post('get-product','Products\ProductAjaxController@get_product')->name('product.get');

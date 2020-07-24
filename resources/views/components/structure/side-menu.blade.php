@@ -22,12 +22,12 @@
               <li class="@if(Route::is('payment.create')) active @endif"><a href="{{route('payment.create')}}">Add new</a></li>
             </ul>
         </li>
-        <li class="menu-list @if(Route::is('stock*')) act @endif">
-          <a href="{{route('customers.index')}}"><i class="fa fa-clipboard-list"></i>
+        <li class="menu-list @if(Route::is('listing*')) act @endif">
+          <a href="{{route('listing.index')}}"><i class="fa fa-clipboard-list"></i>
             <span>Listings</span></a>
             <ul class="sub-menu-list">
-              <li class="@if(Route::is('customers.index')) active @endif"><a href="{{route('customers.index')}}">Open all</a> </li>
-              <li class="@if(Route::is('customers.create')) active @endif"><a href="{{route('customers.create')}}">Add new</a></li>
+              <li class="@if(Route::is('listing.index')) active @endif"><a href="{{route('listing.index')}}">Open all</a> </li>
+              <li class="@if(Route::is('listing.create')) active @endif"><a href="{{route('listing.create')}}">Add new</a></li>
             </ul>
         </li>
         <li class="menu-list @if(Route::is('agent*')) act @endif">

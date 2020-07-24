@@ -45,7 +45,7 @@
               @forelse( $clients->data as $client )
               <tr>
                 <td><a href="#" onclick="event.preventDefault();confirm_modal('deleteClient{{$client->id}}ConfirmModal')" title="Delete @if(isset($client->firstName)) {{$client->firstName}} {{$client->lastName}} @endif" style="color:inherit"><span class="fa fa-times-circle"></span></a> {{$client->id}}</td>
-                <td>@if(isset($client->firstName)) {{$client->firstName}} {{$client->lastName}} @endif</td>
+                <td class="text-capitalize"> <a href="{{route('client.show',$client->id)}}" style="color:inherit"> @if(isset($client->firstName)) {{$client->firstName}} {{$client->lastName}} @endif </a></td>
                 <td>@if(isset($client->email)) {{$client->email}}  @endif</td>
                 <td>@if(isset($client->phone)) {{$client->phone}} @endif</td>
                 <td> <a href="{{route('client.show',$client->id)}}" class="btn btn-sm btn-default" title="Open @if(isset($client->firstName)) {{$client->firstName}} {{$client->lastName}} @endif"><span class="fa fa-eye"></span> open</a> </td>

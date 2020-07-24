@@ -24,13 +24,7 @@
         @endcomponent
 
 
-				<!--<div class="row">
-            @Component('components.dashboard.button',[ 'name' => 'Sell', 'icon' => 'fa fa-cash-register', 'link' => route('sales.create') ])
-            @endcomponent
-
-            @Component('components.dashboard.button',[ 'name' => 'Receive', 'icon' => 'fa fa-calculator', 'link' => route('purchases.create') ])
-            @endcomponent
-        </div>-->
+			
 
             <div class="graphs mb-1 mt-1">
     					<div class="col_3">

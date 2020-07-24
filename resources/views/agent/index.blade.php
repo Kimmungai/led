@@ -45,7 +45,7 @@
               @forelse( $agents->data as $agent )
               <tr>
                 <td><a href="#" onclick="event.preventDefault();confirm_modal('deleteAgent{{$agent->id}}ConfirmModal')" title="Delete @if(isset($agent->user->firstName)) {{$agent->user->firstName}} {{$agent->user->lastName}} @endif" style="color:inherit"><span class="fa fa-times-circle"></span></a> {{$agent->id}}</td>
-                <td>@if(isset($agent->user->firstName)) {{$agent->user->firstName}} {{$agent->user->lastName}} @endif</td>
+                <td class="text-capitalize"> <a href="{{route('agent.show',$agent->id)}}" style="color:inherit"> @if(isset($agent->user->firstName)) {{$agent->user->firstName}} {{$agent->user->lastName}} @endif </a></td>
                 <td>@if(isset($agent->user->email)) {{$agent->user->email}}  @endif</td>
                 <td>@if(isset($agent->user->phone)) {{$agent->user->phone}} @endif</td>
                 <td> <a href="{{route('agent.show',$agent->id)}}" class="btn btn-sm btn-default" title="Open @if(isset($agent->user->firstName)) {{$agent->user->firstName}} {{$agent->user->lastName}} @endif"><span class="fa fa-eye"></span> open</a> </td>
