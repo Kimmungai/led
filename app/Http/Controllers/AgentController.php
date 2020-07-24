@@ -46,9 +46,9 @@ class AgentController extends Controller
         $data = $request->except(['_token']);
 
         if( $this->createAgent($data) )
-          Session::flash('message', env("DELETE_SUCCESS_MSG","Record saved succesfully!"));
+          Session::flash('message', env("SAVE_SUCCESS_MSG","Record saved succesfully!"));
         else
-          Session::flash('error', env("DELETE_SUCCESS_MSG","Problem saving record! Ensure all details are correct and try again."));
+          Session::flash('error', env("SAVE_SUCCESS_MSG","Problem saving record! Ensure all details are correct and try again."));
 
 
         return redirect(route('agent.index'));
@@ -88,9 +88,9 @@ class AgentController extends Controller
     {
         $data = $request->except(['_token','_method']);
         if( $this->updateAgent($id,$data) )
-          Session::flash('message', env("DELETE_SUCCESS_MSG","Record updated succesfully!"));
+          Session::flash('message', env("SAVE_SUCCESS_MSG","Record updated succesfully!"));
         else
-          Session::flash('error', env("DELETE_SUCCESS_MSG","Problem updating record! Ensure all details are correct and try again."));
+          Session::flash('error', env("SAVE_SUCCESS_MSG","Problem updating record! Ensure all details are correct and try again."));
 
         return back();
     }

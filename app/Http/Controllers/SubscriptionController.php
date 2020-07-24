@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Session;
 
-class SettingsCostsController extends Controller
+class SubscriptionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class SettingsCostsController extends Controller
      */
     public function index()
     {
-        $costs = $this->getCost();
-        return view('costs.index',compact('costs'));
+      $subscriptions = $this->getPackages();
+      return view('subscription.index',compact('subscriptions'));
     }
 
     /**
@@ -26,7 +26,7 @@ class SettingsCostsController extends Controller
      */
     public function create()
     {
-        //
+        return view('subscription.create');
     }
 
     /**
@@ -37,7 +37,15 @@ class SettingsCostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $data = $request->except(['_token']);
+      $data['features'] = explode(PHP_EOL, $data['features']);
+      if( $this->createSubscription($data) )
+        Session::flash('message', env("SAVE_SUCCESS_MSG","Record saved succesfully!"));
+      else
+        Session::flash('error', env("SAVE_SUCCESS_MSG","Problem saving record! Ensure all details are correct and try again."));
+
+
+      return redirect(route('subscription.index'));
     }
 
     /**
@@ -48,7 +56,7 @@ class SettingsCostsController extends Controller
      */
     public function show($id)
     {
-        //
+        return "show";
     }
 
     /**
@@ -71,21 +79,7 @@ class SettingsCostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-          'meta' => 'required|numeric',
-          'meta_val' => 'required|numeric',
-        ]);
-        $data = $request->only(['meta','meta_val']);
-        $data['name'] = 'advertisingCosts';
-        $data['type'] = 'advertisingCosts';
-
-        if( $this->updateCost($id,$data) )
-          Session::flash('message', env("SAVE_SUCCESS_MSG","Record updated succesfully!"));
-        else
-          Session::flash('error', env("SAVE_SUCCESS_MSG","Problem updating record! Ensure all details are correct and try again."));
-
-        return back();
-
+        return "update";
     }
 
     /**
@@ -96,20 +90,20 @@ class SettingsCostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return "destroy";
     }
 
-    protected function updateCost($id,$data)
+    protected function getPackages()
     {
-      $client = new Client();
-      $response = $client->request('PUT','http://34.91.134.230/api/advertising-costs/'.$id,['form_params'=>$data]);
-      return $response->getBody()->getContents();
-    }
-
-    protected function getCost()
-    {
-      $client = new Client();
-      $response = $client->request('GET','http://34.91.134.230/api/advertising-costs/');
+      $subscription = new Client();
+      $response = $subscription->request('GET','http://34.91.134.230/api/package/');
       return json_decode($response->getBody()->getContents());
+    }
+
+    protected function createSubscription($data)
+    {
+      $subscription = new Client();
+      $response = $subscription->request('POST','http://34.91.134.230/api/package/',['form_params'=>$data]);
+      return $response->getBody()->getContents();
     }
 }
