@@ -58,12 +58,12 @@
               </tr>
               @endforeach
 
-              <!--<form class="" action="{{route('settings.costs',4)}}" method="post">
+              <!--<form class="" action="{{route('settings.costs',3)}}" method="post">
                 @csrf
                 @method('PUT')
                 <td>1</td>
                 <td>Commercial <input type="hidden" name="meta" value="4"> </td>
-                <td> <input class="form-control" type="number" min="0" name="meta_val" value="15" style="max-width:150px"/> </td>
+                <td> <input class="form-control" type="number" min="0" name="meta_val" value="400" style="max-width:150px"/> </td>
                 <td> <button type="submit" class="btn btn-default btn-sm" title="save details">Update</button> </td>
               </form>-->
             </tbody>

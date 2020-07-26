@@ -121,3 +121,6 @@ Route::put('settings/costs/{id?}','SettingsCostsController@update')->name('setti
 
 //Subscription package
 Route::resource('subscription','SubscriptionController');
+
+//Faq
+Route::resource('faq','FaqController');

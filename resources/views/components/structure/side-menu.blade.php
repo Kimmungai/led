@@ -71,10 +71,11 @@
               <li class="@if(Route::is('subscription.create')) active @endif"><a href="{{route('subscription.create')}}">Add new</a></li>
             </ul>
         </li>
-        <li class="menu-list @if( Route::is('settings*') ) act @endif"><a href="{{route('settings.page')}}"><i class="fa fa-cog"></i> <span>Settings</span></a>
+        <li class="menu-list @if( Route::is('settings*') ||  Route::is('faq*') ) act @endif"><a href="{{route('settings.page')}}"><i class="fa fa-cog"></i> <span>Settings</span></a>
           <ul class="sub-menu-list">
-            <!--<li class="@if(Route::is('settings.page')) active @endif"><a href="{{route('settings.page')}}">Page settings</a> </li>-->
             <li class="@if(Route::is('settings.costs')) active @endif"><a href="{{route('settings.costs')}}">Advertising costs</a></li>
+            <li class="@if(Route::is('faq.index')) active @endif"><a href="{{route('faq.index')}}">Faqs</a> </li>
+
           </ul>
         </li>
         <li class="@if(Route::is('logout*')) act @endif"><a href="#" onclick="submit_form('logout-form')"><i class="fas fa-sign-out-alt"></i> <span>Log out</span></a></li>
