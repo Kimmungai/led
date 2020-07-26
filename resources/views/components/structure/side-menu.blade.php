@@ -46,7 +46,7 @@
               <li class="@if(Route::is('client.create')) active @endif"><a href="{{route('client.create')}}">Add new</a></li>
             </ul>
         </li>
-        <li class="menu-list @if(Route::is('report*')) act @endif">
+        <!--<li class="menu-list @if(Route::is('report*')) act @endif">
           <a href="{{route('report.index')}}"><i class="fa fa-chart-bar"></i>
             <span>Reports</span></a>
             <ul class="sub-menu-list">
@@ -55,7 +55,7 @@
               <li class="@if(Route::is('invoices.create')) active @endif"><a href="{{route('invoices.create')}}">Clients</a></li>
               <li class="@if(Route::is('invoices.create')) active @endif"><a href="{{route('invoices.create')}}">P & L</a></li>
             </ul>
-        </li>
+        </li>-->
         <li class="menu-list @if(Route::is('users*') || Route::is('staff*') || Route::is('admin*') || Route::is('business-card*')) act @endif"><a href="{{route('users.index')}}"><i class="fa fa-user-tie"></i> <span>Users</span></a>
           <ul class="sub-menu-list">
             <li class="@if(Route::is('staff.index')) active @endif"><a href="{{route('staff.index')}}">Staff</a> </li>
@@ -71,9 +71,10 @@
               <li class="@if(Route::is('subscription.create')) active @endif"><a href="{{route('subscription.create')}}">Add new</a></li>
             </ul>
         </li>
-        <li class="menu-list @if( Route::is('settings*') ||  Route::is('faq*') ) act @endif"><a href="{{route('settings.page')}}"><i class="fa fa-cog"></i> <span>Settings</span></a>
+        <li class="menu-list @if( Route::is('settings*') ||  Route::is('faq*') ||  Route::is('contact*')) act @endif"><a href="{{route('settings.page')}}"><i class="fa fa-cog"></i> <span>Settings</span></a>
           <ul class="sub-menu-list">
             <li class="@if(Route::is('settings.costs')) active @endif"><a href="{{route('settings.costs')}}">Advertising costs</a></li>
+            <li class="@if(Route::is('contact.index')) active @endif"><a href="{{route('contact.index')}}">Contacts</a> </li>
             <li class="@if(Route::is('faq.index')) active @endif"><a href="{{route('faq.index')}}">Faqs</a> </li>
 
           </ul>

@@ -124,3 +124,6 @@ Route::resource('subscription','SubscriptionController');
 
 //Faq
 Route::resource('faq','FaqController');
+
+//Contact
+Route::resource('contact','ContactController');
