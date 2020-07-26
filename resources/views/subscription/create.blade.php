@@ -50,16 +50,13 @@
           </div>
 
           <div class="col-md-4">
-            <h4>Features</h4>
+            <h4>Features <span class="text-danger">*</span> </h4>
             @Component('components.form-inputs.side-textarea',['title' => '','name'=>'features','icon'=>'fas fa-calendar','placeholder' => 'One feature per line','required'=>true,'cols'=>10,'rows'=>5])@endcomponent
 
 
             @Component('components.form-inputs.submit',['value' => 'Save','icon'=>'fas fa-save','classes'=>'btn btn-success btn-sm pay-btn','toolTip'=>'Create agent'])@endcomponent
 
           </div>
-        </form>
-        <form id="user-avatar-form" action="/img-tmp" enctype="multipart/form-data">
-          <input class="hidden d-none"  type="file" name="image" id="user-avtar-file" onchange="upload_image(this.value,this.id,'user-avatar',{required:0,min:0,max:255,type:'image',size:1},'user-avatar-url','staff')">
         </form>
         </div>
         <!--custom page design ends-->
