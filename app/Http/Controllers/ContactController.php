@@ -8,6 +8,15 @@ use Illuminate\Support\Facades\Session;
 class ContactController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -36,6 +45,10 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
+      $request->validate([
+        'name' => 'required',
+        'value' => 'required',
+      ]);
       $data = $request->except(['_token']);
       $data['page'] = 'contact';
       $data['type'] = 'contacts';
@@ -79,6 +92,11 @@ class ContactController extends Controller
      */
     public function update(Request $request, $id)
     {
+      $request->validate([
+        'name' => 'required',
+        'value' => 'required',
+      ]);
+
       $data = $request->except(['_token','_method']);
       $data['page'] = 'contact';
       $data['type'] = 'contacts';

@@ -127,3 +127,9 @@ Route::resource('faq','FaqController');
 
 //Contact
 Route::resource('contact','ContactController');
+
+//pages
+Route::resource('home-page','HomePageSettings');
+Route::resource('property-listing-page','PropertyListingPageSettings');
+Route::resource('property-mgt-page','PropertyMgtPageSettings');
+Route::resource('about-page','AboutPageSettings');

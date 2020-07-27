@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Session;
-use App\Http\Requests\StoreUser;
-class ClientController extends Controller
+class HomePageSettings extends Controller
 {
     /**
      * Create a new controller instance.
@@ -24,8 +23,10 @@ class ClientController extends Controller
      */
     public function index()
     {
-      $clients = $this->getClients();
-      return view('client.index',compact('clients'));
+      $data['page'] = 'home';
+      $data['type'] = 'homes';
+      $homeSettings = $this->getPageSettings($data);
+      return view('home-page.index',compact('homeSettings'));
     }
 
     /**
@@ -35,7 +36,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        return view('client.create');
+        //
     }
 
     /**
@@ -46,15 +47,21 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
+      $request->validate([
+        'name' => 'required',
+        'value' => 'required',
+      ]);
+
       $data = $request->except(['_token']);
-
-      if( $this->createClient($data) )
-        Session::flash('message', env("SAVE_SUCCESS_MSG","Record saved succesfully!"));
+      $data['page'] = 'home';
+      $data['type'] = 'homes';
+      if( $this->createPageSetting($data) )
+        Session::flash('message', env("DELETE_SUCCESS_MSG","Record saved succesfully!"));
       else
-        Session::flash('error', env("SAVE_SUCCESS_MSG","Problem saving record! Ensure all details are correct and try again."));
+        Session::flash('error', env("DELETE_SUCCESS_MSG","Problem saving record! Ensure all details are correct and try again."));
 
 
-      return redirect(route('client.index'));
+      return redirect(route('home-page.index'));
     }
 
     /**
@@ -65,8 +72,7 @@ class ClientController extends Controller
      */
     public function show($id)
     {
-      $client = $this->getClient($id);
-      return view('client.show',compact('client'));
+        //
     }
 
     /**
@@ -90,7 +96,9 @@ class ClientController extends Controller
     public function update(Request $request, $id)
     {
       $data = $request->except(['_token','_method']);
-      if( $this->updateClient($id,$data) )
+      $data['page'] = 'home';
+      $data['type'] = 'homes';
+      if( $this->updatePageSetting($id,$data) )
         Session::flash('message', env("SAVE_SUCCESS_MSG","Record updated succesfully!"));
       else
         Session::flash('error', env("SAVE_SUCCESS_MSG","Problem updating record! Ensure all details are correct and try again."));
@@ -106,43 +114,40 @@ class ClientController extends Controller
      */
     public function destroy($id)
     {
-      $this->deleteUser($id);
-      Session::flash('message', env("DELETE_SUCCESS_MSG","Record deleted succesfully!"));
-      return redirect(route('client.index'));
+      if( $this->deletePageSetting($id) )
+        Session::flash('message', env("DELETE_SUCCESS_MSG","Record deleted succesfully!"));
+      else
+        Session::flash('error', env("DELETE_SUCCESS_MSG","Problem deleting record! Ensure all details are correct and try again."));
+
+      return redirect(route('home-page.index'));
     }
 
-    protected function getClients()
+    protected function getPageSettings($data)
     {
-      $client = new Client();
-      $response = $client->request('GET','http://34.91.134.230/api/user/');
+      $home = new Client();
+      $response = $home->request('POST','http://34.91.134.230/api/settings-retrieve/',['form_params'=>$data]);
       return json_decode($response->getBody()->getContents());
     }
 
-    protected function getClient($id)
+    protected function createPageSetting($data)
     {
       $client = new Client();
-      $response = $client->request('GET','http://34.91.134.230/api/user/'.$id);
-      return json_decode($response->getBody()->getContents());
-    }
-
-    protected function updateClient($id,$data)
-    {
-      $client = new Client();
-      $response = $client->request('PUT','http://34.91.134.230/api/user/'.$id,['form_params'=>$data]);
+      $response = $client->request('POST','http://34.91.134.230/api/settings/',['form_params'=>$data]);
       return $response->getBody()->getContents();
     }
 
-    protected function deleteUser($id)
+    protected function deletePageSetting($id)
     {
-      $client = new Client();
-      $response = $client->request('delete','http://34.91.134.230/api/user/'.$id);
+      $faq = new Client();
+      $response = $faq->request('delete','http://34.91.134.230/api/settings/'.$id);
+      return $response->getBody()->getContents();
+    }
+
+    protected function updatePageSetting($id,$data)
+    {
+      $faq = new Client();
+      $response = $faq->request('PUT','http://34.91.134.230/api/settings/'.$id,['form_params'=>$data]);
       return json_decode($response->getBody()->getContents());
     }
 
-    protected function createClient($data)
-    {
-      $client = new Client();
-      $response = $client->request('POST','http://34.91.134.230/api/user/',['form_params'=>$data]);
-      return $response->getBody()->getContents();
-    }
 }

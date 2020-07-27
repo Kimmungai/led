@@ -45,7 +45,7 @@
                     {{$contact->name}}
                     <input type="hidden" name="name" value="{{$contact->name}}">
                   </td>
-                  <td> <input name="value" class="form-control" value="{{$contact->value}}"  /></td>
+                  <td> <input name="value" class="form-control" value="{{$contact->value}}"  required/></td>
                   <td> <button type="submit" class="btn btn-default btn-sm" title="save details">Update</button> </td>
                 </form>
               </tr>
@@ -71,7 +71,7 @@
                       <option value="Address">Address</option>
                     </select>
                   </td>
-                  <td><input name="value" class="form-control"  /> </td>
+                  <td><input name="value" class="form-control"  required/> </td>
                   <td> <button type="submit" class="btn btn-default" title="save details">Add new</button> </td>
                 </form>
               </tr>
