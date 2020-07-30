@@ -38,9 +38,10 @@
               <?php $recent_show = 0; ?>
               <?php $stats_show = 0; ?>
               @forelse($homeSettings->data as $homeSetting)
+                @if( $homeSetting->name == 'featured_show'  ) <?php $featured_show = $homeSetting->value ?>  @endif
                 @if( $homeSetting->name == 'recent_show'  ) <?php $recent_show = $homeSetting->value ?>  @endif
                 @if( $homeSetting->name == 'stats_show'  ) <?php $stats_show = $homeSetting->value ?>  @endif
-                @if( $homeSetting->name == 'recent_show' ||  $homeSetting->name == 'stats_show')
+                @if( $homeSetting->name == 'recent_show' ||  $homeSetting->name == 'stats_show' ||  $homeSetting->name == 'featured_show')
                 <?php continue ?>
                 @endif
               <tr>
@@ -79,8 +80,18 @@
               <tr>
                 <form class="" action="{{route('home-page.store')}}" method="post">
                   @csrf
-                  <td> <input type="hidden" name="name" value="recent_show"> </td>
+                  <td> <input type="hidden" name="name" value="featured_show"> </td>
                   <td>Show featured listings section?</td>
+                  <td><input type="radio" name="value" value="1" @if($featured_show) checked @endif> Yes &nbsp;&nbsp;&nbsp;<input type="radio" name="value" value="0" @if(!$featured_show) checked @endif> No</td>
+                  <td><button type="submit" class="btn btn-default btn-sm" title="save details">Update</button></td>
+               </form>
+              </tr>
+
+              <tr>
+                <form class="" action="{{route('home-page.store')}}" method="post">
+                  @csrf
+                  <td> <input type="hidden" name="name" value="recent_show"> </td>
+                  <td>Show recent listings section?</td>
                   <td><input type="radio" name="value" value="1" @if($recent_show) checked @endif> Yes &nbsp;&nbsp;&nbsp;<input type="radio" name="value" value="0" @if(!$recent_show) checked @endif> No</td>
                   <td><button type="submit" class="btn btn-default btn-sm" title="save details">Update</button></td>
                </form>
