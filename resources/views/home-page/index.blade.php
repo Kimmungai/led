@@ -37,6 +37,8 @@
               <?php $count = 1 ?>
               <?php $recent_show = 0; ?>
               <?php $stats_show = 0; ?>
+              <?php $featured_show = 0; ?>
+
               @forelse($homeSettings->data as $homeSetting)
                 @if( $homeSetting->name == 'featured_show'  ) <?php $featured_show = $homeSetting->value ?>  @endif
                 @if( $homeSetting->name == 'recent_show'  ) <?php $recent_show = $homeSetting->value ?>  @endif
