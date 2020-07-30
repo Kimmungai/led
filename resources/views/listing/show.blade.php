@@ -80,8 +80,12 @@
               'inactive' => ['name'=>'listing inactive','value'=>''],
               'live' => ['name'=>'Listing live','value'=>1],
             ]; ?>
-
-            @Component('components.form-inputs.select',['title' => 'status','name'=>'live','icon'=>'fas fa-globe','options'=>$Live,'required'=>false,'selected' => $listing->live])@endcomponent
+            <?php $Featured=[
+              'featured' => ['name'=>'Not featured','value'=>''],
+              'live' => ['name'=>'Featured on home page','value'=>1],
+            ]; ?>
+            @Component('components.form-inputs.select',['title' => 'Featured?','name'=>'featured','icon'=>'fas fa-info-circle','options'=>$Featured,'required'=>false,'selected' => $listing->featured])@endcomponent
+            @Component('components.form-inputs.select',['title' => 'Status','name'=>'live','icon'=>'fas fa-globe','options'=>$Live,'required'=>false,'selected' => $listing->live])@endcomponent
             @Component('components.form-inputs.input',['title' => 'City','name'=>'city','type'=>'text','icon'=>'fas fa-info-circle','placeholder' => 'Enter city','required'=>false,'value' =>$listing->city])@endcomponent
             @Component('components.form-inputs.input',['title' => 'Landmark','name'=>'landmark','type'=>'text','icon'=>'fas fa-info-circle','placeholder' => 'Enter landmark','required'=>false,'value' =>$listing->landmark])@endcomponent
             @Component('components.form-inputs.input',['title' => 'Listed on','name'=>'startDate','type'=>'text','icon'=>'fas fa-calendar','placeholder' => 'dd-mm-yyyy','required'=>false,'value' =>date('Y-m-d',strtotime($listing->startDate))])@endcomponent
