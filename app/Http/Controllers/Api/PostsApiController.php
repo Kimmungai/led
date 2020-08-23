@@ -15,7 +15,7 @@ class PostsApiController extends Controller
      */
     public function index()
     {
-        $posts = Post::where('published',1)->orderBy('created_at','DESC')->paginate(env('ITEMS_PER_PAGE'));
+        $posts = Post::where('published',1)->orderBy('created_at','DESC')->paginate(env('ITEMS_PER_PAGE',10));
         return response()->json($posts,200);
     }
 
