@@ -118,35 +118,35 @@ class SubscriptionController extends Controller
     protected function getSubscriptions()
     {
       $subscription = new Client();
-      $response = $subscription->request('GET','http://34.91.134.230/api/package/');
+      $response = $subscription->request('GET','http://localhost:8001/api/package/');
       return json_decode($response->getBody()->getContents());
     }
 
     protected function createSubscription($data)
     {
       $subscription = new Client();
-      $response = $subscription->request('POST','http://34.91.134.230/api/package/',['form_params'=>$data]);
+      $response = $subscription->request('POST','http://localhost:8001/api/package/',['form_params'=>$data]);
       return $response->getBody()->getContents();
     }
 
     protected function getSubscription($id)
     {
       $subscription = new Client();
-      $response = $subscription->request('GET','http://34.91.134.230/api/package/'.$id);
+      $response = $subscription->request('GET','http://localhost:8001/api/package/'.$id);
       return json_decode($response->getBody()->getContents());
     }
 
     protected function updateSubscription($id,$data)
     {
       $subscription = new Client();
-      $response = $subscription->request('PUT','http://34.91.134.230/api/package/'.$id,['form_params'=>$data]);
+      $response = $subscription->request('PUT','http://localhost:8001/api/package/'.$id,['form_params'=>$data]);
       return $response->getBody()->getContents();
     }
 
     protected function deleteSubscription($id)
     {
       $client = new Client();
-      $response = $client->request('delete','http://34.91.134.230/api/package/'.$id);
+      $response = $client->request('delete','http://localhost:8001/api/package/'.$id);
       return $response->getBody()->getContents();
     }
 }

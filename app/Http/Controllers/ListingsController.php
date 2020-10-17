@@ -109,42 +109,42 @@ class ListingsController extends Controller
     protected function getListings()
     {
       $listing = new Client();
-      $response = $listing->request('GET','http://34.91.134.230/api/listing/');
+      $response = $listing->request('GET','http://192.248.160.159/api/listing/');
       return json_decode($response->getBody()->getContents());
     }
 
     protected function getListing($id)
     {
       $listing = new Client();
-      $response = $listing->request('GET','http://34.91.134.230/api/listing/'.$id);
+      $response = $listing->request('GET','http://192.248.160.159/api/listing/'.$id);
       return json_decode($response->getBody()->getContents());
     }
 
     protected function updateListing($id,$data)
     {
       $payment = new Client();
-      $response = $payment->request('PUT','http://34.91.134.230/api/listing/'.$id,['form_params'=>$data]);
+      $response = $payment->request('PUT','http://192.248.160.159/api/listing/'.$id,['form_params'=>$data]);
       return json_decode($response->getBody()->getContents());
     }
 
     protected function deleteListing($id)
     {
       $client = new Client();
-      $response = $client->request('delete','http://34.91.134.230/api/listing/'.$id);
+      $response = $client->request('delete','http://192.248.160.159/api/listing/'.$id);
       return $response->getBody()->getContents();
     }
 
     protected function createListing($data)
     {
       $client = new Client();
-      $response = $client->request('POST','http://34.91.134.230/api/listing/',['form_params'=>$data]);
+      $response = $client->request('POST','http://192.248.160.159/api/listing/',['form_params'=>$data]);
       return json_decode($response->getBody()->getContents());
     }
 
     protected function getAgents()
     {
       $client = new Client();
-      $response = $client->request('GET','http://34.91.134.230/api/agent/');
+      $response = $client->request('GET','http://192.248.160.159/api/agent/');
       return json_decode($response->getBody()->getContents());
     }
 

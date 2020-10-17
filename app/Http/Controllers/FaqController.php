@@ -120,28 +120,28 @@ class FaqController extends Controller
     protected function getFaqs()
     {
       $faq = new Client();
-      $response = $faq->request('GET','http://34.91.134.230/api/faq/');
+      $response = $faq->request('GET','http://192.248.160.159/api/faq/');
       return json_decode($response->getBody()->getContents());
     }
 
     protected function createFaq($data)
     {
       $faq = new Client();
-      $response = $faq->request('POST','http://34.91.134.230/api/faq/',['form_params'=>$data]);
+      $response = $faq->request('POST','http://192.248.160.159/api/faq/',['form_params'=>$data]);
       return $response->getBody()->getContents();
     }
 
     protected function updateFaq($id,$data)
     {
       $faq = new Client();
-      $response = $faq->request('PUT','http://34.91.134.230/api/faq/'.$id,['form_params'=>$data]);
+      $response = $faq->request('PUT','http://192.248.160.159/api/faq/'.$id,['form_params'=>$data]);
       return json_decode($response->getBody()->getContents());
     }
 
     protected function deleteFaq($id)
     {
       $faq = new Client();
-      $response = $faq->request('delete','http://34.91.134.230/api/faq/'.$id);
+      $response = $faq->request('delete','http://192.248.160.159/api/faq/'.$id);
       return $response->getBody()->getContents();
     }
 }

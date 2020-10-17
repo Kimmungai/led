@@ -114,35 +114,35 @@ class ClientController extends Controller
     protected function getClients()
     {
       $client = new Client();
-      $response = $client->request('GET','http://34.91.134.230/api/user/');
+      $response = $client->request('GET','http://192.248.160.159/api/user/');
       return json_decode($response->getBody()->getContents());
     }
 
     protected function getClient($id)
     {
       $client = new Client();
-      $response = $client->request('GET','http://34.91.134.230/api/user/'.$id);
+      $response = $client->request('GET','http://192.248.160.159/api/user/'.$id);
       return json_decode($response->getBody()->getContents());
     }
 
     protected function updateClient($id,$data)
     {
       $client = new Client();
-      $response = $client->request('PUT','http://34.91.134.230/api/user/'.$id,['form_params'=>$data]);
+      $response = $client->request('PUT','http://192.248.160.159/api/user/'.$id,['form_params'=>$data]);
       return $response->getBody()->getContents();
     }
 
     protected function deleteUser($id)
     {
       $client = new Client();
-      $response = $client->request('delete','http://34.91.134.230/api/user/'.$id);
+      $response = $client->request('delete','http://192.248.160.159/api/user/'.$id);
       return json_decode($response->getBody()->getContents());
     }
 
     protected function createClient($data)
     {
       $client = new Client();
-      $response = $client->request('POST','http://34.91.134.230/api/user/',['form_params'=>$data]);
+      $response = $client->request('POST','http://192.248.160.159/api/user/',['form_params'=>$data]);
       return $response->getBody()->getContents();
     }
 }

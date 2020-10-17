@@ -125,28 +125,28 @@ class HomePageSettings extends Controller
     protected function getPageSettings($data)
     {
       $home = new Client();
-      $response = $home->request('POST','http://34.91.134.230/api/settings-retrieve/',['form_params'=>$data]);
+      $response = $home->request('POST','http://192.248.160.159/api/settings-retrieve/',['form_params'=>$data]);
       return json_decode($response->getBody()->getContents());
     }
 
     protected function createPageSetting($data)
     {
       $client = new Client();
-      $response = $client->request('POST','http://34.91.134.230/api/settings/',['form_params'=>$data]);
+      $response = $client->request('POST','http://192.248.160.159/api/settings/',['form_params'=>$data]);
       return $response->getBody()->getContents();
     }
 
     protected function deletePageSetting($id)
     {
       $faq = new Client();
-      $response = $faq->request('delete','http://34.91.134.230/api/settings/'.$id);
+      $response = $faq->request('delete','http://192.248.160.159/api/settings/'.$id);
       return $response->getBody()->getContents();
     }
 
     protected function updatePageSetting($id,$data)
     {
       $faq = new Client();
-      $response = $faq->request('PUT','http://34.91.134.230/api/settings/'.$id,['form_params'=>$data]);
+      $response = $faq->request('PUT','http://192.248.160.159/api/settings/'.$id,['form_params'=>$data]);
       return json_decode($response->getBody()->getContents());
     }
 

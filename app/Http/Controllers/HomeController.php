@@ -59,28 +59,28 @@ class HomeController extends Controller
     protected function getAgents()
     {
       $client = new Client();
-      $response = $client->request('GET','http://34.91.134.230/api/agent/');
+      $response = $client->request('GET','http://192.248.160.159/api/agent/');
       return json_decode($response->getBody()->getContents());
     }
 
     protected function getClients()
     {
       $client = new Client();
-      $response = $client->request('GET','http://34.91.134.230/api/user/');
+      $response = $client->request('GET','http://192.248.160.159/api/user/');
       return json_decode($response->getBody()->getContents());
     }
 
     protected function getPayments()
     {
       $client = new Client();
-      $response = $client->request('GET','http://34.91.134.230/api/payment/');
+      $response = $client->request('GET','http://192.248.160.159/api/payment/');
       return $response->getBody()->getContents();
     }
 
     protected function getTodayListingStats()
     {
       $client = new Client();
-      $response = $client->request('POST','http://34.91.134.230/api/listing-today-stats/');
+      $response = $client->request('POST','http://192.248.160.159/api/listing-today-stats/');
       $data = json_decode($response->getBody()->getContents());
       $todayListingStats['commercial'] = $data->commercial;
       $todayListingStats['residential'] = $data->residential;
@@ -92,7 +92,7 @@ class HomeController extends Controller
     protected function getTodayPaymentStats()
     {
       $client = new Client();
-      $response = $client->request('POST','http://34.91.134.230/api/payment-today-stats/');
+      $response = $client->request('POST','http://192.248.160.159/api/payment-today-stats/');
       $data = json_decode($response->getBody()->getContents());
       $todayPaymentStats['totalSales'] = $data->totalSales;
       $todayPaymentStats['walletsTotal'] = $data->walletsTotal;

@@ -108,35 +108,35 @@ class PaymentController extends Controller
     protected function getPayments()
     {
       $payment = new Client();
-      $response = $payment->request('GET','http://34.91.134.230/api/payment/');
+      $response = $payment->request('GET','http://192.248.160.159/api/payment/');
       return json_decode($response->getBody()->getContents());
     }
 
     protected function getPayment($id)
     {
       $payment = new Client();
-      $response = $payment->request('GET','http://34.91.134.230/api/payment/'.$id);
+      $response = $payment->request('GET','http://192.248.160.159/api/payment/'.$id);
       return json_decode($response->getBody()->getContents());
     }
 
     protected function updatePayment($id,$data)
     {
       $payment = new Client();
-      $response = $payment->request('PUT','http://34.91.134.230/api/payment/'.$id,['form_params'=>$data]);
+      $response = $payment->request('PUT','http://192.248.160.159/api/payment/'.$id,['form_params'=>$data]);
       return $response->getBody()->getContents();
     }
 
     protected function deletePayment($id)
     {
       $client = new Client();
-      $response = $client->request('delete','http://34.91.134.230/api/payment/'.$id);
+      $response = $client->request('delete','http://192.248.160.159/api/payment/'.$id);
       return $response->getBody()->getContents();
     }
 
     protected function createPayment($data)
     {
       $client = new Client();
-      $response = $client->request('POST','http://34.91.134.230/api/payment/',['form_params'=>$data]);
+      $response = $client->request('POST','http://192.248.160.159/api/payment/',['form_params'=>$data]);
       return $response->getBody()->getContents();
     }
 }

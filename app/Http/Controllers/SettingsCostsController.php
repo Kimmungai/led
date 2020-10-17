@@ -111,14 +111,14 @@ class SettingsCostsController extends Controller
     protected function updateCost($id,$data)
     {
       $client = new Client();
-      $response = $client->request('PUT','http://34.91.134.230/api/advertising-costs/'.$id,['form_params'=>$data]);
+      $response = $client->request('PUT','http://localhost:8001/api/advertising-costs/'.$id,['form_params'=>$data]);
       return $response->getBody()->getContents();
     }
 
     protected function getCost()
     {
       $client = new Client();
-      $response = $client->request('GET','http://34.91.134.230/api/advertising-costs/');
+      $response = $client->request('GET','http://localhost:8001/api/advertising-costs/');
       return json_decode($response->getBody()->getContents());
     }
 }

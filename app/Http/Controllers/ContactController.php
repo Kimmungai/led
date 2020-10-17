@@ -127,28 +127,28 @@ class ContactController extends Controller
     protected function getContacts()
     {
       $contact = new Client();
-      $response = $contact->request('GET','http://34.91.134.230/api/contact/');
+      $response = $contact->request('GET','http://192.248.160.159/api/contact/');
       return json_decode($response->getBody()->getContents());
     }
 
     protected function createContact($data)
     {
       $contact = new Client();
-      $response = $contact->request('POST','http://34.91.134.230/api/contact/',['form_params'=>$data]);
+      $response = $contact->request('POST','http://192.248.160.159/api/contact/',['form_params'=>$data]);
       return $response->getBody()->getContents();
     }
 
     protected function updateFaq($id,$data)
     {
       $contact = new Client();
-      $response = $contact->request('PUT','http://34.91.134.230/api/contact/'.$id,['form_params'=>$data]);
+      $response = $contact->request('PUT','http://192.248.160.159/api/contact/'.$id,['form_params'=>$data]);
       return json_decode($response->getBody()->getContents());
     }
 
     protected function deleteContact($id)
     {
       $contact = new Client();
-      $response = $contact->request('delete','http://34.91.134.230/api/contact/'.$id);
+      $response = $contact->request('delete','http://192.248.160.159/api/contact/'.$id);
       return $response->getBody()->getContents();
     }
 }
