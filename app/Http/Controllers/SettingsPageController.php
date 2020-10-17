@@ -92,7 +92,7 @@ class SettingsPageController extends Controller
       protected function getCost()
       {
         $client = new Client();
-        $response = $client->request('GET','http://localhost:8001/api/advertising-costs/');
+        $response = $client->request('GET','http://192.248.160.159/api/advertising-costs/');
         return json_decode($response->getBody()->getContents());
       }
     }
